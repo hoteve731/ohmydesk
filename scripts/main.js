@@ -212,16 +212,21 @@ function checkForUpdates() {
 
 // 초기화 완료 이벤트
 function dispatchInitializationComplete() {
+    // 안전하게 데이터 접근
+    const clustersLength = window.issueClusters?.length || 0;
+    const selectedProject = window.appState?.selectedProject || 'default';
+
     const event = new CustomEvent('ohmydeskReady', {
         detail: {
             timestamp: new Date().toISOString(),
             version: '1.0.0',
-            clusters: window.issueClusters.length,
-            selectedProject: window.appState.selectedProject
+            clusters: clustersLength,
+            selectedProject: selectedProject
         }
     });
 
     window.dispatchEvent(event);
+    console.log('🎉 초기화 완료 이벤트 발생:', { clusters: clustersLength, selectedProject });
 }
 
 // 초기화 오류 표시
