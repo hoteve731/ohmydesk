@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오마이데스크 - 나만의 정보 분석 데스크</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- 반응형 경고 오버레이 -->
+    <div class="responsive-warning" id="responsiveWarning">
+        <div class="warning-content">
+            <div class="warning-icon">📱</div>
+            <h3>화면을 넓혀주세요</h3>
+            <p>오마이데스크는 데스크탑 환경에 최적화되어 있습니다.<br>
+                최상의 경험을 위해 화면 크기를 1200px 이상으로 조정해주세요.</p>
+        </div>
+    </div>
+
+    <!-- 메인 앱 컨테이너 -->
+    <div class="app-container" id="appContainer">
+        <!-- 좌측 패널: 오늘의 브리핑 -->
+        <aside class="left-panel">
+            <header class="panel-header">
+                <div class="header-top">
+                    <div class="logo">
+                        <span class="logo-icon">📊</span>
+                        <span class="logo-text">오마이데스크</span>
+                    </div>
+                    <button class="settings-btn" id="settingsBtn" title="설정">
+                        <span>⚙️</span>
+                    </button>
+                </div>
+                <div class="briefing-info">
+                    <h1 class="panel-title">오늘의 브리핑</h1>
+                    <p class="panel-subtitle" id="dateInfo">2024년 12월 19일 • 8개 이슈</p>
+                </div>
+                <div class="date-selector">
+                    <input type="date" id="dateInput" value="2024-12-19">
+                </div>
+            </header>
+
+            <div class="issue-clusters" id="issueClusters">
+                <!-- 이슈 클러스터들이 동적으로 생성됩니다 -->
+            </div>
+        </aside>
+
+        <!-- 중앙 패널: 비교 분석 데스크 -->
+        <main class="center-panel">
+            <header class="analysis-header">
+                <div class="analysis-title-area">
+                    <h2 class="analysis-title" id="analysisTitle">이슈를 선택해주세요</h2>
+                    <p class="analysis-subtitle" id="analysisSubtitle">좌측에서 관심 있는 이슈를 클릭하면 상세 분석이 시작됩니다</p>
+                </div>
+                <div class="analysis-controls">
+                    <button class="control-btn active" data-view="timeline">
+                        <span>📅</span> 시간순
+                    </button>
+                    <button class="control-btn" data-view="comparison">
+                        <span>⚖️</span> 비교분석
+                    </button>
+                    <button class="control-btn" data-view="data">
+                        <span>📊</span> 데이터
+                    </button>
+                </div>
+            </header>
+
+            <div class="analysis-content" id="analysisContent">
+                <div class="empty-state">
+                    <div class="empty-icon">🎯</div>
+                    <h3>분석할 이슈를 선택해주세요</h3>
+                    <p>좌측 브리핑에서 이슈를 클릭하면<br>AI 기반 비교 분석이 시작됩니다</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- 우측 패널: 프로젝트 노트 -->
+        <aside class="right-panel">
+            <header class="notes-header">
+                <div class="project-selector">
+                    <select id="projectSelect">
+                        <option value="slowletter-1219">12/19 슬로우레터</option>
+                        <option value="analysis-report">분석 리포트</option>
+                        <option value="draft-column">칼럼 초안</option>
+                    </select>
+                </div>
+                <button class="export-btn" id="exportBtn" title="내보내기">
+                    <span>📤</span>
+                </button>
+            </header>
+
+            <div class="notes-content" id="notesContent">
+                <div class="category-section" data-category="issues">
+                    <div class="category-header">
+                        <span class="category-icon">🔴</span>
+                        <h3 class="category-title">쟁점과 현안</h3>
+                        <span class="item-count">0</span>
+                    </div>
+                    <div class="category-items" id="issuesItems">
+                        <!-- 하이라이트된 아이템들이 추가됩니다 -->
+                    </div>
+                </div>
+
+                <div class="category-section" data-category="deep">
+                    <div class="category-header">
+                        <span class="category-icon">🔵</span>
+                        <h3 class="category-title">더 깊게 읽기</h3>
+                        <span class="item-count">0</span>
+                    </div>
+                    <div class="category-items" id="deepItems">
+                        <!-- 하이라이트된 아이템들이 추가됩니다 -->
+                    </div>
+                </div>
+
+                <div class="category-section" data-category="different">
+                    <div class="category-header">
+                        <span class="category-icon">🟢</span>
+                        <h3 class="category-title">다르게 읽기</h3>
+                        <span class="item-count">0</span>
+                    </div>
+                    <div class="category-items" id="differentItems">
+                        <!-- 하이라이트된 아이템들이 추가됩니다 -->
+                    </div>
+                </div>
+
+                <div class="category-section" data-category="tmi">
+                    <div class="category-header">
+                        <span class="category-icon">⚫</span>
+                        <h3 class="category-title">오늘의 TMI</h3>
+                        <span class="item-count">0</span>
+                    </div>
+                    <div class="category-items" id="tmiItems">
+                        <!-- 하이라이트된 아이템들이 추가됩니다 -->
+                    </div>
+                </div>
+
+                <button class="add-note-btn" id="addNoteBtn">
+                    <span>✏️</span>
+                    생각 노트 추가
+                </button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- 기사 리더 모달 -->
+    <div class="modal-overlay" id="readerModal">
+        <div class="reader-modal">
+            <header class="reader-header">
+                <div class="reader-source" id="readerSource">출처</div>
+                <button class="reader-close" id="readerClose">✕</button>
+            </header>
+            <div class="reader-content">
+                <h1 class="reader-title" id="readerTitle">기사 제목</h1>
+                <div class="reader-meta" id="readerMeta">
+                    <span class="reader-date">2024.12.19</span>
+                    <span class="reader-author">기자명</span>
+                </div>
+                <div class="reader-body" id="readerBody">
+                    <p>기사 내용이 여기에 표시됩니다...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 하이라이트 메뉴 -->
+    <div class="highlight-menu" id="highlightMenu">
+        <button class="highlight-btn" data-category="issues" title="쟁점과 현안">🔴</button>
+        <button class="highlight-btn" data-category="deep" title="더 깊게 읽기">🔵</button>
+        <button class="highlight-btn" data-category="different" title="다르게 읽기">🟢</button>
+        <button class="highlight-btn" data-category="tmi" title="오늘의 TMI">⚫</button>
+    </div>
+
+    <!-- 툴팁 -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <!-- JavaScript - 순서대로 로드 -->
+    <script src="scripts/data.js"></script>
+    <script src="scripts/components.js"></script>
+    <script src="scripts/interactions.js"></script>
+    <script src="scripts/main.js"></script>
+
+    <script>
+        // 추가 안전장치: 모든 스크립트 로드 후 확인
+        window.addEventListener('load', function () {
+            console.log('🔍 스크립트 로드 상태 확인:', {
+                issueClusters: window.issueClusters?.length || 0,
+                projectTemplates: Object.keys(window.projectTemplates || {}).length,
+                utils: !!window.utils,
+                appState: !!window.appState,
+                components: !!window.initializeComponents,
+                interactions: !!window.initializeInteractions
+            });
+
+            // 만약 데이터가 없다면 강제로 다시 시도
+            if (!window.issueClusters || window.issueClusters.length === 0) {
+                console.warn('⚠️ 데이터 로드 실패, 0.5초 후 재시도...');
+                setTimeout(() => {
+                    if (window.initializeComponents) {
+                        window.initializeComponents();
+                    }
+                }, 500);
+            }
+        });
+    </script>
+</body>
+
+</html>

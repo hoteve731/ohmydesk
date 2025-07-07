@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로젝트 노트 - Focused Clarity</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/modal.css">
+    <link rel="stylesheet" href="styles/notes.css">
+</head>
+
+<body>
+    <div class="notes-app-container">
+        <div class="notes-header">
+            <div class="notes-title">프로젝트</div>
+        </div>
+        <div class="notes-columns">
+            <div class="notes-column red">
+                <div class="column-header">
+                    <span class="category-dot red"></span>
+                    <span class="column-title">밀줄 친 것</span>
+                    <span class="column-edit">수정</span>
+                    <span class="column-add">추가</span>
+                </div>
+                <div class="notes-cards" id="redCards">
+                    <!-- 카드 예시 -->
+                    <div class="note-card" draggable="true">
+                        <div class="note-card-menu">메뉴<br>드래그<br>삭제</div>
+                        <div class="note-card-source">출처:</div>
+                        <div class="note-card-content"></div>
+                    </div>
+                </div>
+                <button class="markdown-btn">마크다운 내보내기</button>
+            </div>
+            <div class="notes-column blue">
+                <div class="column-header">
+                    <span class="category-dot blue"></span>
+                    <span class="column-title">밀줄 친 것</span>
+                    <span class="column-edit">수정</span>
+                    <span class="column-add">추가</span>
+                </div>
+                <div class="notes-cards" id="blueCards"></div>
+                <button class="markdown-btn">마크다운 내보내기</button>
+            </div>
+            <div class="notes-column green">
+                <div class="column-header">
+                    <span class="category-dot green"></span>
+                    <span class="column-title">밀줄 친 것</span>
+                    <span class="column-edit">수정</span>
+                    <span class="column-add">추가</span>
+                </div>
+                <div class="notes-cards" id="greenCards"></div>
+                <button class="markdown-btn">마크다운 내보내기</button>
+            </div>
+            <div class="notes-column gray">
+                <div class="column-header">
+                    <span class="category-dot gray"></span>
+                    <span class="column-title">밀줄 친 것</span>
+                    <span class="column-edit">수정</span>
+                    <span class="column-add">추가</span>
+                </div>
+                <div class="notes-cards" id="grayCards"></div>
+                <button class="markdown-btn">마크다운 내보내기</button>
+            </div>
+        </div>
+    </div>
+    <!-- 플로팅 버튼: 메인으로 돌아가기 -->
+    <button class="fab" id="backToMainBtn" title="메인으로 돌아가기">🏠</button>
+    <script src="scripts/notes.js"></script>
+</body>
+
+</html>

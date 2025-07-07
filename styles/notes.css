@@ -1,0 +1,208 @@
+body,
+html {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #e0e7ef 0%, #f7f7fa 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+}
+
+.notes-app-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+}
+
+.notes-header {
+    padding: 32px 0 12px 48px;
+}
+
+.notes-title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #1E1E1E;
+}
+
+.notes-columns {
+    flex: 1;
+    display: flex;
+    gap: 32px;
+    padding: 0 32px 0 32px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.notes-column {
+    flex: 1 1 0;
+    min-width: 320px;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(18px) saturate(160%);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(60, 60, 80, 0.10), 0 1.5px 4px 0 rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(200, 200, 220, 0.18);
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 24px 0;
+    min-height: 70vh;
+    position: relative;
+}
+
+.column-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 28px 24px 12px 24px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1E1E1E;
+}
+
+.column-title {
+    flex: 1;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+.column-edit,
+.column-add {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #888;
+    margin-left: 12px;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.column-edit:hover,
+.column-add:hover {
+    color: #0A84FF;
+}
+
+.notes-cards {
+    flex: 1;
+    padding: 0 24px;
+    min-height: 200px;
+}
+
+.note-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px) saturate(160%);
+    border: 1.5px solid rgba(200, 200, 220, 0.18);
+    border-radius: 14px;
+    box-shadow: 0 2.5px 12px 0 rgba(60, 60, 80, 0.10), 0 1.5px 4px 0 rgba(0, 0, 0, 0.04);
+    margin-bottom: 18px;
+    padding: 16px 16px 12px 16px;
+    position: relative;
+    transition: box-shadow 0.18s, transform 0.18s, border 0.18s, background 0.18s;
+    display: flex;
+    flex-direction: column;
+    cursor: grab;
+}
+
+.note-card:active {
+    box-shadow: 0 8px 32px 0 rgba(10, 132, 255, 0.13);
+    transform: scale(1.03);
+}
+
+.note-card-menu {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 0.95rem;
+    color: #888;
+    text-align: right;
+    line-height: 1.5;
+    opacity: 0.85;
+    user-select: none;
+}
+
+.note-card-source {
+    font-size: 0.98rem;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.note-card-content {
+    min-height: 48px;
+    background: #e5e5e5;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.markdown-btn {
+    width: 90%;
+    margin: 18px auto 0 auto;
+    display: block;
+    padding: 12px 0;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(90deg, #e8f4fd 0%, #f7f7fa 100%);
+    color: #0A84FF;
+    font-size: 1.08rem;
+    font-weight: 700;
+    box-shadow: 0 2.5px 12px 0 rgba(60, 60, 80, 0.08);
+    cursor: pointer;
+    transition: background 0.15s, box-shadow 0.15s;
+}
+
+.markdown-btn:hover {
+    background: #e0f0ff;
+    box-shadow: 0 8px 32px 0 rgba(10, 132, 255, 0.10);
+}
+
+.category-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.category-dot.red {
+    background: #FF3B30;
+}
+
+.category-dot.blue {
+    background: #007AFF;
+}
+
+.category-dot.green {
+    background: #34C759;
+}
+
+.category-dot.gray {
+    background: #8E8E93;
+}
+
+/* 플로팅 버튼 (FAB) */
+.fab {
+    position: fixed;
+    right: 36px;
+    bottom: 36px;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 8px 32px 0 rgba(60, 60, 80, 0.18), 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+    border: 1.5px solid rgba(200, 200, 220, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #0A84FF;
+    cursor: pointer;
+    z-index: 2000;
+    transition: box-shadow 0.18s, background 0.18s, transform 0.18s;
+}
+
+.fab:hover {
+    background: rgba(240, 247, 255, 0.95);
+    box-shadow: 0 16px 48px 0 rgba(10, 132, 255, 0.18), 0 4px 16px 0 rgba(0, 0, 0, 0.10);
+    transform: scale(1.07);
+}
