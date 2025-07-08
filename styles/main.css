@@ -302,18 +302,17 @@ body {
 }
 
 .briefing-card:hover {
-    box-shadow: 0 0 0 2px #a78bfa33, 0 8px 32px 0 rgba(80, 90, 180, 0.18), 0 2px 8px 0 rgba(0, 0, 0, 0.08);
-    filter: drop-shadow(0 0 16px #a78bfa55);
-    border: 1.5px solid #a78bfa;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
+    border-color: var(--border-dark);
 }
 
 .briefing-card.selected {
-    background: linear-gradient(120deg, #f3f0ff 0%, #eaf1ff 100%);
-    border: 2.5px solid #7c3aed;
-    box-shadow: 0 0 0 4px #a78bfa44, 0 12px 36px 0 #a78bfa22, 0 2px 8px 0 rgba(0, 0, 0, 0.04);
+    background: linear-gradient(120deg, #f0f8ff 0%, #e6f3ff 100%);
+    border: 2.5px solid #3498db;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2), 0 12px 36px 0 rgba(52, 152, 219, 0.15), 0 2px 8px 0 rgba(0, 0, 0, 0.04);
     transform: translateY(-2px) scale(1.02);
-    filter: drop-shadow(0 0 24px #a78bfa55);
+    filter: drop-shadow(0 0 24px rgba(52, 152, 219, 0.3));
 }
 
 .briefing-card.selected::before {
@@ -324,6 +323,8 @@ body {
     bottom: 0;
     width: 5px;
     background: linear-gradient(180deg, #7c3aed 0%, #0A84FF 100%);
+    border-radius: 0 10px 10px 0;
+    display: none;
 }
 
 /* 카드 이미지 */
@@ -420,6 +421,251 @@ body {
 .card-row.double .briefing-card {
     flex: 1;
     max-width: calc(50% - var(--spacing-sm));
+}
+
+/* 선택된 이슈 콘텐츠 */
+.issue-content {
+    padding: var(--spacing-lg);
+}
+
+.issue-content-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.issue-content-title {
+    font-size: var(--font-size-xxl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.3;
+}
+
+.issue-content-sources {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.content-sources-icons {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.content-source-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--border-light);
+    object-fit: cover;
+    transition: var(--transition-fast);
+}
+
+.content-source-icon:hover {
+    border-color: var(--accent-blue);
+    transform: scale(1.1);
+}
+
+.content-sources-text {
+    font-weight: 500;
+}
+
+.issue-thumbnail {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--border-light);
+}
+
+.issue-summary {
+    font-size: var(--font-size-md);
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+}
+
+.issue-summary h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin: var(--spacing-lg) 0 var(--spacing-sm) 0;
+    color: var(--text-primary);
+}
+
+.issue-summary p {
+    margin-bottom: var(--spacing-md);
+}
+
+.issue-summary ul,
+.issue-summary ol {
+    margin-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.issue-summary li {
+    margin-bottom: var(--spacing-xs);
+}
+
+/* 플로팅 출처 버튼 */
+.floating-sources-btn {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    left: calc(320px + var(--spacing-xl));
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    z-index: 100;
+}
+
+.floating-sources-btn:hover {
+    background: #2c5aa0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sources-icon {
+    font-size: 16px;
+}
+
+.sources-text {
+    font-size: var(--font-size-sm);
+}
+
+/* 마크다운 스타일 개선 */
+.issue-summary ul {
+    list-style-type: disc;
+    margin-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.issue-summary ol {
+    list-style-type: decimal;
+    margin-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.issue-summary li {
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.5;
+}
+
+.issue-summary strong {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.issue-summary h3 {
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-light);
+    padding-bottom: var(--spacing-xs);
+}
+
+/* 출처 목록 슬라이드 */
+.sources-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: var(--primary-bg);
+    border-left: 1px solid var(--border-light);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    transition: right var(--transition-normal);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+}
+
+.sources-sidebar.open {
+    right: 0;
+}
+
+.sources-header {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sources-header h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.sources-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+    padding: var(--spacing-xs);
+}
+
+.sources-close:hover {
+    color: var(--text-primary);
+}
+
+.sources-content {
+    flex: 1;
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+}
+
+.source-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    transition: var(--transition-fast);
+    cursor: pointer;
+}
+
+.source-item:hover {
+    background: var(--tertiary-bg);
+}
+
+.source-item-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--border-light);
+    object-fit: cover;
+}
+
+.source-item-info {
+    flex: 1;
+}
+
+.source-item-name {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.source-item-count {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
 }
 
 /* 중앙 패널 */

@@ -194,8 +194,7 @@ function createBriefingCard(cluster) {
 
     return `
         <div class="briefing-card ${window.appState.selectedCluster === cluster.id ? 'selected' : ''}" 
-             data-cluster="${cluster.id}" 
-             onclick="selectCluster('${cluster.id}')">
+             data-cluster="${cluster.id}">
             <img src="${cluster.image}" alt="${cluster.title}" class="card-image" loading="lazy">
             <div class="card-content">
                 <h3 class="card-title">${cluster.title}</h3>
@@ -228,6 +227,9 @@ function renderBriefingCards(clusters) {
         const emptyDiv = document.createElement('div');
         emptyDiv.innerHTML = '<div class="empty-state"><p>브리핑 데이터를 불러오는 중입니다...</p></div>';
         container.appendChild(emptyDiv);
+
+        // 빈 상태일 때 플로팅 버튼 숨김
+        hideFloatingSourcesButton();
         return;
     }
 
@@ -270,6 +272,21 @@ function renderBriefingCards(clusters) {
         container.appendChild(existingSummary);
     }
     container.appendChild(cardsContainer);
+
+    // 카드 클릭 이벤트 리스너 추가
+    attachCardEventListeners();
+}
+
+// 카드 클릭 이벤트 리스너 추가
+function attachCardEventListeners() {
+    document.querySelectorAll('.briefing-card').forEach(card => {
+        card.addEventListener('click', function () {
+            const clusterId = this.dataset.cluster;
+            if (clusterId) {
+                selectCluster(clusterId);
+            }
+        });
+    });
 }
 
 // 이슈 클러스터 렌더링 (기존 함수 - 호환성 유지)
@@ -280,6 +297,8 @@ function renderIssueClusters(clusters) {
 
 // 클러스터 선택 함수
 function selectCluster(clusterId) {
+    console.log('🎯 클러스터 선택 시도:', clusterId);
+
     // 기존 선택 해제
     document.querySelectorAll('.briefing-card.selected').forEach(card => {
         card.classList.remove('selected');
@@ -287,63 +306,222 @@ function selectCluster(clusterId) {
 
     // 새로운 선택
     const selectedCard = document.querySelector(`[data-cluster="${clusterId}"]`);
+    console.log('🔍 선택된 카드:', selectedCard);
+
     if (selectedCard) {
         selectedCard.classList.add('selected');
+        console.log('✅ 카드 선택 스타일 적용됨');
     }
 
     // 앱 상태 업데이트
     window.appState.selectedCluster = clusterId;
+    console.log('🔄 앱 상태 업데이트:', window.appState.selectedCluster);
 
     // 분석 패널 업데이트
     const cluster = window.issueClusters.find(c => c.id === clusterId);
+    console.log('🔍 찾은 클러스터:', cluster ? cluster.title : '없음');
+
     if (cluster) {
         updateAnalysisContent(cluster);
+        showFloatingSourcesButton(cluster);
+    } else {
+        // 클러스터를 찾을 수 없을 때
+        console.warn('⚠️ 클러스터를 찾을 수 없음:', clusterId);
+        hideFloatingSourcesButton();
+        resetAnalysisContent();
     }
 }
 
-// 정리 완료
+// 간단한 마크다운 -> HTML 변환 함수
+function markdownToHtml(markdown) {
+    if (!markdown) return '';
 
-// 분석 콘텐츠 업데이트 (간단 버전)
+    // 먼저 줄바꿈을 정리
+    let html = markdown.trim();
+
+    // 헤더 변환 (### → h3, ## → h2, # → h1)
+    html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
+    html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
+    html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
+
+    // 강조 표시 (** → strong)
+    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+    // 리스트 항목 변환
+    html = html.replace(/^- (.*$)/gm, '<li>$1</li>');
+
+    // 연속된 리스트 항목들을 ul로 감싸기
+    html = html.replace(/(<li>.*?<\/li>)(?:\s*<li>.*?<\/li>)*/g, function (match) {
+        return '<ul>' + match + '</ul>';
+    });
+
+    // 빈 줄을 기준으로 문단 나누기
+    html = html.split('\n\n').map(paragraph => {
+        paragraph = paragraph.trim();
+        if (!paragraph) return '';
+
+        // 이미 태그가 있는 경우는 그대로
+        if (paragraph.startsWith('<') && paragraph.endsWith('>')) {
+            return paragraph;
+        }
+
+        // 일반 문단은 p 태그로 감싸기
+        return '<p>' + paragraph.replace(/\n/g, '<br>') + '</p>';
+    }).join('\n');
+
+    return html;
+}
+
+// 분석 콘텐츠 업데이트 (새로운 구조)
 function updateAnalysisContent(cluster) {
     const titleElement = document.getElementById('analysisTitle');
     const subtitleElement = document.getElementById('analysisSubtitle');
     const contentElement = document.getElementById('analysisContent');
 
     if (titleElement) titleElement.textContent = cluster.title;
-    if (subtitleElement) subtitleElement.textContent = `${cluster.articleCount}개 기사 분석 • ${cluster.lastUpdated}`;
+    if (subtitleElement) {
+        const totalSources = cluster.sources.reduce((sum, source) => sum + source.count, 0);
+        subtitleElement.textContent = `${totalSources}개 출처 • ${window.utils.formatDate(cluster.lastUpdated)}`;
+    }
 
     if (contentElement) {
+        const summaryHtml = markdownToHtml(cluster.detailedSummary);
+        const sourcesHtml = cluster.sources.map(source =>
+            `<img src="${source.icon}" alt="${source.name}" class="content-source-icon" title="${source.name} (${source.count}개 기사)">`
+        ).join('');
+
         contentElement.innerHTML = `
-            <div class="analysis-section">
-                <h3 class="section-title">
-                    <span class="section-title-icon">📊</span>
-                    AI 분석 결과
-                </h3>
-                <div class="analysis-summary">
-                    <p>${cluster.summary}</p>
-                    <p>이 이슈는 현재 <strong>${cluster.conflictLevel}</strong> 수준의 논란을 보이고 있으며, 
-                    총 <strong>${cluster.articleCount}개</strong>의 관련 기사가 발견되었습니다.</p>
-                </div>
-            </div>
-            
-            <div class="analysis-section">
-                <h3 class="section-title">
-                    <span class="section-title-icon">📰</span>
-                    주요 기사
-                </h3>
-                <div class="article-list">
-                    <div class="article-card">
-                        <div class="article-header">
-                            <span class="article-source">연합뉴스</span>
-                            <span class="article-time">2시간 전</span>
+            <div class="issue-content">
+                <div class="issue-content-header">
+                    <h1 class="issue-content-title">${cluster.title}</h1>
+                    <div class="issue-content-sources">
+                        <div class="content-sources-icons">
+                            ${sourcesHtml}
                         </div>
-                        <h3 class="article-title">주요 기사 제목 예시</h3>
-                        <p class="article-summary">기사 요약 내용이 여기에 표시됩니다...</p>
+                        <span class="content-sources-text">${cluster.articleCount}개 기사</span>
                     </div>
+                </div>
+                <img src="${cluster.image}" alt="${cluster.title}" class="issue-thumbnail">
+                <div class="issue-summary">
+                    ${summaryHtml}
                 </div>
             </div>
         `;
     }
+}
+
+// 플로팅 출처 버튼 표시
+function showFloatingSourcesButton(cluster) {
+    const floatingBtn = document.getElementById('floatingSourcesBtn');
+    console.log('🔍 플로팅 버튼 찾기:', floatingBtn);
+
+    if (floatingBtn) {
+        const totalSources = cluster.sources.reduce((sum, source) => sum + source.count, 0);
+        const sourcesTextElement = floatingBtn.querySelector('.sources-text');
+
+        console.log('🔍 출처 텍스트 요소:', sourcesTextElement);
+        console.log('🔍 총 출처 수:', totalSources);
+
+        if (sourcesTextElement) {
+            sourcesTextElement.textContent = `${totalSources} 출처`;
+        }
+
+        floatingBtn.style.display = 'flex';
+        console.log('✅ 플로팅 버튼 표시됨');
+
+        // 클릭 이벤트 업데이트
+        floatingBtn.onclick = () => {
+            console.log('🔍 플로팅 버튼 클릭');
+            openSourcesSidebar(cluster);
+        };
+    } else {
+        console.warn('⚠️ 플로팅 버튼을 찾을 수 없습니다');
+    }
+}
+
+// 플로팅 출처 버튼 숨김
+function hideFloatingSourcesButton() {
+    const floatingBtn = document.getElementById('floatingSourcesBtn');
+    if (floatingBtn) {
+        floatingBtn.style.display = 'none';
+    }
+}
+
+// 분석 콘텐츠 초기화
+function resetAnalysisContent() {
+    const titleElement = document.getElementById('analysisTitle');
+    const subtitleElement = document.getElementById('analysisSubtitle');
+    const contentElement = document.getElementById('analysisContent');
+
+    if (titleElement) titleElement.textContent = '이슈를 선택해주세요';
+    if (subtitleElement) subtitleElement.textContent = '좌측에서 관심 있는 이슈를 클릭하면 상세 정보가 표시됩니다';
+    if (contentElement) {
+        contentElement.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-icon">🎯</div>
+                <h3>분석할 이슈를 선택해주세요</h3>
+                <p>좌측 브리핑에서 이슈를 클릭하면<br>상세 정보가 표시됩니다</p>
+            </div>
+        `;
+    }
+}
+
+// 출처 목록 사이드바 열기
+function openSourcesSidebar(cluster) {
+    console.log('📋 출처 사이드바 열기 시도:', cluster.title);
+
+    const sidebar = document.getElementById('sourcesSidebar');
+    const sourcesContent = document.getElementById('sourcesContent');
+
+    console.log('🔍 사이드바 요소:', sidebar);
+    console.log('🔍 콘텐츠 요소:', sourcesContent);
+
+    if (sidebar && sourcesContent) {
+        // 출처 목록 생성
+        const sourcesHtml = cluster.sources.map(source => `
+            <div class="source-item">
+                <img src="${source.icon}" alt="${source.name}" class="source-item-icon">
+                <div class="source-item-info">
+                    <div class="source-item-name">${source.name}</div>
+                    <div class="source-item-count">${source.count}개 기사</div>
+                </div>
+            </div>
+        `).join('');
+
+        sourcesContent.innerHTML = sourcesHtml;
+        sidebar.classList.add('open');
+        console.log('✅ 출처 사이드바 열림');
+    } else {
+        console.warn('⚠️ 사이드바 요소를 찾을 수 없습니다');
+    }
+}
+
+// 출처 목록 사이드바 닫기
+function closeSourcesSidebar() {
+    const sidebar = document.getElementById('sourcesSidebar');
+    if (sidebar) {
+        sidebar.classList.remove('open');
+    }
+}
+
+// 출처 목록 사이드바 이벤트 리스너 추가
+function initializeSourcesSidebar() {
+    const closeBtn = document.getElementById('sourcesClose');
+    if (closeBtn) {
+        closeBtn.onclick = closeSourcesSidebar;
+    }
+
+    // 사이드바 외부 클릭 시 닫기
+    document.addEventListener('click', (e) => {
+        const sidebar = document.getElementById('sourcesSidebar');
+        const floatingBtn = document.getElementById('floatingSourcesBtn');
+
+        if (sidebar && sidebar.classList.contains('open')) {
+            if (!sidebar.contains(e.target) && !floatingBtn.contains(e.target)) {
+                closeSourcesSidebar();
+            }
+        }
+    });
 }
 
 // 프로젝트 노트 렌더링 (간단 버전)
@@ -362,6 +540,16 @@ function initializeComponents() {
     try {
         renderIssueClusters();
         renderProjectNotes();
+        initializeSourcesSidebar();
+
+        // 첫 번째 클러스터 자동 선택
+        setTimeout(() => {
+            if (window.issueClusters && window.issueClusters.length > 0 && !window.appState.selectedCluster) {
+                const firstCluster = window.issueClusters[0];
+                selectCluster(firstCluster.id);
+                console.log('🎯 첫 번째 클러스터 자동 선택:', firstCluster.title);
+            }
+        }, 100);
 
         console.log('✅ 초기화 완료!');
 
@@ -373,6 +561,13 @@ function initializeComponents() {
 // 전역 함수로 등록
 window.renderIssueClusters = renderIssueClusters;
 window.renderBriefingCards = renderBriefingCards;
+window.attachCardEventListeners = attachCardEventListeners;
 window.selectCluster = selectCluster;
+window.showFloatingSourcesButton = showFloatingSourcesButton;
+window.hideFloatingSourcesButton = hideFloatingSourcesButton;
+window.resetAnalysisContent = resetAnalysisContent;
+window.openSourcesSidebar = openSourcesSidebar;
+window.closeSourcesSidebar = closeSourcesSidebar;
+window.initializeSourcesSidebar = initializeSourcesSidebar;
 window.initializeComponents = initializeComponents;
 window.updateAnalysisContent = updateAnalysisContent; 

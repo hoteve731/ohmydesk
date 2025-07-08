@@ -11,13 +11,26 @@ window.issueClusters = [
         badges: ['hot', 'conflict'],
         articleCount: 47,
         conflictLevel: 'high',
-        lastUpdated: '2024-12-19T10:30:00Z',
+        lastUpdated: '2024-12-19T12:30:00Z',
         image: 'images/img1.jpg',
         sources: [
             { name: '네이버', icon: 'sources/naver.png', count: 15 },
             { name: '구글', icon: 'sources/google.png', count: 12 },
             { name: 'X', icon: 'sources/x.png', count: 8 }
-        ]
+        ],
+        detailedSummary: `### 핵심 쟁점
+
+검찰은 윤석열 대통령에 대해 내란죄 등의 혐의로 구속영장을 청구했습니다. 이는 헌정사상 현직 대통령에 대한 첫 구속영장 청구로, 대한민국 정치사에 전례없는 사건입니다.
+
+### 주요 배경
+
+- **계엄령 선포**: 12월 3일 비상계엄 선포 후 6시간 만에 해제
+- **탄핵 소추**: 국회에서 탄핵안 가결 
+- **수사 진행**: 검찰과 공수처의 병행 수사
+
+### 향후 전망
+
+대통령의 구속 여부는 향후 정치적 혼란에 큰 영향을 미칠 것으로 예상됩니다. 헌법재판소의 탄핵 심판과 함께 국정 운영에 중대한 전환점이 될 것으로 보입니다.`
     },
     {
         id: 'cluster-2',
@@ -32,7 +45,20 @@ window.issueClusters = [
             { name: '네이버', icon: 'sources/naver.png', count: 10 },
             { name: '구글', icon: 'sources/google.png', count: 8 },
             { name: '페이스북', icon: 'sources/facebook.png', count: 5 }
-        ]
+        ],
+        detailedSummary: `### 경제 전망 하향 조정
+
+IMF와 OECD가 2024년 한국 경제성장률 전망을 기존 전망치보다 하향 조정했습니다. 이는 글로벌 경기 둔화와 국내 정치 불안정성이 복합적으로 작용한 결과입니다.
+
+### 주요 요인
+
+- **정치적 불안정성**: 계엄령 사태로 인한 정치적 혼란
+- **소비 위축**: 가계 소비 지출 감소세 지속
+- **수출 둔화**: 주요 수출 품목의 글로벌 수요 감소
+
+### 정책 과제
+
+정부는 경기 부양책과 함께 정치적 안정성 회복을 통한 경제 신뢰도 제고가 시급한 상황입니다.`
     },
     {
         id: 'cluster-3',
@@ -47,7 +73,20 @@ window.issueClusters = [
             { name: '네이버', icon: 'sources/naver.png', count: 12 },
             { name: 'X', icon: 'sources/x.png', count: 10 },
             { name: '구글', icon: 'sources/google.png', count: 9 }
-        ]
+        ],
+        detailedSummary: `### 전쟁 장기화의 현실
+
+러시아의 우크라이나 침공이 1000일을 넘어서면서 전쟁의 장기화가 현실로 다가왔습니다. 양국 모두 막대한 인적, 물적 피해를 입고 있는 상황입니다.
+
+### 국제사회 대응
+
+- **군사 지원**: 서방 국가들의 지속적인 무기 지원
+- **경제 제재**: 러시아에 대한 다층적 제재 조치
+- **인도적 지원**: 우크라이나 난민 및 민간인 지원
+
+### 평화 협상 전망
+
+트럼프 당선인의 평화 중재 의지와 함께 새로운 협상 가능성이 제기되고 있으나, 양국 간 입장 차이는 여전히 큽니다.`
     },
     {
         id: 'cluster-4',
@@ -62,7 +101,20 @@ window.issueClusters = [
             { name: '네이버', icon: 'sources/naver.png', count: 8 },
             { name: '구글', icon: 'sources/google.png', count: 7 },
             { name: 'X', icon: 'sources/x.png', count: 5 }
-        ]
+        ],
+        detailedSummary: `### AI 반도체 호황
+
+엔비디아의 주가 목표가가 190달러로 상향 조정되면서 AI 반도체 시장의 폭발적 성장이 재확인되고 있습니다.
+
+### 성장 동력
+
+- **AI 인프라 구축**: 각국 정부의 AI 인프라 투자 경쟁
+- **데이터센터 확장**: 클라우드 업체들의 대규모 투자
+- **기술 혁신**: 차세대 AI 칩 개발 가속화
+
+### 시장 전망
+
+AI 기술의 확산과 함께 반도체 수요는 당분간 강세를 유지할 것으로 예상됩니다. 특히 엔비디아의 시장 지배력은 더욱 강화될 전망입니다.`
     },
     {
         id: 'cluster-5',
@@ -71,13 +123,26 @@ window.issueClusters = [
         badges: ['hot'],
         articleCount: 20,
         conflictLevel: 'medium',
-        lastUpdated: '2024-12-19T11:00:00Z',
+        lastUpdated: '2024-12-19T05:00:00Z',
         image: 'images/img5.png',
         sources: [
             { name: '네이버', icon: 'sources/naver.png', count: 9 },
             { name: '구글', icon: 'sources/google.png', count: 6 },
             { name: '페이스북', icon: 'sources/facebook.png', count: 5 }
-        ]
+        ],
+        detailedSummary: `### 에너지 정책 대전환
+
+트럼프 행정부가 바이든의 친환경 에너지 정책을 뒤집고 석탄 채굴을 대폭 확대하기로 결정했습니다. 이는 미국 에너지 정책의 근본적 변화를 의미합니다.
+
+### 주요 내용
+
+- **채굴 지역**: 몬태나와 와이오밍 파우더 리버 베이신
+- **규모**: 2,600제곱마일의 새로운 채굴 허가
+- **경제 효과**: 지역 일자리 창출과 에너지 자립도 향상
+
+### 환경 논란
+
+환경 단체들은 기후 변화 대응에 역행하는 정책이라며 강력 반발하고 있어 향후 법적 다툼이 예상됩니다.`
     },
     {
         id: 'cluster-6',
@@ -92,7 +157,20 @@ window.issueClusters = [
             { name: '네이버', icon: 'sources/naver.png', count: 7 },
             { name: 'X', icon: 'sources/x.png', count: 6 },
             { name: '구글', icon: 'sources/google.png', count: 5 }
-        ]
+        ],
+        detailedSummary: `### AI 패권 경쟁
+
+미국과 중국을 중심으로 한 AI 기술 패권 경쟁이 새로운 국면에 접어들고 있습니다. 각국은 AI 기술 개발과 규제 정책을 동시에 추진하며 경쟁력 확보에 나서고 있습니다.
+
+### 주요 동향
+
+- **기술 개발**: 대형 언어모델(LLM) 개발 경쟁 심화
+- **규제 정책**: AI 안전성과 윤리 기준 마련
+- **투자 확대**: 정부와 민간의 대규모 AI 투자
+
+### 한국의 대응
+
+한국도 AI 강국으로의 도약을 위해 K-AI 정책을 추진하며 글로벌 경쟁에 본격 참여하고 있습니다.`
     }
 ];
 

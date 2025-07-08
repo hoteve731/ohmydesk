@@ -83,7 +83,24 @@
                 <div class="empty-state">
                     <div class="empty-icon">🎯</div>
                     <h3>분석할 이슈를 선택해주세요</h3>
-                    <p>좌측 브리핑에서 이슈를 클릭하면<br>AI 기반 비교 분석이 시작됩니다</p>
+                    <p>좌측 브리핑에서 이슈를 클릭하면<br>상세 정보가 표시됩니다</p>
+                </div>
+            </div>
+
+            <!-- 플로팅 출처 버튼 -->
+            <button class="floating-sources-btn" id="floatingSourcesBtn" style="display: none;">
+                <span class="sources-icon">📄</span>
+                <span class="sources-text">출처</span>
+            </button>
+
+            <!-- 출처 목록 슬라이드 -->
+            <div class="sources-sidebar" id="sourcesSidebar">
+                <div class="sources-header">
+                    <h3>출처 목록</h3>
+                    <button class="sources-close" id="sourcesClose">✕</button>
+                </div>
+                <div class="sources-content" id="sourcesContent">
+                    <!-- 출처 목록이 여기에 표시됩니다 -->
                 </div>
             </div>
         </main>

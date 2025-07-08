@@ -154,29 +154,14 @@ function autoSelectFirstCluster() {
         const latestCluster = window.issueClusters
             .sort((a, b) => new Date(b.lastUpdated) - new Date(a.lastUpdated))[0];
 
-        if (latestCluster) {
-            selectCluster(latestCluster);
+        if (latestCluster && window.selectCluster) {
+            window.selectCluster(latestCluster.id);
             console.log('🎯 첫 번째 클러스터 자동 선택:', latestCluster.title);
         }
     }
 }
 
-// 클러스터 선택 함수 정의
-function selectCluster(cluster) {
-    if (!window.appState) {
-        console.warn('⚠️ appState가 정의되지 않았습니다.');
-        return;
-    }
-
-    window.appState.selectedCluster = cluster;
-
-    // 분석 콘텐츠 업데이트
-    if (window.updateAnalysisContent) {
-        window.updateAnalysisContent(cluster);
-    }
-
-    console.log('📊 클러스터 선택됨:', cluster.title);
-}
+// 클러스터 선택 함수 제거 (components.js의 함수 사용)
 
 // 주기적 업데이트 설정 (추후 실시간 데이터용)
 function setupPeriodicUpdates() {
@@ -494,7 +479,6 @@ function setupEventListeners() {
 // 전역 함수 등록
 window.initializeApp = initializeApp;
 window.cleanupApp = cleanupApp;
-window.selectCluster = selectCluster;
 
 // 오류 처리
 window.addEventListener('error', (event) => {
