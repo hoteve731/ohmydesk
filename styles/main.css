@@ -1521,319 +1521,61 @@ body {
    =============================== */
 
 /* 설정 탭 레이아웃 오버라이드 - 전체 width 사용 */
+/* 설정 탭 */
 #settingsTab {
     display: none;
-    height: 100vh;
 }
 
 #settingsTab.active {
     display: block;
 }
 
-/* 설정 탭 컨테이너 */
 .settings-tab .settings-container {
-    background: var(--primary-bg);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-}
-
-/* 설정 헤더 */
-.settings-tab .settings-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.settings-tab .settings-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-}
-
-.settings-tab .settings-title i {
-    color: var(--accent-blue);
-}
-
-.settings-tab .settings-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    font-weight: 400;
-}
-
-/* 설정 대시보드 */
-.settings-tab .settings-dashboard {
-    flex: 1;
-    padding: var(--spacing-xl);
-    overflow-y: auto;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 3rem;
-    align-items: start;
+    padding: var(--spacing-xl);
+    background: var(--primary-bg);
+    min-height: 100vh;
 }
 
-/* 대시보드 카드 */
-.settings-tab .dashboard-card {
-    background: var(--secondary-bg);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-light);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: all 0.3s ease;
-    margin-bottom: 2rem;
-}
-
-.settings-tab .dashboard-card:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-}
-
-.settings-tab .dashboard-card:last-child {
-    margin-bottom: 0;
-}
-
-/* 카드 헤더 */
-.settings-tab .card-header {
-    padding: 1.5rem 1.5rem 0 1.5rem;
+.settings-tab .settings-header {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
     border-bottom: 1px solid var(--border-light);
-    margin-bottom: 1.5rem;
 }
 
-.settings-tab .card-title {
-    font-size: var(--font-size-xl);
+.settings-tab .settings-header h1 {
+    font-size: 32px;
     font-weight: 600;
     color: var(--text-primary);
     margin: 0;
-    padding-bottom: 1rem;
 }
 
-/* 카드 콘텐츠 */
-.settings-tab .card-content {
-    padding: 0 1.5rem 1.5rem 1.5rem;
-}
-
-/* 통계 그리드 */
-.settings-tab .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.settings-tab .stat-item {
-    text-align: center;
-    padding: 1.5rem 1rem;
-    background: var(--tertiary-bg);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-light);
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.settings-tab .stat-item:hover {
-    background: var(--primary-bg);
-    transform: translateY(-1px);
-}
-
-.settings-tab .stat-number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent-blue);
-    margin-bottom: 0.5rem;
-}
-
-.settings-tab .stat-label {
-    font-size: var(--font-size-sm);
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
-.settings-tab .stat-action {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    padding: 0.25rem;
-    border-radius: var(--radius-sm);
-    transition: all 0.2s ease;
-}
-
-.settings-tab .stat-action:hover {
-    color: var(--accent-blue);
-    background: var(--tertiary-bg);
-}
-
-/* 카드 액션 영역 */
-.settings-tab .card-action-area {
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-light);
-}
-
-.settings-tab .input-group {
+.settings-tab .settings-content {
     display: flex;
-    gap: 0.75rem;
+    flex-direction: column;
+    gap: var(--spacing-xxl);
 }
 
-.settings-tab .link-input {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border-medium);
-    border-radius: var(--radius-md);
-    background: var(--primary-bg);
-    color: var(--text-primary);
-    font-size: var(--font-size-sm);
-    transition: all 0.2s ease;
-}
-
-.settings-tab .link-input:focus {
-    outline: none;
-    border-color: var(--accent-blue);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-}
-
-.settings-tab .add-btn {
-    padding: 0.75rem 1.5rem;
-    background: var(--accent-blue);
-    color: white;
-    border: none;
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    cursor: pointer;
+.settings-tab .settings-section {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.2s ease;
+    flex-direction: column;
 }
 
-.settings-tab .add-btn:hover {
-    background: #4f46e5;
-    transform: translateY(-1px);
-}
-
-/* 구독 상태 */
-.settings-tab .subscription-status {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: linear-gradient(135deg, var(--accent-blue) 0%, #8b5cf6 100%);
-    border-radius: var(--radius-md);
-    color: white;
-}
-
-.settings-tab .plan-badge {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: var(--font-size-sm);
-}
-
-.settings-tab .plan-price {
-    font-size: var(--font-size-lg);
-    font-weight: 700;
-}
-
-.settings-tab .billing-info {
-    margin-bottom: 1.5rem;
-}
-
-.settings-tab .billing-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--border-light);
-}
-
-.settings-tab .billing-item:last-child {
-    border-bottom: none;
-}
-
-.settings-tab .billing-label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-    font-size: var(--font-size-sm);
-}
-
-.settings-tab .billing-value {
+.settings-tab .section-title {
+    font-size: 18px;
     font-weight: 600;
     color: var(--text-primary);
-    font-size: var(--font-size-sm);
+    margin: 0 0 var(--spacing-lg) 0;
 }
 
-.settings-tab .billing-actions {
-    display: flex;
-    gap: 0.75rem;
-}
-
-.settings-tab .action-btn {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    border: none;
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    transition: all 0.2s ease;
-    font-size: var(--font-size-sm);
-}
-
-.settings-tab .action-btn.primary {
-    background: var(--accent-blue);
-    color: white;
-}
-
-.settings-tab .action-btn.primary:hover {
-    background: #4f46e5;
-    transform: translateY(-1px);
-}
-
-.settings-tab .action-btn.secondary {
-    background: var(--tertiary-bg);
-    color: var(--text-primary);
-    border: 1px solid var(--border-medium);
-}
-
-.settings-tab .action-btn.secondary:hover {
-    background: var(--border-medium);
-    border-color: var(--border-dark);
-}
-
-.settings-tab .action-btn.danger {
-    background: #fef2f2;
-    color: #dc2626;
-    border: 1px solid #fecaca;
-}
-
-.settings-tab .action-btn.danger:hover {
-    background: #dc2626;
-    color: white;
-}
-
-/* 설정 아이템 */
 .settings-tab .setting-item {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 1rem 0;
+    align-items: center;
+    padding: var(--spacing-lg) 0;
     border-bottom: 1px solid var(--border-light);
+    gap: var(--spacing-xl);
 }
 
 .settings-tab .setting-item:last-child {
@@ -1842,28 +1584,64 @@ body {
 
 .settings-tab .setting-info {
     flex: 1;
+    min-width: 0;
 }
 
 .settings-tab .setting-label {
-    font-weight: 600;
+    font-size: var(--font-size-md);
+    font-weight: 500;
     color: var(--text-primary);
-    margin-bottom: 0.25rem;
-    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.4;
 }
 
 .settings-tab .setting-description {
-    color: var(--text-secondary);
     font-size: var(--font-size-sm);
-    line-height: 1.5;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.settings-tab .setting-control {
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* 셀렉트 박스 */
+.settings-tab .setting-select {
+    min-width: 180px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    background: var(--primary-bg);
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    cursor: pointer;
+    appearance: none;
+    padding-right: 32px;
+}
+
+.settings-tab .setting-select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.settings-tab .setting-control i {
+    position: absolute;
+    right: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
 }
 
 /* 토글 스위치 */
 .settings-tab .toggle-switch {
     position: relative;
     display: inline-block;
-    width: 48px;
+    width: 44px;
     height: 24px;
-    margin-left: 1rem;
 }
 
 .settings-tab .toggle-switch input {
@@ -1879,9 +1657,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--border-medium);
-    transition: 0.3s;
-    border-radius: 24px;
+    background-color: var(--border-dark);
+    transition: var(--transition-normal);
+    border-radius: 12px;
 }
 
 .settings-tab .toggle-slider:before {
@@ -1892,9 +1670,8 @@ body {
     left: 3px;
     bottom: 3px;
     background-color: white;
-    transition: 0.3s;
+    transition: var(--transition-normal);
     border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .settings-tab input:checked+.toggle-slider {
@@ -1902,101 +1679,47 @@ body {
 }
 
 .settings-tab input:checked+.toggle-slider:before {
-    transform: translateX(24px);
+    transform: translateX(20px);
 }
 
-/* 계정 프로필 */
-.settings-tab .account-profile {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: var(--tertiary-bg);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-light);
-}
-
-.settings-tab .account-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--border-medium);
-}
-
-.settings-tab .account-details {
-    flex: 1;
-}
-
-.settings-tab .account-name {
-    font-size: var(--font-size-lg);
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 0.25rem;
-}
-
-.settings-tab .account-email {
-    color: var(--text-secondary);
-    font-size: var(--font-size-sm);
-    margin-bottom: 0.25rem;
-}
-
-.settings-tab .account-join-date {
-    color: var(--text-muted);
-    font-size: var(--font-size-xs);
-}
-
-.settings-tab .edit-profile-btn {
-    background: var(--tertiary-bg);
+/* 버튼 */
+.settings-tab .setting-button {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--primary-bg);
     border: 1px solid var(--border-medium);
-    padding: 0.5rem 1rem;
     border-radius: var(--radius-md);
-    color: var(--text-secondary);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.2s ease;
-    font-size: var(--font-size-sm);
-}
-
-.settings-tab .edit-profile-btn:hover {
-    background: var(--border-medium);
     color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    min-width: 60px;
 }
 
-.settings-tab .account-actions {
-    display: flex;
-    gap: 0.75rem;
+.settings-tab .setting-button:hover {
+    background: var(--secondary-bg);
+    border-color: var(--border-dark);
 }
 
 /* 반응형 */
 @media (max-width: 768px) {
     .settings-tab .settings-container {
         padding: var(--spacing-lg);
+        max-width: 100%;
     }
 
-    .settings-tab .settings-dashboard {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .settings-tab .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .settings-tab .billing-actions {
+    .settings-tab .setting-item {
         flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-md);
     }
 
-    .settings-tab .account-actions {
-        flex-direction: column;
+    .settings-tab .setting-control {
+        align-self: flex-end;
     }
 
-    .settings-tab .account-profile {
-        flex-direction: column;
-        text-align: center;
+    .settings-tab .setting-select {
+        min-width: 140px;
     }
 }
 

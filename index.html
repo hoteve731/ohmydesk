@@ -345,169 +345,81 @@
         <!-- 설정 탭 콘텐츠 -->
         <div class="tab-content settings-tab" id="settingsTab">
             <div class="settings-container">
+               
 
+                <div class="settings-content">
+                   
 
-                <!-- 설정 대시보드 -->
-                <div class="settings-dashboard">
-                    <!-- 팔로우 관리 카드 -->
-                    <div class="dashboard-card follow-card">
-                        <div class="card-header">
-                            <h2 class="card-title">팔로우 관리</h2>
-                        </div>
+                    <!-- 알림 섹션 -->
+                    <section class="settings-section">
+                        <h2 class="section-title">알림</h2>
 
-                        <div class="card-content">
-                            <div class="stats-grid">
-                                <div class="stat-item">
-                                    <div class="stat-number">12</div>
-                                    <div class="stat-label">등록 키워드</div>
-                                    <button class="stat-action">
-                                        <i class="ph ph-pencil-simple"></i>
-                                    </button>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-number">8</div>
-                                    <div class="stat-label">SNS 팔로우</div>
-                                    <button class="stat-action">
-                                        <i class="ph ph-pencil-simple"></i>
-                                    </button>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-number">5</div>
-                                    <div class="stat-label">기타 채널</div>
-                                    <button class="stat-action">
-                                        <i class="ph ph-pencil-simple"></i>
-                                    </button>
-                                </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-label">브리핑 알림</div>
+                                <div class="setting-description">매일 아침 새로운 브리핑이 준비되면 알림을 받습니다.</div>
                             </div>
-
-                            <div class="card-action-area">
-                                <div class="input-group">
-                                    <input type="url" class="link-input" placeholder="새 링크 추가 (RSS, 블로그 등)">
-                                    <button class="add-btn">
-                                        <i class="ph ph-plus"></i>
-                                        추가
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 구독관리 카드 -->
-                    <div class="dashboard-card billing-card">
-                        <div class="card-header">
-                            <h2 class="card-title">구독 관리</h2>
-                        </div>
-
-                        <div class="card-content">
-                            <div class="subscription-status">
-                                <div class="plan-badge pro">프로 플랜</div>
-                                <div class="plan-price">₩29,000/월</div>
-                            </div>
-
-                            <div class="billing-info">
-                                <div class="billing-item">
-                                    <div class="billing-label">
-                                        <i class="ph ph-calendar"></i>
-                                        다음 결제일
-                                    </div>
-                                    <div class="billing-value">2024.01.19</div>
-                                </div>
-                                <div class="billing-item">
-                                    <div class="billing-label">
-                                        <i class="ph ph-credit-card"></i>
-                                        결제 수단
-                                    </div>
-                                    <div class="billing-value">•••• 1234</div>
-                                </div>
-                            </div>
-
-                            <div class="billing-actions">
-                                <button class="action-btn primary">
-                                    <i class="ph ph-arrow-up"></i>
-                                    플랜 업그레이드
-                                </button>
-                                <button class="action-btn secondary">
-                                    <i class="ph ph-receipt"></i>
-                                    결제 내역
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 알림 설정 카드 -->
-                    <div class="dashboard-card notification-card">
-                        <div class="card-header">
-                            <h2 class="card-title">알림 설정</h2>
-                        </div>
-
-                        <div class="card-content">
-                            <div class="setting-item">
-                                <div class="setting-info">
-                                    <div class="setting-label">브리핑 알림</div>
-                                    <div class="setting-description">매일 아침 새로운 브리핑이 준비되면 알림을 받습니다</div>
-                                </div>
+                            <div class="setting-control">
                                 <label class="toggle-switch">
                                     <input type="checkbox" checked>
                                     <span class="toggle-slider"></span>
                                 </label>
                             </div>
+                        </div>
 
-                            <div class="setting-item">
-                                <div class="setting-info">
-                                    <div class="setting-label">키워드 알림</div>
-                                    <div class="setting-description">등록한 키워드 관련 새로운 이슈가 발견되면 알림을 받습니다</div>
-                                </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-label">키워드 알림</div>
+                                <div class="setting-description">등록한 키워드 관련 새로운 이슈가 발견되면 알림을 받습니다.</div>
+                            </div>
+                            <div class="setting-control">
                                 <label class="toggle-switch">
                                     <input type="checkbox" checked>
                                     <span class="toggle-slider"></span>
                                 </label>
                             </div>
+                        </div>
 
-                            <div class="setting-item">
-                                <div class="setting-info">
-                                    <div class="setting-label">이메일 요약</div>
-                                    <div class="setting-description">주간 분석 리포트를 이메일로 받습니다</div>
-                                </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-label">이메일 요약</div>
+                                <div class="setting-description">주간 분석 리포트를 이메일로 받습니다.</div>
+                            </div>
+                            <div class="setting-control">
                                 <label class="toggle-switch">
                                     <input type="checkbox">
                                     <span class="toggle-slider"></span>
                                 </label>
                             </div>
                         </div>
-                    </div>
+                    </section>
 
-                    <!-- 계정 정보 카드 -->
-                    <div class="dashboard-card account-card">
-                        <div class="card-header">
-                            <h2 class="card-title">계정 정보</h2>
-                        </div>
+                    <!-- 계정 섹션 -->
+                    <section class="settings-section">
+                        <h2 class="section-title">계정</h2>
 
-                        <div class="card-content">
-                            <div class="account-profile">
-                                <img src="images/profile.png" alt="프로필" class="account-avatar">
-                                <div class="account-details">
-                                    <div class="account-name">류호산</div>
-                                    <div class="account-email">fbghtks1000@gmail.com</div>
-                                    <div class="account-join-date">가입 2025.07.08</div>
-                                </div>
-                                <button class="edit-profile-btn">
-                                    <i class="ph ph-pencil-simple"></i>
-                                    편집
-                                </button>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-label">프로필</div>
+                                <div class="setting-description">계정 정보를 관리합니다.</div>
                             </div>
-
-                            <div class="account-actions">
-                                <button class="action-btn secondary">
-                                    <i class="ph ph-key"></i>
-                                    비밀번호 변경
-                                </button>
-                                <button class="action-btn danger">
-                                    <i class="ph ph-trash"></i>
-                                    계정 삭제
-                                </button>
+                            <div class="setting-control">
+                                <button class="setting-button">수정</button>
                             </div>
                         </div>
-                    </div>
+
+                        
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-label">구독</div>
+                                <div class="setting-description">현재 프로 플랜 이용 중입니다.</div>
+                            </div>
+                            <div class="setting-control">
+                                <button class="setting-button">관리</button>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
