@@ -273,6 +273,200 @@
                 </div>
             </div>
         </div>
+
+        <!-- 설정 탭 콘텐츠 -->
+        <div class="tab-content settings-tab" id="settingsTab">
+            <div class="settings-container">
+                <!-- 설정 헤더 -->
+                <header class="settings-header">
+                    <div class="settings-title">
+                        <i class="ph ph-gear"></i>
+                        설정
+                    </div>
+                    <div class="settings-subtitle">오마이데스크 개인화 설정</div>
+                </header>
+
+                <!-- 설정 대시보드 -->
+                <div class="settings-dashboard">
+                    <!-- 팔로우 관리 카드 -->
+                    <div class="dashboard-card follow-card">
+                        <div class="card-header">
+                            <h2 class="card-title">팔로우 관리</h2>
+                        </div>
+
+                        <div class="card-content">
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-number">12</div>
+                                    <div class="stat-label">등록 키워드</div>
+                                    <button class="stat-action">
+                                        <i class="ph ph-pencil-simple"></i>
+                                    </button>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">8</div>
+                                    <div class="stat-label">SNS 팔로우</div>
+                                    <button class="stat-action">
+                                        <i class="ph ph-pencil-simple"></i>
+                                    </button>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">5</div>
+                                    <div class="stat-label">기타 채널</div>
+                                    <button class="stat-action">
+                                        <i class="ph ph-pencil-simple"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="card-action-area">
+                                <div class="input-group">
+                                    <input type="url" class="link-input" placeholder="새 링크 추가 (RSS, 블로그 등)">
+                                    <button class="add-btn">
+                                        <i class="ph ph-plus"></i>
+                                        추가
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 구독관리 카드 -->
+                    <div class="dashboard-card billing-card">
+                        <div class="card-header">
+                            <h2 class="card-title">구독 관리</h2>
+                        </div>
+
+                        <div class="card-content">
+                            <div class="subscription-status">
+                                <div class="plan-badge pro">프로 플랜</div>
+                                <div class="plan-price">₩29,000/월</div>
+                            </div>
+
+                            <div class="billing-info">
+                                <div class="billing-item">
+                                    <div class="billing-label">
+                                        <i class="ph ph-calendar"></i>
+                                        다음 결제일
+                                    </div>
+                                    <div class="billing-value">2024.01.19</div>
+                                </div>
+                                <div class="billing-item">
+                                    <div class="billing-label">
+                                        <i class="ph ph-credit-card"></i>
+                                        결제 수단
+                                    </div>
+                                    <div class="billing-value">•••• 1234</div>
+                                </div>
+                            </div>
+
+                            <div class="billing-actions">
+                                <button class="action-btn primary">
+                                    <i class="ph ph-arrow-up"></i>
+                                    플랜 업그레이드
+                                </button>
+                                <button class="action-btn secondary">
+                                    <i class="ph ph-receipt"></i>
+                                    결제 내역
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 알림 설정 카드 -->
+                    <div class="dashboard-card notification-card">
+                        <div class="card-header">
+                            <h2 class="card-title">알림 설정</h2>
+                        </div>
+
+                        <div class="card-content">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <div class="setting-label">브리핑 알림</div>
+                                    <div class="setting-description">매일 아침 새로운 브리핑이 준비되면 알림을 받습니다</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <div class="setting-label">키워드 알림</div>
+                                    <div class="setting-description">등록한 키워드 관련 새로운 이슈가 발견되면 알림을 받습니다</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <div class="setting-label">이메일 요약</div>
+                                    <div class="setting-description">주간 분석 리포트를 이메일로 받습니다</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 계정 정보 카드 -->
+                    <div class="dashboard-card account-card">
+                        <div class="card-header">
+                            <h2 class="card-title">계정 정보</h2>
+                        </div>
+
+                        <div class="card-content">
+                            <div class="account-profile">
+                                <img src="images/profile.png" alt="프로필" class="account-avatar">
+                                <div class="account-details">
+                                    <div class="account-name">류호산</div>
+                                    <div class="account-email">user@example.com</div>
+                                    <div class="account-join-date">가입일: 2024.01.01</div>
+                                </div>
+                                <button class="edit-profile-btn">
+                                    <i class="ph ph-pencil-simple"></i>
+                                    편집
+                                </button>
+                            </div>
+
+                            <div class="account-actions">
+                                <button class="action-btn secondary">
+                                    <i class="ph ph-key"></i>
+                                    비밀번호 변경
+                                </button>
+                                <button class="action-btn danger">
+                                    <i class="ph ph-trash"></i>
+                                    계정 삭제
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 도움말 탭 콘텐츠 -->
+        <div class="tab-content" id="helpTab">
+            <div class="projects-container">
+                <header class="projects-header">
+                    <h1 class="projects-title">도움말</h1>
+                </header>
+
+                <div class="projects-content">
+                    <div class="empty-state">
+                        <div class="empty-icon">❓</div>
+                        <h3>도움말 기능 준비 중</h3>
+                        <p>사용법 가이드와 FAQ가<br>곧 추가될 예정입니다</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- 기사 리더 모달 -->
@@ -350,6 +544,11 @@
                     const targetTab = document.getElementById(tabName + 'Tab');
                     if (targetTab) {
                         targetTab.classList.add('active');
+
+                        // 설정 탭 활성화 시 설정 기능 초기화
+                        if (tabName === 'settings') {
+                            initializeSettings();
+                        }
                     }
                 });
             });
@@ -429,6 +628,229 @@
                     profileButton.classList.remove('active');
                 });
             }
+        }
+
+        // 설정 기능 초기화
+        function initializeSettings() {
+            console.log('🔧 설정 탭 기능 초기화');
+
+            // 팔로우 관리 기능
+            initializeFollowManagement();
+
+            // 결제/구독 관리 기능
+            initializeBillingActions();
+
+            // 알림 설정 기능
+            initializeNotificationSettings();
+
+            // 계정 관리 기능
+            initializeAccountActions();
+        }
+
+        // 팔로우 관리 기능
+        function initializeFollowManagement() {
+            // 통계 수정 버튼들
+            const statActions = document.querySelectorAll('.settings-tab .stat-action');
+            statActions.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const statItem = btn.closest('.stat-item');
+                    const label = statItem.querySelector('.stat-label').textContent;
+                    alert(`${label} 편집 기능 준비 중입니다`);
+                });
+            });
+
+            // 링크 추가 기능
+            const addBtn = document.querySelector('.settings-tab .add-btn');
+            const linkInput = document.querySelector('.settings-tab .link-input');
+
+            if (addBtn && linkInput) {
+                addBtn.addEventListener('click', function () {
+                    const url = linkInput.value.trim();
+                    if (url) {
+                        if (isValidUrl(url)) {
+                            showSettingsNotification('링크가 추가되었습니다', 'success');
+                            linkInput.value = '';
+                            updateStats();
+                        } else {
+                            showSettingsNotification('올바른 URL을 입력해주세요', 'error');
+                        }
+                    } else {
+                        showSettingsNotification('URL을 입력해주세요', 'warning');
+                    }
+                });
+
+                // Enter 키로도 추가 가능
+                linkInput.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        addBtn.click();
+                    }
+                });
+            }
+        }
+
+        // 결제/구독 관리 기능
+        function initializeBillingActions() {
+            // 플랜 업그레이드 버튼
+            const upgradeBtn = document.querySelector('.settings-tab .action-btn.primary');
+            if (upgradeBtn) {
+                upgradeBtn.addEventListener('click', function () {
+                    alert('플랜 업그레이드 기능 준비 중입니다');
+                });
+            }
+
+            // 결제 내역 버튼
+            const historyBtn = document.querySelector('.settings-tab .billing-actions .action-btn.secondary');
+            if (historyBtn) {
+                historyBtn.addEventListener('click', function () {
+                    alert('결제 내역 기능 준비 중입니다');
+                });
+            }
+        }
+
+        // 알림 설정 기능
+        function initializeNotificationSettings() {
+            const toggles = document.querySelectorAll('.settings-tab .toggle-switch input');
+
+            toggles.forEach(toggle => {
+                toggle.addEventListener('change', function () {
+                    const settingItem = this.closest('.setting-item');
+                    const settingLabel = settingItem.querySelector('.setting-label').textContent;
+                    const isEnabled = this.checked;
+
+                    console.log(`${settingLabel}: ${isEnabled ? '활성화' : '비활성화'}`);
+
+                    showSettingsNotification(
+                        `${settingLabel} ${isEnabled ? '활성화' : '비활성화'}됨`,
+                        'info'
+                    );
+                });
+            });
+        }
+
+        // 계정 관리 기능
+        function initializeAccountActions() {
+            // 프로필 편집 버튼
+            const editProfileBtn = document.querySelector('.settings-tab .edit-profile-btn');
+            if (editProfileBtn) {
+                editProfileBtn.addEventListener('click', function () {
+                    alert('프로필 편집 기능 준비 중입니다');
+                });
+            }
+
+            // 비밀번호 변경 버튼
+            const changePasswordBtn = document.querySelector('.settings-tab .account-actions .action-btn.secondary');
+            if (changePasswordBtn) {
+                changePasswordBtn.addEventListener('click', function () {
+                    alert('비밀번호 변경 기능 준비 중입니다');
+                });
+            }
+
+            // 계정 삭제 버튼
+            const deleteAccountBtn = document.querySelector('.settings-tab .action-btn.danger');
+            if (deleteAccountBtn) {
+                deleteAccountBtn.addEventListener('click', function () {
+                    if (confirm('정말로 계정을 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.')) {
+                        if (confirm('모든 데이터가 영구적으로 삭제됩니다.\n정말 진행하시겠습니까?')) {
+                            alert('계정 삭제 기능 준비 중입니다');
+                        }
+                    }
+                });
+            }
+        }
+
+        // 유효한 URL인지 확인
+        function isValidUrl(string) {
+            try {
+                new URL(string);
+                return true;
+            } catch (_) {
+                return false;
+            }
+        }
+
+        // 통계 업데이트
+        function updateStats() {
+            const statNumbers = document.querySelectorAll('.settings-tab .stat-number');
+            statNumbers.forEach(num => {
+                const currentValue = parseInt(num.textContent);
+                num.textContent = currentValue + 1;
+
+                // 애니메이션 효과
+                num.style.transform = 'scale(1.2)';
+                num.style.color = '#10b981';
+                setTimeout(() => {
+                    num.style.transform = 'scale(1)';
+                    num.style.color = '#6366f1';
+                }, 300);
+            });
+        }
+
+        // 설정 알림 표시
+        function showSettingsNotification(message, type = 'info') {
+            // 기존 알림 제거
+            const existingNotification = document.querySelector('.settings-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            // 새 알림 생성
+            const notification = document.createElement('div');
+            notification.className = `settings-notification notification-${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <span class="notification-message">${message}</span>
+                    <button class="notification-close">&times;</button>
+                </div>
+            `;
+
+            // 스타일 적용
+            Object.assign(notification.style, {
+                position: 'fixed',
+                top: '20px',
+                right: '20px',
+                padding: '1rem 1.5rem',
+                borderRadius: '8px',
+                color: 'white',
+                fontSize: '14px',
+                fontWeight: '500',
+                zIndex: '9999',
+                transform: 'translateX(100%)',
+                transition: 'transform 0.3s ease',
+                minWidth: '300px',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+            });
+
+            // 타입에 따른 색상 설정
+            const colors = {
+                success: '#10b981',
+                error: '#ef4444',
+                warning: '#f59e0b',
+                info: '#3b82f6'
+            };
+            notification.style.backgroundColor = colors[type] || colors.info;
+
+            // 페이지에 추가
+            document.body.appendChild(notification);
+
+            // 애니메이션으로 표시
+            requestAnimationFrame(() => {
+                notification.style.transform = 'translateX(0)';
+            });
+
+            // 닫기 버튼 이벤트
+            const closeBtn = notification.querySelector('.notification-close');
+            closeBtn.addEventListener('click', () => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 300);
+            });
+
+            // 3초 후 자동 제거
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.transform = 'translateX(100%)';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 3000);
         }
 
         // 추가 안전장치: 모든 스크립트 로드 후 확인
