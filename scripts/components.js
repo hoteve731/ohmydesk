@@ -378,29 +378,26 @@ function updateAnalysisContent(cluster) {
     const subtitleElement = document.getElementById('analysisSubtitle');
     const contentElement = document.getElementById('analysisContent');
 
+    // 헤더 부분 업데이트 (제목과 출처를 여기로 이동)
     if (titleElement) titleElement.textContent = cluster.title;
     if (subtitleElement) {
-        const totalSources = cluster.sources.reduce((sum, source) => sum + source.count, 0);
-        subtitleElement.textContent = `${totalSources}개 출처 • ${window.utils.formatDate(cluster.lastUpdated)}`;
+        const sourcesHtml = cluster.sources.map(source =>
+            `<img src="${source.icon}" alt="${source.name}" class="header-source-icon" title="${source.name} (${source.count}개 기사)">`
+        ).join('');
+        subtitleElement.innerHTML = `
+            <div class="header-sources">
+                ${sourcesHtml}
+                <span class="header-sources-text">${cluster.articleCount}개 출처</span>
+            </div>
+        `;
     }
 
+    // 콘텐츠 부분 (제목과 출처 제거, 이미지와 요약만 표시)
     if (contentElement) {
         const summaryHtml = markdownToHtml(cluster.detailedSummary);
-        const sourcesHtml = cluster.sources.map(source =>
-            `<img src="${source.icon}" alt="${source.name}" class="content-source-icon" title="${source.name} (${source.count}개 기사)">`
-        ).join('');
 
         contentElement.innerHTML = `
             <div class="issue-content">
-                <div class="issue-content-header">
-                    <h1 class="issue-content-title">${cluster.title}</h1>
-                    <div class="issue-content-sources">
-                        <div class="content-sources-icons">
-                            ${sourcesHtml}
-                        </div>
-                        <span class="content-sources-text">${cluster.articleCount}개 기사</span>
-                    </div>
-                </div>
                 <img src="${cluster.image}" alt="${cluster.title}" class="issue-thumbnail">
                 <div class="issue-summary">
                     ${summaryHtml}
