@@ -1520,11 +1520,22 @@ body {
    설정 탭 스타일 (네임스페이스)
    =============================== */
 
+/* 설정 탭 레이아웃 오버라이드 - 전체 width 사용 */
+#settingsTab {
+    display: none;
+    height: 100vh;
+}
+
+#settingsTab.active {
+    display: block;
+}
+
 /* 설정 탭 컨테이너 */
 .settings-tab .settings-container {
-    padding: var(--spacing-xl);
     background: var(--primary-bg);
-    height: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     overflow-y: auto;
 }
 
@@ -1557,11 +1568,14 @@ body {
 
 /* 설정 대시보드 */
 .settings-tab .settings-dashboard {
+    flex: 1;
+    padding: var(--spacing-xl);
+    overflow-y: auto;
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 2rem;
+    gap: 3rem;
     align-items: start;
 }
 
@@ -1573,11 +1587,16 @@ body {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: all 0.3s ease;
+    margin-bottom: 2rem;
 }
 
 .settings-tab .dashboard-card:hover {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
+}
+
+.settings-tab .dashboard-card:last-child {
+    margin-bottom: 0;
 }
 
 /* 카드 헤더 */
