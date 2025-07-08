@@ -20,6 +20,10 @@
     animation: modal-fade-in 0.3s ease-out;
 }
 
+.modal-overlay.hide {
+    animation: modal-fade-out 0.3s ease-out;
+}
+
 @keyframes modal-fade-in {
     from {
         opacity: 0;
@@ -27,6 +31,16 @@
 
     to {
         opacity: 1;
+    }
+}
+
+@keyframes modal-fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
     }
 }
 
@@ -48,6 +62,10 @@
     border: none;
 }
 
+.modal-overlay.hide .reader-modal {
+    animation: modal-slide-out 0.4s cubic-bezier(0.4, 0, 0.6, 1);
+}
+
 /* 다크모드 대응 */
 @media (prefers-color-scheme: dark) {
     .reader-modal {
@@ -67,6 +85,18 @@
     to {
         transform: translateY(0) scale(1);
         opacity: 1;
+    }
+}
+
+@keyframes modal-slide-out {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(60px) scale(0.95);
+        opacity: 0;
     }
 }
 

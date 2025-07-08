@@ -34,6 +34,7 @@ class ModalManager {
         if (!modal) return;
 
         this.currentModal = modal;
+        modal.classList.remove('hide'); // hide 클래스 제거
         modal.classList.add('show');
         document.body.style.overflow = 'hidden';
         window.appState.currentModal = modalId;
@@ -41,10 +42,28 @@ class ModalManager {
 
     closeModal() {
         if (this.currentModal) {
+            // 애니메이션을 위해 hide 클래스 추가
             this.currentModal.classList.remove('show');
-            this.currentModal = null;
-            document.body.style.overflow = '';
-            window.appState.currentModal = null;
+            this.currentModal.classList.add('hide');
+
+            // 애니메이션이 끝난 후 실제로 모달 숨기기
+            setTimeout(() => {
+                if (this.currentModal) {
+                    this.currentModal.classList.remove('hide');
+                    this.currentModal.style.display = 'none';
+                    this.currentModal = null;
+                    document.body.style.overflow = '';
+                    window.appState.currentModal = null;
+
+                    // 모달이 완전히 닫힌 후 display 복원
+                    setTimeout(() => {
+                        const modal = document.getElementById('readerModal');
+                        if (modal) {
+                            modal.style.display = '';
+                        }
+                    }, 50);
+                }
+            }, 300); // CSS 애니메이션 시간과 맞춤
         }
     }
 }
@@ -378,13 +397,8 @@ function setupEventListeners() {
         });
     }
 
-    // 리더 모달 닫기 버튼
-    const readerClose = document.getElementById('readerClose');
-    if (readerClose) {
-        readerClose.addEventListener('click', () => {
-            window.modalManager.closeModal();
-        });
-    }
+    // 리더 모달 닫기 버튼 (안전한 설정)
+    setupReaderCloseButton();
 
     // 하이라이트 버튼들
     document.querySelectorAll('.highlight-btn').forEach(btn => {
@@ -412,6 +426,28 @@ function setupEventListeners() {
     }
 
     console.log('이벤트 리스너 설정 완료');
+}
+
+// 리더 모달 닫기 버튼 설정 함수
+function setupReaderCloseButton() {
+    const readerClose = document.getElementById('readerClose');
+    if (readerClose) {
+        // 기존 이벤트 리스너 제거 (중복 방지)
+        readerClose.replaceWith(readerClose.cloneNode(true));
+        const newReaderClose = document.getElementById('readerClose');
+
+        newReaderClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('리더 모달 닫기 버튼 클릭됨');
+            if (window.modalManager) {
+                window.modalManager.closeModal();
+            }
+        });
+        console.log('✅ 리더 모달 닫기 버튼 이벤트 설정 완료');
+    } else {
+        console.warn('⚠️ 리더 모달 닫기 버튼을 찾을 수 없습니다');
+    }
 }
 
 // 이벤트 핸들러 함수들
@@ -455,12 +491,6 @@ function handleAddNote() {
     }
 }
 
-// 리더 모달 열기
-function openReaderModal(article) {
-    window.renderReaderModal(article);
-    window.modalManager.openModal('readerModal');
-}
-
 // 검색 기능 (추후 확장용)
 function setupSearchFunction() {
     const searchInput = document.querySelector('.search-input');
@@ -489,6 +519,18 @@ function handleSearch(term) {
     );
 
     window.renderIssueClusters(filtered);
+}
+
+// 리더 모달 열기
+function openReaderModal(article) {
+    window.renderReaderModal(article);
+
+    // 모달이 열리기 전에 닫기 버튼 이벤트 재설정
+    setTimeout(() => {
+        setupReaderCloseButton();
+    }, 100);
+
+    window.modalManager.openModal('readerModal');
 }
 
 // 초기화 함수
