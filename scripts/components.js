@@ -187,86 +187,121 @@ function initializeApp() {
 
 // 오마이데스크 - 컴포넌트 렌더링
 
-// 이슈 클러스터 렌더링
-function renderIssueClusters(clusters) {
-    const container = document.getElementById('issueClusters');
-    if (!container) return;
+// 브리핑 카드 생성 함수
+function createBriefingCard(cluster) {
+    // 총 출처 수 계산
+    const totalSources = cluster.sources.reduce((sum, source) => sum + source.count, 0);
 
-    // 간단한 하드코딩된 데이터 사용
-    const defaultClusters = [
-        {
-            id: 'cluster-1',
-            title: '윤석열 대통령 구속영장 청구',
-            summary: '검찰총장 출신 대통령에 대한 첫 구속영장 청구로 헌정사상 초유의 상황이 전개되고 있습니다.',
-            badges: ['hot', 'conflict'],
-            articleCount: 47,
-            conflictLevel: 'high',
-            lastUpdated: '2시간 전'
-        },
-        {
-            id: 'cluster-2',
-            title: '한국 경제성장률 전망 하향 조정',
-            summary: 'IMF와 OECD가 연이어 한국 경제성장률 전망을 하향 조정하며 경기 침체 우려가 커지고 있습니다.',
-            badges: ['trending'],
-            articleCount: 23,
-            conflictLevel: 'medium',
-            lastUpdated: '4시간 전'
-        },
-        {
-            id: 'cluster-3',
-            title: '러시아-우크라이나 전쟁 1000일',
-            summary: '러시아의 우크라이나 침공 1000일을 맞아 국제사회의 지원 방안과 평화 협상 가능성이 주목받고 있습니다.',
-            badges: ['trending'],
-            articleCount: 31,
-            conflictLevel: 'low',
-            lastUpdated: '6시간 전'
-        }
-    ];
-
-    const clustersToRender = clusters || defaultClusters;
-
-    const html = clustersToRender.map(cluster => `
-        <div class="issue-cluster" data-cluster-id="${cluster.id}">
-            <div class="cluster-header">
-                <div class="cluster-badges">
-                    ${cluster.badges.map(badge => {
-        const icons = { 'hot': '🔥', 'conflict': '💥', 'trending': '📈' };
-        return `<span class="cluster-badge ${badge}">${icons[badge] || '📌'}</span>`;
-    }).join('')}
+    return `
+        <div class="briefing-card ${window.appState.selectedCluster === cluster.id ? 'selected' : ''}" 
+             data-cluster="${cluster.id}" 
+             onclick="selectCluster('${cluster.id}')">
+            <img src="${cluster.image}" alt="${cluster.title}" class="card-image" loading="lazy">
+            <div class="card-content">
+                <h3 class="card-title">${cluster.title}</h3>
+                <p class="card-summary">${cluster.summary}</p>
+                <div class="card-footer">
+                    <div class="card-sources">
+                        ${cluster.sources.slice(0, 3).map(source => `
+                            <img src="${source.icon}" alt="${source.name}" class="source-icon" title="${source.name}">
+                        `).join('')}
+                        <span class="source-count">${totalSources}개 출처</span>
+                    </div>
                 </div>
-                <div class="cluster-time">${cluster.lastUpdated}</div>
-            </div>
-            <div class="cluster-title">${cluster.title}</div>
-            <div class="cluster-summary">${cluster.summary}</div>
-            <div class="cluster-stats">
-                <div class="cluster-sources">
-                    <span>관련 기사 ${cluster.articleCount}건</span>
-                </div>
-                <div class="cluster-count">${cluster.conflictLevel}</div>
             </div>
         </div>
-    `).join('');
-
-    container.innerHTML = html;
-
-    // 클러스터 클릭 이벤트 추가
-    container.querySelectorAll('.issue-cluster').forEach(element => {
-        element.addEventListener('click', () => {
-            // 기존 active 클래스 제거
-            container.querySelectorAll('.issue-cluster').forEach(el => el.classList.remove('active'));
-            // 현재 요소에 active 클래스 추가
-            element.classList.add('active');
-
-            const clusterId = element.dataset.clusterId;
-            const cluster = clustersToRender.find(c => c.id === clusterId);
-
-            if (cluster) {
-                // 중앙 패널 업데이트
-                updateAnalysisContent(cluster);
-            }
-        });
-    });
+    `;
 }
+
+// 브리핑 카드 렌더링 (한개-두개-한개 패턴)
+function renderBriefingCards(clusters) {
+    const container = document.getElementById('briefingCards');
+    if (!container) return;
+
+    if (!clusters || clusters.length === 0) {
+        // 하이라이트 섹션은 유지하고 카드만 빈 상태로 표시
+        const existingSummary = container.querySelector('.daily-summary');
+        if (existingSummary) {
+            container.innerHTML = '';
+            container.appendChild(existingSummary);
+        }
+        const emptyDiv = document.createElement('div');
+        emptyDiv.innerHTML = '<div class="empty-state"><p>브리핑 데이터를 불러오는 중입니다...</p></div>';
+        container.appendChild(emptyDiv);
+        return;
+    }
+
+    // 기존 하이라이트 섹션 보존
+    const existingSummary = container.querySelector('.daily-summary');
+    const cardsContainer = document.createElement('div');
+    cardsContainer.className = 'cards-container';
+
+    // 한개-두개-한개 패턴으로 배열
+    for (let i = 0; i < clusters.length; i += 3) {
+        // 첫 번째 카드 (단독)
+        if (i < clusters.length) {
+            const row = document.createElement('div');
+            row.className = 'card-row single';
+            row.innerHTML = createBriefingCard(clusters[i]);
+            cardsContainer.appendChild(row);
+        }
+
+        // 두 번째, 세 번째 카드 (나란히)
+        if (i + 1 < clusters.length || i + 2 < clusters.length) {
+            const row = document.createElement('div');
+            row.className = 'card-row double';
+
+            let rowHTML = '';
+            if (i + 1 < clusters.length) {
+                rowHTML += createBriefingCard(clusters[i + 1]);
+            }
+            if (i + 2 < clusters.length) {
+                rowHTML += createBriefingCard(clusters[i + 2]);
+            }
+
+            row.innerHTML = rowHTML;
+            cardsContainer.appendChild(row);
+        }
+    }
+
+    // 컨테이너 재구성 (하이라이트 섹션 + 카드들)
+    container.innerHTML = '';
+    if (existingSummary) {
+        container.appendChild(existingSummary);
+    }
+    container.appendChild(cardsContainer);
+}
+
+// 이슈 클러스터 렌더링 (기존 함수 - 호환성 유지)
+function renderIssueClusters(clusters) {
+    // 새로운 카드 뷰 렌더링으로 리다이렉트
+    renderBriefingCards(clusters || window.issueClusters);
+}
+
+// 클러스터 선택 함수
+function selectCluster(clusterId) {
+    // 기존 선택 해제
+    document.querySelectorAll('.briefing-card.selected').forEach(card => {
+        card.classList.remove('selected');
+    });
+
+    // 새로운 선택
+    const selectedCard = document.querySelector(`[data-cluster="${clusterId}"]`);
+    if (selectedCard) {
+        selectedCard.classList.add('selected');
+    }
+
+    // 앱 상태 업데이트
+    window.appState.selectedCluster = clusterId;
+
+    // 분석 패널 업데이트
+    const cluster = window.issueClusters.find(c => c.id === clusterId);
+    if (cluster) {
+        updateAnalysisContent(cluster);
+    }
+}
+
+// 정리 완료
 
 // 분석 콘텐츠 업데이트 (간단 버전)
 function updateAnalysisContent(cluster) {
@@ -337,5 +372,7 @@ function initializeComponents() {
 
 // 전역 함수로 등록
 window.renderIssueClusters = renderIssueClusters;
+window.renderBriefingCards = renderBriefingCards;
+window.selectCluster = selectCluster;
 window.initializeComponents = initializeComponents;
 window.updateAnalysisContent = updateAnalysisContent; 

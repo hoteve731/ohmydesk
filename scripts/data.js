@@ -11,7 +11,13 @@ window.issueClusters = [
         badges: ['hot', 'conflict'],
         articleCount: 47,
         conflictLevel: 'high',
-        lastUpdated: '2024-12-19T10:30:00Z'
+        lastUpdated: '2024-12-19T10:30:00Z',
+        image: 'images/img1.jpg',
+        sources: [
+            { name: '네이버', icon: 'sources/naver.png', count: 15 },
+            { name: '구글', icon: 'sources/google.png', count: 12 },
+            { name: 'X', icon: 'sources/x.png', count: 8 }
+        ]
     },
     {
         id: 'cluster-2',
@@ -20,7 +26,13 @@ window.issueClusters = [
         badges: ['trending'],
         articleCount: 23,
         conflictLevel: 'medium',
-        lastUpdated: '2024-12-19T08:45:00Z'
+        lastUpdated: '2024-12-19T08:45:00Z',
+        image: 'images/img2.jpg',
+        sources: [
+            { name: '네이버', icon: 'sources/naver.png', count: 10 },
+            { name: '구글', icon: 'sources/google.png', count: 8 },
+            { name: '페이스북', icon: 'sources/facebook.png', count: 5 }
+        ]
     },
     {
         id: 'cluster-3',
@@ -29,7 +41,58 @@ window.issueClusters = [
         badges: ['trending'],
         articleCount: 31,
         conflictLevel: 'low',
-        lastUpdated: '2024-12-19T07:20:00Z'
+        lastUpdated: '2024-12-19T07:20:00Z',
+        image: 'images/img3.jpg',
+        sources: [
+            { name: '네이버', icon: 'sources/naver.png', count: 12 },
+            { name: 'X', icon: 'sources/x.png', count: 10 },
+            { name: '구글', icon: 'sources/google.png', count: 9 }
+        ]
+    },
+    {
+        id: 'cluster-4',
+        title: '트럼프 차세대 엔비디아 목표가 190달러로 상향',
+        summary: '분석가들은 정부들이 국가 인프라를 구축하기 위해 경쟁하면서 AI 역량에 대한 "글로벌 골드러시"가 일어나고 있다고 지적합니다.',
+        badges: ['trending'],
+        articleCount: 20,
+        conflictLevel: 'low',
+        lastUpdated: '2024-12-19T09:15:00Z',
+        image: 'images/img4.jpg',
+        sources: [
+            { name: '네이버', icon: 'sources/naver.png', count: 8 },
+            { name: '구글', icon: 'sources/google.png', count: 7 },
+            { name: 'X', icon: 'sources/x.png', count: 5 }
+        ]
+    },
+    {
+        id: 'cluster-5',
+        title: '트럼프가 2,600제곱마일을 새로운 석탄 채굴에 개방한다',
+        summary: '내무부는 바이든의 기후 정책을 뒤집고 몬태나와 와이오밍의 파우더 리버 베이신에서 석탄 채굴을 재개할 것으로 보입니다.',
+        badges: ['hot'],
+        articleCount: 20,
+        conflictLevel: 'medium',
+        lastUpdated: '2024-12-19T11:00:00Z',
+        image: 'images/img5.png',
+        sources: [
+            { name: '네이버', icon: 'sources/naver.png', count: 9 },
+            { name: '구글', icon: 'sources/google.png', count: 6 },
+            { name: '페이스북', icon: 'sources/facebook.png', count: 5 }
+        ]
+    },
+    {
+        id: 'cluster-6',
+        title: '글로벌 AI 경쟁 가속화',
+        summary: '미국과 중국을 중심으로 한 AI 기술 패권 경쟁이 치열해지면서 각국이 AI 정책 강화에 나서고 있습니다.',
+        badges: ['trending'],
+        articleCount: 18,
+        conflictLevel: 'medium',
+        lastUpdated: '2024-12-19T06:30:00Z',
+        image: 'images/img6.jpg',
+        sources: [
+            { name: '네이버', icon: 'sources/naver.png', count: 7 },
+            { name: 'X', icon: 'sources/x.png', count: 6 },
+            { name: '구글', icon: 'sources/google.png', count: 5 }
+        ]
     }
 ];
 
