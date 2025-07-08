@@ -1999,3 +1999,386 @@ body {
         text-align: center;
     }
 }
+
+/* ===============================
+   새로운 프로젝트 탭 스타일
+   =============================== */
+
+/* 프로젝트 헤더 */
+#projectsTab .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-lg) var(--spacing-xl);
+    border-bottom: 1px solid var(--border-light);
+    background: var(--primary-bg);
+}
+
+#projectsTab .project-title-section {
+    flex: 1;
+}
+
+#projectsTab .project-selector {
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--spacing-sm);
+}
+
+#projectsTab .project-dropdown {
+    background: var(--primary-bg);
+    border: none;
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    padding: 0;
+    padding-right: 2rem;
+    cursor: pointer;
+    appearance: none;
+}
+
+#projectsTab .project-dropdown:focus {
+    outline: none;
+}
+
+#projectsTab .dropdown-arrow {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+    font-size: 16px;
+}
+
+#projectsTab .project-description {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    margin: 0;
+    line-height: 1.5;
+}
+
+#projectsTab .project-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+#projectsTab .project-action-btn {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+#projectsTab .edit-btn {
+    background: var(--accent-blue);
+    color: white;
+}
+
+#projectsTab .edit-btn:hover {
+    background: #4f46e5;
+    transform: translateY(-1px);
+}
+
+#projectsTab .new-btn {
+    background: var(--accent-blue);
+    color: white;
+}
+
+#projectsTab .new-btn:hover {
+    background: #4f46e5;
+    transform: translateY(-1px);
+}
+
+/* 프로젝트 콘텐츠 */
+#projectsTab .project-content {
+    flex: 1;
+    padding: var(--spacing-xl);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+/* 하이라이트 컬럼들 */
+#projectsTab .highlight-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+    flex: 1;
+}
+
+#projectsTab .highlight-column {
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+}
+
+#projectsTab .column-header {
+    margin-bottom: var(--spacing-md);
+}
+
+#projectsTab .category-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    font-weight: 600;
+    color: white;
+    font-size: var(--font-size-sm);
+}
+
+#projectsTab .category-badge.red {
+    background: #FF3B30;
+}
+
+#projectsTab .category-badge.yellow {
+    background: #FFCC00;
+    color: #000;
+}
+
+#projectsTab .category-badge.green {
+    background: #34C759;
+}
+
+#projectsTab .category-badge.gray {
+    background: #8E8E93;
+}
+
+/* 하이라이트 카드들 */
+#projectsTab .highlight-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    border: 2px dashed var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    min-height: 300px;
+    background: var(--tertiary-bg);
+}
+
+#projectsTab .highlight-card {
+    background: var(--primary-bg);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    cursor: grab;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+#projectsTab .highlight-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--border-medium);
+}
+
+#projectsTab .highlight-card:active {
+    cursor: grabbing;
+}
+
+#projectsTab .highlight-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: white;
+}
+
+#projectsTab .highlight-tag.red {
+    background: #FF3B30;
+}
+
+#projectsTab .highlight-tag.yellow {
+    background: #FFCC00;
+    color: #000;
+}
+
+#projectsTab .highlight-tag.green {
+    background: #34C759;
+}
+
+#projectsTab .highlight-tag.gray {
+    background: #8E8E93;
+}
+
+#projectsTab .highlight-content p {
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-xs) 0;
+    line-height: 1.4;
+}
+
+#projectsTab .highlight-time {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+#projectsTab .highlight-menu-btn {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+}
+
+#projectsTab .highlight-menu-btn:hover {
+    background: var(--tertiary-bg);
+    color: var(--text-secondary);
+}
+
+#projectsTab .highlight-action-btn {
+    position: absolute;
+    bottom: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background: var(--tertiary-bg);
+    border: 1px solid var(--border-medium);
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#projectsTab .highlight-action-btn:hover {
+    background: var(--border-medium);
+    color: var(--text-primary);
+}
+
+/* 프로젝트 푸터 */
+#projectsTab .project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--border-light);
+    background: var(--secondary-bg);
+    border-radius: var(--radius-lg);
+}
+
+#projectsTab .footer-options {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+#projectsTab .checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    user-select: none;
+}
+
+#projectsTab .checkbox-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#projectsTab .checkmark {
+    width: 18px;
+    height: 18px;
+    background: var(--primary-bg);
+    border: 2px solid var(--border-medium);
+    border-radius: var(--radius-sm);
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+#projectsTab .checkbox-option input:checked+.checkmark {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+
+#projectsTab .checkbox-option input:checked+.checkmark:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+#projectsTab .checkbox-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+#projectsTab .footer-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+#projectsTab .ai-export-btn {
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: all 0.2s ease;
+}
+
+#projectsTab .ai-export-btn:hover {
+    background: #4f46e5;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* 드래그 앤 드롭 상태 */
+#projectsTab .highlight-cards.drag-over {
+    border-color: var(--accent-blue);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+#projectsTab .highlight-card.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+}
+
+/* 반응형 */
+@media (max-width: 1200px) {
+    #projectsTab .highlight-columns {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #projectsTab .project-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: stretch;
+    }
+
+    #projectsTab .highlight-columns {
+        grid-template-columns: 1fr;
+    }
+
+    #projectsTab .project-footer {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: stretch;
+    }
+}

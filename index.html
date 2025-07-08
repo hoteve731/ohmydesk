@@ -183,71 +183,139 @@
         <!-- 프로젝트 탭 콘텐츠 -->
         <div class="tab-content" id="projectsTab">
             <div class="projects-container">
-                <header class="projects-header">
-                    <h1 class="projects-title">내 프로젝트</h1>
-                    <div class="projects-controls">
+                <!-- 프로젝트 헤더 -->
+                <header class="project-header">
+                    <div class="project-title-section">
                         <div class="project-selector">
-                            <select id="projectSelect">
-                                <option value="slowletter-1219">12/19 슬로우레터</option>
+                            <select id="projectSelect" class="project-dropdown">
+                                <option value="slowletter-1218">12/18 슬로우레터</option>
                                 <option value="analysis-report">분석 리포트</option>
                                 <option value="draft-column">칼럼 초안</option>
                             </select>
+                            <i class="ph ph-caret-down dropdown-arrow"></i>
                         </div>
-                        <button class="export-btn" id="exportBtn" title="내보내기">
-                            <i class="ph ph-export"></i>
+                        <p class="project-description">프로젝트의 베대를 설정하고 초안으로 내보내세요</p>
+                    </div>
+                    <div class="project-actions">
+                        <button class="project-action-btn edit-btn" id="editProjectBtn">
+                            <span>Edit</span>
+                        </button>
+                        <button class="project-action-btn new-btn" id="newProjectBtn">
+                            <span>New</span>
                         </button>
                     </div>
                 </header>
 
-                <div class="projects-content" id="projectsContent">
-                    <div class="category-section" data-category="issues">
-                        <div class="category-header">
-                            <i class="ph ph-bookmark-simple category-icon" style="color: #FF3B30;"></i>
-                            <h3 class="category-title">쟁점과 현안</h3>
-                            <span class="item-count">0</span>
+                <!-- 프로젝트 콘텐츠 -->
+                <div class="project-content">
+                    <div class="highlight-columns">
+                        <!-- 첫 번째 컬럼 (빨간색 카테고리) -->
+                        <div class="highlight-column" data-category="issues">
+                            <div class="column-header">
+                                <div class="category-badge red">
+                                    <span class="category-count">3</span>
+                                </div>
+                            </div>
+                            <div class="highlight-cards" id="issuesHighlights">
+                                <!-- 예시 하이라이트 카드들 -->
+                                <div class="highlight-card" draggable="true">
+                                    <div class="highlight-tag red">하이라이터블 텍스트</div>
+                                    <div class="highlight-content">
+                                        <p>출처: 뉴욕타임즈 &lt; 성장주식대 금융투자&gt;</p>
+                                        <span class="highlight-time">2024년 3월 14일 13:54</span>
+                                    </div>
+                                    <button class="highlight-menu-btn">
+                                        <i class="ph ph-dots-three"></i>
+                                    </button>
+                                </div>
+                                <div class="highlight-card" draggable="true">
+                                    <div class="highlight-tag red">하이라이터블 텍스트</div>
+                                    <div class="highlight-content">
+                                        <p>출처: 뉴욕타임즈 &lt; 성장주식대 금융투자&gt;</p>
+                                        <span class="highlight-time">2024년 3월 14일 13:54</span>
+                                    </div>
+                                    <button class="highlight-menu-btn">
+                                        <i class="ph ph-dots-three"></i>
+                                    </button>
+                                </div>
+                                <div class="highlight-card" draggable="true">
+                                    <div class="highlight-tag red">하이라이터블 텍스트</div>
+                                    <div class="highlight-content">
+                                        <p>출처: 뉴욕타임즈 &lt; 성장주식대 금융투자&gt;</p>
+                                        <span class="highlight-time">2024년 3월 14일 13:54</span>
+                                    </div>
+                                    <button class="highlight-menu-btn">
+                                        <i class="ph ph-dots-three"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="category-items" id="issuesItems">
-                            <!-- 하이라이트된 아이템들이 추가됩니다 -->
+
+                        <!-- 두 번째 컬럼 (노란색 카테고리) -->
+                        <div class="highlight-column" data-category="deep">
+                            <div class="column-header">
+                                <div class="category-badge yellow">
+                                    <span class="category-count">1</span>
+                                </div>
+                            </div>
+                            <div class="highlight-cards" id="deepHighlights">
+                                <div class="highlight-card" draggable="true">
+                                    <div class="highlight-tag yellow">하이라이터블 텍스트</div>
+                                    <div class="highlight-content">
+                                        <p>출처: 뉴욕타임즈 &lt; 성장주식대 금융투자&gt;</p>
+                                        <span class="highlight-time">2024년 3월 14일 13:54</span>
+                                    </div>
+                                    <button class="highlight-menu-btn">
+                                        <i class="ph ph-dots-three"></i>
+                                    </button>
+                                    <button class="highlight-action-btn">
+                                        배경지식
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 세 번째 컬럼 (초록색 카테고리) -->
+                        <div class="highlight-column" data-category="different">
+                            <div class="column-header">
+                                <div class="category-badge green">
+                                    <span class="category-count">0</span>
+                                </div>
+                            </div>
+                            <div class="highlight-cards" id="differentHighlights">
+                                <!-- 비어있는 상태 -->
+                            </div>
+                        </div>
+
+                        <!-- 네 번째 컬럼 (회색 카테고리) -->
+                        <div class="highlight-column" data-category="tmi">
+                            <div class="column-header">
+                                <div class="category-badge gray">
+                                    <span class="category-count">0</span>
+                                </div>
+                            </div>
+                            <div class="highlight-cards" id="tmiHighlights">
+                                <!-- 비어있는 상태 -->
+                            </div>
                         </div>
                     </div>
 
-                    <div class="category-section" data-category="deep">
-                        <div class="category-header">
-                            <i class="ph ph-bookmark-simple category-icon" style="color: #007AFF;"></i>
-                            <h3 class="category-title">더 깊게 읽기</h3>
-                            <span class="item-count">0</span>
+                    <!-- 하단 액션 바 -->
+                    <div class="project-footer">
+                        <div class="footer-options">
+                            <label class="checkbox-option">
+                                <input type="checkbox" id="includeSourcesCheck" checked>
+                                <span class="checkmark"></span>
+                                <span class="checkbox-label">출처 포함</span>
+                            </label>
                         </div>
-                        <div class="category-items" id="deepItems">
-                            <!-- 하이라이트된 아이템들이 추가됩니다 -->
-                        </div>
-                    </div>
-
-                    <div class="category-section" data-category="different">
-                        <div class="category-header">
-                            <i class="ph ph-bookmark-simple category-icon" style="color: #34C759;"></i>
-                            <h3 class="category-title">다르게 읽기</h3>
-                            <span class="item-count">0</span>
-                        </div>
-                        <div class="category-items" id="differentItems">
-                            <!-- 하이라이트된 아이템들이 추가됩니다 -->
+                        <div class="footer-actions">
+                            <button class="ai-export-btn" id="aiExportBtn">
+                                <i class="ph ph-magic-wand"></i>
+                                <span>AI 초안 내보내기</span>
+                            </button>
                         </div>
                     </div>
-
-                    <div class="category-section" data-category="tmi">
-                        <div class="category-header">
-                            <i class="ph ph-bookmark-simple category-icon" style="color: #8E8E93;"></i>
-                            <h3 class="category-title">오늘의 TMI</h3>
-                            <span class="item-count">0</span>
-                        </div>
-                        <div class="category-items" id="tmiItems">
-                            <!-- 하이라이트된 아이템들이 추가됩니다 -->
-                        </div>
-                    </div>
-
-                    <button class="add-note-btn" id="addNoteBtn">
-                        <i class="ph ph-plus"></i>
-                        생각 노트 추가
-                    </button>
                 </div>
             </div>
         </div>
@@ -277,7 +345,7 @@
         <!-- 설정 탭 콘텐츠 -->
         <div class="tab-content settings-tab" id="settingsTab">
             <div class="settings-container">
-               
+
 
                 <!-- 설정 대시보드 -->
                 <div class="settings-dashboard">
@@ -541,6 +609,11 @@
                         // 설정 탭 활성화 시 설정 기능 초기화
                         if (tabName === 'settings') {
                             initializeSettings();
+                        }
+
+                        // 프로젝트 탭 활성화 시 프로젝트 기능 초기화
+                        if (tabName === 'projects') {
+                            initializeProjects();
                         }
                     }
                 });
@@ -844,6 +917,191 @@
                     setTimeout(() => notification.remove(), 300);
                 }
             }, 3000);
+        }
+
+        // 프로젝트 기능 초기화
+        function initializeProjects() {
+            console.log('📂 프로젝트 탭 기능 초기화');
+
+            // 프로젝트 액션 버튼들
+            initializeProjectActions();
+
+            // 드래그 앤 드롭 기능
+            initializeDragAndDrop();
+
+            // AI 내보내기 기능
+            initializeAIExport();
+
+            // 하이라이트 카드 메뉴 기능
+            initializeHighlightMenus();
+        }
+
+        // 프로젝트 액션 버튼 기능
+        function initializeProjectActions() {
+            const editBtn = document.getElementById('editProjectBtn');
+            const newBtn = document.getElementById('newProjectBtn');
+            const projectSelect = document.getElementById('projectSelect');
+
+            if (editBtn) {
+                editBtn.addEventListener('click', function () {
+                    const currentProject = projectSelect.value;
+                    const newName = prompt('프로젝트 이름을 입력하세요:', projectSelect.options[projectSelect.selectedIndex].text);
+                    if (newName && newName.trim()) {
+                        projectSelect.options[projectSelect.selectedIndex].text = newName.trim();
+                        showProjectNotification('프로젝트 이름이 변경되었습니다', 'success');
+                    }
+                });
+            }
+
+            if (newBtn) {
+                newBtn.addEventListener('click', function () {
+                    const newName = prompt('새 프로젝트 이름을 입력하세요:');
+                    if (newName && newName.trim()) {
+                        const option = document.createElement('option');
+                        option.value = newName.toLowerCase().replace(/\s+/g, '-');
+                        option.text = newName.trim();
+                        option.selected = true;
+                        projectSelect.appendChild(option);
+                        showProjectNotification('새 프로젝트가 생성되었습니다', 'success');
+                    }
+                });
+            }
+
+            if (projectSelect) {
+                projectSelect.addEventListener('change', function () {
+                    showProjectNotification('프로젝트가 전환되었습니다', 'info');
+                });
+            }
+        }
+
+        // 드래그 앤 드롭 기능
+        function initializeDragAndDrop() {
+            const highlightCards = document.querySelectorAll('#projectsTab .highlight-card');
+            const highlightColumns = document.querySelectorAll('#projectsTab .highlight-cards');
+
+            highlightCards.forEach(card => {
+                card.addEventListener('dragstart', function (e) {
+                    e.dataTransfer.setData('text/plain', '');
+                    this.classList.add('dragging');
+                });
+
+                card.addEventListener('dragend', function () {
+                    this.classList.remove('dragging');
+                });
+            });
+
+            highlightColumns.forEach(column => {
+                column.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                    this.classList.add('drag-over');
+                });
+
+                column.addEventListener('dragleave', function () {
+                    this.classList.remove('drag-over');
+                });
+
+                column.addEventListener('drop', function (e) {
+                    e.preventDefault();
+                    this.classList.remove('drag-over');
+
+                    const draggingCard = document.querySelector('#projectsTab .highlight-card.dragging');
+                    if (draggingCard) {
+                        this.appendChild(draggingCard);
+                        updateCategoryCount();
+                        showProjectNotification('카드가 이동되었습니다', 'success');
+                    }
+                });
+            });
+        }
+
+        // 카테고리 카운트 업데이트
+        function updateCategoryCount() {
+            const columns = document.querySelectorAll('#projectsTab .highlight-column');
+            columns.forEach(column => {
+                const cards = column.querySelectorAll('.highlight-card');
+                const badge = column.querySelector('.category-count');
+                if (badge) {
+                    badge.textContent = cards.length;
+                }
+            });
+        }
+
+        // AI 내보내기 기능
+        function initializeAIExport() {
+            const aiExportBtn = document.getElementById('aiExportBtn');
+            const includeSourcesCheck = document.getElementById('includeSourcesCheck');
+
+            if (aiExportBtn) {
+                aiExportBtn.addEventListener('click', function () {
+                    const includesSources = includeSourcesCheck.checked;
+                    const highlightCards = document.querySelectorAll('#projectsTab .highlight-card');
+
+                    if (highlightCards.length === 0) {
+                        showProjectNotification('내보낼 하이라이트가 없습니다', 'warning');
+                        return;
+                    }
+
+                    // AI 내보내기 시뮬레이션
+                    this.innerHTML = '<i class="ph ph-spinner"></i><span>AI 생성 중...</span>';
+                    this.disabled = true;
+
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="ph ph-magic-wand"></i><span>AI 초안 내보내기</span>';
+                        this.disabled = false;
+                        showProjectNotification('AI 초안이 생성되었습니다', 'success');
+
+                        // 실제로는 생성된 초안을 새 창이나 모달로 표시
+                        console.log('AI 초안 생성 완료:', {
+                            카드수: highlightCards.length,
+                            출처포함: includesSources
+                        });
+                    }, 3000);
+                });
+            }
+        }
+
+        // 하이라이트 카드 메뉴 기능
+        function initializeHighlightMenus() {
+            const menuBtns = document.querySelectorAll('#projectsTab .highlight-menu-btn');
+            const actionBtns = document.querySelectorAll('#projectsTab .highlight-action-btn');
+
+            menuBtns.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const card = this.closest('.highlight-card');
+                    // 간단한 컨텍스트 메뉴 시뮬레이션
+                    const actions = ['편집', '복사', '삭제'];
+                    const action = prompt('작업을 선택하세요:\n1. 편집\n2. 복사\n3. 삭제', '1');
+
+                    switch (action) {
+                        case '1':
+                            showProjectNotification('편집 기능 준비 중입니다', 'info');
+                            break;
+                        case '2':
+                            showProjectNotification('카드가 복사되었습니다', 'success');
+                            break;
+                        case '3':
+                            if (confirm('이 하이라이트를 삭제하시겠습니까?')) {
+                                card.remove();
+                                updateCategoryCount();
+                                showProjectNotification('하이라이트가 삭제되었습니다', 'success');
+                            }
+                            break;
+                    }
+                });
+            });
+
+            actionBtns.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    showProjectNotification('배경지식 기능 준비 중입니다', 'info');
+                });
+            });
+        }
+
+        // 프로젝트 알림 표시
+        function showProjectNotification(message, type = 'info') {
+            showSettingsNotification(message, type); // 기존 알림 시스템 재사용
         }
 
         // 추가 안전장치: 모든 스크립트 로드 후 확인
