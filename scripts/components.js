@@ -228,8 +228,8 @@ function renderBriefingCards(clusters) {
         emptyDiv.innerHTML = '<div class="empty-state"><p>브리핑 데이터를 불러오는 중입니다...</p></div>';
         container.appendChild(emptyDiv);
 
-        // 빈 상태일 때 플로팅 버튼 숨김
-        hideFloatingSourcesButton();
+        // 빈 상태일 때 출처 버튼 숨김
+        hideSourcesToggleButton();
         return;
     }
 
@@ -323,11 +323,12 @@ function selectCluster(clusterId) {
 
     if (cluster) {
         updateAnalysisContent(cluster);
-        showFloatingSourcesButton(cluster);
+        showSourcesToggleButton(cluster);
+        updateTableOfContents(cluster);
     } else {
         // 클러스터를 찾을 수 없을 때
         console.warn('⚠️ 클러스터를 찾을 수 없음:', clusterId);
-        hideFloatingSourcesButton();
+        hideSourcesToggleButton();
         resetAnalysisContent();
     }
 }
@@ -407,40 +408,35 @@ function updateAnalysisContent(cluster) {
     }
 }
 
-// 플로팅 출처 버튼 표시
-function showFloatingSourcesButton(cluster) {
-    const floatingBtn = document.getElementById('floatingSourcesBtn');
-    console.log('🔍 플로팅 버튼 찾기:', floatingBtn);
+// 우측 사이드바 출처 버튼 표시
+function showSourcesToggleButton(cluster) {
+    const toggleBtn = document.getElementById('sourcesToggleBtn');
+    const sourcesCount = document.getElementById('sourcesCount');
 
-    if (floatingBtn) {
+    console.log('🔍 출처 토글 버튼 찾기:', toggleBtn);
+
+    if (toggleBtn && sourcesCount) {
         const totalSources = cluster.sources.reduce((sum, source) => sum + source.count, 0);
-        const sourcesTextElement = floatingBtn.querySelector('.sources-text');
+        sourcesCount.textContent = totalSources;
 
-        console.log('🔍 출처 텍스트 요소:', sourcesTextElement);
-        console.log('🔍 총 출처 수:', totalSources);
-
-        if (sourcesTextElement) {
-            sourcesTextElement.textContent = `${totalSources} 출처`;
-        }
-
-        floatingBtn.style.display = 'flex';
-        console.log('✅ 플로팅 버튼 표시됨');
+        toggleBtn.style.display = 'flex';
+        console.log('✅ 출처 토글 버튼 표시됨:', totalSources + '개 출처');
 
         // 클릭 이벤트 업데이트
-        floatingBtn.onclick = () => {
-            console.log('🔍 플로팅 버튼 클릭');
-            openSourcesSidebar(cluster);
+        toggleBtn.onclick = () => {
+            console.log('🔍 출처 토글 버튼 클릭');
+            openSourcesPanel(cluster);
         };
     } else {
-        console.warn('⚠️ 플로팅 버튼을 찾을 수 없습니다');
+        console.warn('⚠️ 출처 토글 버튼을 찾을 수 없습니다');
     }
 }
 
-// 플로팅 출처 버튼 숨김
-function hideFloatingSourcesButton() {
-    const floatingBtn = document.getElementById('floatingSourcesBtn');
-    if (floatingBtn) {
-        floatingBtn.style.display = 'none';
+// 우측 사이드바 출처 버튼 숨김
+function hideSourcesToggleButton() {
+    const toggleBtn = document.getElementById('sourcesToggleBtn');
+    if (toggleBtn) {
+        toggleBtn.style.display = 'none';
     }
 }
 
@@ -463,67 +459,218 @@ function resetAnalysisContent() {
     }
 }
 
-// 출처 목록 사이드바 열기
-function openSourcesSidebar(cluster) {
-    console.log('📋 출처 사이드바 열기 시도:', cluster.title);
+// 출처 패널 열기
+function openSourcesPanel(cluster) {
+    console.log('📋 출처 패널 열기 시도:', cluster.title);
 
-    const sidebar = document.getElementById('sourcesSidebar');
-    const sourcesContent = document.getElementById('sourcesContent');
+    const panel = document.getElementById('sourcesPanel');
+    const panelContent = document.getElementById('sourcesPanelContent');
 
-    console.log('🔍 사이드바 요소:', sidebar);
-    console.log('🔍 콘텐츠 요소:', sourcesContent);
+    console.log('🔍 패널 요소:', panel);
+    console.log('🔍 콘텐츠 요소:', panelContent);
 
-    if (sidebar && sourcesContent) {
-        // 출처 목록 생성
-        const sourcesHtml = cluster.sources.map(source => `
-            <div class="source-item">
-                <img src="${source.icon}" alt="${source.name}" class="source-item-icon">
-                <div class="source-item-info">
-                    <div class="source-item-name">${source.name}</div>
-                    <div class="source-item-count">${source.count}개 기사</div>
+    if (panel && panelContent) {
+        // 상세한 출처 목록 생성 (플랫폼-제목-by 작성자 형태)
+        const sourcesHtml = generateDetailedSourcesList(cluster);
+        panelContent.innerHTML = sourcesHtml;
+        panel.classList.add('open');
+        console.log('✅ 출처 패널 열림');
+    } else {
+        console.warn('⚠️ 패널 요소를 찾을 수 없습니다');
+    }
+}
+
+// 출처 패널 닫기
+function closeSourcesPanel() {
+    const panel = document.getElementById('sourcesPanel');
+    if (panel) {
+        panel.classList.remove('open');
+    }
+}
+
+// 상세 출처 목록 생성
+function generateDetailedSourcesList(cluster) {
+    // 샘플 상세 출처 데이터 생성
+    const detailedSources = [];
+
+    cluster.sources.forEach(source => {
+        const platformName = source.name;
+        const platformClass = getPlatformClass(platformName);
+        const platformIcon = getPlatformIcon(platformName);
+
+        // 각 플랫폼별로 가상의 기사들 생성
+        for (let i = 0; i < Math.min(source.count, 5); i++) {
+            detailedSources.push({
+                platform: platformName,
+                platformClass: platformClass,
+                platformIcon: platformIcon,
+                title: generateSampleTitle(cluster.title, i),
+                author: generateSampleAuthor(platformName),
+                time: generateSampleTime(i)
+            });
+        }
+    });
+
+    return detailedSources.map(source => `
+        <div class="source-detail-item">
+            <div class="source-platform-icon ${source.platformClass}">
+                ${source.platformIcon}
+            </div>
+            <div class="source-detail-content">
+                <div class="source-detail-title">${source.title}</div>
+                <div class="source-detail-meta">
+                    <span class="source-detail-platform">${source.platform}</span>
+                    <span>•</span>
+                    <span class="source-detail-author">by ${source.author}</span>
+                    <span>•</span>
+                    <span class="source-detail-time">${source.time}</span>
                 </div>
             </div>
-        `).join('');
+        </div>
+    `).join('');
+}
 
-        sourcesContent.innerHTML = sourcesHtml;
-        sidebar.classList.add('open');
-        console.log('✅ 출처 사이드바 열림');
-    } else {
-        console.warn('⚠️ 사이드바 요소를 찾을 수 없습니다');
+// 플랫폼별 클래스 반환
+function getPlatformClass(platformName) {
+    switch (platformName.toLowerCase()) {
+        case 'x': return 'twitter';
+        case '네이버': return 'naver';
+        case '구글': return 'google';
+        case '페이스북': return 'facebook';
+        default: return 'naver';
     }
 }
 
-// 출처 목록 사이드바 닫기
-function closeSourcesSidebar() {
-    const sidebar = document.getElementById('sourcesSidebar');
-    if (sidebar) {
-        sidebar.classList.remove('open');
+// 플랫폼별 아이콘 반환
+function getPlatformIcon(platformName) {
+    switch (platformName.toLowerCase()) {
+        case 'x': return '𝕏';
+        case '네이버': return 'N';
+        case '구글': return 'G';
+        case '페이스북': return 'f';
+        default: return 'N';
     }
 }
 
-// 출처 목록 사이드바 이벤트 리스너 추가
-function initializeSourcesSidebar() {
-    const closeBtn = document.getElementById('sourcesClose');
+// 샘플 제목 생성
+function generateSampleTitle(clusterTitle, index) {
+    const titleVariations = [
+        `${clusterTitle}에 대한 전문가 분석`,
+        `${clusterTitle} 관련 최신 동향`,
+        `${clusterTitle} 이슈 심층 분석`,
+        `${clusterTitle}의 경제적 파급효과`,
+        `${clusterTitle} 상황 점검과 전망`
+    ];
+    return titleVariations[index] || `${clusterTitle} 관련 뉴스`;
+}
+
+// 샘플 작성자 생성
+function generateSampleAuthor(platformName) {
+    const authors = {
+        'x': ['@economist_kim', '@news_analyst', '@policy_expert'],
+        '네이버': ['김기자', '이분석가', '박전문가'],
+        '구글': ['경제팀', '정책연구소', '시사분석'],
+        '페이스북': ['뉴스데스크', '분석팀', '리포터']
+    };
+
+    const authorList = authors[platformName.toLowerCase()] || authors['네이버'];
+    return authorList[Math.floor(Math.random() * authorList.length)];
+}
+
+// 샘플 시간 생성
+function generateSampleTime(index) {
+    const times = ['1시간 전', '3시간 전', '5시간 전', '8시간 전', '12시간 전'];
+    return times[index] || '1일 전';
+}
+
+// 출처 패널 이벤트 리스너 추가
+function initializeSourcesPanel() {
+    const closeBtn = document.getElementById('sourcesPanelClose');
     if (closeBtn) {
-        closeBtn.onclick = closeSourcesSidebar;
+        closeBtn.onclick = closeSourcesPanel;
     }
 
-    // 사이드바 외부 클릭 시 닫기
+    // 패널 외부 클릭 시 닫기 (우측 사이드바 내에서는 닫히지 않음)
     document.addEventListener('click', (e) => {
-        const sidebar = document.getElementById('sourcesSidebar');
-        const floatingBtn = document.getElementById('floatingSourcesBtn');
+        const panel = document.getElementById('sourcesPanel');
+        const toggleBtn = document.getElementById('sourcesToggleBtn');
+        const rightSidebar = document.querySelector('.right-sidebar');
 
-        if (sidebar && sidebar.classList.contains('open')) {
-            if (!sidebar.contains(e.target) && !floatingBtn.contains(e.target)) {
-                closeSourcesSidebar();
+        if (panel && panel.classList.contains('open')) {
+            if (!rightSidebar.contains(e.target)) {
+                closeSourcesPanel();
             }
         }
     });
 }
 
+// 목차(TOC) 생성 및 업데이트
+function updateTableOfContents(cluster) {
+    const tocContent = document.getElementById('tocContent');
+    if (!tocContent) return;
+
+    // 마크다운에서 헤딩 추출
+    const headings = extractHeadingsFromMarkdown(cluster.detailedSummary);
+
+    if (headings.length > 0) {
+        const tocHtml = headings.map((heading, index) => `
+            <div class="toc-item" data-heading="${index}">
+                ${heading.text}
+            </div>
+        `).join('');
+
+        tocContent.innerHTML = tocHtml;
+
+        // TOC 클릭 이벤트 추가
+        tocContent.querySelectorAll('.toc-item').forEach((item, index) => {
+            item.addEventListener('click', () => {
+                scrollToHeading(index);
+                // 활성화 상태 변경
+                tocContent.querySelectorAll('.toc-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+    } else {
+        tocContent.innerHTML = '<div class="toc-empty"><span>목차가 없습니다</span></div>';
+    }
+}
+
+// 마크다운에서 헤딩 추출
+function extractHeadingsFromMarkdown(markdown) {
+    const headings = [];
+    const lines = markdown.split('\n');
+
+    lines.forEach(line => {
+        const trimmed = line.trim();
+        if (trimmed.startsWith('###')) {
+            headings.push({ level: 3, text: trimmed.replace(/^###\s*/, '') });
+        } else if (trimmed.startsWith('##')) {
+            headings.push({ level: 2, text: trimmed.replace(/^##\s*/, '') });
+        } else if (trimmed.startsWith('#')) {
+            headings.push({ level: 1, text: trimmed.replace(/^#\s*/, '') });
+        }
+    });
+
+    return headings;
+}
+
+// 특정 헤딩으로 스크롤
+function scrollToHeading(index) {
+    const analysisContent = document.getElementById('analysisContent');
+    if (!analysisContent) return;
+
+    const headings = analysisContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    if (headings[index]) {
+        headings[index].scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
 // 프로젝트 노트 렌더링 (간단 버전)
 function renderProjectNotes() {
-    const container = document.getElementById('notesContent');
+    const container = document.getElementById('projectsContent');
     if (!container) return;
 
     // 이미 HTML에 있는 카테고리 섹션들을 그대로 유지
@@ -537,7 +684,7 @@ function initializeComponents() {
     try {
         renderIssueClusters();
         renderProjectNotes();
-        initializeSourcesSidebar();
+        initializeSourcesPanel();
 
         // 첫 번째 클러스터 자동 선택
         setTimeout(() => {
@@ -560,11 +707,12 @@ window.renderIssueClusters = renderIssueClusters;
 window.renderBriefingCards = renderBriefingCards;
 window.attachCardEventListeners = attachCardEventListeners;
 window.selectCluster = selectCluster;
-window.showFloatingSourcesButton = showFloatingSourcesButton;
-window.hideFloatingSourcesButton = hideFloatingSourcesButton;
+window.showSourcesToggleButton = showSourcesToggleButton;
+window.hideSourcesToggleButton = hideSourcesToggleButton;
 window.resetAnalysisContent = resetAnalysisContent;
-window.openSourcesSidebar = openSourcesSidebar;
-window.closeSourcesSidebar = closeSourcesSidebar;
-window.initializeSourcesSidebar = initializeSourcesSidebar;
+window.openSourcesPanel = openSourcesPanel;
+window.closeSourcesPanel = closeSourcesPanel;
+window.initializeSourcesPanel = initializeSourcesPanel;
+window.updateTableOfContents = updateTableOfContents;
 window.initializeComponents = initializeComponents;
 window.updateAnalysisContent = updateAnalysisContent; 

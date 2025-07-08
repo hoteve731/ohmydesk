@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
 <body>
@@ -27,150 +28,225 @@
 
     <!-- 메인 앱 컨테이너 -->
     <div class="app-container" id="appContainer">
-        <!-- 좌측 패널: 오늘의 브리핑 -->
-        <aside class="left-panel">
-            <header class="panel-header">
-                <div class="header-top">
-                    <div class="logo">
-                        <span class="logo-text">오마이데스크</span>
-                    </div>
-                    <button class="settings-btn" id="settingsBtn" title="설정">
-                        <span>⚙️</span>
-                    </button>
-                </div>
-                <div class="briefing-info">
-                    <h1 class="panel-title">오늘의 브리핑</h1>
-                    <p class="panel-subtitle" id="dateInfo">2024년 12월 19일 • 8개 이슈</p>
-                </div>
-                <div class="date-selector">
-                    <input type="date" id="dateInput" value="2024-12-19">
-                </div>
-            </header>
-
-            <div class="briefing-cards" id="briefingCards">
-                <!-- 핵심 요약 섹션 -->
-                <div class="daily-summary">
-                    <h3 class="summary-title">🔥 하이라이트</h3>
-                    <p class="summary-text">정치·경제·사회 전반에 걸친 주요 이슈들이 복합적으로 얽혀 있는 상황입니다. 특히 정치적 긴장감이 높아지면서 경제 불안정성도 함께
-                        증가하고 있습니다.</p>
-                </div>
-
-                <!-- 카드들이 동적으로 생성됩니다 -->
+        <!-- 메뉴바 -->
+        <nav class="menu-bar">
+            <div class="logo">
+                <span class="logo-text">OMYDESK</span>
             </div>
-        </aside>
-
-        <!-- 중앙 패널: 비교 분석 데스크 -->
-        <main class="center-panel">
-            <header class="analysis-header">
-                <div class="analysis-title-area">
-                    <h2 class="analysis-title" id="analysisTitle">이슈를 선택해주세요</h2>
-                    <p class="analysis-subtitle" id="analysisSubtitle">좌측에서 관심 있는 이슈를 클릭하면 상세 분석이 시작됩니다</p>
-                </div>
-                <div class="analysis-controls">
-                    <button class="control-btn active" data-view="timeline">
-                        <span>📅</span> 시간순
-                    </button>
-                    <button class="control-btn" data-view="comparison">
-                        <span>⚖️</span> 비교분석
-                    </button>
-                    <button class="control-btn" data-view="data">
-                        <span>📊</span> 데이터
-                    </button>
-                </div>
-            </header>
-
-            <div class="analysis-content" id="analysisContent">
-                <div class="empty-state">
-                    <div class="empty-icon">🎯</div>
-                    <h3>분석할 이슈를 선택해주세요</h3>
-                    <p>좌측 브리핑에서 이슈를 클릭하면<br>상세 정보가 표시됩니다</p>
-                </div>
-            </div>
-
-            <!-- 플로팅 출처 버튼 -->
-            <button class="floating-sources-btn" id="floatingSourcesBtn" style="display: none;">
-                <span class="sources-icon">📄</span>
-                <span class="sources-text">출처</span>
-            </button>
-
-            <!-- 출처 목록 슬라이드 -->
-            <div class="sources-sidebar" id="sourcesSidebar">
-                <div class="sources-header">
-                    <h3>출처 목록</h3>
-                    <button class="sources-close" id="sourcesClose">✕</button>
-                </div>
-                <div class="sources-content" id="sourcesContent">
-                    <!-- 출처 목록이 여기에 표시됩니다 -->
-                </div>
-            </div>
-        </main>
-
-        <!-- 우측 패널: 프로젝트 노트 -->
-        <aside class="right-panel">
-            <header class="notes-header">
-                <div class="project-selector">
-                    <select id="projectSelect">
-                        <option value="slowletter-1219">12/19 슬로우레터</option>
-                        <option value="analysis-report">분석 리포트</option>
-                        <option value="draft-column">칼럼 초안</option>
-                    </select>
-                </div>
-                <button class="export-btn" id="exportBtn" title="내보내기">
-                    <span>📤</span>
+            <div class="menu-items">
+                <button class="menu-item active" data-tab="briefing">
+                    <i class="ph-fill ph-house menu-icon-active"></i>
+                    <i class="ph ph-house menu-icon-inactive"></i>
+                    <span class="menu-label">브리핑</span>
                 </button>
-            </header>
-
-            <div class="notes-content" id="notesContent">
-                <div class="category-section" data-category="issues">
-                    <div class="category-header">
-                        <span class="category-icon">🔴</span>
-                        <h3 class="category-title">쟁점과 현안</h3>
-                        <span class="item-count">0</span>
-                    </div>
-                    <div class="category-items" id="issuesItems">
-                        <!-- 하이라이트된 아이템들이 추가됩니다 -->
-                    </div>
-                </div>
-
-                <div class="category-section" data-category="deep">
-                    <div class="category-header">
-                        <span class="category-icon">🔵</span>
-                        <h3 class="category-title">더 깊게 읽기</h3>
-                        <span class="item-count">0</span>
-                    </div>
-                    <div class="category-items" id="deepItems">
-                        <!-- 하이라이트된 아이템들이 추가됩니다 -->
-                    </div>
-                </div>
-
-                <div class="category-section" data-category="different">
-                    <div class="category-header">
-                        <span class="category-icon">🟢</span>
-                        <h3 class="category-title">다르게 읽기</h3>
-                        <span class="item-count">0</span>
-                    </div>
-                    <div class="category-items" id="differentItems">
-                        <!-- 하이라이트된 아이템들이 추가됩니다 -->
-                    </div>
-                </div>
-
-                <div class="category-section" data-category="tmi">
-                    <div class="category-header">
-                        <span class="category-icon">⚫</span>
-                        <h3 class="category-title">오늘의 TMI</h3>
-                        <span class="item-count">0</span>
-                    </div>
-                    <div class="category-items" id="tmiItems">
-                        <!-- 하이라이트된 아이템들이 추가됩니다 -->
-                    </div>
-                </div>
-
-                <button class="add-note-btn" id="addNoteBtn">
-                    <span>✏️</span>
-                    생각 노트 추가
+                <button class="menu-item" data-tab="projects">
+                    <i class="ph-fill ph-folder menu-icon-active"></i>
+                    <i class="ph ph-folder menu-icon-inactive"></i>
+                    <span class="menu-label">내 프로젝트</span>
+                </button>
+                <button class="menu-item" data-tab="analysis">
+                    <i class="ph-fill ph-chart-line menu-icon-active"></i>
+                    <i class="ph ph-chart-line menu-icon-inactive"></i>
+                    <span class="menu-label">분석 리포트</span>
+                </button>
+                <button class="menu-item" data-tab="settings">
+                    <i class="ph-fill ph-gear menu-icon-active"></i>
+                    <i class="ph ph-gear menu-icon-inactive"></i>
+                    <span class="menu-label">설정</span>
+                </button>
+                <button class="menu-item" data-tab="help">
+                    <i class="ph-fill ph-question menu-icon-active"></i>
+                    <i class="ph ph-question menu-icon-inactive"></i>
+                    <span class="menu-label">도움말</span>
                 </button>
             </div>
-        </aside>
+        </nav>
+
+        <!-- 브리핑 탭 콘텐츠 -->
+        <div class="tab-content active" id="briefingTab">
+            <!-- 좌측 패널: 오늘의 브리핑 -->
+            <aside class="left-panel">
+                <header class="panel-header">
+                    <div class="briefing-info">
+                        <h1 class="panel-title">오늘의 브리핑</h1>
+                        <p class="panel-subtitle" id="dateInfo">2024년 12월 19일 • 8개 이슈</p>
+                    </div>
+                    <div class="date-selector">
+                        <input type="date" id="dateInput" value="2024-12-19">
+                    </div>
+                </header>
+
+                <div class="briefing-cards" id="briefingCards">
+                    <!-- 핵심 요약 섹션 -->
+                    <div class="daily-summary">
+                        <h3 class="summary-title">🔥 하이라이트</h3>
+                        <p class="summary-text">정치·경제·사회 전반에 걸친 주요 이슈들이 복합적으로 얽혀 있는 상황입니다. 특히 정치적 긴장감이 높아지면서 경제 불안정성도 함께
+                            증가하고 있습니다.</p>
+                    </div>
+
+                    <!-- 카드들이 동적으로 생성됩니다 -->
+                </div>
+            </aside>
+
+            <!-- 중앙 패널: 비교 분석 데스크 -->
+            <main class="center-panel">
+                <!-- 메인 콘텐츠 영역 -->
+                <div class="main-content">
+                    <header class="analysis-header">
+                        <div class="analysis-title-area">
+                            <h2 class="analysis-title" id="analysisTitle">이슈를 선택해주세요</h2>
+                            <p class="analysis-subtitle" id="analysisSubtitle">좌측에서 관심 있는 이슈를 클릭하면 상세 분석이 시작됩니다</p>
+                        </div>
+                        <div class="analysis-controls">
+                            <button class="control-btn active" data-view="timeline">
+                                <span>⭐</span> 리포트
+                            </button>
+                            <button class="control-btn" data-view="comparison">
+                                <span>⚖️</span> 워딩 비교
+                            </button>
+                            <button class="control-btn" data-view="data">
+                                <span>📊</span> 데이터 분석
+                            </button>
+                            <button class="control-btn" data-view="comparison">
+                                <span>🥊</span> 비교/대립 분석
+                            </button>
+                        </div>
+                    </header>
+
+                    <div class="analysis-content" id="analysisContent">
+                        <div class="empty-state">
+                            <div class="empty-icon">🎯</div>
+                            <h3>분석할 이슈를 선택해주세요</h3>
+                            <p>좌측 브리핑에서 이슈를 클릭하면<br>상세 정보가 표시됩니다</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 우측 사이드바 -->
+                <aside class="right-sidebar">
+                    <!-- Table of Contents -->
+                    <div class="toc-section">
+                        <h3 class="toc-title">목차</h3>
+                        <div class="toc-content" id="tocContent">
+                            <div class="toc-empty">
+                                <span>이슈를 선택하면<br>목차가 표시됩니다</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 출처 버튼 -->
+                    <button class="sources-toggle-btn" id="sourcesToggleBtn" style="display: none;">
+                        <span class="sources-count" id="sourcesCount">23</span>
+                        <span>출처</span>
+                    </button>
+
+                    <!-- 출처 목록 패널 -->
+                    <div class="sources-panel" id="sourcesPanel">
+                        <div class="sources-panel-header">
+                            <h3>출처 목록</h3>
+                            <button class="sources-panel-close" id="sourcesPanelClose">✕</button>
+                        </div>
+                        <div class="sources-panel-content" id="sourcesPanelContent">
+                            <!-- 출처 목록이 여기에 표시됩니다 -->
+                        </div>
+                    </div>
+                </aside>
+            </main>
+        </div>
+
+        <!-- 프로젝트 탭 콘텐츠 -->
+        <div class="tab-content" id="projectsTab">
+            <div class="projects-container">
+                <header class="projects-header">
+                    <h1 class="projects-title">내 프로젝트</h1>
+                    <div class="projects-controls">
+                        <div class="project-selector">
+                            <select id="projectSelect">
+                                <option value="slowletter-1219">12/19 슬로우레터</option>
+                                <option value="analysis-report">분석 리포트</option>
+                                <option value="draft-column">칼럼 초안</option>
+                            </select>
+                        </div>
+                        <button class="export-btn" id="exportBtn" title="내보내기">
+                            <i class="ph ph-export"></i>
+                        </button>
+                    </div>
+                </header>
+
+                <div class="projects-content" id="projectsContent">
+                    <div class="category-section" data-category="issues">
+                        <div class="category-header">
+                            <i class="ph ph-bookmark-simple category-icon" style="color: #FF3B30;"></i>
+                            <h3 class="category-title">쟁점과 현안</h3>
+                            <span class="item-count">0</span>
+                        </div>
+                        <div class="category-items" id="issuesItems">
+                            <!-- 하이라이트된 아이템들이 추가됩니다 -->
+                        </div>
+                    </div>
+
+                    <div class="category-section" data-category="deep">
+                        <div class="category-header">
+                            <i class="ph ph-bookmark-simple category-icon" style="color: #007AFF;"></i>
+                            <h3 class="category-title">더 깊게 읽기</h3>
+                            <span class="item-count">0</span>
+                        </div>
+                        <div class="category-items" id="deepItems">
+                            <!-- 하이라이트된 아이템들이 추가됩니다 -->
+                        </div>
+                    </div>
+
+                    <div class="category-section" data-category="different">
+                        <div class="category-header">
+                            <i class="ph ph-bookmark-simple category-icon" style="color: #34C759;"></i>
+                            <h3 class="category-title">다르게 읽기</h3>
+                            <span class="item-count">0</span>
+                        </div>
+                        <div class="category-items" id="differentItems">
+                            <!-- 하이라이트된 아이템들이 추가됩니다 -->
+                        </div>
+                    </div>
+
+                    <div class="category-section" data-category="tmi">
+                        <div class="category-header">
+                            <i class="ph ph-bookmark-simple category-icon" style="color: #8E8E93;"></i>
+                            <h3 class="category-title">오늘의 TMI</h3>
+                            <span class="item-count">0</span>
+                        </div>
+                        <div class="category-items" id="tmiItems">
+                            <!-- 하이라이트된 아이템들이 추가됩니다 -->
+                        </div>
+                    </div>
+
+                    <button class="add-note-btn" id="addNoteBtn">
+                        <i class="ph ph-plus"></i>
+                        생각 노트 추가
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 분석 리포트 탭 콘텐츠 -->
+        <div class="tab-content" id="analysisTab">
+            <div class="projects-container">
+                <header class="projects-header">
+                    <h1 class="projects-title">분석 리포트</h1>
+                    <div class="projects-controls">
+                        <button class="export-btn" title="리포트 내보내기">
+                            <i class="ph ph-download-simple"></i>
+                        </button>
+                    </div>
+                </header>
+
+                <div class="projects-content">
+                    <div class="empty-state">
+                        <div class="empty-icon">📊</div>
+                        <h3>분석 리포트 기능 준비 중</h3>
+                        <p>곧 데이터 분석 및 리포트 기능이<br>추가될 예정입니다</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- 기사 리더 모달 -->
@@ -195,10 +271,18 @@
 
     <!-- 하이라이트 메뉴 -->
     <div class="highlight-menu" id="highlightMenu">
-        <button class="highlight-btn" data-category="issues" title="쟁점과 현안">🔴</button>
-        <button class="highlight-btn" data-category="deep" title="더 깊게 읽기">🔵</button>
-        <button class="highlight-btn" data-category="different" title="다르게 읽기">🟢</button>
-        <button class="highlight-btn" data-category="tmi" title="오늘의 TMI">⚫</button>
+        <button class="highlight-btn" data-category="issues" title="쟁점과 현안">
+            <i class="ph ph-bookmark-simple" style="color: #FF3B30;"></i>
+        </button>
+        <button class="highlight-btn" data-category="deep" title="더 깊게 읽기">
+            <i class="ph ph-bookmark-simple" style="color: #007AFF;"></i>
+        </button>
+        <button class="highlight-btn" data-category="different" title="다르게 읽기">
+            <i class="ph ph-bookmark-simple" style="color: #34C759;"></i>
+        </button>
+        <button class="highlight-btn" data-category="tmi" title="오늘의 TMI">
+            <i class="ph ph-bookmark-simple" style="color: #8E8E93;"></i>
+        </button>
     </div>
 
     <!-- 툴팁 -->
@@ -211,6 +295,32 @@
     <script src="scripts/main.js"></script>
 
     <script>
+        // 탭 전환 기능
+        function initializeTabs() {
+            const menuItems = document.querySelectorAll('.menu-item');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const tabName = item.dataset.tab;
+
+                    // 메뉴 항목 활성화 상태 변경
+                    menuItems.forEach(menu => menu.classList.remove('active'));
+                    item.classList.add('active');
+
+                    // 탭 콘텐츠 표시/숨김
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+
+                    const targetTab = document.getElementById(tabName + 'Tab');
+                    if (targetTab) {
+                        targetTab.classList.add('active');
+                    }
+                });
+            });
+        }
+
         // 추가 안전장치: 모든 스크립트 로드 후 확인
         window.addEventListener('load', function () {
             console.log('🔍 스크립트 로드 상태 확인:', {
@@ -221,6 +331,9 @@
                 components: !!window.initializeComponents,
                 interactions: !!window.initializeInteractions
             });
+
+            // 탭 초기화
+            initializeTabs();
 
             // 만약 데이터가 없다면 강제로 다시 시도
             if (!window.issueClusters || window.issueClusters.length === 0) {

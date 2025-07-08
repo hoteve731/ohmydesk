@@ -356,13 +356,13 @@ function setupEventListeners() {
         });
     });
 
-    // 프로젝트 선택
-    const projectSelect = document.getElementById('projectSelect');
-    if (projectSelect) {
-        projectSelect.addEventListener('change', (e) => {
+    // 프로젝트 선택 (브리핑 탭과 프로젝트 탭 모두에서 작동)
+    const projectSelects = document.querySelectorAll('#projectSelect');
+    projectSelects.forEach(select => {
+        select.addEventListener('change', (e) => {
             window.changeProject(e.target.value);
         });
-    }
+    });
 
     // 내보내기 버튼
     const exportBtn = document.getElementById('exportBtn');
