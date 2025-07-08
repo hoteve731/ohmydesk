@@ -912,3 +912,18 @@
         font-size: 13px;
     }
 }
+
+.source-detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+    cursor: pointer;
+}
+
+.source-detail-item:hover {
+    background: var(--tertiary-bg);
+    transform: translateY(-1px);
+}

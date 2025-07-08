@@ -30,28 +30,42 @@
     }
 }
 
-/* ===== 리더 모달 ===== */
+/* ===== 리더 모달 (Safari 읽기 도구 스타일) ===== */
 .reader-modal {
-    background: var(--primary-bg);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-lg);
-    width: 90vw;
-    max-width: 800px;
-    max-height: 90vh;
+    background: #ffffff;
+    border-radius: 16px;
+    width: 700px;
+    height: 85vh;
+    max-height: 900px;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    animation: modal-slide-in 0.3s ease-out;
+    animation: modal-slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    position: relative;
+    border: none;
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+    .reader-modal {
+        background: #1c1c1e;
+        color: #ffffff;
+        box-shadow:
+            0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    }
 }
 
 @keyframes modal-slide-in {
     from {
-        transform: translateY(50px);
+        transform: translateY(60px) scale(0.95);
         opacity: 0;
     }
 
     to {
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
         opacity: 1;
     }
 }
@@ -60,95 +74,289 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-lg);
-    border-bottom: 1px solid var(--border-light);
-    background: var(--tertiary-bg);
+    padding: 20px 24px 12px 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(248, 249, 250, 0.8);
+    backdrop-filter: blur(20px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+@media (prefers-color-scheme: dark) {
+    .reader-header {
+        background: rgba(28, 28, 30, 0.95);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+}
+
+.reader-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .reader-source {
-    font-size: var(--font-size-sm);
+    font-size: 14px;
     font-weight: 600;
-    color: var(--accent-blue);
-    background: rgba(52, 152, 219, 0.1);
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: var(--radius-sm);
-    border: 1px solid rgba(52, 152, 219, 0.2);
+    color: #007AFF;
+    background: rgba(0, 122, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+}
+
+.reader-original-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(120, 120, 128, 0.12);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #6B6B6B;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.reader-original-link:hover {
+    background: rgba(120, 120, 128, 0.20);
+    color: #007AFF;
+}
+
+.reader-original-link i {
+    font-size: 16px;
 }
 
 .reader-close {
     width: 32px;
     height: 32px;
-    border: 1px solid var(--border-medium);
-    background: var(--primary-bg);
-    border-radius: var(--radius-sm);
+    border: none;
+    background: rgba(120, 120, 128, 0.16);
+    border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    color: var(--text-muted);
-    transition: var(--transition-fast);
+    font-size: 16px;
+    color: #8E8E93;
+    transition: all 0.2s ease;
 }
 
 .reader-close:hover {
-    background: var(--tertiary-bg);
-    border-color: var(--border-dark);
-    color: var(--text-secondary);
+    background: rgba(120, 120, 128, 0.24);
+    color: #000000;
+    transform: scale(1.05);
+}
+
+@media (prefers-color-scheme: dark) {
+    .reader-close:hover {
+        color: #ffffff;
+    }
 }
 
 .reader-content {
-    padding: var(--spacing-lg);
+    padding: 0;
     overflow-y: auto;
     flex: 1;
+    background: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    .reader-content {
+        background: #1c1c1e;
+    }
+}
+
+.reader-article {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 24px 32px 48px 32px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    line-height: 1.7;
 }
 
 .reader-title {
-    font-size: var(--font-size-xxl);
+    font-size: 28px;
     font-weight: 700;
-    color: var(--text-primary);
-    line-height: 1.3;
-    margin-bottom: var(--spacing-md);
+    color: #000000;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+@media (prefers-color-scheme: dark) {
+    .reader-title {
+        color: #ffffff;
+    }
 }
 
 .reader-meta {
     display: flex;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-xl);
-    padding-bottom: var(--spacing-md);
-    border-bottom: 1px solid var(--border-light);
+    gap: 12px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    align-items: center;
+}
+
+@media (prefers-color-scheme: dark) {
+    .reader-meta {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
 }
 
 .reader-date,
 .reader-author {
-    font-size: var(--font-size-sm);
-    color: var(--text-muted);
+    font-size: 14px;
+    color: #8E8E93;
+    font-weight: 500;
+}
+
+.reader-author::before {
+    content: "•";
+    margin-right: 8px;
+    color: #C7C7CC;
 }
 
 .reader-body {
-    font-size: var(--font-size-md);
+    font-size: 18px;
     line-height: 1.7;
-    color: var(--text-primary);
+    color: #000000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    .reader-body {
+        color: #ffffff;
+    }
 }
 
 .reader-body p {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 20px;
+    text-align: justify;
 }
 
 .reader-body h1,
 .reader-body h2,
 .reader-body h3 {
-    margin-top: var(--spacing-lg);
-    margin-bottom: var(--spacing-md);
-    color: var(--text-primary);
+    margin-top: 32px;
+    margin-bottom: 12px;
+    color: #000000;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .reader-body h1,
+    .reader-body h2,
+    .reader-body h3 {
+        color: #ffffff;
+    }
+}
+
+.reader-body h1 {
+    font-size: 24px;
+}
+
+.reader-body h2 {
+    font-size: 22px;
+}
+
+.reader-body h3 {
+    font-size: 20px;
 }
 
 .reader-body blockquote {
-    border-left: 3px solid var(--accent-blue);
-    background: var(--tertiary-bg);
-    padding: var(--spacing-md);
-    margin: var(--spacing-md) 0;
-    border-radius: var(--radius-sm);
+    border-left: 4px solid #007AFF;
+    background: rgba(0, 122, 255, 0.04);
+    padding: 16px 20px;
+    margin: 24px 0;
+    border-radius: 8px;
     font-style: italic;
+    position: relative;
+}
+
+@media (prefers-color-scheme: dark) {
+    .reader-body blockquote {
+        background: rgba(0, 122, 255, 0.08);
+    }
+}
+
+.reader-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 24px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.reader-body ul,
+.reader-body ol {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+.reader-body li {
+    margin-bottom: 6px;
+    line-height: 1.6;
+}
+
+.reader-body strong {
+    font-weight: 600;
+    color: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+    .reader-body strong {
+        color: #ffffff;
+    }
+}
+
+.reader-body em {
+    font-style: italic;
+    color: #1D1D1F;
+}
+
+@media (prefers-color-scheme: dark) {
+    .reader-body em {
+        color: #F2F2F7;
+    }
+}
+
+/* 스크롤바 스타일링 */
+.reader-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.reader-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.reader-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.reader-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+    .reader-content::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .reader-content::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
 }
 
 /* ===== 하이라이트 메뉴 ===== */

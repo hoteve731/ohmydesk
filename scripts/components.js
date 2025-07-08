@@ -510,7 +510,7 @@ function generateDetailedSourcesList(cluster) {
     });
 
     return detailedSources.map(source => `
-        <div class="source-detail-item">
+        <div class="source-detail-item" style="cursor: pointer;" onclick="openReaderModal()">
             <img src="${source.platformIcon}" alt="${source.platform}" class="source-platform-icon">
             <div class="source-detail-content">
                 <div class="source-detail-title">${source.title}</div>
@@ -586,10 +586,17 @@ function initializeSourcesPanel() {
     }
 
     // 패널 외부 클릭 시 닫기 (우측 사이드바 내에서는 닫히지 않음)
+    // 단, 리더 모달이 열려있을 때는 출처 패널을 닫지 않음
     document.addEventListener('click', (e) => {
         const panel = document.getElementById('sourcesPanel');
         const toggleBtn = document.getElementById('sourcesToggleBtn');
         const rightSidebar = document.querySelector('.right-sidebar');
+        const readerModal = document.getElementById('readerModal');
+
+        // 리더 모달이 열려있으면 출처 패널을 자동으로 닫지 않음
+        if (readerModal && readerModal.classList.contains('show')) {
+            return;
+        }
 
         if (panel && panel.classList.contains('open')) {
             if (!rightSidebar.contains(e.target)) {
@@ -697,6 +704,85 @@ function initializeComponents() {
     }
 }
 
+// 리더 모달 렌더링
+function renderReaderModal(article) {
+    // 가짜 샘플 기사 데이터 (실제로는 article 파라미터 사용)
+    const sampleArticle = {
+        source: 'X (트위터)',
+        title: '윤석열 대통령 긴급 국정담화 발표 관련 사회적 논란',
+        author: '@NewsAnalyst_KR',
+        date: '2024-12-19',
+        time: '3시간 전',
+        content: `
+            <p>윤석열 대통령이 어제 밤 국가적 위기 상황에 대한 긴급 담화를 발표했습니다. 이번 담화는 정치권과 국민들 사이에서 큰 파장을 일으키고 있으며, 향후 정국 운영에 미칠 영향에 대한 관심이 집중되고 있습니다.</p>
+
+            <h2>주요 발표 내용</h2>
+            
+            <p>대통령의 담화에서는 다음과 같은 주요 내용들이 언급되었습니다:</p>
+            
+            <ul>
+                <li><strong>국가 안보 상황</strong>에 대한 현황 브리핑</li>
+                <li><strong>경제 정책</strong> 방향성 재정립</li>
+                <li><strong>사회 갈등 해소</strong>를 위한 정부의 노력</li>
+                <li><strong>국정 운영</strong>의 투명성 강화 방안</li>
+            </ul>
+
+            <blockquote>
+                "국민 여러분께서 가지고 계신 우려와 불안을 충분히 이해하고 있으며, 정부는 이러한 상황을 슬기롭게 극복하기 위해 모든 노력을 기울이겠습니다."
+            </blockquote>
+
+            <h3>정치권 반응</h3>
+            
+            <p>여당에서는 대통령의 담화가 <em>"시의적절하고 필요한 결단"</em>이라고 평가하며 전폭적인 지지 의사를 표명했습니다. 반면 야당에서는 <em>"구체적인 해결책 없는 선언적 수준"</em>이라며 비판적 입장을 견지하고 있습니다.</p>
+
+            <p>특히 시민사회에서는 이번 담화가 실질적인 정책 변화로 이어질지에 대한 의문을 제기하고 있으며, 향후 정부의 구체적인 행동 계획을 주시하고 있다고 밝혔습니다.</p>
+
+            <h3>경제계 우려</h3>
+            
+            <p>경제계에서는 정치적 불확실성이 지속될 경우 투자 심리 위축과 경제 성장 둔화가 우려된다는 입장을 표명했습니다. 주요 경제 단체들은 정치권의 대화와 타협을 통한 빠른 사태 수습을 촉구하고 있습니다.</p>
+
+            <p>한국은행 관계자는 <em>"현재 상황이 금융시장에 미치는 영향을 면밀히 모니터링하고 있으며, 필요시 적절한 대응책을 마련할 것"</em>이라고 언급했습니다.</p>
+
+            <h2>국제사회 반응</h2>
+            
+            <p>주요 우방국들은 한국의 정치적 상황을 예의주시하고 있으며, 안정적인 해결을 기대한다는 입장을 표명했습니다. 특히 미국과 일본은 양국 관계에 미칠 영향을 최소화하기 위해 외교적 노력을 기울이고 있다고 전해집니다.</p>
+
+            <blockquote>
+                "민주주의 국가로서 한국이 이번 어려움을 슬기롭게 극복할 것이라 확신하며, 지속적인 협력 관계를 유지해 나가겠습니다." - 주한 미국 대사
+            </blockquote>
+
+            <h3>향후 전망</h3>
+            
+            <p>전문가들은 이번 사태가 향후 몇 주간 정치권의 주요 이슈가 될 것으로 전망하고 있습니다. 특히 다가오는 국정감사와 예산안 심의 과정에서 이번 담화가 어떤 영향을 미칠지 주목받고 있습니다.</p>
+
+            <p>정치학자 김○○ 교수는 <em>"현재 상황은 단순한 정치적 이벤트를 넘어 한국 민주주의의 성숙도를 보여주는 시금석이 될 것"</em>이라고 분석했습니다.</p>
+
+            <p>국민들의 관심과 참여를 통해 이번 위기가 한국 사회 발전의 기회가 되기를 기대해 봅니다.</p>
+        `
+    };
+
+    // 리더 모달 HTML 업데이트
+    const readerSource = document.getElementById('readerSource');
+    const readerTitle = document.getElementById('readerTitle');
+    const readerMeta = document.getElementById('readerMeta');
+    const readerBody = document.getElementById('readerBody');
+
+    if (readerSource) readerSource.textContent = sampleArticle.source;
+    if (readerTitle) readerTitle.textContent = sampleArticle.title;
+
+    if (readerMeta) {
+        readerMeta.innerHTML = `
+            <span class="reader-date">${sampleArticle.time}</span>
+            <span class="reader-author">${sampleArticle.author}</span>
+        `;
+    }
+
+    if (readerBody) {
+        // 기사 내용을 직접 삽입 (reader-article 래퍼 제거)
+        readerBody.innerHTML = sampleArticle.content;
+    }
+}
+
 // 전역 함수로 등록
 window.renderIssueClusters = renderIssueClusters;
 window.renderBriefingCards = renderBriefingCards;
@@ -710,4 +796,5 @@ window.closeSourcesPanel = closeSourcesPanel;
 window.initializeSourcesPanel = initializeSourcesPanel;
 window.updateTableOfContents = updateTableOfContents;
 window.initializeComponents = initializeComponents;
-window.updateAnalysisContent = updateAnalysisContent; 
+window.updateAnalysisContent = updateAnalysisContent;
+window.renderReaderModal = renderReaderModal; 
