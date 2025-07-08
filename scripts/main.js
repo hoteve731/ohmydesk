@@ -470,6 +470,72 @@ function setupEventListeners() {
         }
     });
 
+    // 프로필 드롭다운
+    const profileButton = document.getElementById('profileButton');
+    const profileDropdown = document.getElementById('profileDropdown');
+    const accountManageBtn = document.getElementById('accountManageBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    if (profileButton && profileDropdown) {
+        // 프로필 버튼 클릭시 드롭다운 토글
+        profileButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = profileDropdown.classList.contains('open');
+            
+            if (isOpen) {
+                profileDropdown.classList.remove('open');
+                profileButton.classList.remove('active');
+            } else {
+                profileDropdown.classList.add('open');
+                profileButton.classList.add('active');
+            }
+        });
+
+        // 외부 클릭시 드롭다운 닫기
+        document.addEventListener('click', () => {
+            profileDropdown.classList.remove('open');
+            profileButton.classList.remove('active');
+        });
+
+        // 드롭다운 내부 클릭시 이벤트 전파 방지
+        profileDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+
+    // 계정 관리 버튼
+    if (accountManageBtn) {
+        accountManageBtn.addEventListener('click', () => {
+            console.log('계정 관리 페이지로 이동');
+            // 실제 구현시 계정 관리 페이지로 라우팅
+            if (window.highlightManager) {
+                window.highlightManager.showFeedback('계정 관리 기능 준비 중입니다');
+            }
+            // 드롭다운 닫기
+            profileDropdown.classList.remove('open');
+            profileButton.classList.remove('active');
+        });
+    }
+
+    // 로그아웃 버튼
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            console.log('로그아웃 처리');
+            if (confirm('정말 로그아웃하시겠습니까?')) {
+                // 실제 구현시 로그아웃 API 호출
+                localStorage.clear();
+                if (window.highlightManager) {
+                    window.highlightManager.showFeedback('로그아웃되었습니다');
+                }
+                // 실제로는 로그인 페이지로 리다이렉트
+                console.log('로그인 페이지로 리다이렉트 (미구현)');
+            }
+            // 드롭다운 닫기
+            profileDropdown.classList.remove('open');
+            profileButton.classList.remove('active');
+        });
+    }
+
     // 페이지 언로드 처리
     window.addEventListener('beforeunload', handleBeforeUnload);
 

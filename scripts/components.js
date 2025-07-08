@@ -495,14 +495,12 @@ function generateDetailedSourcesList(cluster) {
 
     cluster.sources.forEach(source => {
         const platformName = source.name;
-        const platformClass = getPlatformClass(platformName);
-        const platformIcon = getPlatformIcon(platformName);
+        const platformIcon = source.icon; // 실제 이미지 파일 경로 사용
 
         // 각 플랫폼별로 가상의 기사들 생성
         for (let i = 0; i < Math.min(source.count, 5); i++) {
             detailedSources.push({
                 platform: platformName,
-                platformClass: platformClass,
                 platformIcon: platformIcon,
                 title: generateSampleTitle(cluster.title, i),
                 author: generateSampleAuthor(platformName),
@@ -513,44 +511,41 @@ function generateDetailedSourcesList(cluster) {
 
     return detailedSources.map(source => `
         <div class="source-detail-item">
-            <div class="source-platform-icon ${source.platformClass}">
-                ${source.platformIcon}
-            </div>
+            <img src="${source.platformIcon}" alt="${source.platform}" class="source-platform-icon">
             <div class="source-detail-content">
                 <div class="source-detail-title">${source.title}</div>
                 <div class="source-detail-meta">
                     <span class="source-detail-platform">${source.platform}</span>
                     <span>•</span>
-                    <span class="source-detail-author">by ${source.author}</span>
-                    <span>•</span>
-                    <span class="source-detail-time">${source.time}</span>
+                    <span class="source-detail-author">${source.author}</span>
+                   
                 </div>
             </div>
         </div>
     `).join('');
 }
 
-// 플랫폼별 클래스 반환
-function getPlatformClass(platformName) {
-    switch (platformName.toLowerCase()) {
-        case 'x': return 'twitter';
-        case '네이버': return 'naver';
-        case '구글': return 'google';
-        case '페이스북': return 'facebook';
-        default: return 'naver';
-    }
-}
+// 플랫폼별 클래스 반환 (더 이상 사용하지 않음)
+// function getPlatformClass(platformName) {
+//     switch (platformName.toLowerCase()) {
+//         case 'x': return 'twitter';
+//         case '네이버': return 'naver';
+//         case '구글': return 'google';
+//         case '페이스북': return 'facebook';
+//         default: return 'naver';
+//     }
+// }
 
-// 플랫폼별 아이콘 반환
-function getPlatformIcon(platformName) {
-    switch (platformName.toLowerCase()) {
-        case 'x': return '𝕏';
-        case '네이버': return 'N';
-        case '구글': return 'G';
-        case '페이스북': return 'f';
-        default: return 'N';
-    }
-}
+// 플랫폼별 아이콘 반환 (더 이상 사용하지 않음)
+// function getPlatformIcon(platformName) {
+//     switch (platformName.toLowerCase()) {
+//         case 'x': return '𝕏';
+//         case '네이버': return 'N';
+//         case '구글': return 'G';
+//         case '페이스북': return 'f';
+//         default: return 'N';
+//     }
+// }
 
 // 샘플 제목 생성
 function generateSampleTitle(clusterTitle, index) {

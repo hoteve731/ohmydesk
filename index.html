@@ -30,35 +30,62 @@
     <div class="app-container" id="appContainer">
         <!-- 메뉴바 -->
         <nav class="menu-bar">
-            <div class="logo">
-                <span class="logo-text">OMYDESK</span>
+            <div class="menu-top">
+                <div class="logo">
+                    <span class="logo-text">OMYDESK</span>
+                </div>
+                <div class="menu-items">
+                    <button class="menu-item active" data-tab="briefing">
+                        <i class="ph-fill ph-house menu-icon-active"></i>
+                        <i class="ph ph-house menu-icon-inactive"></i>
+                        <span class="menu-label">브리핑</span>
+                    </button>
+                    <button class="menu-item" data-tab="projects">
+                        <i class="ph-fill ph-folder menu-icon-active"></i>
+                        <i class="ph ph-folder menu-icon-inactive"></i>
+                        <span class="menu-label">내 프로젝트</span>
+                    </button>
+                    <button class="menu-item" data-tab="analysis">
+                        <i class="ph-fill ph-chart-line menu-icon-active"></i>
+                        <i class="ph ph-chart-line menu-icon-inactive"></i>
+                        <span class="menu-label">분석 리포트</span>
+                    </button>
+                    <button class="menu-item" data-tab="settings">
+                        <i class="ph-fill ph-gear menu-icon-active"></i>
+                        <i class="ph ph-gear menu-icon-inactive"></i>
+                        <span class="menu-label">설정</span>
+                    </button>
+                    <button class="menu-item" data-tab="help">
+                        <i class="ph-fill ph-question menu-icon-active"></i>
+                        <i class="ph ph-question menu-icon-inactive"></i>
+                        <span class="menu-label">도움말</span>
+                    </button>
+                </div>
             </div>
-            <div class="menu-items">
-                <button class="menu-item active" data-tab="briefing">
-                    <i class="ph-fill ph-house menu-icon-active"></i>
-                    <i class="ph ph-house menu-icon-inactive"></i>
-                    <span class="menu-label">브리핑</span>
+
+            <!-- 프로필 섹션 -->
+            <div class="profile-section">
+                <button class="profile-button" id="profileButton">
+                    <img src="images/profile.png" alt="프로필" class="profile-image">
+                    <div class="profile-info">
+                        <span class="profile-name">류호산</span>
+                        <i class="ph ph-caret-up profile-arrow"></i>
+                    </div>
                 </button>
-                <button class="menu-item" data-tab="projects">
-                    <i class="ph-fill ph-folder menu-icon-active"></i>
-                    <i class="ph ph-folder menu-icon-inactive"></i>
-                    <span class="menu-label">내 프로젝트</span>
-                </button>
-                <button class="menu-item" data-tab="analysis">
-                    <i class="ph-fill ph-chart-line menu-icon-active"></i>
-                    <i class="ph ph-chart-line menu-icon-inactive"></i>
-                    <span class="menu-label">분석 리포트</span>
-                </button>
-                <button class="menu-item" data-tab="settings">
-                    <i class="ph-fill ph-gear menu-icon-active"></i>
-                    <i class="ph ph-gear menu-icon-inactive"></i>
-                    <span class="menu-label">설정</span>
-                </button>
-                <button class="menu-item" data-tab="help">
-                    <i class="ph-fill ph-question menu-icon-active"></i>
-                    <i class="ph ph-question menu-icon-inactive"></i>
-                    <span class="menu-label">도움말</span>
-                </button>
+
+                <!-- 드롭다운 메뉴 -->
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="profile-dropdown-content">
+                        <button class="dropdown-item" id="accountManageBtn">
+                            <i class="ph ph-user-circle"></i>
+                            <span>계정 관리</span>
+                        </button>
+                        <button class="dropdown-item" id="logoutBtn">
+                            <i class="ph ph-sign-out"></i>
+                            <span>로그아웃</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </nav>
 
@@ -126,7 +153,6 @@
                 <aside class="right-sidebar">
                     <!-- Table of Contents -->
                     <div class="toc-section">
-                        <h3 class="toc-title">목차</h3>
                         <div class="toc-content" id="tocContent">
                             <div class="toc-empty">
                                 <span>이슈를 선택하면<br>목차가 표시됩니다</span>
@@ -143,7 +169,7 @@
                     <!-- 출처 목록 패널 -->
                     <div class="sources-panel" id="sourcesPanel">
                         <div class="sources-panel-header">
-                            <h3>출처 목록</h3>
+                            <h3>출처</h3>
                             <button class="sources-panel-close" id="sourcesPanelClose">✕</button>
                         </div>
                         <div class="sources-panel-content" id="sourcesPanelContent">
@@ -321,6 +347,82 @@
             });
         }
 
+        // 프로필 드롭다운 초기화
+        function initializeProfileDropdown() {
+            const profileButton = document.getElementById('profileButton');
+            const profileDropdown = document.getElementById('profileDropdown');
+            const accountManageBtn = document.getElementById('accountManageBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            console.log('🔍 프로필 요소 확인:', {
+                profileButton: !!profileButton,
+                profileDropdown: !!profileDropdown,
+                accountManageBtn: !!accountManageBtn,
+                logoutBtn: !!logoutBtn
+            });
+
+            if (profileButton && profileDropdown) {
+                // 프로필 버튼 클릭시 드롭다운 토글
+                profileButton.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('프로필 버튼 클릭됨');
+
+                    const isOpen = profileDropdown.classList.contains('open');
+
+                    if (isOpen) {
+                        profileDropdown.classList.remove('open');
+                        profileButton.classList.remove('active');
+                        console.log('드롭다운 닫힘');
+                    } else {
+                        profileDropdown.classList.add('open');
+                        profileButton.classList.add('active');
+                        console.log('드롭다운 열림');
+                    }
+                });
+
+                // 외부 클릭시 드롭다운 닫기
+                document.addEventListener('click', function () {
+                    profileDropdown.classList.remove('open');
+                    profileButton.classList.remove('active');
+                });
+
+                // 드롭다운 내부 클릭시 이벤트 전파 방지
+                profileDropdown.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+
+                console.log('✅ 프로필 드롭다운 이벤트 리스너 설정 완료');
+            } else {
+                console.error('❌ 프로필 요소를 찾을 수 없습니다');
+            }
+
+            // 계정 관리 버튼
+            if (accountManageBtn) {
+                accountManageBtn.addEventListener('click', function () {
+                    console.log('계정 관리 클릭됨');
+                    alert('계정 관리 기능 준비 중입니다');
+                    // 드롭다운 닫기
+                    profileDropdown.classList.remove('open');
+                    profileButton.classList.remove('active');
+                });
+            }
+
+            // 로그아웃 버튼
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function () {
+                    console.log('로그아웃 클릭됨');
+                    if (confirm('정말 로그아웃하시겠습니까?')) {
+                        alert('로그아웃되었습니다');
+                        localStorage.clear();
+                    }
+                    // 드롭다운 닫기
+                    profileDropdown.classList.remove('open');
+                    profileButton.classList.remove('active');
+                });
+            }
+        }
+
         // 추가 안전장치: 모든 스크립트 로드 후 확인
         window.addEventListener('load', function () {
             console.log('🔍 스크립트 로드 상태 확인:', {
@@ -334,6 +436,9 @@
 
             // 탭 초기화
             initializeTabs();
+
+            // 프로필 드롭다운 초기화
+            initializeProfileDropdown();
 
             // 만약 데이터가 없다면 강제로 다시 시도
             if (!window.issueClusters || window.issueClusters.length === 0) {
