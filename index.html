@@ -939,34 +939,52 @@
 
         <!-- 도움말 탭 콘텐츠 -->
         <div class="tab-content" id="helpTab">
-            <div class="help-container">
-                <aside class="help-sidebar">
-                    <div class="help-nav">
-                        <h3 class="help-nav-title">도움말</h3>
-                        <div class="help-nav-items">
-                            <button class="help-nav-item active" data-section="intro">
-                                <span>서비스 소개</span>
-                            </button>
-                            <button class="help-nav-item" data-section="features">
-                                <span>주요 기능</span>
-                            </button>
-                            <button class="help-nav-item" data-section="guide">
-                                <span>사용법 가이드</span>
-                            </button>
-                            <button class="help-nav-item" data-section="faq">
-                                <span>자주 묻는 질문</span>
-                            </button>
-                            <button class="help-nav-item" data-section="terms">
-                                <span>이용약관</span>
-                            </button>
-                            <button class="help-nav-item" data-section="privacy">
-                                <span>개인정보처리방침</span>
-                            </button>
+            <!-- 좌측 패널: 도움말 네비게이션 -->
+            <aside class="left-panel">
+                <header class="panel-header">
+                    <div class="briefing-info">
+                        <h1 class="panel-title">도움말</h1>
+                        <p class="panel-subtitle">오마이데스크 사용 가이드</p>
+                    </div>
+                </header>
+
+                <div class="briefing-cards">
+                    <div class="help-nav-card active" data-section="intro">
+                        <div class="help-nav-header">
+                            <h3>서비스 소개</h3>
                         </div>
                     </div>
-                </aside>
+                    <div class="help-nav-card" data-section="features">
+                        <div class="help-nav-header">
+                            <h3>주요 기능</h3>
+                        </div>
+                    </div>
+                    <div class="help-nav-card" data-section="guide">
+                        <div class="help-nav-header">
+                            <h3>사용법 가이드</h3>
+                        </div>
+                    </div>
+                    <div class="help-nav-card" data-section="faq">
+                        <div class="help-nav-header">
+                            <h3>자주 묻는 질문</h3>
+                        </div>
+                    </div>
+                    <div class="help-nav-card" data-section="terms">
+                        <div class="help-nav-header">
+                            <h3>이용약관</h3>
+                        </div>
+                    </div>
+                    <div class="help-nav-card" data-section="privacy">
+                        <div class="help-nav-header">
+                            <h3>개인정보처리방침</h3>
+                        </div>
+                    </div>
+                </div>
+            </aside>
 
-                <main class="help-content">
+            <!-- 중앙 패널: 도움말 콘텐츠 -->
+            <main class="center-panel">
+                <div class="main-content">
                     <!-- 서비스 소개 -->
                     <section class="help-section active" id="introSection">
                         <div class="help-header">
@@ -1399,8 +1417,8 @@
                             </div>
                         </div>
                     </section>
-                </main>
-            </div>
+                </div>
+            </main>
         </div>
     </div>
 
@@ -2445,15 +2463,15 @@
 
         // 도움말 네비게이션 초기화
         function initializeHelpNavigation() {
-            const helpNavItems = document.querySelectorAll('.help-nav-item');
+            const helpNavCards = document.querySelectorAll('.help-nav-card');
             const helpSections = document.querySelectorAll('.help-section');
 
-            helpNavItems.forEach(item => {
-                item.addEventListener('click', function () {
+            helpNavCards.forEach(card => {
+                card.addEventListener('click', function () {
                     const sectionId = this.dataset.section;
 
                     // 네비게이션 활성화 상태 변경
-                    helpNavItems.forEach(nav => nav.classList.remove('active'));
+                    helpNavCards.forEach(nav => nav.classList.remove('active'));
                     this.classList.add('active');
 
                     // 섹션 표시/숨김
