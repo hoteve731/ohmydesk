@@ -2105,3 +2105,427 @@ body {
         align-items: stretch;
     }
 }
+
+/* 팔로우 관리 섹션 스타일 */
+.settings-tab .settings-header {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.settings-tab .settings-title {
+    font-size: var(--font-size-xxl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.settings-tab .settings-subtitle {
+    color: var(--text-secondary);
+    font-size: var(--font-size-md);
+}
+
+.settings-tab .follow-management {
+    margin-bottom: var(--spacing-xxl);
+}
+
+.settings-tab .section-description {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.5;
+}
+
+/* 통계 카드들 */
+.settings-tab .follow-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.settings-tab .stat-card {
+    background: var(--primary-bg);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    transition: var(--transition-fast);
+}
+
+.settings-tab .stat-card:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.1);
+}
+
+.settings-tab .stat-icon {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--secondary-bg);
+    border-radius: var(--radius-md);
+}
+
+.settings-tab .stat-info {
+    flex: 1;
+}
+
+.settings-tab .stat-number {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--accent-blue);
+    line-height: 1;
+}
+
+.settings-tab .stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.settings-tab .stat-action {
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.settings-tab .stat-action:hover {
+    background: var(--accent-blue);
+    color: white;
+    border-color: var(--accent-blue);
+}
+
+/* 팔로우 섹션 */
+.settings-tab .follow-section {
+    background: var(--primary-bg);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.settings-tab .follow-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+}
+
+.settings-tab .follow-section-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.settings-tab .follow-section-count {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    background: var(--secondary-bg);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+}
+
+/* 키워드 태그들 */
+.settings-tab .follow-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.settings-tab .follow-tag {
+    background: var(--accent-blue);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    position: relative;
+}
+
+.settings-tab .follow-tag:hover {
+    background: var(--accent-purple);
+    transform: translateY(-1px);
+}
+
+.settings-tab .tag-add-btn {
+    background: var(--secondary-bg);
+    border: 2px dashed var(--border-medium);
+    color: var(--text-secondary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.settings-tab .tag-add-btn:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+    background: rgba(52, 152, 219, 0.05);
+}
+
+/* SNS 계정 관리 */
+.settings-tab .follow-accounts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.settings-tab .follow-account {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: var(--secondary-bg);
+    border-radius: var(--radius-md);
+    transition: var(--transition-fast);
+}
+
+.settings-tab .follow-account:hover {
+    background: var(--tertiary-bg);
+}
+
+.settings-tab .account-platform {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-sm);
+}
+
+.settings-tab .account-info {
+    flex: 1;
+}
+
+.settings-tab .account-name {
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.settings-tab .account-desc {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.2;
+}
+
+.settings-tab .account-remove {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: var(--danger);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    opacity: 0.7;
+}
+
+.settings-tab .account-remove:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.settings-tab .account-add-btn {
+    background: var(--secondary-bg);
+    border: 2px dashed var(--border-medium);
+    color: var(--text-secondary);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-align: center;
+}
+
+.settings-tab .account-add-btn:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+    background: rgba(52, 152, 219, 0.05);
+}
+
+/* 채널 관리 */
+.settings-tab .follow-channels {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.settings-tab .follow-channel {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: var(--secondary-bg);
+    border-radius: var(--radius-md);
+    transition: var(--transition-fast);
+}
+
+.settings-tab .follow-channel:hover {
+    background: var(--tertiary-bg);
+}
+
+.settings-tab .channel-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.settings-tab .channel-info {
+    flex: 1;
+}
+
+.settings-tab .channel-name {
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.settings-tab .channel-desc {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.2;
+}
+
+.settings-tab .channel-remove {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: var(--danger);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    opacity: 0.7;
+}
+
+.settings-tab .channel-remove:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.settings-tab .channel-add-btn {
+    background: var(--secondary-bg);
+    border: 2px dashed var(--border-medium);
+    color: var(--text-secondary);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-align: center;
+}
+
+.settings-tab .channel-add-btn:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+    background: rgba(52, 152, 219, 0.05);
+}
+
+/* URL 추가 섹션 */
+.settings-tab .url-add-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.settings-tab .url-input-group {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.settings-tab .url-input {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-md);
+    background: var(--primary-bg);
+    transition: var(--transition-fast);
+}
+
+.settings-tab .url-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.settings-tab .url-add-btn {
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    white-space: nowrap;
+}
+
+.settings-tab .url-add-btn:hover {
+    background: var(--accent-purple);
+    transform: translateY(-1px);
+}
+
+.settings-tab .url-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.settings-tab .url-suggestion {
+    background: var(--tertiary-bg);
+    color: var(--text-secondary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.settings-tab .url-suggestion:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* 팔로우 관리 반응형 디자인 */
+@media (max-width: 768px) {
+    .settings-tab .follow-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-tab .stat-card {
+        flex-direction: row;
+    }
+
+    .settings-tab .url-input-group {
+        flex-direction: column;
+    }
+
+    .settings-tab .url-add-btn {
+        align-self: stretch;
+    }
+
+    .settings-tab .follow-tags,
+    .settings-tab .url-suggestions {
+        gap: var(--spacing-xs);
+    }
+}

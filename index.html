@@ -345,10 +345,150 @@
         <!-- 설정 탭 콘텐츠 -->
         <div class="tab-content settings-tab" id="settingsTab">
             <div class="settings-container">
-               
+
 
                 <div class="settings-content">
-                   
+                    <!-- 팔로우 관리 섹션 -->
+                    <section class="settings-section follow-management">
+                        <p class="section-description">관심 있는 키워드, 계정, 채널을 등록하여 맞춤형 브리핑을 받아보세요</p>
+
+                        <!-- 통계 카드들 -->
+                        <div class="follow-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">🗂️</div>
+                                <div class="stat-info">
+                                    <div class="stat-number">12</div>
+                                    <div class="stat-label">키워드</div>
+                                </div>
+                                <button class="stat-action">추가</button>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">👥</div>
+                                <div class="stat-info">
+                                    <div class="stat-number">8</div>
+                                    <div class="stat-label">SNS 계정</div>
+                                </div>
+                                <button class="stat-action">추가</button>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">💬</div>
+                                <div class="stat-info">
+                                    <div class="stat-number">15</div>
+                                    <div class="stat-label">채널</div>
+                                </div>
+                                <button class="stat-action">추가</button>
+                            </div>
+                        </div>
+
+                        <!-- 키워드 관리 -->
+                        <div class="follow-section">
+                            <div class="follow-section-header">
+                                <h3 class="follow-section-title">팔로잉 키워드</h3>
+                                <span class="follow-section-count">12개</span>
+                            </div>
+                            <div class="follow-tags">
+                                <span class="follow-tag">정치</span>
+                                <span class="follow-tag">AI</span>
+                                <span class="follow-tag">미국 주식</span>
+                                <span class="follow-tag">반도체</span>
+                                <span class="follow-tag">부동산</span>
+                                <span class="follow-tag">금리</span>
+                                <span class="follow-tag">스타트업</span>
+                                <span class="follow-tag">암호화폐</span>
+                                <button class="tag-add-btn" data-type="keyword">+ 추가</button>
+                            </div>
+                        </div>
+
+                        <!-- SNS 계정 관리 -->
+                        <div class="follow-section">
+                            <div class="follow-section-header">
+                                <h3 class="follow-section-title">팔로잉 계정</h3>
+                                <span class="follow-section-count">8개</span>
+                            </div>
+                            <div class="follow-accounts">
+                                <div class="follow-account">
+                                    <img src="sources/x.png" alt="X" class="account-platform">
+                                    <div class="account-info">
+                                        <div class="account-name">@elonmusk</div>
+                                        <div class="account-desc">일론 머스크</div>
+                                    </div>
+                                    <button class="account-remove">×</button>
+                                </div>
+                                <div class="follow-account">
+                                    <img src="sources/x.png" alt="X" class="account-platform">
+                                    <div class="account-info">
+                                        <div class="account-name">@sundarpichai</div>
+                                        <div class="account-desc">순다르 피차이</div>
+                                    </div>
+                                    <button class="account-remove">×</button>
+                                </div>
+                                <div class="follow-account">
+                                    <img src="sources/facebook.png" alt="Facebook" class="account-platform">
+                                    <div class="account-info">
+                                        <div class="account-name">Mark Zuckerberg</div>
+                                        <div class="account-desc">메타 CEO</div>
+                                    </div>
+                                    <button class="account-remove">×</button>
+                                </div>
+                                <button class="account-add-btn" data-type="account">+ 계정 추가</button>
+                            </div>
+                        </div>
+
+                        <!-- 채널 관리 -->
+                        <div class="follow-section">
+                            <div class="follow-section-header">
+                                <h3 class="follow-section-title">팔로잉 채널</h3>
+                                <span class="follow-section-count">15개</span>
+                            </div>
+                            <div class="follow-channels">
+                                <div class="follow-channel">
+                                    <div class="channel-icon">📰</div>
+                                    <div class="channel-info">
+                                        <div class="channel-name">조선일보</div>
+                                        <div class="channel-desc">www.chosun.com</div>
+                                    </div>
+                                    <button class="channel-remove">×</button>
+                                </div>
+                                <div class="follow-channel">
+                                    <div class="channel-icon">📺</div>
+                                    <div class="channel-info">
+                                        <div class="channel-name">슈카월드</div>
+                                        <div class="channel-desc">youtube.com/@shukaworld</div>
+                                    </div>
+                                    <button class="channel-remove">×</button>
+                                </div>
+                                <div class="follow-channel">
+                                    <div class="channel-icon">📰</div>
+                                    <div class="channel-info">
+                                        <div class="channel-name">TechCrunch</div>
+                                        <div class="channel-desc">techcrunch.com</div>
+                                    </div>
+                                    <button class="channel-remove">×</button>
+                                </div>
+                                <button class="channel-add-btn" data-type="channel">+ 채널 추가</button>
+                            </div>
+                        </div>
+
+                        <!-- URL 추가 섹션 -->
+                        <div class="follow-section">
+                            <div class="follow-section-header">
+                                <h3 class="follow-section-title">팔로잉 추가</h3>
+                            </div>
+                            <div class="url-add-section">
+                                <div class="url-input-group">
+                                    <input type="url" class="url-input"
+                                        placeholder="URL을 입력하세요 (예: twitter.com/username, youtube.com/channel)"
+                                        id="urlInput">
+                                    <button class="url-add-btn" id="urlAddBtn">추가</button>
+                                </div>
+                                <div class="url-suggestions">
+                                    <span class="url-suggestion" data-url="https://twitter.com/">Twitter 계정</span>
+                                    <span class="url-suggestion" data-url="https://youtube.com/">YouTube 채널</span>
+                                    <span class="url-suggestion" data-url="https://news.naver.com/">네이버 뉴스</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
                     <!-- 알림 섹션 -->
                     <section class="settings-section">
@@ -408,7 +548,7 @@
                             </div>
                         </div>
 
-                        
+
 
                         <div class="setting-item">
                             <div class="setting-info">
@@ -627,43 +767,268 @@
 
         // 팔로우 관리 기능
         function initializeFollowManagement() {
-            // 통계 수정 버튼들
+            // 통계 카드 관리 버튼들
             const statActions = document.querySelectorAll('.settings-tab .stat-action');
             statActions.forEach(btn => {
                 btn.addEventListener('click', function () {
-                    const statItem = btn.closest('.stat-item');
-                    const label = statItem.querySelector('.stat-label').textContent;
-                    alert(`${label} 편집 기능 준비 중입니다`);
+                    const statCard = btn.closest('.stat-card');
+                    const label = statCard.querySelector('.stat-label').textContent;
+                    alert(`${label} 관리 기능 준비 중입니다`);
                 });
             });
 
-            // 링크 추가 기능
-            const addBtn = document.querySelector('.settings-tab .add-btn');
-            const linkInput = document.querySelector('.settings-tab .link-input');
+            // 키워드 태그 추가 기능
+            const tagAddBtn = document.querySelector('.settings-tab .tag-add-btn');
+            if (tagAddBtn) {
+                tagAddBtn.addEventListener('click', function () {
+                    const keyword = prompt('추가할 키워드를 입력하세요:');
+                    if (keyword && keyword.trim()) {
+                        addKeywordTag(keyword.trim());
+                        updateFollowCount('키워드');
+                    }
+                });
+            }
 
-            if (addBtn && linkInput) {
-                addBtn.addEventListener('click', function () {
-                    const url = linkInput.value.trim();
+            // 계정 추가 기능
+            const accountAddBtn = document.querySelector('.settings-tab .account-add-btn');
+            if (accountAddBtn) {
+                accountAddBtn.addEventListener('click', function () {
+                    const accountUrl = prompt('SNS 계정 URL을 입력하세요:');
+                    if (accountUrl && accountUrl.trim()) {
+                        if (isValidUrl(accountUrl.trim())) {
+                            addSNSAccount(accountUrl.trim());
+                            updateFollowCount('SNS 계정');
+                        }
+                    }
+                });
+            }
+
+            // 채널 추가 기능
+            const channelAddBtn = document.querySelector('.settings-tab .channel-add-btn');
+            if (channelAddBtn) {
+                channelAddBtn.addEventListener('click', function () {
+                    const channelUrl = prompt('채널 URL을 입력하세요:');
+                    if (channelUrl && channelUrl.trim()) {
+                        if (isValidUrl(channelUrl.trim())) {
+                            addChannel(channelUrl.trim());
+                            updateFollowCount('채널');
+                        }
+                    }
+                });
+            }
+
+            // URL 빠른 추가 기능
+            const urlInput = document.getElementById('urlInput');
+            const urlAddBtn = document.getElementById('urlAddBtn');
+
+            if (urlAddBtn && urlInput) {
+                urlAddBtn.addEventListener('click', function () {
+                    const url = urlInput.value.trim();
                     if (url) {
                         if (isValidUrl(url)) {
-                            showSettingsNotification('링크가 추가되었습니다', 'success');
-                            linkInput.value = '';
-                            updateStats();
-                        } else {
-                            showSettingsNotification('올바른 URL을 입력해주세요', 'error');
+                            const type = detectUrlType(url);
+                            switch (type) {
+                                case 'keyword':
+                                    addKeywordTag(extractKeywordFromUrl(url));
+                                    updateFollowCount('키워드');
+                                    break;
+                                case 'social':
+                                    addSNSAccount(url);
+                                    updateFollowCount('SNS 계정');
+                                    break;
+                                case 'channel':
+                                    addChannel(url);
+                                    updateFollowCount('채널');
+                                    break;
+                                default:
+                                    addChannel(url); // 기본적으로 채널로 처리
+                                    updateFollowCount('채널');
+                            }
+                            urlInput.value = '';
                         }
-                    } else {
-                        showSettingsNotification('URL을 입력해주세요', 'warning');
                     }
                 });
 
                 // Enter 키로도 추가 가능
-                linkInput.addEventListener('keypress', function (e) {
+                urlInput.addEventListener('keypress', function (e) {
                     if (e.key === 'Enter') {
-                        addBtn.click();
+                        urlAddBtn.click();
                     }
                 });
             }
+
+            // URL 제안 버튼들
+            const urlSuggestions = document.querySelectorAll('.settings-tab .url-suggestion');
+            urlSuggestions.forEach(suggestion => {
+                suggestion.addEventListener('click', function () {
+                    const baseUrl = this.dataset.url;
+                    if (urlInput) {
+                        urlInput.value = baseUrl;
+                        urlInput.focus();
+                    }
+                });
+            });
+
+            // 삭제 버튼들 이벤트
+            initializeRemoveButtons();
+        }
+
+        // 키워드 태그 추가 함수
+        function addKeywordTag(keyword) {
+            const followTags = document.querySelector('.settings-tab .follow-tags');
+            const addBtn = followTags.querySelector('.tag-add-btn');
+
+            const newTag = document.createElement('span');
+            newTag.className = 'follow-tag';
+            newTag.textContent = keyword;
+            newTag.addEventListener('click', function () {
+                if (confirm(`"${keyword}" 키워드를 삭제하시겠습니까?`)) {
+                    this.remove();
+                    updateFollowCount('키워드', -1);
+                }
+            });
+
+            followTags.insertBefore(newTag, addBtn);
+        }
+
+        // SNS 계정 추가 함수
+        function addSNSAccount(url) {
+            const followAccounts = document.querySelector('.settings-tab .follow-accounts');
+            const addBtn = followAccounts.querySelector('.account-add-btn');
+
+            const accountInfo = parseAccountUrl(url);
+
+            const newAccount = document.createElement('div');
+            newAccount.className = 'follow-account';
+            newAccount.innerHTML = `
+                <img src="${accountInfo.platform}" alt="${accountInfo.platformName}" class="account-platform">
+                <div class="account-info">
+                    <div class="account-name">${accountInfo.username}</div>
+                    <div class="account-desc">${accountInfo.description}</div>
+                </div>
+                <button class="account-remove">×</button>
+            `;
+
+            followAccounts.insertBefore(newAccount, addBtn);
+
+            // 삭제 버튼 이벤트 추가
+            const removeBtn = newAccount.querySelector('.account-remove');
+            removeBtn.addEventListener('click', function () {
+                if (confirm(`"${accountInfo.username}" 계정을 삭제하시겠습니까?`)) {
+                    newAccount.remove();
+                    updateFollowCount('SNS 계정', -1);
+                }
+            });
+        }
+
+        // 채널 추가 함수
+        function addChannel(url) {
+            const followChannels = document.querySelector('.settings-tab .follow-channels');
+            const addBtn = followChannels.querySelector('.channel-add-btn');
+
+            const channelInfo = parseChannelUrl(url);
+
+            const newChannel = document.createElement('div');
+            newChannel.className = 'follow-channel';
+            newChannel.innerHTML = `
+                <div class="channel-icon">${channelInfo.icon}</div>
+                <div class="channel-info">
+                    <div class="channel-name">${channelInfo.name}</div>
+                    <div class="channel-desc">${channelInfo.url}</div>
+                </div>
+                <button class="channel-remove">×</button>
+            `;
+
+            followChannels.insertBefore(newChannel, addBtn);
+
+            // 삭제 버튼 이벤트 추가
+            const removeBtn = newChannel.querySelector('.channel-remove');
+            removeBtn.addEventListener('click', function () {
+                if (confirm(`"${channelInfo.name}" 채널을 삭제하시겠습니까?`)) {
+                    newChannel.remove();
+                    updateFollowCount('채널', -1);
+                }
+            });
+        }
+
+        // 삭제 버튼들 초기화
+        function initializeRemoveButtons() {
+            // 계정 삭제 버튼들
+            const accountRemoveBtns = document.querySelectorAll('.settings-tab .account-remove');
+            accountRemoveBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const account = this.closest('.follow-account');
+                    const accountName = account.querySelector('.account-name').textContent;
+                    if (confirm(`"${accountName}" 계정을 삭제하시겠습니까?`)) {
+                        account.remove();
+                        updateFollowCount('SNS 계정', -1);
+                    }
+                });
+            });
+
+            // 채널 삭제 버튼들
+            const channelRemoveBtns = document.querySelectorAll('.settings-tab .channel-remove');
+            channelRemoveBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const channel = this.closest('.follow-channel');
+                    const channelName = channel.querySelector('.channel-name').textContent;
+                    if (confirm(`"${channelName}" 채널을 삭제하시겠습니까?`)) {
+                        channel.remove();
+                        updateFollowCount('채널', -1);
+                    }
+                });
+            });
+
+            // 키워드 태그 클릭 삭제
+            const followTags = document.querySelectorAll('.settings-tab .follow-tag');
+            followTags.forEach(tag => {
+                tag.addEventListener('click', function () {
+                    const keyword = this.textContent;
+                    if (confirm(`"${keyword}" 키워드를 삭제하시겠습니까?`)) {
+                        this.remove();
+                        updateFollowCount('키워드', -1);
+                    }
+                });
+            });
+        }
+
+        // 팔로우 카운트 업데이트
+        function updateFollowCount(type, change = 1) {
+            const statCards = document.querySelectorAll('.settings-tab .stat-card');
+            statCards.forEach(card => {
+                const label = card.querySelector('.stat-label').textContent;
+                if (label === type) {
+                    const numberElement = card.querySelector('.stat-number');
+                    const currentCount = parseInt(numberElement.textContent);
+                    const newCount = Math.max(0, currentCount + change);
+                    numberElement.textContent = newCount;
+
+                    // 애니메이션 효과
+                    numberElement.style.transform = 'scale(1.2)';
+                    numberElement.style.color = change > 0 ? '#27ae60' : '#e74c3c';
+                    setTimeout(() => {
+                        numberElement.style.transform = 'scale(1)';
+                        numberElement.style.color = 'var(--accent-blue)';
+                    }, 300);
+
+                    // 섹션별 카운트도 업데이트
+                    updateSectionCount(type, newCount);
+                }
+            });
+        }
+
+        // 섹션별 카운트 업데이트
+        function updateSectionCount(type, count) {
+            const sections = document.querySelectorAll('.settings-tab .follow-section');
+            sections.forEach(section => {
+                const title = section.querySelector('.follow-section-title').textContent;
+                if ((type === '키워드' && title === '관심 키워드') ||
+                    (type === 'SNS 계정' && title === '팔로우 계정') ||
+                    (type === '채널' && title === '구독 채널')) {
+                    const countElement = section.querySelector('.follow-section-count');
+                    countElement.textContent = `${count}개`;
+                }
+            });
         }
 
         // 결제/구독 관리 기능
@@ -697,10 +1062,7 @@
 
                     console.log(`${settingLabel}: ${isEnabled ? '활성화' : '비활성화'}`);
 
-                    showSettingsNotification(
-                        `${settingLabel} ${isEnabled ? '활성화' : '비활성화'}됨`,
-                        'info'
-                    );
+                    // 토스트 알림 제거됨
                 });
             });
         }
@@ -746,6 +1108,134 @@
             }
         }
 
+        // URL 타입 감지
+        function detectUrlType(url) {
+            const domain = new URL(url).hostname.toLowerCase();
+
+            if (domain.includes('twitter.com') || domain.includes('x.com') ||
+                domain.includes('facebook.com') || domain.includes('instagram.com') ||
+                domain.includes('linkedin.com')) {
+                return 'social';
+            } else if (domain.includes('youtube.com') || domain.includes('youtu.be') ||
+                domain.includes('twitch.tv') || domain.includes('podcast')) {
+                return 'channel';
+            } else if (url.includes('keyword=') || url.includes('search=')) {
+                return 'keyword';
+            } else {
+                return 'channel'; // 기본값
+            }
+        }
+
+        // URL에서 키워드 추출
+        function extractKeywordFromUrl(url) {
+            try {
+                const urlObj = new URL(url);
+                const keyword = urlObj.searchParams.get('keyword') ||
+                    urlObj.searchParams.get('search') ||
+                    urlObj.searchParams.get('q') ||
+                    '새 키워드';
+                return keyword;
+            } catch (_) {
+                return '새 키워드';
+            }
+        }
+
+        // SNS 계정 URL 파싱
+        function parseAccountUrl(url) {
+            try {
+                const urlObj = new URL(url);
+                const domain = urlObj.hostname.toLowerCase();
+                const pathname = urlObj.pathname;
+
+                let platform = 'sources/x.png';
+                let platformName = 'Unknown';
+                let username = pathname.split('/')[1] || 'unknown';
+                let description = '';
+
+                if (domain.includes('twitter.com') || domain.includes('x.com')) {
+                    platform = 'sources/x.png';
+                    platformName = 'X';
+                    username = '@' + username;
+                    description = 'X (Twitter) 계정';
+                } else if (domain.includes('facebook.com')) {
+                    platform = 'sources/facebook.png';
+                    platformName = 'Facebook';
+                    description = '페이스북 계정';
+                } else if (domain.includes('instagram.com')) {
+                    platform = 'sources/x.png'; // 인스타그램 아이콘이 없어서 임시로
+                    platformName = 'Instagram';
+                    username = '@' + username;
+                    description = '인스타그램 계정';
+                } else if (domain.includes('linkedin.com')) {
+                    platform = 'sources/x.png'; // 링크드인 아이콘이 없어서 임시로
+                    platformName = 'LinkedIn';
+                    description = '링크드인 계정';
+                }
+
+                return {
+                    platform,
+                    platformName,
+                    username,
+                    description
+                };
+            } catch (_) {
+                return {
+                    platform: 'sources/x.png',
+                    platformName: 'Unknown',
+                    username: 'unknown',
+                    description: '알 수 없는 계정'
+                };
+            }
+        }
+
+        // 채널 URL 파싱
+        function parseChannelUrl(url) {
+            try {
+                const urlObj = new URL(url);
+                const domain = urlObj.hostname.toLowerCase();
+                const pathname = urlObj.pathname;
+
+                let icon = '📰';
+                let name = domain;
+
+                if (domain.includes('youtube.com') || domain.includes('youtu.be')) {
+                    icon = '📺';
+                    const channelMatch = pathname.match(/\/(channel|c|user)\/([^\/]+)/);
+                    name = channelMatch ? channelMatch[2] : 'YouTube 채널';
+                } else if (domain.includes('twitch.tv')) {
+                    icon = '🎮';
+                    name = pathname.split('/')[1] || 'Twitch 채널';
+                } else if (domain.includes('naver.com')) {
+                    icon = '📰';
+                    name = '네이버 뉴스';
+                } else if (domain.includes('chosun.com')) {
+                    icon = '📰';
+                    name = '조선일보';
+                } else if (domain.includes('techcrunch.com')) {
+                    icon = '📰';
+                    name = 'TechCrunch';
+                } else if (domain.includes('podcast')) {
+                    icon = '🎙️';
+                    name = '팟캐스트';
+                } else {
+                    icon = '🌐';
+                    name = domain.replace('www.', '');
+                }
+
+                return {
+                    icon,
+                    name,
+                    url: domain
+                };
+            } catch (_) {
+                return {
+                    icon: '🌐',
+                    name: '알 수 없는 채널',
+                    url: url
+                };
+            }
+        }
+
         // 통계 업데이트
         function updateStats() {
             const statNumbers = document.querySelectorAll('.settings-tab .stat-number');
@@ -763,72 +1253,10 @@
             });
         }
 
-        // 설정 알림 표시
+        // 설정 알림 표시 (비활성화됨)
         function showSettingsNotification(message, type = 'info') {
-            // 기존 알림 제거
-            const existingNotification = document.querySelector('.settings-notification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-
-            // 새 알림 생성
-            const notification = document.createElement('div');
-            notification.className = `settings-notification notification-${type}`;
-            notification.innerHTML = `
-                <div class="notification-content">
-                    <span class="notification-message">${message}</span>
-                    <button class="notification-close">&times;</button>
-                </div>
-            `;
-
-            // 스타일 적용
-            Object.assign(notification.style, {
-                position: 'fixed',
-                top: '20px',
-                right: '20px',
-                padding: '1rem 1.5rem',
-                borderRadius: '8px',
-                color: 'white',
-                fontSize: '14px',
-                fontWeight: '500',
-                zIndex: '9999',
-                transform: 'translateX(100%)',
-                transition: 'transform 0.3s ease',
-                minWidth: '300px',
-                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
-            });
-
-            // 타입에 따른 색상 설정
-            const colors = {
-                success: '#10b981',
-                error: '#ef4444',
-                warning: '#f59e0b',
-                info: '#3b82f6'
-            };
-            notification.style.backgroundColor = colors[type] || colors.info;
-
-            // 페이지에 추가
-            document.body.appendChild(notification);
-
-            // 애니메이션으로 표시
-            requestAnimationFrame(() => {
-                notification.style.transform = 'translateX(0)';
-            });
-
-            // 닫기 버튼 이벤트
-            const closeBtn = notification.querySelector('.notification-close');
-            closeBtn.addEventListener('click', () => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => notification.remove(), 300);
-            });
-
-            // 3초 후 자동 제거
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.style.transform = 'translateX(100%)';
-                    setTimeout(() => notification.remove(), 300);
-                }
-            }, 3000);
+            // 토스트 알림 기능 비활성화
+            return;
         }
 
         // 프로젝트 기능 초기화
@@ -860,7 +1288,6 @@
                     const newName = prompt('프로젝트 이름을 입력하세요:', projectSelect.options[projectSelect.selectedIndex].text);
                     if (newName && newName.trim()) {
                         projectSelect.options[projectSelect.selectedIndex].text = newName.trim();
-                        showProjectNotification('프로젝트 이름이 변경되었습니다', 'success');
                     }
                 });
             }
@@ -874,14 +1301,13 @@
                         option.text = newName.trim();
                         option.selected = true;
                         projectSelect.appendChild(option);
-                        showProjectNotification('새 프로젝트가 생성되었습니다', 'success');
                     }
                 });
             }
 
             if (projectSelect) {
                 projectSelect.addEventListener('change', function () {
-                    showProjectNotification('프로젝트가 전환되었습니다', 'info');
+                    // 프로젝트 전환 처리
                 });
             }
         }
@@ -920,7 +1346,6 @@
                     if (draggingCard) {
                         this.appendChild(draggingCard);
                         updateCategoryCount();
-                        showProjectNotification('카드가 이동되었습니다', 'success');
                     }
                 });
             });
@@ -949,7 +1374,6 @@
                     const highlightCards = document.querySelectorAll('#projectsTab .highlight-card');
 
                     if (highlightCards.length === 0) {
-                        showProjectNotification('내보낼 하이라이트가 없습니다', 'warning');
                         return;
                     }
 
@@ -960,7 +1384,6 @@
                     setTimeout(() => {
                         this.innerHTML = '<i class="ph ph-magic-wand"></i><span>AI 초안 내보내기</span>';
                         this.disabled = false;
-                        showProjectNotification('AI 초안이 생성되었습니다', 'success');
 
                         // 실제로는 생성된 초안을 새 창이나 모달로 표시
                         console.log('AI 초안 생성 완료:', {
@@ -987,16 +1410,15 @@
 
                     switch (action) {
                         case '1':
-                            showProjectNotification('편집 기능 준비 중입니다', 'info');
+                            // 편집 기능
                             break;
                         case '2':
-                            showProjectNotification('카드가 복사되었습니다', 'success');
+                            // 카드 복사
                             break;
                         case '3':
                             if (confirm('이 하이라이트를 삭제하시겠습니까?')) {
                                 card.remove();
                                 updateCategoryCount();
-                                showProjectNotification('하이라이트가 삭제되었습니다', 'success');
                             }
                             break;
                     }
@@ -1006,14 +1428,15 @@
             actionBtns.forEach(btn => {
                 btn.addEventListener('click', function (e) {
                     e.stopPropagation();
-                    showProjectNotification('배경지식 기능 준비 중입니다', 'info');
+                    // 배경지식 기능
                 });
             });
         }
 
-        // 프로젝트 알림 표시
+        // 프로젝트 알림 표시 (비활성화됨)
         function showProjectNotification(message, type = 'info') {
-            showSettingsNotification(message, type); // 기존 알림 시스템 재사용
+            // 토스트 알림 기능 비활성화
+            return;
         }
 
         // 추가 안전장치: 모든 스크립트 로드 후 확인
