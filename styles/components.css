@@ -2823,6 +2823,7 @@
     position: relative;
     height: calc(100% - 73px);
     overflow: hidden;
+    width: 100%;
     background: #f9fafb;
 }
 
@@ -2844,8 +2845,8 @@
 
 .cluster-hotspot {
     position: absolute;
-    background: rgba(59, 130, 246, 0.1);
-    border: 2px solid rgba(59, 130, 246, 0.3);
+    background: rgba(52, 152, 219, 0.1);
+    border: 2px solid rgba(52, 152, 219, 0.3);
     border-radius: 8px;
     cursor: pointer;
     pointer-events: all;
@@ -2854,9 +2855,10 @@
 }
 
 .cluster-hotspot:hover {
-    background: rgba(59, 130, 246, 0.2);
-    border-color: rgba(59, 130, 246, 0.6);
+    background: rgba(52, 152, 219, 0.2);
+    border-color: rgba(52, 152, 219, 0.6);
     opacity: 1;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
 }
 
 /* 데이터 테이블 영역 */
@@ -2958,8 +2960,9 @@
 }
 
 .analysis-table tr.selected {
-    background: #eff6ff !important;
-    border-left: 3px solid #3b82f6;
+    background: #ecf4ff !important;
+    border-left: 3px solid #3498db;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.15);
 }
 
 .editable-row td[contenteditable="true"] {
@@ -2968,10 +2971,11 @@
 }
 
 .editable-row td[contenteditable="true"]:focus {
-    background: #eff6ff;
-    outline: 2px solid #3b82f6;
+    background: #ecf4ff;
+    outline: 2px solid #3498db;
     outline-offset: -2px;
     border-radius: 4px;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
 }
 
 .importance-select {
@@ -3014,33 +3018,65 @@
 
 /* 우측 사이드바 */
 .analysis-sidebar {
-    width: 420px;
+    width: 430px;
     display: flex;
     flex-direction: column;
     gap: 24px;
     flex-shrink: 0;
 }
 
-/* 피시본 다이어그램 */
-.fishbone-section {
+/* 통합된 원인 분석 섹션 */
+.unified-analysis-section {
     background: #ffffff;
     border-radius: 12px;
     border: 1px solid #e5e7eb;
-    overflow: hidden;
-    flex: 0 0 350px;
-    max-height: 350px;
+    padding: 24px;
+    flex: 1;
 }
 
-.fishbone-header {
-    padding: 16px 20px;
-    border-bottom: 1px solid #e5e7eb;
+/* 빈 상태 (선택되지 않은 상태) */
+.analysis-empty-state {
+    text-align: center;
+    padding: 40px 20px;
 }
 
-.fishbone-header h4 {
+.empty-state-icon {
+    margin-bottom: 16px;
+}
+
+.empty-state-icon i {
+    font-size: 48px;
+    color: #9ca3af;
+}
+
+.analysis-empty-state h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
     margin: 0 0 8px 0;
+}
+
+.analysis-empty-state p {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 분석 상태 (클러스터 선택된 상태) */
+.analysis-content-state {
+    display: block;
+}
+
+.analysis-header {
+    margin-bottom: 24px;
+}
+
+.analysis-header h4 {
     font-size: 16px;
     font-weight: 600;
     color: #111827;
+    margin: 0 0 12px 0;
 }
 
 .analysis-meta {
@@ -3049,103 +3085,96 @@
     flex-wrap: wrap;
 }
 
-.analysis-type,
-.analysis-method,
-.analysis-machine {
+.analysis-meta span {
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    padding: 2px 6px;
-    border-radius: 3px;
-    background: #f3f4f6;
-    color: #6b7280;
-}
-
-.fishbone-diagram {
-    padding: 16px;
-    background: #f9fafb;
-    min-height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.fishbone-image {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    border-radius: 6px;
-    border: 1px solid #e5e7eb;
-    object-fit: contain;
-}
-
-/* 클러스터 정보 */
-.cluster-info-section {
-    background: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
-    padding: 20px;
-    flex: 1;
-}
-
-.cluster-title h4 {
-    margin: 0 0 16px 0;
-    font-size: 16px;
-    font-weight: 600;
-    color: #111827;
-}
-
-.cause-tags {
-    margin-bottom: 20px;
-}
-
-.cause-category {
-    margin-bottom: 12px;
-}
-
-.category-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #374151;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.tags-container {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-}
-
-.cause-tag {
-    background: #f3f4f6;
-    color: #6b7280;
-    padding: 4px 8px;
+    padding: 3px 8px;
     border-radius: 4px;
-    font-size: 12px;
-    font-weight: 500;
 }
 
-.root-causes {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.analysis-type {
+    background: #dbeafe;
+    color: #1e40af;
 }
 
-.causes-section h5 {
-    margin: 0 0 8px 0;
+.analysis-method {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.analysis-machine {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* 주요 원인 카테고리 섹션 */
+.main-causes-section {
+    margin-bottom: 24px;
+}
+
+.main-causes-section h5 {
+    margin: 0 0 12px 0;
     font-size: 14px;
     font-weight: 600;
     color: #374151;
 }
 
-.causes-list {
+.main-cause-tags {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
+.main-cause-tags .cause-tag.primary {
+    background: #3498db;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.main-cause-tags .cause-tag.primary:hover {
+    background: #2980b9;
+    transform: translateY(-1px);
+}
+
+/* 근본 원인 섹션 */
+.root-causes-section {
+    margin-bottom: 24px;
+}
+
+.root-causes-section h5 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.root-causes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* 잠재 원인 섹션 */
+.potential-causes-section h5 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.potential-causes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* 공통 원인 아이템 스타일 */
 .cause-item {
     padding: 8px 12px;
     background: #f9fafb;

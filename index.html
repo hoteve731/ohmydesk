@@ -502,44 +502,42 @@
 
                         <!-- 우측 사이드바 -->
                         <div class="analysis-sidebar">
-                            <!-- 피시본 다이어그램 -->
-                            <div class="fishbone-section">
-                                <div class="fishbone-header">
-                                    <h4>원인 분석: 사용자 경험 개선</h4>
-                                    <div class="analysis-meta">
-                                        <span class="analysis-type">PEOPLE</span>
-                                        <span class="analysis-method">PROCESS</span>
-                                        <span class="analysis-machine">TECHNOLOGY</span>
+                            <!-- 통합된 원인 분석 섹션 -->
+                            <div class="unified-analysis-section">
+                                <!-- 기본 상태 (선택되지 않은 상태) -->
+                                <div class="analysis-empty-state" id="analysisEmptyState">
+                                    <div class="empty-state-icon">
+                                        <i class="ph ph-cursor-click"></i>
                                     </div>
-                                </div>
-                                <div class="fishbone-diagram">
-                                    <img src="images/fishbone.png" alt="피시본 다이어그램" class="fishbone-image">
-                                </div>
-                            </div>
-
-                            <!-- 클러스터 정보 -->
-                            <div class="cluster-info-section">
-                                <div class="cluster-title">
-                                    <h4>문제: 사용자 경험 개선</h4>
+                                    <h4>다이어그램을 클릭해서 상세 분석하세요</h4>
+                                    <p>왼쪽 다이어그램의 클러스터를 선택하면<br>해당 클러스터의 원인 분석을 확인할 수 있습니다.</p>
                                 </div>
 
-                                <!-- 원인 태그들 -->
-                                <div class="cause-tags">
-                                    <div class="cause-category">
-                                        <span class="category-label">주요 원인 카테고리</span>
-                                        <div class="tags-container">
-                                            <span class="cause-tag">인터페이스 복잡성</span>
-                                            <span class="cause-tag">피드백 부족</span>
-                                            <span class="cause-tag">학습 곡선</span>
+                                <!-- 분석 상태 (클러스터 선택된 상태) -->
+                                <div class="analysis-content-state" id="analysisContentState" style="display: none;">
+                                    <div class="analysis-header">
+                                        <h4 id="analysisTitle">원인 분석: 클러스터 선택</h4>
+                                        <div class="analysis-meta">
+                                            <span class="analysis-type">PEOPLE</span>
+                                            <span class="analysis-method">PROCESS</span>
+                                            <span class="analysis-machine">TECHNOLOGY</span>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- 근본원인 리스트 -->
-                                <div class="root-causes">
-                                    <div class="causes-section">
-                                        <h5>근본 원인:</h5>
-                                        <div class="causes-list">
+                                    <!-- 주요 원인 카테고리 태그들 -->
+                                    <div class="main-causes-section">
+                                        <h5>주요 원인 카테고리</h5>
+                                        <div class="main-cause-tags" id="mainCauseTags">
+                                            <span class="cause-tag primary">인터페이스 복잡성</span>
+                                            <span class="cause-tag primary">피드백 부족</span>
+                                            <span class="cause-tag primary">학습 곡선</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- 근본 원인들 -->
+                                    <div class="root-causes-section">
+                                        <h5>근본 원인</h5>
+                                        <div class="root-causes-list" id="rootCausesList">
                                             <div class="cause-item">
                                                 <span class="cause-text">사용자 요구사항 수집 과정의 미비</span>
                                             </div>
@@ -549,14 +547,18 @@
                                         </div>
                                     </div>
 
-                                    <div class="causes-section">
-                                        <h5>잠재 원인:</h5>
-                                        <div class="causes-list">
+                                    <!-- 잠재 원인들 -->
+                                    <div class="potential-causes-section">
+                                        <h5>잠재 원인</h5>
+                                        <div class="potential-causes-list" id="potentialCausesList">
                                             <div class="cause-item">
                                                 <span class="cause-text">사용자 교육 및 온보딩 개선 필요</span>
                                             </div>
                                             <div class="cause-item">
                                                 <span class="cause-text">반응형 디자인 및 접근성 고려</span>
+                                            </div>
+                                            <div class="cause-item">
+                                                <span class="cause-text">사용자 피드백 수집 시스템 구축</span>
                                             </div>
                                         </div>
                                     </div>
@@ -2064,7 +2066,7 @@
                 }
             });
 
-            // 사이드바 정보 업데이트 (시뮬레이션)
+            // 사이드바 상태 전환 및 정보 업데이트
             updateSidebarInfo(clusterId);
         }
 
@@ -2083,20 +2085,36 @@
                 '10': '모바일 최적화'
             };
 
-            const clusterTitle = document.querySelector('.cluster-title h4');
-            if (clusterTitle) {
-                clusterTitle.textContent = `문제: ${clusterTitles[clusterId] || '클러스터'}`;
-            }
+            // 빈 상태와 내용 상태 전환
+            const emptyState = document.getElementById('analysisEmptyState');
+            const contentState = document.getElementById('analysisContentState');
 
-            // 피쉬본 다이어그램 헤더 업데이트
-            const fishboneHeader = document.querySelector('.fishbone-header h4');
-            if (fishboneHeader) {
-                fishboneHeader.textContent = `원인 분석: ${clusterTitles[clusterId] || '클러스터'}`;
-            }
+            if (clusterId && clusterTitles[clusterId]) {
+                // 클러스터가 선택된 경우: 빈 상태 숨기고 내용 상태 표시
+                if (emptyState) emptyState.style.display = 'none';
+                if (contentState) contentState.style.display = 'block';
 
-            // 원인 태그들 업데이트
-            const tagsContainer = document.querySelector('.tags-container');
-            const causeTags = {
+                // 제목 업데이트
+                const analysisTitle = document.getElementById('analysisTitle');
+                if (analysisTitle) {
+                    analysisTitle.textContent = `원인 분석: ${clusterTitles[clusterId]}`;
+                }
+
+                // 주요 원인 태그들 업데이트
+                updateMainCauseTags(clusterId);
+
+                // 근본원인/잠재원인 업데이트
+                updateCausesList(clusterId);
+            } else {
+                // 클러스터가 선택되지 않은 경우: 빈 상태 표시
+                if (emptyState) emptyState.style.display = 'block';
+                if (contentState) contentState.style.display = 'none';
+            }
+        }
+
+        // 주요 원인 태그들 업데이트
+        function updateMainCauseTags(clusterId) {
+            const mainCauseTags = {
                 '1': ['인터페이스 복잡성', '피드백 부족', '학습 곡선'],
                 '2': ['인프라 한계', '코드 최적화', '리소스 관리'],
                 '3': ['문서화 부족', '역할 모호성', '승인 절차'],
@@ -2109,20 +2127,18 @@
                 '10': ['반응형 디자인', '터치 인터페이스', '성능 최적화']
             };
 
-            if (tagsContainer) {
-                tagsContainer.innerHTML = causeTags[clusterId]?.map(tag =>
-                    `<span class="cause-tag">${tag}</span>`
+            const mainCauseTagsContainer = document.getElementById('mainCauseTags');
+            if (mainCauseTagsContainer) {
+                mainCauseTagsContainer.innerHTML = mainCauseTags[clusterId]?.map(tag =>
+                    `<span class="cause-tag primary">${tag}</span>`
                 ).join('') || '';
             }
-
-            // 근본원인/잠재원인 업데이트
-            updateCausesList(clusterId);
         }
 
         // 원인 리스트 업데이트
         function updateCausesList(clusterId) {
-            const rootCausesList = document.querySelector('.root-causes .causes-section:first-child .causes-list');
-            const potentialCausesList = document.querySelector('.root-causes .causes-section:last-child .causes-list');
+            const rootCausesList = document.getElementById('rootCausesList');
+            const potentialCausesList = document.getElementById('potentialCausesList');
 
             const rootCauses = {
                 '1': ['사용자 요구사항 수집 과정의 미비', '디자인 검증 프로세스 부재'],
@@ -2138,16 +2154,16 @@
             };
 
             const potentialCauses = {
-                '1': ['사용자 교육 및 온보딩 개선 필요', '반응형 디자인 및 접근성 고려'],
-                '2': ['캐싱 시스템 도입', 'CDN 및 로드밸런싱 구현'],
-                '3': ['워크플로우 자동화 도구 도입', '성과 측정 시스템 구축'],
-                '4': ['소셜미디어 마케팅 강화', '고객 여정 분석 도구 활용'],
-                '5': ['AI 챗봇 도입 검토', '다채널 고객 지원 시스템 구축'],
-                '6': ['제로 트러스트 보안 모델 도입', 'GDPR 및 개인정보보호법 준수'],
-                '7': ['슬랙 등 협업 도구 활용 확대', '정기적인 팀 빌딩 프로그램 운영'],
-                '8': ['애자일 개발 방법론 도입', '사용자 중심 설계(UCD) 프로세스 구축'],
-                '9': ['클라우드 비용 최적화 도구 도입', 'DevOps 및 CI/CD 파이프라인 구축'],
-                '10': ['PWA(Progressive Web App) 도입', '모바일 앱 네이티브 개발 검토']
+                '1': ['사용자 교육 및 온보딩 개선 필요', '반응형 디자인 및 접근성 고려', '사용자 피드백 수집 시스템 구축'],
+                '2': ['캐싱 시스템 도입', 'CDN 및 로드밸런싱 구현', '성능 모니터링 시스템 강화'],
+                '3': ['워크플로우 자동화 도구 도입', '성과 측정 시스템 구축', '직무 기술서 세분화'],
+                '4': ['소셜미디어 마케팅 강화', '고객 여정 분석 도구 활용', '브랜드 아이덴티티 재정립'],
+                '5': ['AI 챗봇 도입 검토', '다채널 고객 지원 시스템 구축', '고객 만족도 추적 시스템'],
+                '6': ['제로 트러스트 보안 모델 도입', 'GDPR 및 개인정보보호법 준수', '정기적 보안 교육 프로그램'],
+                '7': ['슬랙 등 협업 도구 활용 확대', '정기적인 팀 빌딩 프로그램 운영', '교차 기능 팀 구성'],
+                '8': ['애자일 개발 방법론 도입', '사용자 중심 설계(UCD) 프로세스 구축', '제품 분석 도구 도입'],
+                '9': ['클라우드 비용 최적화 도구 도입', 'DevOps 및 CI/CD 파이프라인 구축', '비용 대비 효과 분석 시스템'],
+                '10': ['PWA(Progressive Web App) 도입', '모바일 앱 네이티브 개발 검토', '반응형 웹 디자인 개선']
             };
 
             if (rootCausesList) {
@@ -3210,6 +3226,25 @@
             console.log('✅ 도움말 탭 기능 초기화 완료');
         }
 
+        // 원인 분석 사이드바 초기 상태 설정
+        function initializeAnalysisSidebar() {
+            console.log('🔍 원인 분석 사이드바 초기화');
+
+            // 초기 상태는 빈 상태로 설정
+            const emptyState = document.getElementById('analysisEmptyState');
+            const contentState = document.getElementById('analysisContentState');
+
+            if (emptyState) {
+                emptyState.style.display = 'block';
+            }
+
+            if (contentState) {
+                contentState.style.display = 'none';
+            }
+
+            console.log('✅ 원인 분석 사이드바 초기화 완료 (빈 상태)');
+        }
+
         // 도움말 네비게이션 초기화
         function initializeHelpNavigation() {
             const helpNavCards = document.querySelectorAll('.help-nav-card');
@@ -3279,6 +3314,9 @@
 
             // 프로필 드롭다운 초기화
             initializeProfileDropdown();
+
+            // 원인 분석 사이드바 초기 상태 설정 (빈 상태로 시작)
+            initializeAnalysisSidebar();
 
             // 만약 데이터가 없다면 강제로 다시 시도
             if (!window.issueClusters || window.issueClusters.length === 0) {
