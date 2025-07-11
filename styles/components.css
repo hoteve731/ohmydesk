@@ -38,7 +38,7 @@
     top: 0;
     bottom: 0;
     width: 5px;
-    background: linear-gradient(180deg, #7c3aed 0%, #0A84FF 100%);
+    background: linear-gradient(180deg, #7c3aed 0%, #3498DB 100%);
     border-radius: 0 10px 10px 0;
 }
 
@@ -134,7 +134,7 @@
 }
 
 .chart-bar {
-    background: #0A84FF;
+    background: #3498DB;
     border-radius: 2px 2px 0 0;
     min-width: 24px;
     position: relative;
@@ -228,7 +228,7 @@
 }
 
 .category-dot.blue {
-    background: #007AFF;
+    background: #3498DB;
 }
 
 .category-dot.green {
@@ -281,7 +281,7 @@
 }
 
 .quote-card.blue::before {
-    background: #007AFF;
+    background: #3498DB;
 }
 
 .quote-card.green::before {
@@ -309,7 +309,7 @@
 
 .drop-indicator {
     height: 2px;
-    background: #0A84FF;
+    background: #3498DB;
     border-radius: 1px;
     margin: 4px 0;
     opacity: 0;
@@ -1874,7 +1874,7 @@
 }
 
 #helpTab .step-number {
-    background: linear-gradient(135deg, #7c3aed 0%, #0A84FF 100%);
+    background: linear-gradient(135deg, #7c3aed 0%, #3498DB 100%);
     color: white;
     width: 40px;
     height: 40px;
@@ -1981,7 +1981,7 @@
 }
 
 .guide-step-number {
-    background: linear-gradient(135deg, #7c3aed 0%, #0A84FF 100%);
+    background: linear-gradient(135deg, #7c3aed 0%, #3498DB 100%);
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
@@ -2026,7 +2026,7 @@
 
 .highlight-sample.blue {
     background: #dbeafe;
-    color: #2563eb;
+    color: #3498DB;
 }
 
 .highlight-sample.green {
@@ -2245,7 +2245,7 @@
 
 #briefingTab .briefing-tab-btn.active {
     background: #dbeafe !important;
-    border-color: #3b82f6 !important;
+    border-color: #3498DB !important;
     color: #1e40af !important;
     transform: none !important;
     box-shadow: none !important;
@@ -2264,7 +2264,7 @@
 }
 
 #briefingTab .briefing-tab-btn.active .step-number {
-    color: #3b82f6 !important;
+    color: #3498DB !important;
 }
 
 #briefingTab .briefing-tab-btn span {
@@ -2278,17 +2278,16 @@
     flex: 1;
     background: #f8fafc;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
     width: 100%;
     height: calc(100vh - 120px);
 }
 
 .briefing-tab-panel {
     display: none;
-    padding: 60px 32px;
+    padding: 60px 32px 120px 32px;
     width: 100%;
-    height: 100%;
-    min-height: 400px;
+    min-height: calc(100vh - 120px);
 }
 
 .briefing-tab-panel.active {
@@ -2313,7 +2312,7 @@
 .placeholder-icon {
     width: 120px;
     height: 80px;
-    background: #3b82f6;
+    background: #3498DB;
     border-radius: 16px;
     margin-bottom: 32px;
     position: relative;
@@ -2322,7 +2321,7 @@
     justify-content: center;
     color: white;
     font-size: 32px;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
 }
 
 .placeholder-icon.upload-icon {
@@ -2335,7 +2334,7 @@
 }
 
 .placeholder-icon.analysis-icon {
-    background: #3b82f6;
+    background: #3498DB;
 }
 
 .placeholder-icon.analysis-icon::before {
@@ -2493,7 +2492,7 @@
 }
 
 .file-upload-area:hover {
-    border-color: #3b82f6;
+    border-color: #3498DB;
     background: #f8fafc;
 }
 
@@ -2517,7 +2516,7 @@
 }
 
 .upload-btn {
-    background: #3b82f6;
+    background: #3498DB;
     color: white;
     border: none;
     padding: 12px 24px;
@@ -2529,7 +2528,7 @@
 }
 
 .upload-btn:hover {
-    background: #2563eb;
+    background: #2980B9;
 }
 
 /* URL 업로드 영역 */
@@ -2597,7 +2596,7 @@
 }
 
 .url-submit-btn {
-    background: #3b82f6;
+    background: #3498DB;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -2609,7 +2608,7 @@
 }
 
 .url-submit-btn:hover {
-    background: #2563eb;
+    background: #2980B9;
 }
 
 /* 업로드된 자료 목록 */
@@ -2656,7 +2655,7 @@
 .material-source {
     font-size: 14px;
     font-weight: 500;
-    color: #3b82f6;
+    color: #3498DB;
     min-width: 140px;
     margin-top: 2px;
 }
@@ -2685,24 +2684,28 @@
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 80px;
-    height: 80px;
-    background: #3b82f6;
+    width: 140px;
+    height: 50px;
+    background: #3498DB;
     color: white;
     border: none;
-    border-radius: 50%;
+    border-radius: 25px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
     transition: all 0.3s ease;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .floating-next-btn:hover {
-    background: #2563eb;
+    background: #2980B9;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
 }
 
 .floating-next-btn:active {
@@ -2739,8 +2742,8 @@
     }
 
     .floating-next-btn {
-        width: 60px;
-        height: 60px;
+        width: 120px;
+        height: 44px;
         bottom: 20px;
         right: 20px;
         font-size: 14px;

@@ -129,8 +129,8 @@
 .reader-source {
     font-size: 14px;
     font-weight: 600;
-    color: #007AFF;
-    background: rgba(0, 122, 255, 0.1);
+    color: #3498DB;
+    background: rgba(52, 152, 219, 0.1);
     padding: 6px 12px;
     border-radius: 8px;
     border: none;
@@ -155,7 +155,7 @@
 
 .reader-original-link:hover {
     background: rgba(120, 120, 128, 0.20);
-    color: #007AFF;
+    color: #3498DB;
 }
 
 .reader-original-link i {
@@ -305,8 +305,8 @@
 }
 
 .reader-body blockquote {
-    border-left: 4px solid #007AFF;
-    background: rgba(0, 122, 255, 0.04);
+    border-left: 4px solid #3498DB;
+    background: rgba(52, 152, 219, 0.04);
     padding: 16px 20px;
     margin: 24px 0;
     border-radius: 8px;
