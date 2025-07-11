@@ -369,13 +369,13 @@ body {
 /* 브리핑 탭 스타일 */
 #briefingTab {
     display: none;
-    grid-template-columns: 3.5fr 6.5fr;
+    flex-direction: column;
     height: 100vh;
-    gap: 1px;
+    width: 100%;
 }
 
 #briefingTab.active {
-    display: grid;
+    display: flex;
 }
 
 /* 프로젝트 탭 스타일 */

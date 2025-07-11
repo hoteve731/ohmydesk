@@ -38,27 +38,27 @@
                     <button class="menu-item active" data-tab="briefing">
                         <i class="ph-fill ph-house menu-icon-active"></i>
                         <i class="ph ph-house menu-icon-inactive"></i>
-                        <span class="menu-label">브리핑</span>
+                        <span class="menu-label">New</span>
                     </button>
                     <button class="menu-item" data-tab="projects">
                         <i class="ph-fill ph-folder menu-icon-active"></i>
                         <i class="ph ph-folder menu-icon-inactive"></i>
-                        <span class="menu-label">내 프로젝트</span>
+                        <span class="menu-label">Projects</span>
                     </button>
                     <button class="menu-item" data-tab="analysis">
                         <i class="ph-fill ph-chart-line menu-icon-active"></i>
                         <i class="ph ph-chart-line menu-icon-inactive"></i>
-                        <span class="menu-label">분석 리포트</span>
+                        <span class="menu-label">Report</span>
                     </button>
                     <button class="menu-item" data-tab="settings">
                         <i class="ph-fill ph-gear menu-icon-active"></i>
                         <i class="ph ph-gear menu-icon-inactive"></i>
-                        <span class="menu-label">설정</span>
+                        <span class="menu-label">Settings</span>
                     </button>
                     <button class="menu-item" data-tab="help">
                         <i class="ph-fill ph-question menu-icon-active"></i>
                         <i class="ph ph-question menu-icon-inactive"></i>
-                        <span class="menu-label">도움말</span>
+                        <span class="menu-label">Help</span>
                     </button>
                 </div>
             </div>
@@ -91,93 +91,116 @@
 
         <!-- 브리핑 탭 콘텐츠 -->
         <div class="tab-content active" id="briefingTab">
-            <!-- 좌측 패널: 오늘의 브리핑 -->
-            <aside class="left-panel">
-                <header class="panel-header">
-                    <div class="briefing-info">
-                        <h1 class="panel-title">오늘의 브리핑</h1>
-                        <p class="panel-subtitle" id="dateInfo">2025년 7월 9일 • 8개 이슈</p>
-                    </div>
-                    <div class="date-selector">
-                        <input type="date" id="dateInput" value="2025-07-09">
-                    </div>
-                </header>
+            <!-- 상단 탭 네비게이션 -->
+            <div class="briefing-tab-nav">
+                <button class="briefing-tab-btn active" data-briefing-tab="upload">
+                    <div class="step-number">Step 1</div>
+                    <span>자료 업로드</span>
+                </button>
+                <button class="briefing-tab-btn" data-briefing-tab="analysis">
+                    <div class="step-number">Step 2</div>
+                    <span>상세 분석</span>
+                </button>
+                <button class="briefing-tab-btn" data-briefing-tab="report">
+                    <div class="step-number">Step 3</div>
+                    <span>리포트 생성</span>
+                </button>
+            </div>
 
-                <div class="briefing-cards" id="briefingCards">
-                    <!-- 핵심 요약 섹션 -->
-                    <div class="daily-summary">
-                        <h3 class="summary-title">🔥 하이라이트</h3>
-                        <p class="summary-text">정치·경제·사회 전반에 걸친 주요 이슈들이 복합적으로 얽혀 있는 상황입니다. 특히 정치적 긴장감이 높아지면서 경제 불안정성도 함께
-                            증가하고 있습니다.</p>
-                    </div>
-
-                    <!-- 카드들이 동적으로 생성됩니다 -->
-                </div>
-            </aside>
-
-            <!-- 중앙 패널: 비교 분석 데스크 -->
-            <main class="center-panel">
-                <!-- 메인 콘텐츠 영역 -->
-                <div class="main-content">
-                    <header class="analysis-header">
-                        <div class="analysis-title-area">
-                            <h2 class="analysis-title" id="analysisTitle">이슈를 선택해주세요</h2>
-                            <p class="analysis-subtitle" id="analysisSubtitle">좌측에서 관심 있는 이슈를 클릭하면 상세 분석이 시작됩니다</p>
+            <!-- 탭 콘텐츠 영역 -->
+            <div class="briefing-tab-content">
+                <!-- 소스 업로드 탭 -->
+                <div class="briefing-tab-panel active" id="uploadPanel">
+                    <div class="upload-container">
+                        <!-- 파일 업로드 섹션 -->
+                        <div class="upload-section">
+                            <div class="file-upload-area">
+                                <div class="upload-icon">📤</div>
+                                <h3>여기에 파일을 업로드해 주세요</h3>
+                                <p>.pdf, .docx, .hwp, .txt 파일 3개까지 업로드 가능 (파일 1개당 10MB 이하)</p>
+                                <input type="file" id="fileInput" multiple accept=".pdf,.docx,.hwp,.txt"
+                                    style="display: none;">
+                                <button class="upload-btn" onclick="document.getElementById('fileInput').click()">파일
+                                    선택</button>
+                            </div>
                         </div>
-                        <div class="analysis-controls">
-                            <button class="control-btn active" data-view="timeline">
-                                <span>⭐</span> 리포트
-                            </button>
-                            <button class="control-btn" data-view="comparison">
-                                <span>⚖️</span> 워딩 비교
-                            </button>
-                            <button class="control-btn" data-view="data">
-                                <span>📊</span> 데이터 분석
-                            </button>
-                            <button class="control-btn" data-view="comparison">
-                                <span>🥊</span> 비교/대립 분석
-                            </button>
-                        </div>
-                    </header>
 
-                    <div class="analysis-content" id="analysisContent">
-                        <div class="empty-state">
-                            <div class="empty-icon">🎯</div>
-                            <h3>분석할 이슈를 선택해주세요</h3>
-                            <p>좌측 브리핑에서 이슈를 클릭하면<br>상세 정보가 표시됩니다</p>
+                        <!-- URL 업로드 섹션 -->
+                        <div class="upload-section">
+                            <div class="url-upload-area">
+                                <div class="url-icon">🔗</div>
+                                <h3>URL을 입력해 주세요</h3>
+                                <p>2개까지 입력 가능</p>
+                                <div class="url-input-container">
+                                    <div class="url-input-wrapper">
+                                        <span class="url-prefix">🌐</span>
+                                        <input type="url" class="url-input-field" placeholder="https://" id="urlInput">
+                                    </div>
+                                    <button class="url-submit-btn" id="urlSubmitBtn">입력</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- 우측 사이드바 -->
-                <aside class="right-sidebar">
-                    <!-- Table of Contents -->
-                    <div class="toc-section">
-                        <div class="toc-content" id="tocContent">
-                            <div class="toc-empty">
-                                <span>이슈를 선택하면<br>목차가 표시됩니다</span>
+                        <!-- 업로드된 자료 목록 -->
+                        <div class="uploaded-materials">
+                            <h2 class="materials-title">자료 22</h2>
+                            <div class="materials-list">
+                                <div class="material-item">
+                                    <div class="material-number">1.</div>
+                                    <div class="material-source">🌐 TechCrunch</div>
+                                    <div class="material-content">
+                                        <h4>Elon Musk's xAI launches Grok 4 alongside a $300 ... - TechCrunch</h4>
+                                        <p>Elon Musk and xAI employee announced on Wednesday night the launch of the
+                                            startup's next flagship AI model, Grok 4.</p>
+                                    </div>
+                                </div>
+
+                                <div class="material-item">
+                                    <div class="material-number">2.</div>
+                                    <div class="material-source">📰 THE-DECODER.com</div>
+                                    <div class="material-content">
+                                        <h4>Musk unveils Grok 4 as xAI's new AI model that beats ... - The Decoder</h4>
+                                        <p>Amid backlash over antisemitic content and major leadership shakeups, Elon
+                                            Musk has introduced Grok 4, the latest flagship AI model from xAI.</p>
+                                    </div>
+                                </div>
+
+                                <div class="material-item">
+                                    <div class="material-number">3.</div>
+                                    <div class="material-source">📺 CBS News</div>
+                                    <div class="material-content">
+                                        <h4>Musk unveils Grok 4 update a day after xAI chatbot made antisemitic remarks
+                                        </h4>
+                                        <p>Musk's xAI released an updated version of Grok a day after the chatbot made
+                                            antisemitic posts on X.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 출처 버튼 -->
-                    <button class="sources-toggle-btn" id="sourcesToggleBtn" style="display: none;">
-                        <span class="sources-count" id="sourcesCount">23</span>
-                        <span>출처</span>
-                    </button>
+                    <!-- 플로팅 다음 버튼 -->
+                    <button class="floating-next-btn" id="nextStepBtn">다음</button>
+                </div>
 
-                    <!-- 출처 목록 패널 -->
-                    <div class="sources-panel" id="sourcesPanel">
-                        <div class="sources-panel-header">
-                            <h3>출처</h3>
-                            <button class="sources-panel-close" id="sourcesPanelClose">✕</button>
-                        </div>
-                        <div class="sources-panel-content" id="sourcesPanelContent">
-                            <!-- 출처 목록이 여기에 표시됩니다 -->
-                        </div>
+                <!-- 상세 분석 탭 -->
+                <div class="briefing-tab-panel" id="analysisPanel">
+                    <div class="tab-panel-placeholder">
+                        <div class="placeholder-icon analysis-icon"></div>
+                        <h3>상세 분석</h3>
+                        <p>업로드된 자료를 AI가 분석하여 핵심 내용을 추출하고 구조화합니다.</p>
                     </div>
-                </aside>
-            </main>
+                </div>
+
+                <!-- 리포트 탭 -->
+                <div class="briefing-tab-panel" id="reportPanel">
+                    <div class="tab-panel-placeholder">
+                        <div class="placeholder-icon report-icon"></div>
+                        <h3>리포트 생성</h3>
+                        <p>분석된 내용을 바탕으로 전문적인 리포트를 자동으로 생성합니다.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- 프로젝트 탭 콘텐츠 -->
@@ -987,7 +1010,7 @@
                 <div class="main-content">
                     <!-- 서비스 소개 -->
                     <section class="help-section active" id="introSection">
-                        
+
 
                         <div class="help-content-body">
                             <div class="intro-hero">
@@ -1077,7 +1100,7 @@
 
                     <!-- 주요 기능 -->
                     <section class="help-section" id="featuresSection">
-                        
+
 
                         <div class="help-content-body">
                             <div class="feature-grid">
@@ -1133,7 +1156,7 @@
 
                     <!-- 사용법 가이드 -->
                     <section class="help-section" id="guideSection">
-                        
+
 
                         <div class="help-content-body">
                             <div class="guide-steps">
@@ -1199,7 +1222,7 @@
 
                     <!-- 자주 묻는 질문 -->
                     <section class="help-section" id="faqSection">
-                        
+
 
                         <div class="help-content-body">
                             <div class="faq-list">
@@ -1274,7 +1297,7 @@
 
                     <!-- 이용약관 -->
                     <section class="help-section" id="termsSection">
-                        
+
 
                         <div class="help-content-body">
                             <div class="terms-content">
@@ -1336,7 +1359,7 @@
 
                     <!-- 개인정보처리방침 -->
                     <section class="help-section" id="privacySection">
-                        
+
 
                         <div class="help-content-body">
                             <div class="privacy-content">
@@ -1480,6 +1503,11 @@
                     if (targetTab) {
                         targetTab.classList.add('active');
 
+                        // 브리핑 탭 활성화 시 브리핑 탭 기능 초기화
+                        if (tabName === 'briefing') {
+                            initializeBriefingTabs();
+                        }
+
                         // 설정 탭 활성화 시 설정 기능 초기화
                         if (tabName === 'settings') {
                             initializeSettings();
@@ -1502,6 +1530,87 @@
                     }
                 });
             });
+        }
+
+        // 브리핑 탭 기능 초기화
+        function initializeBriefingTabs() {
+            console.log('🔄 브리핑 탭 기능 초기화');
+
+            const briefingTabBtns = document.querySelectorAll('.briefing-tab-btn');
+            const briefingTabPanels = document.querySelectorAll('.briefing-tab-panel');
+
+            briefingTabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabName = btn.dataset.briefingTab;
+                    console.log('브리핑 탭 전환:', tabName);
+
+                    // 탭 버튼 활성화 상태 변경
+                    briefingTabBtns.forEach(tab => tab.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // 탭 패널 표시/숨김
+                    briefingTabPanels.forEach(panel => {
+                        panel.classList.remove('active');
+                    });
+
+                    const targetPanel = document.getElementById(tabName + 'Panel');
+                    if (targetPanel) {
+                        targetPanel.classList.add('active');
+                    }
+                });
+            });
+
+            // 다음 버튼 기능
+            const nextStepBtn = document.getElementById('nextStepBtn');
+            if (nextStepBtn) {
+                nextStepBtn.addEventListener('click', function () {
+                    console.log('다음 단계로 이동');
+
+                    // 2단계 탭으로 전환
+                    const analysisTabBtn = document.querySelector('[data-briefing-tab="analysis"]');
+                    if (analysisTabBtn) {
+                        analysisTabBtn.click();
+                    }
+                });
+            }
+
+            // URL 입력 기능
+            const urlSubmitBtn = document.getElementById('urlSubmitBtn');
+            const urlInput = document.getElementById('urlInput');
+
+            if (urlSubmitBtn && urlInput) {
+                urlSubmitBtn.addEventListener('click', function () {
+                    const url = urlInput.value.trim();
+                    if (url) {
+                        console.log('URL 입력됨:', url);
+                        // 실제로는 URL을 처리하는 로직을 추가
+                        alert('URL이 추가되었습니다: ' + url);
+                        urlInput.value = '';
+                    }
+                });
+
+                // Enter 키로도 URL 입력 가능
+                urlInput.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        urlSubmitBtn.click();
+                    }
+                });
+            }
+
+            // 파일 입력 기능
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput) {
+                fileInput.addEventListener('change', function (e) {
+                    const files = e.target.files;
+                    if (files.length > 0) {
+                        console.log('파일 선택됨:', files);
+                        const fileNames = Array.from(files).map(file => file.name).join(', ');
+                        alert('파일이 선택되었습니다: ' + fileNames);
+                    }
+                });
+            }
+
+            console.log('✅ 브리핑 탭 기능 초기화 완료');
         }
 
         // 프로필 드롭다운 초기화
@@ -2506,6 +2615,9 @@
 
             // 탭 초기화
             initializeTabs();
+
+            // 브리핑 탭 초기화 (기본 탭이므로 처음에 초기화)
+            initializeBriefingTabs();
 
             // 프로필 드롭다운 초기화
             initializeProfileDropdown();

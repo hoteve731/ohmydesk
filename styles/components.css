@@ -1873,7 +1873,7 @@
     gap: 20px;
 }
 
-.step-number {
+#helpTab .step-number {
     background: linear-gradient(135deg, #7c3aed 0%, #0A84FF 100%);
     color: white;
     width: 40px;
@@ -2201,5 +2201,548 @@
 
     .step-number {
         align-self: flex-start;
+    }
+}
+
+/* 브리핑 탭 네비게이션 스타일 */
+.briefing-tab-nav {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 16px;
+    padding: 40px 32px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    width: 100%;
+}
+
+#briefingTab .briefing-tab-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    padding: 16px 24px !important;
+    border: 1px solid #e5e7eb !important;
+    background: #ffffff !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    font-weight: 400 !important;
+    color: #6b7280 !important;
+    min-width: 200px !important;
+    text-align: left !important;
+    position: relative !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+#briefingTab .briefing-tab-btn:hover {
+    background: #f9fafb !important;
+    border-color: #d1d5db !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+#briefingTab .briefing-tab-btn.active {
+    background: #dbeafe !important;
+    border-color: #3b82f6 !important;
+    color: #1e40af !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+#briefingTab .briefing-tab-btn .step-number {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #9ca3af !important;
+    margin: 0 !important;
+    background: none !important;
+    border-radius: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    display: block !important;
+}
+
+#briefingTab .briefing-tab-btn.active .step-number {
+    color: #3b82f6 !important;
+}
+
+#briefingTab .briefing-tab-btn span {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: inherit !important;
+}
+
+/* 브리핑 탭 콘텐츠 영역 */
+.briefing-tab-content {
+    flex: 1;
+    background: #f8fafc;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: calc(100vh - 120px);
+}
+
+.briefing-tab-panel {
+    display: none;
+    padding: 60px 32px;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+}
+
+.briefing-tab-panel.active {
+    display: block;
+    animation: fadeInUp 0.4s ease;
+}
+
+/* 탭 패널 플레이스홀더 */
+.tab-panel-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 500px;
+    text-align: center;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.placeholder-icon {
+    width: 120px;
+    height: 80px;
+    background: #3b82f6;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 32px;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.placeholder-icon.upload-icon {
+    background: #10b981;
+}
+
+.placeholder-icon.upload-icon::before {
+    content: '📤';
+    font-size: 32px;
+}
+
+.placeholder-icon.analysis-icon {
+    background: #3b82f6;
+}
+
+.placeholder-icon.analysis-icon::before {
+    content: '🔍';
+    font-size: 32px;
+}
+
+.placeholder-icon.report-icon {
+    background: #8b5cf6;
+}
+
+.placeholder-icon.report-icon::before {
+    content: '📊';
+    font-size: 32px;
+}
+
+/* 애니메이션 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tab-panel-placeholder h3 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1E1E1E;
+    margin-bottom: 16px;
+}
+
+.tab-panel-placeholder p {
+    font-size: 18px;
+    color: #6B6B6B;
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+/* 브리핑 탭 전용 애니메이션 */
+@keyframes briefing-tab-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.briefing-tab-panel.active .tab-panel-placeholder {
+    animation: briefing-tab-fade-in 0.5s ease;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .briefing-tab-nav {
+        padding: 24px 16px;
+        gap: 16px;
+    }
+
+    .briefing-tab-btn {
+        padding: 16px 24px;
+        min-width: 120px;
+        font-size: 14px;
+    }
+
+    .briefing-tab-btn .step-number {
+        font-size: 10px;
+    }
+
+    .briefing-tab-panel {
+        padding: 40px 16px;
+    }
+
+    .placeholder-icon {
+        width: 100px;
+        height: 70px;
+        font-size: 28px;
+    }
+
+    .tab-panel-placeholder {
+        min-height: 350px;
+    }
+
+    .tab-panel-placeholder h3 {
+        font-size: 28px;
+    }
+
+    .tab-panel-placeholder p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .briefing-tab-nav {
+        padding: 20px 12px;
+        gap: 12px;
+    }
+
+    .briefing-tab-btn {
+        padding: 14px 20px;
+        min-width: 100px;
+        font-size: 13px;
+    }
+
+    .briefing-tab-btn span {
+        font-size: 13px;
+    }
+
+    .briefing-tab-panel {
+        padding: 32px 12px;
+    }
+
+    .placeholder-icon {
+        width: 80px;
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .tab-panel-placeholder h3 {
+        font-size: 24px;
+    }
+
+    .tab-panel-placeholder p {
+        font-size: 14px;
+    }
+}
+
+/* 자료 업로드 탭 스타일 */
+.upload-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.upload-section {
+    margin-bottom: 40px;
+}
+
+/* 파일 업로드 영역 */
+.file-upload-area {
+    border: 2px dashed #d1d5db;
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    background: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.file-upload-area:hover {
+    border-color: #3b82f6;
+    background: #f8fafc;
+}
+
+.upload-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.file-upload-area h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.file-upload-area p {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+.upload-btn {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.upload-btn:hover {
+    background: #2563eb;
+}
+
+/* URL 업로드 영역 */
+.url-upload-area {
+    border: 2px dashed #d1d5db;
+    border-radius: 12px;
+    padding: 32px 20px;
+    text-align: center;
+    background: #fafafa;
+}
+
+.url-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.url-upload-area h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.url-upload-area p {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+.url-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.url-input-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 0 12px;
+}
+
+.url-prefix {
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+.url-input-field {
+    flex: 1;
+    border: none;
+    padding: 12px 0;
+    font-size: 14px;
+    outline: none;
+}
+
+.url-input-field::placeholder {
+    color: #9ca3af;
+}
+
+.url-submit-btn {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.url-submit-btn:hover {
+    background: #2563eb;
+}
+
+/* 업로드된 자료 목록 */
+.uploaded-materials {
+    margin-top: 50px;
+}
+
+.materials-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 24px;
+}
+
+.materials-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.material-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.material-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: #d1d5db;
+}
+
+.material-number {
+    font-weight: 600;
+    color: #6b7280;
+    min-width: 24px;
+    margin-top: 2px;
+}
+
+.material-source {
+    font-size: 14px;
+    font-weight: 500;
+    color: #3b82f6;
+    min-width: 140px;
+    margin-top: 2px;
+}
+
+.material-content {
+    flex: 1;
+}
+
+.material-content h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.material-content p {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 플로팅 다음 버튼 */
+.floating-next-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 80px;
+    height: 80px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-next-btn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.floating-next-btn:active {
+    transform: translateY(0);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .upload-container {
+        padding: 0 16px;
+    }
+
+    .file-upload-area,
+    .url-upload-area {
+        padding: 24px 16px;
+    }
+
+    .url-input-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .url-input-wrapper {
+        width: 100%;
+    }
+
+    .material-item {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .material-source {
+        min-width: auto;
+    }
+
+    .floating-next-btn {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 14px;
     }
 }
