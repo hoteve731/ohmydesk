@@ -183,10 +183,386 @@
 
                 <!-- 상세 분석 탭 -->
                 <div class="briefing-tab-panel" id="analysisPanel">
-                    <div class="tab-panel-placeholder">
-                        <div class="placeholder-icon analysis-icon"></div>
-                        <h3>상세 분석</h3>
-                        <p>업로드된 자료를 AI가 분석하여 핵심 내용을 추출하고 구조화합니다.</p>
+                    <div class="analysis-container">
+                        <!-- 메인 콘텐츠 영역 -->
+                        <div class="analysis-main">
+                            <!-- 다이어그램 영역 -->
+                            <div class="diagram-section">
+                                <div class="diagram-header">
+                                    <h3>어피니티 다이어그램 분석</h3>
+                                    <div class="diagram-controls">
+                                        <button class="diagram-btn" id="zoomInBtn">
+                                            <i class="ph ph-plus"></i>
+                                        </button>
+                                        <button class="diagram-btn" id="zoomOutBtn">
+                                            <i class="ph ph-minus"></i>
+                                        </button>
+                                        <button class="diagram-btn" id="fitToScreenBtn">
+                                            <i class="ph ph-arrows-out"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="diagram-viewport">
+                                    <img src="images/diagram.png" alt="어피니티 다이어그램" class="diagram-image"
+                                        id="mainDiagram">
+                                    <div class="diagram-overlay">
+                                        <!-- 클릭 가능한 영역들 (보로노이 셀 클릭) -->
+                                        <button class="cluster-hotspot" data-cluster="1"
+                                            style="top: 25%; left: 20%; width: 180px; height: 120px;"
+                                            title="사용자 경험 개선"></button>
+                                        <button class="cluster-hotspot" data-cluster="2"
+                                            style="top: 45%; left: 45%; width: 200px; height: 140px;"
+                                            title="시스템 성능 최적화"></button>
+                                        <button class="cluster-hotspot" data-cluster="3"
+                                            style="top: 20%; right: 25%; width: 160px; height: 110px;"
+                                            title="프로세스 표준화"></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 데이터 테이블 영역 -->
+                            <div class="data-table-section">
+                                <div class="table-header">
+                                    <h4>클러스터 데이터</h4>
+                                    <div class="table-actions">
+                                        <button class="table-btn primary" id="addRowBtn">클러스터 추가</button>
+                                        <button class="table-btn secondary" id="exportTableBtn">데이터 내보내기</button>
+                                    </div>
+                                </div>
+                                <div class="table-container">
+                                    <table class="analysis-table" id="analysisTable">
+                                        <thead>
+                                            <tr>
+                                                <th>클러스터 레이블</th>
+                                                <th>상위 카테고리</th>
+                                                <th>텍스트 수</th>
+                                                <th>중요도</th>
+                                                <th>대표 텍스트</th>
+                                                <th>클러스터 크기</th>
+                                                <th>원본 데이터 소스</th>
+                                                <th>액션</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="editable-row" data-cluster="1">
+                                                <td contenteditable="true">사용자 경험 개선</td>
+                                                <td contenteditable="true">UX/UI 관련 피드백</td>
+                                                <td contenteditable="true">23</td>
+                                                <td>
+                                                    <select class="importance-select">
+                                                        <option value="높음" selected>높음</option>
+                                                        <option value="중간">중간</option>
+                                                        <option value="낮음">낮음</option>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable="true">인터페이스가 직관적이지 않고 사용하기 어려움...</td>
+                                                <td contenteditable="true">대</td>
+                                                <td contenteditable="true">사용자 인터뷰, 설문조사</td>
+                                                <td>
+                                                    <div class="row-actions">
+                                                        <button class="action-btn edit" title="편집">
+                                                            <i class="ph ph-pencil"></i>
+                                                        </button>
+                                                        <button class="action-btn delete" title="삭제">
+                                                            <i class="ph ph-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="editable-row" data-cluster="2">
+                                                <td contenteditable="true">시스템 성능 최적화</td>
+                                                <td contenteditable="true">기술적 개선사항</td>
+                                                <td contenteditable="true">18</td>
+                                                <td>
+                                                    <select class="importance-select">
+                                                        <option value="높음">높음</option>
+                                                        <option value="중간" selected>중간</option>
+                                                        <option value="낮음">낮음</option>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable="true">로딩 속도가 느리고 시스템 응답이 지연됨...</td>
+                                                <td contenteditable="true">중</td>
+                                                <td contenteditable="true">성능 모니터링 로그</td>
+                                                <td>
+                                                    <div class="row-actions">
+                                                        <button class="action-btn edit" title="편집">
+                                                            <i class="ph ph-pencil"></i>
+                                                        </button>
+                                                        <button class="action-btn delete" title="삭제">
+                                                            <i class="ph ph-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="editable-row" data-cluster="3">
+                                                <td contenteditable="true">프로세스 표준화</td>
+                                                <td contenteditable="true">업무 흐름 개선</td>
+                                                <td contenteditable="true">12</td>
+                                                <td>
+                                                    <select class="importance-select">
+                                                        <option value="높음" selected>높음</option>
+                                                        <option value="중간">중간</option>
+                                                        <option value="낮음">낮음</option>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable="true">업무 절차가 복잡하고 표준화가 되어있지 않음...</td>
+                                                <td contenteditable="true">소</td>
+                                                <td contenteditable="true">직원 피드백, 프로세스 문서</td>
+                                                <td>
+                                                    <div class="row-actions">
+                                                        <button class="action-btn edit" title="편집">
+                                                            <i class="ph ph-pencil"></i>
+                                                        </button>
+                                                        <button class="action-btn delete" title="삭제">
+                                                            <i class="ph ph-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="editable-row" data-cluster="4">
+                                                <td contenteditable="true">마케팅 전략 개선</td>
+                                                <td contenteditable="true">홍보 및 인지도</td>
+                                                <td contenteditable="true">8</td>
+                                                <td>
+                                                    <select class="importance-select">
+                                                        <option value="높음">높음</option>
+                                                        <option value="중간" selected>중간</option>
+                                                        <option value="낮음">낮음</option>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable="true">제품 인지도가 낮고 마케팅 메시지가 명확하지 않음...</td>
+                                                <td contenteditable="true">중</td>
+                                                <td contenteditable="true">마케팅 팀 피드백, 고객 설문</td>
+                                                <td>
+                                                    <div class="row-actions">
+                                                        <button class="action-btn edit" title="편집">
+                                                            <i class="ph ph-pencil"></i>
+                                                        </button>
+                                                        <button class="action-btn delete" title="삭제">
+                                                            <i class="ph ph-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="editable-row" data-cluster="5">
+                                                <td contenteditable="true">고객 지원 강화</td>
+                                                <td contenteditable="true">서비스 품질</td>
+                                                <td contenteditable="true">15</td>
+                                                <td>
+                                                    <select class="importance-select">
+                                                        <option value="높음" selected>높음</option>
+                                                        <option value="중간">중간</option>
+                                                        <option value="낮음">낮음</option>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable="true">고객 문의 응답 시간이 길고 해결률이 낮음...</td>
+                                                <td contenteditable="true">중</td>
+                                                <td contenteditable="true">고객센터 로그, CS 팀 리포트</td>
+                                                <td>
+                                                    <div class="row-actions">
+                                                        <button class="action-btn edit" title="편집">
+                                                            <i class="ph ph-pencil"></i>
+                                                        </button>
+                                                        <button class="action-btn delete" title="삭제">
+                                                            <i class="ph ph-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="editable-row" data-cluster="6">
+                                                <td contenteditable="true">데이터 보안 강화</td>
+                                                <td contenteditable="true">보안 및 컴플라이언스</td>
+                                                <td contenteditable="true">6</td>
+                                                <td>
+                                                    <select class="importance-select">
+                                                        <option value="높음" selected>높음</option>
+                                                        <option value="중간">중간</option>
+                                                        <option value="낮음">낮음</option>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable="true">개인정보 보호 정책 미비 및 보안 취약점 존재...</td>
+                                                <td contenteditable="true">소</td>
+                                                <td contenteditable="true">보안 감사 보고서, 컴플라이언스 체크</td>
+                                                <td>
+                                                    <div class="row-actions">
+                                                        <button class="action-btn edit" title="편집">
+                                                            <i class="ph ph-pencil"></i>
+                                                        </button>
+                                                        <button class="action-btn delete" title="삭제">
+                                                            <i class="ph ph-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="editable-row" data-cluster="7">
+                                                <td contenteditable="true">팀 협업 개선</td>
+                                                <td contenteditable="true">조직 문화</td>
+                                                <td contenteditable="true">10</td>
+                                                <td>
+                                                    <select class="importance-select">
+                                                        <option value="높음">높음</option>
+                                                        <option value="중간" selected>중간</option>
+                                                        <option value="낮음">낮음</option>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable="true">부서 간 소통 부족 및 협업 도구 활용도 저조...</td>
+                                                <td contenteditable="true">소</td>
+                                                <td contenteditable="true">직원 만족도 조사, 팀 리더 미팅</td>
+                                                <td>
+                                                    <div class="row-actions">
+                                                        <button class="action-btn edit" title="편집">
+                                                            <i class="ph ph-pencil"></i>
+                                                        </button>
+                                                        <button class="action-btn delete" title="삭제">
+                                                            <i class="ph ph-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="editable-row" data-cluster="8">
+                                                <td contenteditable="true">제품 기능 확장</td>
+                                                <td contenteditable="true">기능 개발</td>
+                                                <td contenteditable="true">14</td>
+                                                <td>
+                                                    <select class="importance-select">
+                                                        <option value="높음" selected>높음</option>
+                                                        <option value="중간">중간</option>
+                                                        <option value="낮음">낮음</option>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable="true">사용자가 원하는 핵심 기능들이 부족함...</td>
+                                                <td contenteditable="true">대</td>
+                                                <td contenteditable="true">제품 로드맵, 사용자 요청사항</td>
+                                                <td>
+                                                    <div class="row-actions">
+                                                        <button class="action-btn edit" title="편집">
+                                                            <i class="ph ph-pencil"></i>
+                                                        </button>
+                                                        <button class="action-btn delete" title="삭제">
+                                                            <i class="ph ph-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="editable-row" data-cluster="9">
+                                                <td contenteditable="true">비용 최적화</td>
+                                                <td contenteditable="true">운영 효율성</td>
+                                                <td contenteditable="true">9</td>
+                                                <td>
+                                                    <select class="importance-select">
+                                                        <option value="높음">높음</option>
+                                                        <option value="중간" selected>중간</option>
+                                                        <option value="낮음">낮음</option>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable="true">운영 비용이 지속적으로 증가하고 있음...</td>
+                                                <td contenteditable="true">중</td>
+                                                <td contenteditable="true">재무 보고서, 운영팀 분석</td>
+                                                <td>
+                                                    <div class="row-actions">
+                                                        <button class="action-btn edit" title="편집">
+                                                            <i class="ph ph-pencil"></i>
+                                                        </button>
+                                                        <button class="action-btn delete" title="삭제">
+                                                            <i class="ph ph-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="editable-row" data-cluster="10">
+                                                <td contenteditable="true">모바일 최적화</td>
+                                                <td contenteditable="true">플랫폼 호환성</td>
+                                                <td contenteditable="true">11</td>
+                                                <td>
+                                                    <select class="importance-select">
+                                                        <option value="높음" selected>높음</option>
+                                                        <option value="중간">중간</option>
+                                                        <option value="낮음">낮음</option>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable="true">모바일 환경에서의 사용성이 떨어짐...</td>
+                                                <td contenteditable="true">중</td>
+                                                <td contenteditable="true">모바일 사용성 테스트, 앱스토어 리뷰</td>
+                                                <td>
+                                                    <div class="row-actions">
+                                                        <button class="action-btn edit" title="편집">
+                                                            <i class="ph ph-pencil"></i>
+                                                        </button>
+                                                        <button class="action-btn delete" title="삭제">
+                                                            <i class="ph ph-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 우측 사이드바 -->
+                        <div class="analysis-sidebar">
+                            <!-- 피시본 다이어그램 -->
+                            <div class="fishbone-section">
+                                <div class="fishbone-header">
+                                    <h4>원인 분석: 사용자 경험 개선</h4>
+                                    <div class="analysis-meta">
+                                        <span class="analysis-type">PEOPLE</span>
+                                        <span class="analysis-method">PROCESS</span>
+                                        <span class="analysis-machine">TECHNOLOGY</span>
+                                    </div>
+                                </div>
+                                <div class="fishbone-diagram">
+                                    <img src="images/fishbone.png" alt="피시본 다이어그램" class="fishbone-image">
+                                </div>
+                            </div>
+
+                            <!-- 클러스터 정보 -->
+                            <div class="cluster-info-section">
+                                <div class="cluster-title">
+                                    <h4>문제: 사용자 경험 개선</h4>
+                                </div>
+
+                                <!-- 원인 태그들 -->
+                                <div class="cause-tags">
+                                    <div class="cause-category">
+                                        <span class="category-label">주요 원인 카테고리</span>
+                                        <div class="tags-container">
+                                            <span class="cause-tag">인터페이스 복잡성</span>
+                                            <span class="cause-tag">피드백 부족</span>
+                                            <span class="cause-tag">학습 곡선</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 근본원인 리스트 -->
+                                <div class="root-causes">
+                                    <div class="causes-section">
+                                        <h5>근본 원인:</h5>
+                                        <div class="causes-list">
+                                            <div class="cause-item">
+                                                <span class="cause-text">사용자 요구사항 수집 과정의 미비</span>
+                                            </div>
+                                            <div class="cause-item">
+                                                <span class="cause-text">디자인 검증 프로세스 부재</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="causes-section">
+                                        <h5>잠재 원인:</h5>
+                                        <div class="causes-list">
+                                            <div class="cause-item">
+                                                <span class="cause-text">사용자 교육 및 온보딩 개선 필요</span>
+                                            </div>
+                                            <div class="cause-item">
+                                                <span class="cause-text">반응형 디자인 및 접근성 고려</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1608,7 +1984,291 @@
                 });
             }
 
+            // 상세 분석 탭 기능 초기화
+            initializeAnalysisTab();
+
             console.log('✅ 브리핑 탭 기능 초기화 완료');
+        }
+
+        // 상세 분석 탭 기능 초기화
+        function initializeAnalysisTab() {
+            console.log('🔬 상세 분석 탭 기능 초기화');
+
+            // 다이어그램 컨트롤 버튼들
+            const zoomInBtn = document.getElementById('zoomInBtn');
+            const zoomOutBtn = document.getElementById('zoomOutBtn');
+            const fitToScreenBtn = document.getElementById('fitToScreenBtn');
+            const mainDiagram = document.getElementById('mainDiagram');
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', function () {
+                    console.log('다이어그램 확대');
+                    // 실제 줌 기능은 이미지로 대체하므로 로그만 출력
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', function () {
+                    console.log('다이어그램 축소');
+                });
+            }
+
+            if (fitToScreenBtn) {
+                fitToScreenBtn.addEventListener('click', function () {
+                    console.log('화면에 맞춤');
+                });
+            }
+
+            // 클러스터 핫스팟 이벤트
+            const clusterHotspots = document.querySelectorAll('.cluster-hotspot');
+            clusterHotspots.forEach(hotspot => {
+                hotspot.addEventListener('click', function () {
+                    const clusterId = this.dataset.cluster;
+                    console.log(`클러스터 ${clusterId} 클릭됨`);
+                    selectCluster(clusterId);
+                });
+            });
+
+            // 테이블 기능
+            const addRowBtn = document.getElementById('addRowBtn');
+            const exportTableBtn = document.getElementById('exportTableBtn');
+
+            if (addRowBtn) {
+                addRowBtn.addEventListener('click', function () {
+                    addTableRow();
+                });
+            }
+
+            if (exportTableBtn) {
+                exportTableBtn.addEventListener('click', function () {
+                    exportTable();
+                });
+            }
+
+            // 테이블 편집 기능
+            initializeTableEditing();
+
+            console.log('✅ 상세 분석 탭 기능 초기화 완료');
+        }
+
+        // 클러스터 선택 함수
+        function selectCluster(clusterId) {
+            console.log(`클러스터 ${clusterId} 선택됨`);
+
+            // 테이블 행 하이라이트
+            const tableRows = document.querySelectorAll('.editable-row');
+            tableRows.forEach(row => {
+                row.classList.remove('selected');
+                if (row.dataset.cluster === clusterId) {
+                    row.classList.add('selected');
+                }
+            });
+
+            // 사이드바 정보 업데이트 (시뮬레이션)
+            updateSidebarInfo(clusterId);
+        }
+
+        // 사이드바 정보 업데이트
+        function updateSidebarInfo(clusterId) {
+            const clusterTitles = {
+                '1': '사용자 경험 개선',
+                '2': '시스템 성능 최적화',
+                '3': '프로세스 표준화',
+                '4': '마케팅 전략 개선',
+                '5': '고객 지원 강화',
+                '6': '데이터 보안 강화',
+                '7': '팀 협업 개선',
+                '8': '제품 기능 확장',
+                '9': '비용 최적화',
+                '10': '모바일 최적화'
+            };
+
+            const clusterTitle = document.querySelector('.cluster-title h4');
+            if (clusterTitle) {
+                clusterTitle.textContent = `문제: ${clusterTitles[clusterId] || '클러스터'}`;
+            }
+
+            // 피쉬본 다이어그램 헤더 업데이트
+            const fishboneHeader = document.querySelector('.fishbone-header h4');
+            if (fishboneHeader) {
+                fishboneHeader.textContent = `원인 분석: ${clusterTitles[clusterId] || '클러스터'}`;
+            }
+
+            // 원인 태그들 업데이트
+            const tagsContainer = document.querySelector('.tags-container');
+            const causeTags = {
+                '1': ['인터페이스 복잡성', '피드백 부족', '학습 곡선'],
+                '2': ['인프라 한계', '코드 최적화', '리소스 관리'],
+                '3': ['문서화 부족', '역할 모호성', '승인 절차'],
+                '4': ['브랜드 인지도', '메시지 전달', '타겟팅'],
+                '5': ['응답 시간', '전문성', '채널 다양성'],
+                '6': ['데이터 암호화', '접근 권한', '컴플라이언스'],
+                '7': ['커뮤니케이션', '협업 도구', '조직 문화'],
+                '8': ['기능 요구사항', '개발 우선순위', '리소스 할당'],
+                '9': ['예산 관리', '운영 효율성', '자동화'],
+                '10': ['반응형 디자인', '터치 인터페이스', '성능 최적화']
+            };
+
+            if (tagsContainer) {
+                tagsContainer.innerHTML = causeTags[clusterId]?.map(tag =>
+                    `<span class="cause-tag">${tag}</span>`
+                ).join('') || '';
+            }
+
+            // 근본원인/잠재원인 업데이트
+            updateCausesList(clusterId);
+        }
+
+        // 원인 리스트 업데이트
+        function updateCausesList(clusterId) {
+            const rootCausesList = document.querySelector('.root-causes .causes-section:first-child .causes-list');
+            const potentialCausesList = document.querySelector('.root-causes .causes-section:last-child .causes-list');
+
+            const rootCauses = {
+                '1': ['사용자 요구사항 수집 과정의 미비', '디자인 검증 프로세스 부재'],
+                '2': ['서버 인프라 용량 부족', '데이터베이스 쿼리 최적화 미흡'],
+                '3': ['업무 흐름 문서화 부족', '역할과 책임 분배의 모호성'],
+                '4': ['시장 조사 및 분석 부족', '일관된 브랜딩 전략 부재'],
+                '5': ['CS 팀 리소스 부족', '체계적인 교육 프로그램 미비'],
+                '6': ['보안 정책 수립 지연', '정기적인 보안 감사 미실시'],
+                '7': ['소통 채널의 체계화 부족', '협업 문화 조성 노력 부족'],
+                '8': ['사용자 피드백 수집 시스템 부재', '제품 로드맵 우선순위 혼선'],
+                '9': ['비용 추적 시스템 미비', '예산 계획 수립 프로세스 부족'],
+                '10': ['모바일 퍼스트 설계 철학 부재', '크로스플랫폼 테스트 환경 부족']
+            };
+
+            const potentialCauses = {
+                '1': ['사용자 교육 및 온보딩 개선 필요', '반응형 디자인 및 접근성 고려'],
+                '2': ['캐싱 시스템 도입', 'CDN 및 로드밸런싱 구현'],
+                '3': ['워크플로우 자동화 도구 도입', '성과 측정 시스템 구축'],
+                '4': ['소셜미디어 마케팅 강화', '고객 여정 분석 도구 활용'],
+                '5': ['AI 챗봇 도입 검토', '다채널 고객 지원 시스템 구축'],
+                '6': ['제로 트러스트 보안 모델 도입', 'GDPR 및 개인정보보호법 준수'],
+                '7': ['슬랙 등 협업 도구 활용 확대', '정기적인 팀 빌딩 프로그램 운영'],
+                '8': ['애자일 개발 방법론 도입', '사용자 중심 설계(UCD) 프로세스 구축'],
+                '9': ['클라우드 비용 최적화 도구 도입', 'DevOps 및 CI/CD 파이프라인 구축'],
+                '10': ['PWA(Progressive Web App) 도입', '모바일 앱 네이티브 개발 검토']
+            };
+
+            if (rootCausesList) {
+                rootCausesList.innerHTML = rootCauses[clusterId]?.map(cause =>
+                    `<div class="cause-item"><span class="cause-text">${cause}</span></div>`
+                ).join('') || '';
+            }
+
+            if (potentialCausesList) {
+                potentialCausesList.innerHTML = potentialCauses[clusterId]?.map(cause =>
+                    `<div class="cause-item"><span class="cause-text">${cause}</span></div>`
+                ).join('') || '';
+            }
+        }
+
+        // 테이블 행 추가
+        function addTableRow() {
+            const tableBody = document.querySelector('#analysisTable tbody');
+            if (!tableBody) return;
+
+            const newRowNumber = tableBody.children.length + 1;
+            const newRow = document.createElement('tr');
+            newRow.className = 'editable-row';
+            newRow.dataset.cluster = newRowNumber.toString();
+
+            newRow.innerHTML = `
+                <td contenteditable="true">새로운 클러스터 ${newRowNumber}</td>
+                <td contenteditable="true">기타</td>
+                <td contenteditable="true">5</td>
+                <td>
+                    <select class="importance-select">
+                        <option value="높음">높음</option>
+                        <option value="중간" selected>중간</option>
+                        <option value="낮음">낮음</option>
+                    </select>
+                </td>
+                <td contenteditable="true">클러스터 대표 텍스트를 입력하세요...</td>
+                <td contenteditable="true">소</td>
+                <td contenteditable="true">데이터 소스를 입력하세요...</td>
+                <td>
+                    <div class="row-actions">
+                        <button class="action-btn edit" title="편집">
+                            <i class="ph ph-pencil"></i>
+                        </button>
+                        <button class="action-btn delete" title="삭제">
+                            <i class="ph ph-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            `;
+
+            tableBody.appendChild(newRow);
+
+            // 새 행에 이벤트 리스너 추가
+            initializeRowEvents(newRow);
+
+            console.log('새 테이블 행 추가됨');
+        }
+
+        // 테이블 내보내기
+        function exportTable() {
+            console.log('테이블 내보내기 시작');
+
+            const button = document.getElementById('exportTableBtn');
+            const originalText = button.innerHTML;
+
+            button.innerHTML = '<i class="ph ph-spinner"></i> 내보내는 중...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+                console.log('테이블 내보내기 완료');
+            }, 2000);
+        }
+
+        // 테이블 편집 기능 초기화
+        function initializeTableEditing() {
+            const tableRows = document.querySelectorAll('.editable-row');
+            tableRows.forEach(row => {
+                initializeRowEvents(row);
+            });
+        }
+
+        // 행별 이벤트 초기화
+        function initializeRowEvents(row) {
+            const editBtn = row.querySelector('.action-btn.edit');
+            const deleteBtn = row.querySelector('.action-btn.delete');
+
+            if (editBtn) {
+                editBtn.addEventListener('click', function () {
+                    const cells = row.querySelectorAll('td[contenteditable]');
+                    cells[0].focus();
+                });
+            }
+
+            if (deleteBtn) {
+                deleteBtn.addEventListener('click', function () {
+                    if (confirm('이 행을 삭제하시겠습니까?')) {
+                        row.remove();
+                        console.log('테이블 행 삭제됨');
+                    }
+                });
+            }
+
+            // contenteditable 셀 이벤트
+            const editableCells = row.querySelectorAll('td[contenteditable]');
+            editableCells.forEach(cell => {
+                cell.addEventListener('input', function () {
+                    console.log('셀 내용 변경됨:', this.textContent);
+                    // 실제로는 다이어그램 업데이트 로직이 들어갈 예정
+                });
+            });
+
+            // 중요도 선택 이벤트
+            const importanceSelect = row.querySelector('.importance-select');
+            if (importanceSelect) {
+                importanceSelect.addEventListener('change', function () {
+                    console.log('중요도 변경됨:', this.value);
+                });
+            }
         }
 
         // 프로필 드롭다운 초기화
