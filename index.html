@@ -521,81 +521,114 @@
                                     </div>
 
 
-                                    <!-- 주요 원인 카테고리 태그들 -->
-                                    <div class="main-causes-section">
-                                        <h5>💡 원인 카테고리</h5>
-                                        <div class="main-cause-tags" id="mainCauseTags">
-                                            <span class="cause-tag primary">양적긴축 정책</span>
-                                            <span class="cause-tag primary">테이퍼링 가속화</span>
-                                            <span class="cause-tag primary">유동성 경색</span>
-                                        </div>
-                                    </div>
+                                  
 
-                                    <!-- 근본 원인들 -->
-                                    <div class="root-causes-section">
-                                        <h5>🎯 직접 원인</h5>
-                                        <div class="root-causes-list" id="rootCausesList">
-                                            <div class="cause-item">
+                                    <!-- 원인 분석 -->
+                                    <div class="causes-section">
+                                        <div class="causes-header">
+                                            <h5>🎯 원인 분석</h5>
+                                            <button class="ai-research-btn" id="aiResearchBtn" title="AI 딥 리서치">
+                                                <i class="ph ph-magic-wand"></i>
+                                                <span>AI 딥 리서치</span>
+                                            </button>
+                                        </div>
+                                        <div class="causes-list" id="causesList">
+                                            <!-- 다양한 관점으로 다루어진 원인 -->
+                                            <div class="cause-item multi-perspective" data-type="multi">
                                                 <div class="cause-content">
-                                                    <div class="cause-indicator">
-                                                        <i class="ph ph-arrow-right"></i>
-                                                    </div>
+                                                   
                                                     <span class="cause-text">Fed의 공격적 통화정책 스탠스 지속</span>
                                                 </div>
-                                                <button class="cause-source-btn" title="출처 보기">
-                                                    <i class="ph ph-link-simple"></i>
-                                                </button>
-                                            </div>
-                                            <div class="cause-item">
-                                                <div class="cause-content">
-                                                    <div class="cause-indicator">
-                                                        <i class="ph ph-arrow-right"></i>
+                                                <div class="cause-sources">
+                                                    <div class="source-info multi">
+                                                        <span class="source-count">4개 소스</span>
+                                                        <span class="source-desc">다른 관점으로 분석</span>
                                                     </div>
+                                                    <div class="source-icons">
+                                                        <img src="sources/naver.png" alt="네이버" class="source-icon"
+                                                            title="네이버 뉴스">
+                                                        <img src="sources/google.png" alt="구글" class="source-icon"
+                                                            title="구글 뉴스">
+                                                        <img src="sources/x.png" alt="X" class="source-icon"
+                                                            title="X (Twitter)">
+                                                        <span class="more-sources">+1</span>
+                                                    </div>
+                                                    <button class="view-sources-btn" title="원본 보기">
+                                                        <i class="ph ph-arrow-square-out"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- 추가 자료가 있는 원인 -->
+                                            <div class="cause-item additional-sources" data-type="additional">
+                                                <div class="cause-content">
+                                                    
                                                     <span class="cause-text">인플레이션 억제를 위한 터미널 금리 상향 조정</span>
                                                 </div>
-                                                <button class="cause-source-btn" title="출처 보기">
-                                                    <i class="ph ph-link-simple"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- 잠재 원인들 -->
-                                    <div class="potential-causes-section">
-                                        <h5>🔮 간접 원인</h5>
-                                        <div class="potential-causes-list" id="potentialCausesList">
-                                            <div class="cause-item">
-                                                <div class="cause-content">
-                                                    <div class="cause-indicator">
-                                                        <i class="ph ph-arrow-right"></i>
+                                                <div class="cause-sources">
+                                                    <div class="source-info additional">
+                                                        <span class="source-count">3개 자료</span>
+                                                        <span class="source-desc">추가 참고 자료</span>
                                                     </div>
+                                                    <div class="source-icons">
+                                                        <img src="sources/facebook.png" alt="페이스북" class="source-icon"
+                                                            title="페이스북">
+                                                        <img src="sources/naver.png" alt="네이버" class="source-icon"
+                                                            title="네이버 뉴스">
+                                                        <img src="sources/google.png" alt="구글" class="source-icon"
+                                                            title="구글 뉴스">
+                                                    </div>
+                                                    <button class="view-sources-btn" title="원본 보기">
+                                                        <i class="ph ph-arrow-square-out"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- 다양한 관점으로 다루어진 원인 -->
+                                            <div class="cause-item multi-perspective" data-type="multi">
+                                                <div class="cause-content">
+                                                    
                                                     <span class="cause-text">장기 채권 수익률 곡선 역전 해소 시점 관찰</span>
                                                 </div>
-                                                <button class="cause-source-btn" title="출처 보기">
-                                                    <i class="ph ph-link-simple"></i>
-                                                </button>
-                                            </div>
-                                            <div class="cause-item">
-                                                <div class="cause-content">
-                                                    <div class="cause-indicator">
-                                                        <i class="ph ph-arrow-right"></i>
+                                                <div class="cause-sources">
+                                                    <div class="source-info multi">
+                                                        <span class="source-count">2개 소스</span>
+                                                        <span class="source-desc">다른 관점으로 분석</span>
                                                     </div>
+                                                    <div class="source-icons">
+                                                        <img src="sources/x.png" alt="X" class="source-icon"
+                                                            title="X (Twitter)">
+                                                        <img src="sources/google.png" alt="구글" class="source-icon"
+                                                            title="구글 뉴스">
+                                                    </div>
+                                                    <button class="view-sources-btn" title="원본 보기">
+                                                        <i class="ph ph-arrow-square-out"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- 추가 자료가 있는 원인 -->
+                                            <div class="cause-item additional-sources" data-type="additional">
+                                                <div class="cause-content">
+                                                    
                                                     <span class="cause-text">연준 점도표와 경제 데이터 모니터링</span>
                                                 </div>
-                                                <button class="cause-source-btn" title="출처 보기">
-                                                    <i class="ph ph-link-simple"></i>
-                                                </button>
-                                            </div>
-                                            <div class="cause-item">
-                                                <div class="cause-content">
-                                                    <div class="cause-indicator">
-                                                        <i class="ph ph-arrow-right"></i>
+                                                <div class="cause-sources">
+                                                    <div class="source-info additional">
+                                                        <span class="source-count">5개 자료</span>
+                                                        <span class="source-desc">추가 참고 자료</span>
                                                     </div>
-                                                    <span class="cause-text">소프트랜딩 vs 하드랜딩 시나리오 대비</span>
+                                                    <div class="source-icons">
+                                                        <img src="sources/naver.png" alt="네이버" class="source-icon"
+                                                            title="네이버 뉴스">
+                                                        <img src="sources/facebook.png" alt="페이스북" class="source-icon"
+                                                            title="페이스북">
+                                                        <span class="more-sources">+3</span>
+                                                    </div>
+                                                    <button class="view-sources-btn" title="원본 보기">
+                                                        <i class="ph ph-arrow-square-out"></i>
+                                                    </button>
                                                 </div>
-                                                <button class="cause-source-btn" title="출처 보기">
-                                                    <i class="ph ph-link-simple"></i>
-                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -2245,92 +2278,152 @@
 
         // 원인 리스트 업데이트
         function updateCausesList(clusterId) {
-            const rootCausesList = document.getElementById('rootCausesList');
-            const potentialCausesList = document.getElementById('potentialCausesList');
+            const causesList = document.getElementById('causesList');
 
-            const rootCauses = {
-                '1': ['Fed의 공격적 통화정책 스탠스 지속', '인플레이션 억제를 위한 터미널 금리 상향 조정'],
-                '2': ['생성형 AI 열풍에 따른 비이성적 투자심리', '실적 대비 과도한 밸류에이션 프리미엄'],
-                '3': ['부동산 버블 붕괴와 지방정부 부채 위기', '팬데믹 이후 소비 패턴 변화와 수출 둔화'],
-                '4': ['러시아-우크라이나 전쟁의 장기화', '미중 패권 경쟁 심화와 글로벌 공급망 재편'],
-                '5': ['에너지·식료품 가격 구조적 상승', '노동시장 타이트화에 따른 임금-물가 스파이럴'],
-                '6': ['Fed 매파 정책과 글로벌 금리차 확대', '미국 경제 상대적 우위에 따른 달러 패권 강화'],
-                '7': ['PC·모바일 수요 급감에 따른 메모리 과잉공급', '중국 경제 둔화로 인한 반도체 수요 위축'],
-                '8': ['고금리 정책에 따른 주택담보대출 금리 급등', '가계부채 증가와 구매력 저하'],
-                '9': ['홍해 사태로 인한 해상 운송로 차단', '글로벌 공급망 취약성 노출과 다변화 필요성'],
-                '10': ['OPEC+ 원유 감산 정책 지속', '탄소중립 정책과 화석연료 투자 감소의 딜레마']
+            const causesData = {
+                '1': [
+                    {
+                        text: 'Fed의 공격적 통화정책 스탠스 지속',
+                        type: 'multi',
+                        sources: [
+                            { icon: 'sources/naver.png', title: '네이버 뉴스' },
+                            { icon: 'sources/google.png', title: '구글 뉴스' },
+                            { icon: 'sources/x.png', title: 'X (Twitter)' },
+                            { icon: 'sources/facebook.png', title: '페이스북' }
+                        ],
+                        count: '4개 소스',
+                        desc: '다른 관점으로 분석'
+                    },
+                    {
+                        text: '인플레이션 억제를 위한 터미널 금리 상향 조정',
+                        type: 'additional',
+                        sources: [
+                            { icon: 'sources/facebook.png', title: '페이스북' },
+                            { icon: 'sources/naver.png', title: '네이버 뉴스' },
+                            { icon: 'sources/google.png', title: '구글 뉴스' }
+                        ],
+                        count: '3개 자료',
+                        desc: '추가 참고 자료'
+                    },
+                    {
+                        text: '장기 채권 수익률 곡선 역전 해소 시점 관찰',
+                        type: 'multi',
+                        sources: [
+                            { icon: 'sources/x.png', title: 'X (Twitter)' },
+                            { icon: 'sources/google.png', title: '구글 뉴스' }
+                        ],
+                        count: '2개 소스',
+                        desc: '다른 관점으로 분석'
+                    },
+                    {
+                        text: '연준 점도표와 경제 데이터 모니터링',
+                        type: 'additional',
+                        sources: [
+                            { icon: 'sources/naver.png', title: '네이버 뉴스' },
+                            { icon: 'sources/facebook.png', title: '페이스북' }
+                        ],
+                        count: '5개 자료',
+                        desc: '추가 참고 자료'
+                    }
+                ],
+                '2': [
+                    {
+                        text: '생성형 AI 열풍에 따른 비이성적 투자심리',
+                        type: 'multi',
+                        sources: [
+                            { icon: 'sources/google.png', title: '구글 뉴스' },
+                            { icon: 'sources/x.png', title: 'X (Twitter)' }
+                        ],
+                        count: '3개 소스',
+                        desc: '다른 관점으로 분석'
+                    },
+                    {
+                        text: '실적 대비 과도한 밸류에이션 프리미엄',
+                        type: 'additional',
+                        sources: [
+                            { icon: 'sources/naver.png', title: '네이버 뉴스' },
+                            { icon: 'sources/facebook.png', title: '페이스북' }
+                        ],
+                        count: '2개 자료',
+                        desc: '추가 참고 자료'
+                    }
+                ]
             };
 
-            const potentialCauses = {
-                '1': ['장기 채권 수익률 곡선 역전 해소 시점 관찰', '연준 점도표와 경제 데이터 모니터링', '소프트랜딩 vs 하드랜딩 시나리오 대비'],
-                '2': ['기업 실적 성장률과 밸류에이션 재조정 추이', '금리 민감도 높은 성장주 포트폴리오 리밸런싱', 'AI 투자 ROI 구체화와 수익성 검증'],
-                '3': ['중국 정부의 부동산 시장 안정화 정책 효과', '제조업 PMI와 수출 회복세 모니터링', '소비 부양책과 내수 경기 진단'],
-                '4': ['NATO 지원과 전쟁 종료 시나리오 변화', '원유·곡물 공급 안정성과 가격 정상화', '군수산업과 방산주 투자 기회 발굴'],
-                '5': ['Fed 인플레이션 타겟 달성과 정책 변곡점', '공급망 정상화와 상품 가격 안정', '서비스업 물가와 임금 인상률 추이'],
-                '6': ['미국 재정적자와 달러 기축통화 지위 변화', '신흥국 외환보유고 확충과 환율 방어', '원자재 수입국의 달러 헤지 전략'],
-                '7': ['AI·서버용 고성능 메모리 수요 회복', '중국 경기 부양책과 반도체 재고 정상화', '신규 테크 사이클과 반도체 업사이클 진입'],
-                '8': ['부동산 PF 정리와 시장 정상화 시기', '금리 인하 사이클과 주택 구매력 회복', '공급 물량 조절과 수급 균형 회복'],
-                '9': ['대체 운송로 확보와 물류비 정상화', '리쇼어링과 니어쇼어링 투자 확대', '공급망 다변화와 재고 관리 전략'],
-                '10': ['글로벌 석유 전략비축유 방출과 공급 확대', '재생에너지 확산과 에너지 전환 가속', 'ESG 투자와 그린 에너지 섹터 성장']
-            };
+            if (causesList && causesData[clusterId]) {
+                causesList.innerHTML = causesData[clusterId].map(cause => {
+                    const visibleSources = cause.sources.slice(0, 3);
+                    const moreCount = cause.sources.length > 3 ? cause.sources.length - 3 : 0;
 
-            // 직접 원인 리스트 업데이트
-            if (rootCausesList) {
-                rootCausesList.innerHTML = rootCauses[clusterId]?.map((cause, index) =>
-                    `<div class="cause-item">
-                        <div class="cause-content">
-                            <div class="cause-indicator">
-                                <i class="ph ph-arrow-right"></i>
+                    return `
+                        <div class="cause-item ${cause.type}-perspective" data-type="${cause.type}">
+                            <div class="cause-content">
+                                <div class="cause-indicator">
+                                    <i class="ph ph-arrow-right"></i>
+                                </div>
+                                <span class="cause-text">${cause.text}</span>
                             </div>
-                            <span class="cause-text">${cause}</span>
+                            <div class="cause-sources">
+                                <div class="source-info ${cause.type}">
+                                    <span class="source-count">${cause.count}</span>
+                                    <span class="source-desc">${cause.desc}</span>
+                                </div>
+                                <div class="source-icons">
+                                    ${visibleSources.map(source =>
+                        `<img src="${source.icon}" alt="${source.title}" class="source-icon" title="${source.title}">`
+                    ).join('')}
+                                    ${moreCount > 0 ? `<span class="more-sources">+${moreCount}</span>` : ''}
+                                </div>
+                                <button class="view-sources-btn" title="원본 보기" data-cluster-id="${clusterId}" data-cause-text="${cause.text}">
+                                    <i class="ph ph-arrow-square-out"></i>
+                                </button>
+                            </div>
                         </div>
-                        <button class="cause-source-btn" title="출처 보기" data-cause-type="root" data-cause-index="${index}" data-cluster-id="${clusterId}">
-                            <i class="ph ph-link-simple"></i>
-                        </button>
-                    </div>`
-                ).join('') || '';
+                    `;
+                }).join('');
+            } else if (causesList) {
+                causesList.innerHTML = '';
             }
 
-            // 간접 원인 리스트 업데이트
-            if (potentialCausesList) {
-                potentialCausesList.innerHTML = potentialCauses[clusterId]?.map((cause, index) =>
-                    `<div class="cause-item">
-                        <div class="cause-content">
-                            <div class="cause-indicator">
-                                <i class="ph ph-arrow-right"></i>
-                            </div>
-                            <span class="cause-text">${cause}</span>
-                        </div>
-                        <button class="cause-source-btn" title="출처 보기" data-cause-type="potential" data-cause-index="${index}" data-cluster-id="${clusterId}">
-                            <i class="ph ph-link-simple"></i>
-                        </button>
-                    </div>`
-                ).join('') || '';
-            }
-
-            // 출처 버튼 이벤트 리스너 추가
-            initializeCauseSourceButtons();
+            // 출처 보기 버튼 이벤트 리스너 추가
+            initializeViewSourcesButtons();
         }
 
-        // 출처 버튼 이벤트 리스너 초기화
-        function initializeCauseSourceButtons() {
-            const sourceButtons = document.querySelectorAll('.cause-source-btn');
-            sourceButtons.forEach(button => {
+        // 출처 보기 버튼 이벤트 리스너 초기화
+        function initializeViewSourcesButtons() {
+            const viewSourcesButtons = document.querySelectorAll('.view-sources-btn');
+            viewSourcesButtons.forEach(button => {
                 button.addEventListener('click', function (e) {
                     e.preventDefault();
                     e.stopPropagation();
 
-                    const causeType = this.dataset.causeType;
-                    const causeIndex = this.dataset.causeIndex;
                     const clusterId = this.dataset.clusterId;
+                    const causeText = this.dataset.causeText;
 
-                    showCauseSourceModal(causeType, causeIndex, clusterId);
+                    showViewSourcesModal(clusterId, causeText);
                 });
             });
         }
 
-        // 개별 원인 출처 모달 표시
-        function showCauseSourceModal(causeType, causeIndex, clusterId) {
+        // AI 딥 리서치 버튼 기능 초기화
+        function initializeAIResearchButton() {
+            const aiResearchBtn = document.getElementById('aiResearchBtn');
+            if (aiResearchBtn) {
+                aiResearchBtn.addEventListener('click', function () {
+                    const selectedRow = document.querySelector('.editable-row.selected');
+                    if (!selectedRow) {
+                        alert('클러스터를 먼저 선택해주세요.');
+                        return;
+                    }
+
+                    const clusterName = selectedRow.cells[0].textContent;
+                    showAIResearchModal(clusterName);
+                });
+            }
+        }
+
+        // 출처 보기 모달 표시
+        function showViewSourcesModal(clusterId, causeText) {
             const clusterTitles = {
                 '1': '기준금리 인상 우려',
                 '2': '테크주 밸류에이션 부담',
@@ -2345,55 +2438,123 @@
             };
 
             const sourceMappings = {
-                'root': {
-                    '1': [
-                        ['Fed 공식 발표문', 'FOMC 의사록', 'Bloomberg Terminal', 'Reuters'],
-                        ['CPI 데이터', 'PCE 데이터', '연준 경제 전망', 'Fed 의장 발언']
-                    ],
-                    '2': [
-                        ['TechCrunch', 'Wired', 'VentureBeat', 'MIT Technology Review'],
-                        ['Yahoo Finance', 'MarketWatch', 'Seeking Alpha', 'Morningstar']
-                    ],
-                    '3': [
-                        ['중국 국가통계국', 'SCMP', 'Financial Times', 'WSJ'],
-                        ['McKinsey Global Institute', 'World Bank', 'IMF', 'Oxford Economics']
+                'Fed의 공격적 통화정책 스탠스 지속': {
+                    sources: [
+                        { name: '네이버 뉴스', perspective: '한국 경제에 미치는 영향 관점', url: 'https://news.naver.com/example1' },
+                        { name: '구글 뉴스', perspective: '글로벌 시장 분석 관점', url: 'https://news.google.com/example1' },
+                        { name: 'X (Twitter)', perspective: '실시간 시장 반응 관점', url: 'https://x.com/example1' },
+                        { name: '페이스북', perspective: '투자 커뮤니티 관점', url: 'https://facebook.com/example1' }
                     ]
                 },
-                'potential': {
-                    '1': [
-                        ['Treasury.gov', 'St. Louis Fed', 'Chicago Fed', 'NY Fed'],
-                        ['BLS.gov', 'FRED Database', 'Economic Calendar', 'Fed Survey'],
-                        ['Congressional Budget Office', 'Bank of England', 'ECB', 'BOJ']
-                    ],
-                    '2': [
-                        ['SEC Filings', 'Earnings Reports', 'Investment Research', 'Analyst Notes'],
-                        ['Portfolio Strategy', 'Risk Management', 'Asset Allocation', 'Factor Analysis'],
-                        ['MIT OpenCourseWare', 'Harvard Business Review', 'Stanford AI Lab', 'Nature']
-                    ],
-                    '3': [
-                        ['Central Bank of China', 'Ministry of Finance', 'NDRC', 'MOFCOM'],
-                        ['Manufacturing PMI', 'Export Statistics', 'Trade Balance', 'Industrial Production'],
-                        ['Retail Sales', 'Consumer Spending', 'GDP Components', 'Employment Data']
+                '인플레이션 억제를 위한 터미널 금리 상향 조정': {
+                    sources: [
+                        { name: '페이스북', perspective: 'Fed 정책 브리핑 자료', url: 'https://facebook.com/example2' },
+                        { name: '네이버 뉴스', perspective: 'FOMC 의사록 분석', url: 'https://news.naver.com/example2' },
+                        { name: '구글 뉴스', perspective: '경제 전문가 해설', url: 'https://news.google.com/example2' }
                     ]
                 }
             };
 
             const clusterTitle = clusterTitles[clusterId] || '알 수 없는 클러스터';
-            const causeTypeText = causeType === 'root' ? '직접 원인' : '간접 원인';
-            const sources = sourceMappings[causeType]?.[clusterId]?.[causeIndex] || ['일반 출처 1', '일반 출처 2', '일반 출처 3'];
+            const sourceData = sourceMappings[causeText];
 
-            const sourcesInfo = `
-📊 ${clusterTitle} - ${causeTypeText} 출처 정보
+            if (sourceData) {
+                const sourcesInfo = `
+🎯 ${clusterTitle}
+📝 원인: ${causeText}
 
-📑 주요 출처:
-${sources.map(source => `• ${source}`).join('\n')}
+📊 출처별 관점 분석:
+${sourceData.sources.map((source, index) =>
+                    `${index + 1}. ${source.name}
+   관점: ${source.perspective}
+   링크: ${source.url}`
+                ).join('\n\n')}
 
-📈 신뢰도 점수: 94%
-⏰ 업데이트: 2024.12.19 14:23
-🔍 검증 상태: 완료
+📈 신뢰도 점수: 96%
+⏰ 마지막 업데이트: 2024.12.19 15:30
+🔍 총 ${sourceData.sources.length}개 출처에서 수집
+                `.trim();
+
+                alert(sourcesInfo);
+            } else {
+                const defaultInfo = `
+🎯 ${clusterTitle}
+📝 원인: ${causeText}
+
+📊 분석 정보:
+• 해당 원인에 대한 상세 출처 정보를 준비 중입니다.
+• AI 딥 리서치를 통해 더 자세한 분석을 받아보세요.
+
+📈 기본 신뢰도: 90%
+⏰ 업데이트: 2024.12.19
+                `.trim();
+
+                alert(defaultInfo);
+            }
+        }
+
+        // AI 딥 리서치 모달 표시
+        function showAIResearchModal(clusterName) {
+            const researchInfo = `
+🤖 AI 딥 리서치 시작
+
+🎯 선택된 클러스터: ${clusterName}
+
+🔍 분석 진행 단계:
+1. ✅ 기본 데이터 수집 완료
+2. 🔄 고급 패턴 분석 진행 중...
+3. ⏳ 예측 모델 적용 대기
+4. ⏳ 인사이트 생성 대기
+
+💡 예상 소요 시간: 3-5분
+
+AI가 다음 요소들을 종합 분석합니다:
+• 소셜 미디어 센티먼트 분석
+• 경제 지표 상관관계 분석  
+• 과거 유사 사례 패턴 매칭
+• 전문가 의견 크로스 검증
+• 글로벌 뉴스 임팩트 분석
+
+📊 분석 완료 시 알림을 보내드립니다.
+계속 진행하시겠습니까?
             `.trim();
 
-            alert(sourcesInfo);
+            if (confirm(researchInfo)) {
+                // AI 딥 리서치 시뮬레이션
+                const aiBtn = document.getElementById('aiResearchBtn');
+                const originalText = aiBtn.innerHTML;
+
+                aiBtn.innerHTML = '<i class="ph ph-spinner"></i><span>분석 중...</span>';
+                aiBtn.disabled = true;
+
+                setTimeout(() => {
+                    aiBtn.innerHTML = originalText;
+                    aiBtn.disabled = false;
+
+                    const results = `
+🤖 AI 딥 리서치 완료!
+
+🎯 클러스터: ${clusterName}
+
+📊 핵심 발견사항:
+• 소셜 미디어 언급량 +47% 증가 (지난 주 대비)
+• 전문가 부정적 견해 74% (긍정 18%, 중립 8%)
+• 유사 패턴 발생 시기: 2008년 금융위기, 2020년 팬데믹
+
+🎯 리스크 레벨: 높음 (85/100)
+
+💡 AI 추천 액션:
+1. 포트폴리오 방어적 조정 권장
+2. 현금 비중 15-20% 확대 고려
+3. 향후 2-4주간 집중 모니터링 필요
+
+📈 예측 신뢰도: 91%
+⚡ 분석 완료 시간: ${new Date().toLocaleString()}
+                    `.trim();
+
+                    alert(results);
+                }, 3000);
+            }
         }
 
         // 테이블 행 추가
@@ -4104,8 +4265,11 @@ ${sources.map(source => `• ${source}`).join('\n')}
                 contentState.style.display = 'none';
             }
 
-            // 출처 버튼 이벤트 리스너 초기화
-            initializeCauseSourceButtons();
+            // AI 딥 리서치 버튼 초기화
+            initializeAIResearchButton();
+
+            // 출처 보기 버튼 이벤트 리스너 초기화
+            initializeViewSourcesButtons();
 
             console.log('✅ 원인 분석 사이드바 초기화 완료 (빈 상태)');
         }
@@ -4174,5 +4338,7 @@ ${sources.map(source => `• ${source}`).join('\n')}
         });
     </script>
 </body>
+
+</html>
 
 </html>
