@@ -178,7 +178,7 @@
                     </div>
 
                     <!-- 플로팅 다음 버튼 -->
-                    <button class="floating-next-btn" id="nextStepBtn">다음</button>
+                    
                 </div>
 
                 <!-- 상세 분석 탭 -->
@@ -515,17 +515,11 @@
 
                                 <!-- 분석 상태 (클러스터 선택된 상태) -->
                                 <div class="analysis-content-state" id="analysisContentState" style="display: none;">
-                                    <div class="analysis-header">
-                                        
-                                        <div class="analysis-title-section">
-                                            <h4 id="analysisTitle">🔍 원인 분석: 클러스터 선택</h4>
-                                            <div class="analysis-meta">
-                                                <span class="analysis-type">MONETARY</span>
-                                                <span class="analysis-method">FISCAL</span>
-                                                <span class="analysis-machine">MARKET</span>
-                                            </div>
-                                        </div>
+                                    <div class="analysis-title-section">
+                                        <h3 id="analysisTitle"></h3>
+                                        <br></br>
                                     </div>
+                                  
 
                                     <!-- 주요 원인 카테고리 태그들 -->
                                     <div class="main-causes-section">
@@ -1382,146 +1376,7 @@
 
                 <div class="settings-content">
                     <!-- 팔로우 관리 섹션 -->
-                    <section class="settings-section follow-management">
-                        <p class="section-description">관심 있는 키워드, 계정, 채널을 등록하여 맞춤형 브리핑을 받아보세요</p>
-
-                        <!-- 통계 카드들 -->
-                        <div class="follow-stats">
-                            <div class="stat-card">
-                                <div class="stat-icon">🗂️</div>
-                                <div class="stat-info">
-                                    <div class="stat-number">12</div>
-                                    <div class="stat-label">키워드</div>
-                                </div>
-                                <button class="stat-action">추가</button>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-icon">👥</div>
-                                <div class="stat-info">
-                                    <div class="stat-number">8</div>
-                                    <div class="stat-label">SNS 계정</div>
-                                </div>
-                                <button class="stat-action">추가</button>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-icon">💬</div>
-                                <div class="stat-info">
-                                    <div class="stat-number">15</div>
-                                    <div class="stat-label">채널</div>
-                                </div>
-                                <button class="stat-action">추가</button>
-                            </div>
-                        </div>
-
-                        <!-- 키워드 관리 -->
-                        <div class="follow-section">
-                            <div class="follow-section-header">
-                                <h3 class="follow-section-title">팔로잉 키워드</h3>
-                                <span class="follow-section-count">12개</span>
-                            </div>
-                            <div class="follow-tags">
-                                <span class="follow-tag">정치</span>
-                                <span class="follow-tag">AI</span>
-                                <span class="follow-tag">미국 주식</span>
-                                <span class="follow-tag">반도체</span>
-                                <span class="follow-tag">부동산</span>
-                                <span class="follow-tag">금리</span>
-                                <span class="follow-tag">스타트업</span>
-                                <span class="follow-tag">암호화폐</span>
-                                <button class="tag-add-btn" data-type="keyword">+ 추가</button>
-                            </div>
-                        </div>
-
-                        <!-- SNS 계정 관리 -->
-                        <div class="follow-section">
-                            <div class="follow-section-header">
-                                <h3 class="follow-section-title">팔로잉 계정</h3>
-                                <span class="follow-section-count">8개</span>
-                            </div>
-                            <div class="follow-accounts">
-                                <div class="follow-account">
-                                    <img src="sources/x.png" alt="X" class="account-platform">
-                                    <div class="account-info">
-                                        <div class="account-name">@elonmusk</div>
-                                        <div class="account-desc">일론 머스크</div>
-                                    </div>
-                                    <button class="account-remove">×</button>
-                                </div>
-                                <div class="follow-account">
-                                    <img src="sources/x.png" alt="X" class="account-platform">
-                                    <div class="account-info">
-                                        <div class="account-name">@sundarpichai</div>
-                                        <div class="account-desc">순다르 피차이</div>
-                                    </div>
-                                    <button class="account-remove">×</button>
-                                </div>
-                                <div class="follow-account">
-                                    <img src="sources/facebook.png" alt="Facebook" class="account-platform">
-                                    <div class="account-info">
-                                        <div class="account-name">Mark Zuckerberg</div>
-                                        <div class="account-desc">메타 CEO</div>
-                                    </div>
-                                    <button class="account-remove">×</button>
-                                </div>
-                                <button class="account-add-btn" data-type="account">+ 계정 추가</button>
-                            </div>
-                        </div>
-
-                        <!-- 채널 관리 -->
-                        <div class="follow-section">
-                            <div class="follow-section-header">
-                                <h3 class="follow-section-title">팔로잉 채널</h3>
-                                <span class="follow-section-count">15개</span>
-                            </div>
-                            <div class="follow-channels">
-                                <div class="follow-channel">
-                                    <div class="channel-icon">📰</div>
-                                    <div class="channel-info">
-                                        <div class="channel-name">조선일보</div>
-                                        <div class="channel-desc">www.chosun.com</div>
-                                    </div>
-                                    <button class="channel-remove">×</button>
-                                </div>
-                                <div class="follow-channel">
-                                    <div class="channel-icon">📺</div>
-                                    <div class="channel-info">
-                                        <div class="channel-name">슈카월드</div>
-                                        <div class="channel-desc">youtube.com/@shukaworld</div>
-                                    </div>
-                                    <button class="channel-remove">×</button>
-                                </div>
-                                <div class="follow-channel">
-                                    <div class="channel-icon">📰</div>
-                                    <div class="channel-info">
-                                        <div class="channel-name">TechCrunch</div>
-                                        <div class="channel-desc">techcrunch.com</div>
-                                    </div>
-                                    <button class="channel-remove">×</button>
-                                </div>
-                                <button class="channel-add-btn" data-type="channel">+ 채널 추가</button>
-                            </div>
-                        </div>
-
-                        <!-- URL 추가 섹션 -->
-                        <div class="follow-section">
-                            <div class="follow-section-header">
-                                <h3 class="follow-section-title">팔로잉 추가</h3>
-                            </div>
-                            <div class="url-add-section">
-                                <div class="url-input-group">
-                                    <input type="url" class="url-input"
-                                        placeholder="URL을 입력하세요 (예: twitter.com/username, youtube.com/channel)"
-                                        id="urlInput">
-                                    <button class="url-add-btn" id="urlAddBtn">추가</button>
-                                </div>
-                                <div class="url-suggestions">
-                                    <span class="url-suggestion" data-url="https://twitter.com/">Twitter 계정</span>
-                                    <span class="url-suggestion" data-url="https://youtube.com/">YouTube 채널</span>
-                                    <span class="url-suggestion" data-url="https://news.naver.com/">네이버 뉴스</span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    
 
                     <!-- 알림 섹션 -->
                     <section class="settings-section">
@@ -2437,7 +2292,7 @@
                 // 제목 업데이트
                 const analysisTitle = document.getElementById('analysisTitle');
                 if (analysisTitle) {
-                    analysisTitle.textContent = `상세 분석: ${clusterTitles[clusterId]}`;
+                    analysisTitle.textContent = `${clusterTitles[clusterId]}`;
                 }
 
                 // 주요 원인 태그들 업데이트
