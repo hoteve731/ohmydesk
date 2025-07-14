@@ -2529,3 +2529,563 @@ body {
         gap: var(--spacing-xs);
     }
 }
+
+/* ===============================
+   리뉴얼된 프로젝트 탭 스타일
+   =============================== */
+
+/* 기존 프로젝트 탭 스타일 재정의 */
+#projectsTab {
+    background: var(--primary-bg) !important;
+}
+
+#projectsTab.active {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.projects-container {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+}
+
+/* 프로젝트 리스트 뷰 */
+.project-list-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 프로젝트 헤더 재정의 */
+#projectsTab .project-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-lg) var(--spacing-xl) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    background: var(--primary-bg) !important;
+}
+
+#projectsTab .project-title-section {
+    flex: 1 !important;
+}
+
+#projectsTab .project-main-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+#projectsTab .project-description {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-sm) !important;
+    margin: 0 !important;
+    line-height: 1.5 !important;
+}
+
+#projectsTab .project-actions {
+    display: flex !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#projectsTab .project-action-btn {
+    padding: 0.5rem 1rem !important;
+    border-radius: var(--radius-md) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-xs) !important;
+}
+
+#projectsTab .new-btn {
+    background: var(--accent-blue) !important;
+    color: white !important;
+}
+
+#projectsTab .new-btn:hover {
+    background: color-mix(in srgb, var(--accent-blue) 85%, black) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 프로젝트 리스트 */
+.project-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+    align-content: start;
+}
+
+.project-card {
+    background: var(--primary-bg);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.project-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.project-status {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+}
+
+.project-status.completed {
+    background: rgba(52, 199, 89, 0.1);
+    color: #34C759;
+}
+
+.project-status.in-progress {
+    background: rgba(255, 149, 0, 0.1);
+    color: #FF9500;
+}
+
+.project-date {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+}
+
+.project-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.project-title {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.project-summary {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.project-stats {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+}
+
+.stat-item i {
+    font-size: 14px;
+}
+
+/* 프로젝트 상세 뷰 */
+.project-detail-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.project-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-bottom: 1px solid var(--border-light);
+    background: var(--primary-bg);
+}
+
+.detail-header-left {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    font-size: var(--font-size-sm);
+}
+
+.back-btn:hover {
+    background: var(--secondary-bg);
+    color: var(--text-primary);
+}
+
+.project-detail-title h1 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.project-detail-title p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.project-detail-status {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    background: rgba(52, 199, 89, 0.1);
+    color: #34C759;
+}
+
+/* 상세 뷰 탭 네비게이션 */
+.project-detail-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-light);
+    background: var(--primary-bg);
+    padding: 0 var(--spacing-xl);
+}
+
+.detail-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.detail-tab-btn:hover {
+    color: var(--text-primary);
+    background: var(--secondary-bg-hover);
+}
+
+.detail-tab-btn.active {
+    color: var(--accent-blue);
+    border-bottom-color: var(--accent-blue);
+}
+
+/* 상세 뷰 콘텐츠 */
+.project-detail-content {
+    flex: 1;
+    overflow: hidden;
+}
+
+.detail-tab-panel {
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.detail-tab-panel.active {
+    display: block;
+}
+
+/* 출처 탭 */
+.sources-container {
+    padding: var(--spacing-xl);
+}
+
+.sources-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.sources-header h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.sources-count {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    background: var(--secondary-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-md);
+}
+
+.sources-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.source-item {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--primary-bg);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.source-item:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.source-number {
+    font-weight: 600;
+    color: var(--text-secondary);
+    min-width: 2rem;
+}
+
+.source-type {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    min-width: 8rem;
+}
+
+.source-content {
+    flex: 1;
+}
+
+.source-content h4 {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* 다이어그램 탭 */
+.diagram-container {
+    padding: var(--spacing-xl);
+}
+
+.diagram-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.diagram-header h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.diagram-controls {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.diagram-btn {
+    padding: 0.5rem;
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.diagram-btn:hover {
+    background: var(--secondary-bg-hover);
+    color: var(--text-primary);
+}
+
+.diagram-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.diagram-viewport {
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: white;
+}
+
+.diagram-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.diagram-table-section .table-header h4 {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+}
+
+/* 리포트 탭 */
+.report-container {
+    padding: var(--spacing-xl);
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.report-header h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.report-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.report-action-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.report-action-btn.primary {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.report-action-btn.primary:hover {
+    background: color-mix(in srgb, var(--accent-blue) 85%, black);
+}
+
+.report-action-btn.secondary {
+    background: var(--secondary-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+}
+
+.report-action-btn.secondary:hover {
+    background: var(--secondary-bg-hover);
+}
+
+.report-viewer {
+    background: var(--primary-bg);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+/* 기존 하이라이트 관련 스타일 숨김 */
+#projectsTab .highlight-columns,
+#projectsTab .highlight-column,
+#projectsTab .highlight-cards,
+#projectsTab .highlight-card,
+#projectsTab .project-footer {
+    display: none !important;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+    .project-list {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    #projectsTab .project-header {
+        flex-direction: column !important;
+        gap: var(--spacing-md) !important;
+        align-items: stretch !important;
+    }
+
+    .project-list {
+        grid-template-columns: 1fr;
+        padding: var(--spacing-md);
+    }
+
+    .project-detail-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: stretch;
+    }
+
+    .detail-header-left {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .project-detail-tabs {
+        padding: 0 var(--spacing-md);
+    }
+
+    .sources-container,
+    .diagram-container,
+    .report-container {
+        padding: var(--spacing-md);
+    }
+}

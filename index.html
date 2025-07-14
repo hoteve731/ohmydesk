@@ -178,7 +178,7 @@
                     </div>
 
                     <!-- 플로팅 다음 버튼 -->
-                    
+
                 </div>
 
                 <!-- 상세 분석 탭 -->
@@ -519,7 +519,7 @@
                                         <h3 id="analysisTitle"></h3>
                                         <br></br>
                                     </div>
-                                  
+
 
                                     <!-- 주요 원인 카테고리 태그들 -->
                                     <div class="main-causes-section">
@@ -614,20 +614,17 @@
                                 <h3>분석자료 확인</h3>
                                 <div class="summary-stats">
                                     <div class="summary-stat">
-                                        <span class="stat-value">3</span>
-                                        <span class="stat-label">개 이슈</span>
+                                        <span class="stat-value">13</span>
+                                        <span class="stat-label">이슈</span>
                                     </div>
                                     <div class="summary-stat">
-                                        <span class="stat-value">22</span>
-                                        <span class="stat-label">개 출처</span>
+                                        <span class="stat-value">43</span>
+                                        <span class="stat-label">출처</span>
                                     </div>
                                 </div>
 
                                 <div class="summary-actions">
-                                    <button class="summary-action-btn secondary" id="checkAnalysisBtn">
-                                        <i class="ph ph-file-text"></i>
-                                        <span>출처 확인하기</span>
-                                    </button>
+
                                     <button class="summary-action-btn primary" id="generateReportBtn">
                                         <i class="ph ph-file-text"></i>
                                         <span>만들기</span>
@@ -837,137 +834,251 @@
         <!-- 프로젝트 탭 콘텐츠 -->
         <div class="tab-content" id="projectsTab">
             <div class="projects-container">
-                <!-- 프로젝트 헤더 -->
-                <header class="project-header">
-                    <div class="project-title-section">
-                        <div class="project-selector">
-                            <select id="projectSelect" class="project-dropdown">
-                                <option value="slowletter-1218">12/18 슬로우레터</option>
-                                <option value="analysis-report">분석 리포트</option>
-                                <option value="draft-column">칼럼 초안</option>
-                            </select>
-                            <i class="ph ph-caret-down dropdown-arrow"></i>
+                <!-- 프로젝트 리스트 뷰 -->
+                <div class="project-list-view" id="projectListView">
+                    <!-- 헤더 -->
+                    <header class="project-header">
+                        <div class="project-title-section">
+                            <h1 class="project-main-title">프로젝트</h1>
+                            <p class="project-description">홈에서 생성한 분석 프로젝트들을 확인하고 관리하세요</p>
                         </div>
-                        <p class="project-description">프로젝트의 베대를 설정하고 초안으로 내보내세요</p>
-                    </div>
-                    <div class="project-actions">
-                        <button class="project-action-btn edit-btn" id="editProjectBtn">
-                            <span>Edit</span>
-                        </button>
-                        <button class="project-action-btn new-btn" id="newProjectBtn">
-                            <span>New</span>
-                        </button>
-                    </div>
-                </header>
-
-                <!-- 프로젝트 콘텐츠 -->
-                <div class="project-content">
-                    <div class="highlight-columns">
-                        <!-- 첫 번째 컬럼 (빨간색 카테고리) -->
-                        <div class="highlight-column" data-category="issues">
-                            <div class="column-header">
-                                <div class="category-badge red">
-                                    <span class="category-count">3</span>
-                                </div>
-                            </div>
-                            <div class="highlight-cards" id="issuesHighlights">
-                                <!-- 예시 하이라이트 카드들 -->
-                                <div class="highlight-card" draggable="true">
-                                    <div class="highlight-tag red">하이라이터블 텍스트</div>
-                                    <div class="highlight-content">
-                                        <p>출처: 뉴욕타임즈 &lt; 성장주식대 금융투자&gt;</p>
-                                        <span class="highlight-time">2024년 3월 14일 13:54</span>
-                                    </div>
-                                    <button class="highlight-menu-btn">
-                                        <i class="ph ph-dots-three"></i>
-                                    </button>
-                                </div>
-                                <div class="highlight-card" draggable="true">
-                                    <div class="highlight-tag red">하이라이터블 텍스트</div>
-                                    <div class="highlight-content">
-                                        <p>출처: 뉴욕타임즈 &lt; 성장주식대 금융투자&gt;</p>
-                                        <span class="highlight-time">2024년 3월 14일 13:54</span>
-                                    </div>
-                                    <button class="highlight-menu-btn">
-                                        <i class="ph ph-dots-three"></i>
-                                    </button>
-                                </div>
-                                <div class="highlight-card" draggable="true">
-                                    <div class="highlight-tag red">하이라이터블 텍스트</div>
-                                    <div class="highlight-content">
-                                        <p>출처: 뉴욕타임즈 &lt; 성장주식대 금융투자&gt;</p>
-                                        <span class="highlight-time">2024년 3월 14일 13:54</span>
-                                    </div>
-                                    <button class="highlight-menu-btn">
-                                        <i class="ph ph-dots-three"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 두 번째 컬럼 (노란색 카테고리) -->
-                        <div class="highlight-column" data-category="deep">
-                            <div class="column-header">
-                                <div class="category-badge yellow">
-                                    <span class="category-count">1</span>
-                                </div>
-                            </div>
-                            <div class="highlight-cards" id="deepHighlights">
-                                <div class="highlight-card" draggable="true">
-                                    <div class="highlight-tag yellow">하이라이터블 텍스트</div>
-                                    <div class="highlight-content">
-                                        <p>출처: 뉴욕타임즈 &lt; 성장주식대 금융투자&gt;</p>
-                                        <span class="highlight-time">2024년 3월 14일 13:54</span>
-                                    </div>
-                                    <button class="highlight-menu-btn">
-                                        <i class="ph ph-dots-three"></i>
-                                    </button>
-                                    <button class="highlight-action-btn">
-                                        배경지식
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 세 번째 컬럼 (초록색 카테고리) -->
-                        <div class="highlight-column" data-category="different">
-                            <div class="column-header">
-                                <div class="category-badge green">
-                                    <span class="category-count">0</span>
-                                </div>
-                            </div>
-                            <div class="highlight-cards" id="differentHighlights">
-                                <!-- 비어있는 상태 -->
-                            </div>
-                        </div>
-
-                        <!-- 네 번째 컬럼 (회색 카테고리) -->
-                        <div class="highlight-column" data-category="tmi">
-                            <div class="column-header">
-                                <div class="category-badge gray">
-                                    <span class="category-count">0</span>
-                                </div>
-                            </div>
-                            <div class="highlight-cards" id="tmiHighlights">
-                                <!-- 비어있는 상태 -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 하단 액션 바 -->
-                    <div class="project-footer">
-                        <div class="footer-options">
-                            <label class="checkbox-option">
-                                <input type="checkbox" id="includeSourcesCheck" checked>
-                                <span class="checkmark"></span>
-                                <span class="checkbox-label">출처 포함</span>
-                            </label>
-                        </div>
-                        <div class="footer-actions">
-                            <button class="ai-export-btn" id="aiExportBtn">
-                                <i class="ph ph-magic-wand"></i>
-                                <span>AI 초안 내보내기</span>
+                        <div class="project-actions">
+                            <button class="project-action-btn new-btn" id="newProjectBtn">
+                                <i class="ph ph-plus"></i>
+                                <span>새 프로젝트</span>
                             </button>
+                        </div>
+                    </header>
+
+                    <!-- 프로젝트 리스트 -->
+                    <div class="project-list">
+                        <div class="project-card" data-project-id="grok4-analysis">
+                            <div class="project-card-header">
+                                <div class="project-status completed">
+                                    <i class="ph ph-check-circle"></i>
+                                    <span>완료</span>
+                                </div>
+                                <div class="project-date">2024.12.19</div>
+                            </div>
+                            <div class="project-card-content">
+                                <h3 class="project-title">Grok 4 출시 분석</h3>
+                                <p class="project-summary">일론 머스크의 xAI에서 발표한 Grok 4 모델의 시장 영향과 경쟁사 대응 전략에 대한 종합 분석</p>
+                                <div class="project-stats">
+                                    <div class="stat-item">
+                                        <i class="ph ph-file-text"></i>
+                                        <span>3개 출처</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="ph ph-chart-bar"></i>
+                                        <span>5개 클러스터</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="ph ph-article"></i>
+                                        <span>리포트 생성됨</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card" data-project-id="crypto-trend">
+                            <div class="project-card-header">
+                                <div class="project-status completed">
+                                    <i class="ph ph-check-circle"></i>
+                                    <span>완료</span>
+                                </div>
+                                <div class="project-date">2024.12.18</div>
+                            </div>
+                            <div class="project-card-content">
+                                <h3 class="project-title">암호화폐 시장 동향</h3>
+                                <p class="project-summary">비트코인 ETF 승인 이후 암호화폐 시장의 변화와 주요 코인들의 가격 움직임 분석</p>
+                                <div class="project-stats">
+                                    <div class="stat-item">
+                                        <i class="ph ph-file-text"></i>
+                                        <span>8개 출처</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="ph ph-chart-bar"></i>
+                                        <span>7개 클러스터</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="ph ph-article"></i>
+                                        <span>리포트 생성됨</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card" data-project-id="fed-policy">
+                            <div class="project-card-header">
+                                <div class="project-status in-progress">
+                                    <i class="ph ph-clock"></i>
+                                    <span>진행중</span>
+                                </div>
+                                <div class="project-date">2024.12.17</div>
+                            </div>
+                            <div class="project-card-content">
+                                <h3 class="project-title">Fed 통화정책 분석</h3>
+                                <p class="project-summary">연준의 금리 인상 정책이 글로벌 경제에 미치는 영향과 향후 전망에 대한 심층 분석</p>
+                                <div class="project-stats">
+                                    <div class="stat-item">
+                                        <i class="ph ph-file-text"></i>
+                                        <span>12개 출처</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="ph ph-chart-bar"></i>
+                                        <span>9개 클러스터</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="ph ph-article"></i>
+                                        <span>분석중</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card" data-project-id="korean-startup">
+                            <div class="project-card-header">
+                                <div class="project-status completed">
+                                    <i class="ph ph-check-circle"></i>
+                                    <span>완료</span>
+                                </div>
+                                <div class="project-date">2024.12.16</div>
+                            </div>
+                            <div class="project-card-content">
+                                <h3 class="project-title">한국 스타트업 생태계</h3>
+                                <p class="project-summary">2024년 한국 스타트업 투자 동향과 주요 성장 분야에 대한 종합적인 시장 분석</p>
+                                <div class="project-stats">
+                                    <div class="stat-item">
+                                        <i class="ph ph-file-text"></i>
+                                        <span>6개 출처</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="ph ph-chart-bar"></i>
+                                        <span>4개 클러스터</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="ph ph-article"></i>
+                                        <span>리포트 생성됨</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 프로젝트 상세 뷰 -->
+                <div class="project-detail-view" id="projectDetailView" style="display: none;">
+                    <!-- 상세 뷰 헤더 -->
+                    <header class="project-detail-header">
+                        <div class="detail-header-left">
+                            <button class="back-btn" id="backToListBtn">
+                                <i class="ph ph-arrow-left"></i>
+                                <span>목록</span>
+                            </button>
+                            <div class="project-detail-title">
+                                <h1 id="projectDetailTitle">프로젝트 제목</h1>
+                                <p id="projectDetailSummary">프로젝트 요약</p>
+                            </div>
+                        </div>
+                        <div class="detail-header-right">
+                            <div class="project-detail-status" id="projectDetailStatus">
+                                <i class="ph ph-check-circle"></i>
+                                <span>완료</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- 상세 뷰 탭 네비게이션 -->
+                    <div class="project-detail-tabs">
+                        <button class="detail-tab-btn active" data-detail-tab="sources">
+                            <i class="ph ph-file-text"></i>
+                            <span>출처</span>
+                        </button>
+                        <button class="detail-tab-btn" data-detail-tab="diagram">
+                            <i class="ph ph-chart-scatter"></i>
+                            <span>다이어그램</span>
+                        </button>
+                        <button class="detail-tab-btn" data-detail-tab="report">
+                            <i class="ph ph-article"></i>
+                            <span>리포트</span>
+                        </button>
+                    </div>
+
+                    <!-- 상세 뷰 콘텐츠 -->
+                    <div class="project-detail-content">
+                        <!-- 출처 탭 -->
+                        <div class="detail-tab-panel active" id="sourcesPanel">
+                            <div class="sources-container">
+                                <div class="sources-header">
+                                    <h3>수집된 출처</h3>
+                                    <span class="sources-count">총 3개</span>
+                                </div>
+                                <div class="sources-list" id="sourcesList">
+                                    <!-- 출처 목록이 여기에 표시됩니다 -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 다이어그램 탭 -->
+                        <div class="detail-tab-panel" id="diagramPanel">
+                            <div class="diagram-container">
+                                <div class="diagram-header">
+                                    <h3>어피니티 다이어그램</h3>
+                                    <div class="diagram-controls">
+                                        <button class="diagram-btn" id="detailZoomInBtn">
+                                            <i class="ph ph-plus"></i>
+                                        </button>
+                                        <button class="diagram-btn" id="detailZoomOutBtn">
+                                            <i class="ph ph-minus"></i>
+                                        </button>
+                                        <button class="diagram-btn" id="detailFitToScreenBtn">
+                                            <i class="ph ph-arrows-out"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="diagram-content">
+                                    <div class="diagram-viewport">
+                                        <img src="images/diagram.png" alt="어피니티 다이어그램" class="diagram-image"
+                                            id="detailDiagram">
+                                    </div>
+                                    <div class="diagram-table-section">
+                                        <div class="table-header">
+                                            <h4>클러스터 데이터</h4>
+                                        </div>
+                                        <div class="table-container" id="detailTableContainer">
+                                            <!-- 분석 테이블이 여기에 표시됩니다 -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 리포트 탭 -->
+                        <div class="detail-tab-panel" id="reportPanel">
+                            <div class="report-container">
+                                <div class="report-header">
+                                    <h3>생성된 리포트</h3>
+                                    <div class="report-actions">
+                                        <button class="report-action-btn secondary" id="copyReportBtn">
+                                            <i class="ph ph-copy"></i>
+                                            <span>복사</span>
+                                        </button>
+                                        <button class="report-action-btn secondary" id="downloadReportBtn">
+                                            <i class="ph ph-download-simple"></i>
+                                            <span>다운로드</span>
+                                        </button>
+                                        <button class="report-action-btn primary" id="editReportBtn">
+                                            <i class="ph ph-pencil"></i>
+                                            <span>편집</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="report-content">
+                                    <div class="report-viewer" id="reportViewer">
+                                        <!-- 생성된 리포트가 여기에 표시됩니다 -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1376,7 +1487,7 @@
 
                 <div class="settings-content">
                     <!-- 팔로우 관리 섹션 -->
-                    
+
 
                     <!-- 알림 섹션 -->
                     <section class="settings-section">
@@ -1454,136 +1565,95 @@
 
         <!-- 도움말 탭 콘텐츠 -->
         <div class="tab-content" id="helpTab">
-            <!-- 좌측 패널: 도움말 네비게이션 -->
-            <aside class="left-panel">
-                <header class="panel-header">
-                    <div class="briefing-info">
-                        <h1 class="panel-title">도움말</h1>
-                        <p class="panel-subtitle">오마이데스크 사용 가이드</p>
+            <div class="help-container">
+                <!-- 헤더 -->
+                <header class="help-header">
+                    <div class="help-title-section">
+                        <h1 class="help-main-title">도움말</h1>
+                        <p class="help-description">복잡한 데이터를 누구나 이해할 수 있는 콘텐츠로 변환하는 AI 도구</p>
                     </div>
                 </header>
 
-                <div class="briefing-cards">
-                    <div class="help-nav-card active" data-section="intro">
-                        <div class="help-nav-header">
-                            <h3>서비스 소개</h3>
-                        </div>
-                    </div>
-                    <div class="help-nav-card" data-section="features">
-                        <div class="help-nav-header">
-                            <h3>주요 기능</h3>
-                        </div>
-                    </div>
-                    <div class="help-nav-card" data-section="guide">
-                        <div class="help-nav-header">
-                            <h3>사용법 가이드</h3>
-                        </div>
-                    </div>
-                    <div class="help-nav-card" data-section="faq">
-                        <div class="help-nav-header">
-                            <h3>자주 묻는 질문</h3>
-                        </div>
-                    </div>
-                    <div class="help-nav-card" data-section="terms">
-                        <div class="help-nav-header">
-                            <h3>이용약관</h3>
-                        </div>
-                    </div>
-                    <div class="help-nav-card" data-section="privacy">
-                        <div class="help-nav-header">
-                            <h3>개인정보처리방침</h3>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-
-            <!-- 중앙 패널: 도움말 콘텐츠 -->
-            <main class="center-panel">
-                <div class="main-content">
+                <!-- 도움말 콘텐츠 -->
+                <div class="help-content">
                     <!-- 서비스 소개 -->
-                    <section class="help-section active" id="introSection">
+                    <section class="help-section">
+                        <div class="section-header">
+                            <h2>서비스 소개</h2>
+                        </div>
 
+                        <div class="intro-hero">
+                            <div class="intro-text">
+                                <h3>복잡한 정보를 3단계로 누구나 이해할 수 있는 콘텐츠로</h3>
+                                <p>정부 리포트, 학술 논문, 경제 데이터 등 어렵고 방대한 정보성 콘텐츠를 AI가 분석하여 맥락적 시각화와 초안 작성을 통해 일반 대중이 쉽게 이해할 수
+                                    있는 게시글로 변환합니다.</p>
+                            </div>
+                        </div>
 
-                        <div class="help-content-body">
-                            <div class="intro-hero">
-                                <div class="intro-text">
-                                    <h2>매일 아침, 유능한 비서가 정리해둔 완벽한 브리핑</h2>
-                                    <p>뉴스레터 발행자, 분석가, 칼럼니스트 등 전문가가 매일 직면하는 정보 과잉과 맥락 부재의 문제를 해결합니다. 수만 건의 파편화된 정보 속에서
-                                        핵심을 찾아내고, 흩어진 점들을 선으로 연결하여 통찰력 있는 콘텐츠를 만들어보세요.</p>
+                        <div class="problem-section">
+                            <h4>해결하는 문제</h4>
+                            <div class="problem-grid">
+                                <div class="problem-card">
+                                    <div class="problem-icon">📊</div>
+                                    <h5>복잡한 데이터 해석의 어려움</h5>
+                                    <p>정부 통계, 연구 보고서, 경제 지표 등 전문적인 데이터를 일반인이 이해하기 어려운 문제를 해결합니다.</p>
+                                </div>
+                                <div class="problem-card">
+                                    <div class="problem-icon">🔍</div>
+                                    <h5>맥락 부재와 정보 분산</h5>
+                                    <p>흩어진 정보들 간의 관계와 전체적인 맥락을 파악하기 어려운 문제를 의미론적 시각화로 해결합니다.</p>
+                                </div>
+                                <div class="problem-card">
+                                    <div class="problem-icon">✍️</div>
+                                    <h5>대중 친화적 콘텐츠 제작의 어려움</h5>
+                                    <p>전문 지식을 일반 대중이 이해할 수 있는 언어와 형식으로 변환하는 과정의 복잡성을 해결합니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 3단계 프로세스 -->
+                    <section class="help-section">
+                        <div class="section-header">
+                            <h2>3단계 간단 프로세스</h2>
+                        </div>
+
+                        <div class="process-steps">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>자료 업로드</h4>
+                                    <p>정부 데이터, 연구 논문, 경제 리포트, 통계 자료 등을 파일이나 URL로 간편하게 업로드하세요.</p>
+                                    <div class="step-features">
+                                        <span class="feature-tag">PDF/DOCX/HWP 지원</span>
+                                        <span class="feature-tag">웹 URL 크롤링</span>
+                                        <span class="feature-tag">대용량 파일 처리</span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="vision-section">
-                                <h3>비전</h3>
-                                <div class="vision-card">
-                                    <div class="vision-icon">🌐</div>
-                                    <div class="vision-content">
-                                        <h4>누구나 자신의 콘텐츠로 세상과 소통하는 열린 미디어 생태계</h4>
-                                        <p>전문가들이 독자에게 양질의 콘텐츠를 제공하기 위해 매일 감내하고 있는 고도의 정신 노동 과정의 극심한 비효율을 해결하여, 모든 전문가가
-                                            자신의 전문성을 효과적으로 세상에 전달할 수 있도록 돕습니다.</p>
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>AI 분석 및 시각화</h4>
+                                    <p>AI가 데이터를 분석하여 핵심 인사이트를 도출하고, 어피니티 다이어그램으로 맥락적 관계를 시각화합니다.</p>
+                                    <div class="step-features">
+                                        <span class="feature-tag">의미론적 클러스터링</span>
+                                        <span class="feature-tag">인사이트 도출</span>
+                                        <span class="feature-tag">관계 시각화</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="problems-section">
-                                <h3>해결하는 문제</h3>
-                                <div class="problem-cards">
-                                    <div class="problem-card">
-                                        <div class="problem-icon">🔍</div>
-                                        <h4>신호 식별의 어려움</h4>
-                                        <p>하루 수만 건의 파편화된 정보 속에서 독자에게 전달할 가치가 있는 핵심 정보를 가려내는 압박감을 해결합니다.</p>
-                                        <div class="problem-quote">
-                                            <blockquote>"무엇을 선택할 것이냐도 중요하지만 무엇을 버릴 것인가도 중요합니다. 소음을 걷어내고 신호에 집중하는 거죠."
-                                            </blockquote>
-                                        </div>
-                                    </div>
-                                    <div class="problem-card">
-                                        <div class="problem-icon">🔗</div>
-                                        <h4>맥락 구성의 어려움</h4>
-                                        <p>개별 링크로 떠다니는 디지털 뉴스 환경에서 사건 간의 관계와 전체적인 흐름을 파악하는 '맥락적 읽기'를 가능하게 합니다.</p>
-                                        <div class="problem-quote">
-                                            <blockquote>"종이신문의 지면 배열에는 맥락과 밸류에이션이 반영됩니다... 인터넷은 어떤가요. 모든 기사가 낱개의 링크로
-                                                떠다니죠."</blockquote>
-                                        </div>
-                                    </div>
-                                    <div class="problem-card">
-                                        <div class="problem-icon">📊</div>
-                                        <h4>논리 증명의 어려움</h4>
-                                        <p>자신의 관점과 주장을 뒷받침할 정확한 데이터, 인용문, 반론 등을 찾고 검증하는 반복적인 과정을 효율화합니다.</p>
-                                        <div class="problem-quote">
-                                            <blockquote>"뉴스의 세 가지 고유한 요소가 워딩과 숫자, 케이스라고 하면 이걸 어떻게 선택하고 구성하느냐에 따라 완전히 다른
-                                                메시지가 되죠."</blockquote>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="solution-section">
-                                <h3>우리의 해답</h3>
-                                <div class="solution-steps">
-                                    <div class="solution-step">
-                                        <div class="step-number">1</div>
-                                        <div class="step-content">
-                                            <h4>깔끔하게 정리된 일일 브리핑</h4>
-                                            <p>매일 아침 서비스를 열면 보이는 것은 단 하나, 잘 정돈된 '오늘의 브리핑' 페이지입니다. 유능한 비서가 밤새 들어온 뉴스를
-                                                깔끔하게 정리해 책상 위에 올려놓은 것과 같습니다.</p>
-                                        </div>
-                                    </div>
-                                    <div class="solution-step">
-                                        <div class="step-number">2</div>
-                                        <div class="step-content">
-                                            <h4>조수가 남겨놓은 조용한 메모</h4>
-                                            <p>각 이슈 카드를 클릭하면 관련 기사 목록과 함께 아주 작고 조용한 아이콘과 함께 한두 문장의 텍스트가 나타납니다. 이는 AI 조수가
-                                                남겨놓은 통찰의 메모입니다.</p>
-                                        </div>
-                                    </div>
-                                    <div class="solution-step">
-                                        <div class="step-number">3</div>
-                                        <div class="step-content">
-                                            <h4>밑줄 친 내용으로 함께 만드는 개요</h4>
-                                            <p>중요한 기사나 메모에 별표를 누르면 '글감 노트'에 추가됩니다. 마지막에 [뼈대 만들기] 버튼을 누르면 구조화된 아웃라인이
-                                                생성됩니다.</p>
-                                        </div>
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>대중용 콘텐츠 생성</h4>
+                                    <p>분석 결과를 바탕으로 일반 대중이 쉽게 이해할 수 있는 게시글, 기사, 리포트를 자동 생성합니다.</p>
+                                    <div class="step-features">
+                                        <span class="feature-tag">초안 자동 생성</span>
+                                        <span class="feature-tag">출처 자동 포함</span>
+                                        <span class="feature-tag">다양한 형식 지원</span>
                                     </div>
                                 </div>
                             </div>
@@ -1591,331 +1661,174 @@
                     </section>
 
                     <!-- 주요 기능 -->
-                    <section class="help-section" id="featuresSection">
+                    <section class="help-section">
+                        <div class="section-header">
+                            <h2>주요 기능</h2>
+                        </div>
 
+                        <div class="feature-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">📤</div>
+                                <h4>다양한 형식 지원</h4>
+                                <p>PDF, DOCX, HWP, TXT 파일부터 웹 URL까지 다양한 형식의 데이터를 업로드할 수 있습니다.</p>
+                            </div>
 
-                        <div class="help-content-body">
-                            <div class="feature-grid">
-                                <div class="feature-card">
-                                    <div class="feature-icon">📋</div>
-                                    <h3>오늘의 브리핑</h3>
-                                    <p>매일 아침 AI가 정리해주는 주요 이슈들을 한눈에 확인하세요. 각 이슈는 카테고리별로 분류되어 있어 빠른 스캔이 가능합니다.</p>
-                                    <ul class="feature-list">
-                                        <li>이슈별 카드 형태 정리</li>
-                                        <li>관련 기사 수와 중요도 표시</li>
-                                        <li>날짜별 브리핑 히스토리</li>
-                                    </ul>
+                            <div class="feature-card">
+                                <div class="feature-icon">🧠</div>
+                                <h4>AI 의미 분석</h4>
+                                <p>단순한 키워드 매칭이 아닌 의미론적 분석을 통해 데이터 간의 숨겨진 관계를 발견합니다.</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <div class="feature-icon">🗺️</div>
+                                <h4>어피니티 다이어그램</h4>
+                                <p>복잡한 정보들을 시각적으로 정리하여 전체적인 맥락과 패턴을 한눈에 파악할 수 있습니다.</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <div class="feature-icon">✨</div>
+                                <h4>인사이트 도출</h4>
+                                <p>데이터에서 핵심적인 통찰과 의미를 자동으로 추출하여 가치 있는 정보를 제공합니다.</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <div class="feature-icon">📝</div>
+                                <h4>자동 초안 생성</h4>
+                                <p>분석된 내용을 바탕으로 읽기 쉬운 블로그 포스트, 기사, 리포트 초안을 자동으로 생성합니다.</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <div class="feature-icon">📚</div>
+                                <h4>출처 관리</h4>
+                                <p>모든 정보의 출처를 정확히 추적하고 관리하여 신뢰할 수 있는 콘텐츠를 제작할 수 있습니다.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 사용 사례 -->
+                    <section class="help-section">
+                        <div class="section-header">
+                            <h2>활용 사례</h2>
+                        </div>
+
+                        <div class="use-case-grid">
+                            <div class="use-case-card">
+                                <h4>📊 정부 정책 분석</h4>
+                                <p>복잡한 정부 백서나 정책 보고서를 분석하여 시민들이 이해하기 쉬운 정책 설명 콘텐츠 제작</p>
+                            </div>
+
+                            <div class="use-case-card">
+                                <h4>📈 경제 리포트 해석</h4>
+                                <p>어려운 경제 지표와 시장 분석 자료를 일반인을 위한 투자 가이드나 경제 동향 분석글로 변환</p>
+                            </div>
+
+                            <div class="use-case-card">
+                                <h4>🔬 연구 논문 요약</h4>
+                                <p>학술 논문의 핵심 내용을 추출하여 대중을 위한 과학 기사나 연구 동향 리포트 작성</p>
+                            </div>
+
+                            <div class="use-case-card">
+                                <h4>📋 기업 IR 자료 분석</h4>
+                                <p>복잡한 기업 공시 자료를 분석하여 투자자나 고객을 위한 쉬운 기업 분석 콘텐츠 제작</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- FAQ -->
+                    <section class="help-section">
+                        <div class="section-header">
+                            <h2>자주 묻는 질문</h2>
+                        </div>
+
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>어떤 종류의 파일을 업로드할 수 있나요?</span>
+                                    <i class="ph ph-plus faq-icon"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>PDF, DOCX, HWP, TXT 형식의 문서 파일과 웹 URL을 지원합니다. 정부 보고서, 연구 논문, 경제 리포트, 통계 자료 등 다양한
+                                        정보성 콘텐츠를 분석할 수 있습니다.</p>
                                 </div>
+                            </div>
 
-                                <div class="feature-card">
-                                    <div class="feature-icon">🔍</div>
-                                    <h3>비교 분석 데스크</h3>
-                                    <p>선택한 이슈에 대한 다양한 관점과 데이터를 비교분석하여 깊이 있는 통찰을 얻으세요.</p>
-                                    <ul class="feature-list">
-                                        <li>타임라인 기반 리포트</li>
-                                        <li>워딩 비교 분석</li>
-                                        <li>데이터 시각화</li>
-                                        <li>대립 구조 분석</li>
-                                    </ul>
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>AI 분석은 얼마나 정확한가요?</span>
+                                    <i class="ph ph-plus faq-icon"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>최신 자연어 처리 기술을 사용하여 높은 정확도로 분석합니다. 다만 AI가 생성한 내용은 참고용이며, 중요한 결정에는 전문가의 검토를 권장합니다.
+                                    </p>
                                 </div>
+                            </div>
 
-                                <div class="feature-card">
-                                    <div class="feature-icon">📁</div>
-                                    <h3>내 프로젝트</h3>
-                                    <p>하이라이트한 내용을 카테고리별로 정리하고 AI와 함께 초안을 작성하세요.</p>
-                                    <ul class="feature-list">
-                                        <li>4가지 카테고리 하이라이트</li>
-                                        <li>드래그 앤 드롭 정리</li>
-                                        <li>AI 기반 초안 생성</li>
-                                        <li>출처 자동 포함</li>
-                                    </ul>
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>생성된 콘텐츠의 저작권은 누구에게 있나요?</span>
+                                    <i class="ph ph-plus faq-icon"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>오마이데스크를 통해 생성된 콘텐츠의 저작권은 해당 콘텐츠를 생성한 사용자에게 귀속됩니다. 다만 원본 자료의 저작권은 별도로 확인해야 합니다.
+                                    </p>
                                 </div>
+                            </div>
 
-                                <div class="feature-card">
-                                    <div class="feature-icon">📊</div>
-                                    <h3>분석 리포트</h3>
-                                    <p>콘텐츠 성과와 독자 참여도를 분석하여 더 나은 콘텐츠를 만들어보세요.</p>
-                                    <ul class="feature-list">
-                                        <li>주간/월간 성과 분석</li>
-                                        <li>채널별 참여도 측정</li>
-                                        <li>AI 기반 개선 제안</li>
-                                        <li>인기 콘텐츠 추적</li>
-                                    </ul>
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>어피니티 다이어그램이란 무엇인가요?</span>
+                                    <i class="ph ph-plus faq-icon"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>관련성이 높은 정보들을 그룹으로 묶어 시각적으로 표현하는 분석 도구입니다. 복잡한 데이터에서 패턴과 관계를 쉽게 파악할 수 있게 도와줍니다.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>개인정보는 어떻게 보호되나요?</span>
+                                    <i class="ph ph-plus faq-icon"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>업로드된 모든 데이터는 암호화되어 안전하게 처리되며, 분석 완료 후 자동으로 삭제됩니다. 개인정보처리방침에 따라 엄격하게 관리됩니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>분석 시간은 얼마나 걸리나요?</span>
+                                    <i class="ph ph-plus faq-icon"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>문서의 크기와 복잡도에 따라 다르지만, 일반적으로 5-15분 정도 소요됩니다. 대용량 파일의 경우 더 오래 걸릴 수 있습니다.</p>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <!-- 사용법 가이드 -->
-                    <section class="help-section" id="guideSection">
-
-
-                        <div class="help-content-body">
-                            <div class="guide-steps">
-                                <div class="guide-step">
-                                    <div class="guide-step-header">
-                                        <span class="guide-step-number">STEP 1</span>
-                                        <h3>매일 아침 브리핑 확인</h3>
-                                    </div>
-                                    <div class="guide-step-content">
-                                        <p>오마이데스크에 로그인하면 가장 먼저 '오늘의 브리핑' 탭이 열립니다. 좌측 패널에서 오늘의 주요 이슈들을 확인하세요.</p>
-                                        <div class="guide-tip">
-                                            <strong>💡 팁:</strong> 날짜 선택기로 과거 브리핑도 조회할 수 있습니다.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="guide-step">
-                                    <div class="guide-step-header">
-                                        <span class="guide-step-number">STEP 2</span>
-                                        <h3>관심 이슈 선택 및 분석</h3>
-                                    </div>
-                                    <div class="guide-step-content">
-                                        <p>관심 있는 이슈 카드를 클릭하면 중앙 패널에 상세 분석이 표시됩니다. 리포트, 워딩 비교, 데이터 분석 등 다양한 관점에서 이슈를
-                                            살펴보세요.</p>
-                                        <div class="guide-tip">
-                                            <strong>💡 팁:</strong> 우측 사이드바의 목차를 활용하여 원하는 섹션으로 빠르게 이동할 수 있습니다.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="guide-step">
-                                    <div class="guide-step-header">
-                                        <span class="guide-step-number">STEP 3</span>
-                                        <h3>중요 내용 하이라이트</h3>
-                                    </div>
-                                    <div class="guide-step-content">
-                                        <p>분석 내용을 읽으면서 중요한 부분을 드래그하여 하이라이트하세요. 4가지 카테고리로 분류할 수 있습니다:</p>
-                                        <ul>
-                                            <li><span class="highlight-sample red">쟁점과 현안</span> - 핵심 이슈들</li>
-                                            <li><span class="highlight-sample blue">더 깊게 읽기</span> - 배경 정보</li>
-                                            <li><span class="highlight-sample green">다르게 읽기</span> - 다른 관점</li>
-                                            <li><span class="highlight-sample gray">오늘의 TMI</span> - 흥미로운 정보</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="guide-step">
-                                    <div class="guide-step-header">
-                                        <span class="guide-step-number">STEP 4</span>
-                                        <h3>프로젝트에서 정리 및 초안 작성</h3>
-                                    </div>
-                                    <div class="guide-step-content">
-                                        <p>'내 프로젝트' 탭에서 하이라이트한 내용들을 카테고리별로 정리하고, 드래그 앤 드롭으로 순서를 조정한 후 AI 초안 생성 기능을
-                                            활용하세요.</p>
-                                        <div class="guide-tip">
-                                            <strong>💡 팁:</strong> '출처 포함' 옵션을 체크하면 모든 인용과 참고 자료가 자동으로 포함됩니다.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- 연락처 -->
+                    <section class="help-section">
+                        <div class="section-header">
+                            <h2>문의하기</h2>
                         </div>
-                    </section>
 
-                    <!-- 자주 묻는 질문 -->
-                    <section class="help-section" id="faqSection">
-
-
-                        <div class="help-content-body">
-                            <div class="faq-list">
-                                <div class="faq-item">
-                                    <button class="faq-question">
-                                        <span>오마이데스크는 어떤 분들이 사용하나요?</span>
-                                        <i class="ph ph-plus faq-icon"></i>
-                                    </button>
-                                    <div class="faq-answer">
-                                        <p>뉴스레터 발행자, 분석가, 칼럼니스트, 블로거 등 정기적으로 정보를 수집하고 분석하여 콘텐츠를 생산하는 모든 전문가들이 주요 사용자입니다.
-                                            특히 매일 대량의 정보를 처리해야 하는 분들에게 큰 도움이 됩니다.</p>
-                                    </div>
-                                </div>
-
-                                <div class="faq-item">
-                                    <button class="faq-question">
-                                        <span>브리핑 정보는 어떻게 수집되나요?</span>
-                                        <i class="ph ph-plus faq-icon"></i>
-                                    </button>
-                                    <div class="faq-answer">
-                                        <p>AI가 주요 언론사, 정부 기관, 소셜 미디어 등 다양한 공개 소스에서 정보를 수집하고 분석합니다. 사용자가 설정한 관심 키워드와 팔로우
-                                            계정을 기반으로 개인화된 브리핑을 제공합니다.</p>
-                                    </div>
-                                </div>
-
-                                <div class="faq-item">
-                                    <button class="faq-question">
-                                        <span>하이라이트한 내용은 어떻게 관리되나요?</span>
-                                        <i class="ph ph-plus faq-icon"></i>
-                                    </button>
-                                    <div class="faq-answer">
-                                        <p>하이라이트한 모든 내용은 자동으로 저장되며, '내 프로젝트' 탭에서 카테고리별로 정리됩니다. 프로젝트별로 분류하여 관리할 수 있으며,
-                                            언제든지 수정이나 삭제가 가능합니다.</p>
-                                    </div>
-                                </div>
-
-                                <div class="faq-item">
-                                    <button class="faq-question">
-                                        <span>AI 초안 생성 기능은 어떻게 작동하나요?</span>
-                                        <i class="ph ph-plus faq-icon"></i>
-                                    </button>
-                                    <div class="faq-answer">
-                                        <p>사용자가 하이라이트하고 정리한 내용을 바탕으로 AI가 구조화된 초안을 생성합니다. 완성된 글이 아닌 '뼈대' 형태로 제공되어, 사용자가
-                                            자신의 스타일과 관점을 추가하여 완성할 수 있습니다.</p>
-                                    </div>
-                                </div>
-
-                                <div class="faq-item">
-                                    <button class="faq-question">
-                                        <span>출처 정보는 어떻게 관리되나요?</span>
-                                        <i class="ph ph-plus faq-icon"></i>
-                                    </button>
-                                    <div class="faq-answer">
-                                        <p>모든 정보에는 원본 출처가 자동으로 기록됩니다. 우측 사이드바의 '출처' 버튼을 통해 전체 출처 목록을 확인할 수 있으며, 초안 생성 시
-                                            출처 포함 옵션을 선택할 수 있습니다.</p>
-                                    </div>
-                                </div>
-
-                                <div class="faq-item">
-                                    <button class="faq-question">
-                                        <span>분석 리포트는 어떤 지표를 제공하나요?</span>
-                                        <i class="ph ph-plus faq-icon"></i>
-                                    </button>
-                                    <div class="faq-answer">
-                                        <p>조회수, 클릭률, 구독자 수, 참여도 등 기본적인 성과 지표와 함께 시간대별 참여 패턴, 채널별 성과, 주제별 인기도 등을 분석합니다.
-                                            AI 기반 개선 제안도 함께 제공됩니다.</p>
-                                    </div>
-                                </div>
+                        <div class="contact-info">
+                            <div class="contact-card">
+                                <h4>기술 지원</h4>
+                                <p>서비스 이용 중 문제가 발생하면 언제든 연락주세요.</p>
+                                <p><strong>이메일:</strong> support@omydesk.com</p>
                             </div>
-                        </div>
-                    </section>
 
-                    <!-- 이용약관 -->
-                    <section class="help-section" id="termsSection">
-
-
-                        <div class="help-content-body">
-                            <div class="terms-content">
-                                <h3>제1조 (목적)</h3>
-                                <p>이 약관은 오마이데스크(이하 "회사")가 제공하는 정보 분석 및 콘텐츠 제작 서비스(이하 "서비스")의 이용과 관련하여 회사와 이용자 간의 권리, 의무
-                                    및 책임사항을 규정함을 목적으로 합니다.</p>
-
-                                <h3>제2조 (용어의 정의)</h3>
-                                <p>이 약관에서 사용하는 용어의 정의는 다음과 같습니다:</p>
-                                <ul>
-                                    <li>"서비스"란 회사가 제공하는 정보 분석, 브리핑, 콘텐츠 제작 도구 등 일체의 서비스를 의미합니다.</li>
-                                    <li>"이용자"란 회사의 서비스에 접속하여 이 약관에 따라 회사가 제공하는 서비스를 받는 회원 및 비회원을 의미합니다.</li>
-                                    <li>"회원"이란 회사에 개인정보를 제공하여 회원등록을 한 자로서, 회사의 정보를 지속적으로 제공받으며 회사가 제공하는 서비스를 계속적으로 이용할 수
-                                        있는 자를 의미합니다.</li>
-                                </ul>
-
-                                <h3>제3조 (약관의 효력 및 변경)</h3>
-                                <p>① 이 약관은 서비스를 이용하고자 하는 모든 이용자에 대하여 그 효력을 발생합니다.</p>
-                                <p>② 회사는 필요한 경우 이 약관을 변경할 수 있으며, 변경된 약관은 서비스 내 공지사항을 통해 공지합니다.</p>
-
-                                <h3>제4조 (서비스의 제공 및 변경)</h3>
-                                <p>① 회사는 다음과 같은 서비스를 제공합니다:</p>
-                                <ul>
-                                    <li>일일 브리핑 및 정보 분석 서비스</li>
-                                    <li>콘텐츠 제작 도구 및 하이라이트 기능</li>
-                                    <li>성과 분석 및 리포트 서비스</li>
-                                    <li>기타 회사가 정하는 서비스</li>
-                                </ul>
-                                <p>② 회사는 서비스의 품질 향상을 위해 서비스 내용을 변경할 수 있습니다.</p>
-
-                                <h3>제5조 (이용자의 의무)</h3>
-                                <p>① 이용자는 다음 행위를 하여서는 안 됩니다:</p>
-                                <ul>
-                                    <li>신청 또는 변경 시 허위 내용의 등록</li>
-                                    <li>타인의 정보 도용</li>
-                                    <li>회사가 게시한 정보의 변경</li>
-                                    <li>회사가 정한 정보 이외의 정보(컴퓨터 프로그램 등) 등의 송신 또는 게시</li>
-                                    <li>회사 기타 제3자의 저작권 등 지적재산권에 대한 침해</li>
-                                </ul>
-
-                                <h3>제6조 (저작권 및 지적재산권)</h3>
-                                <p>① 서비스에 의해 생성된 콘텐츠의 저작권은 해당 콘텐츠를 생성한 이용자에게 귀속됩니다.</p>
-                                <p>② 회사가 제공하는 서비스, 그에 필요한 소프트웨어, 이미지, 마크, 로고, 디자인, 서비스명칭, 정보 및 상표 등과 관련된 지적재산권 및 기타 권리는
-                                    회사에 소유권이 있습니다.</p>
-
-                                <h3>제7조 (개인정보보호)</h3>
-                                <p>회사는 이용자의 개인정보를 보호하기 위하여 개인정보처리방침을 수립하고 이를 준수합니다.</p>
-
-                                <h3>제8조 (면책조항)</h3>
-                                <p>① 회사는 천재지변 또는 이에 준하는 불가항력으로 인하여 서비스를 제공할 수 없는 경우에는 서비스 제공에 관한 책임이 면제됩니다.</p>
-                                <p>② 회사는 이용자의 귀책사유로 인한 서비스 이용의 장애에 대하여 책임을 지지 않습니다.</p>
-
-                                <div class="terms-footer">
-                                    <p><strong>시행일:</strong> 2024년 12월 19일</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- 개인정보처리방침 -->
-                    <section class="help-section" id="privacySection">
-
-
-                        <div class="help-content-body">
-                            <div class="privacy-content">
-                                <h3>1. 개인정보의 처리 목적</h3>
-                                <p>오마이데스크는 다음의 목적을 위하여 개인정보를 처리합니다:</p>
-                                <ul>
-                                    <li>회원 가입 및 관리</li>
-                                    <li>서비스 제공 및 맞춤화</li>
-                                    <li>고객 문의 및 불만처리</li>
-                                    <li>서비스 개선 및 품질 향상</li>
-                                </ul>
-
-                                <h3>2. 개인정보의 처리 및 보유 기간</h3>
-                                <p>① 개인정보는 수집·이용에 관한 동의일로부터 개인정보의 수집·이용목적을 달성할 때까지 보유·이용됩니다.</p>
-                                <p>② 회원 탈퇴 시 개인정보는 즉시 파기됩니다. 단, 다음의 경우에는 명시한 기간 동안 보존합니다:</p>
-                                <ul>
-                                    <li>부정 이용 방지를 위한 이용자 식별정보: 1년</li>
-                                    <li>서비스 이용 기록: 3개월</li>
-                                </ul>
-
-                                <h3>3. 개인정보의 제3자 제공</h3>
-                                <p>회사는 원칙적으로 이용자의 개인정보를 제3자에게 제공하지 않습니다. 다만, 다음의 경우에는 예외로 합니다:</p>
-                                <ul>
-                                    <li>이용자가 사전에 동의한 경우</li>
-                                    <li>법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
-                                </ul>
-
-                                <h3>4. 개인정보의 처리 위탁</h3>
-                                <p>회사는 서비스 제공을 위해 다음과 같이 개인정보 처리업무를 위탁하고 있습니다:</p>
-                                <ul>
-                                    <li>위탁업무: 클라우드 서버 운영 및 관리</li>
-                                    <li>위탁업체: AWS Korea LLC</li>
-                                    <li>위탁기간: 서비스 제공 기간</li>
-                                </ul>
-
-                                <h3>5. 정보주체의 권리·의무</h3>
-                                <p>이용자는 개인정보주체로서 다음과 같은 권리를 행사할 수 있습니다:</p>
-                                <ul>
-                                    <li>개인정보 처리현황 통지요구</li>
-                                    <li>개인정보 열람요구</li>
-                                    <li>개인정보 정정·삭제요구</li>
-                                    <li>개인정보 처리정지요구</li>
-                                </ul>
-
-                                <h3>6. 개인정보 보호책임자</h3>
-                                <p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보
-                                    보호책임자를 지정하고 있습니다:</p>
-                                <ul>
-                                    <li>개인정보 보호책임자: 류호산</li>
-                                    <li>연락처: privacy@omydesk.com</li>
-                                </ul>
-
-                                <h3>7. 개인정보 처리방침 변경</h3>
-                                <p>이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을
-                                    통하여 고지할 것입니다.</p>
-
-                                <div class="privacy-footer">
-                                    <p><strong>시행일:</strong> 2024년 12월 19일</p>
-                                </div>
+                            <div class="contact-card">
+                                <h4>제품 문의</h4>
+                                <p>새로운 기능 제안이나 개선 사항이 있으시면 알려주세요.</p>
+                                <p><strong>이메일:</strong> product@omydesk.com</p>
                             </div>
                         </div>
                     </section>
                 </div>
-            </main>
+            </div>
         </div>
     </div>
 
@@ -3178,178 +3091,352 @@ ${sources.map(source => `• ${source}`).join('\n')}
             return;
         }
 
-        // 프로젝트 기능 초기화
+        // 리뉴얼된 프로젝트 기능 초기화
         function initializeProjects() {
-            console.log('📂 프로젝트 탭 기능 초기화');
+            console.log('📂 리뉴얼된 프로젝트 탭 기능 초기화');
 
-            // 프로젝트 액션 버튼들
-            initializeProjectActions();
+            // 프로젝트 카드 클릭 이벤트
+            initializeProjectCardEvents();
 
-            // 드래그 앤 드롭 기능
-            initializeDragAndDrop();
+            // 프로젝트 상세 뷰 네비게이션
+            initializeProjectDetailNavigation();
 
-            // AI 내보내기 기능
-            initializeAIExport();
+            // 새 프로젝트 버튼
+            initializeNewProjectButton();
 
-            // 하이라이트 카드 메뉴 기능
-            initializeHighlightMenus();
+            // 상세 뷰 탭 전환
+            initializeDetailTabs();
+
+            // 뒤로가기 버튼
+            initializeBackButton();
+
+            console.log('✅ 리뉴얼된 프로젝트 탭 기능 초기화 완료');
         }
 
-        // 프로젝트 액션 버튼 기능
-        function initializeProjectActions() {
-            const editBtn = document.getElementById('editProjectBtn');
-            const newBtn = document.getElementById('newProjectBtn');
-            const projectSelect = document.getElementById('projectSelect');
+        // 프로젝트 카드 클릭 이벤트
+        function initializeProjectCardEvents() {
+            const projectCards = document.querySelectorAll('.project-card');
 
-            if (editBtn) {
-                editBtn.addEventListener('click', function () {
-                    const currentProject = projectSelect.value;
-                    const newName = prompt('프로젝트 이름을 입력하세요:', projectSelect.options[projectSelect.selectedIndex].text);
-                    if (newName && newName.trim()) {
-                        projectSelect.options[projectSelect.selectedIndex].text = newName.trim();
-                    }
+            projectCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const projectId = this.dataset.projectId;
+                    showProjectDetail(projectId);
                 });
+            });
+        }
+
+        // 프로젝트 상세 뷰 표시
+        function showProjectDetail(projectId) {
+            console.log(`프로젝트 상세 뷰 표시: ${projectId}`);
+
+            const listView = document.getElementById('projectListView');
+            const detailView = document.getElementById('projectDetailView');
+
+            if (listView && detailView) {
+                listView.style.display = 'none';
+                detailView.style.display = 'flex';
+
+                // 프로젝트 정보 로드
+                loadProjectDetail(projectId);
             }
+        }
+
+        // 프로젝트 상세 정보 로드
+        function loadProjectDetail(projectId) {
+            // 샘플 프로젝트 데이터
+            const projectData = {
+                'grok4-analysis': {
+                    title: 'Grok 4 출시 분석',
+                    summary: '일론 머스크의 xAI에서 발표한 Grok 4 모델의 시장 영향과 경쟁사 대응 전략에 대한 종합 분석',
+                    status: '완료',
+                    date: '2024.12.19',
+                    sources: [
+                        { title: 'Elon Musk\'s xAI launches Grok 4 alongside a $300 ... - TechCrunch', source: 'TechCrunch', type: '🌐' },
+                        { title: 'Musk unveils Grok 4 as xAI\'s new AI model that beats ... - The Decoder', source: 'THE-DECODER.com', type: '📰' },
+                        { title: 'Musk unveils Grok 4 update a day after xAI chatbot made antisemitic remarks', source: 'CBS News', type: '📺' }
+                    ],
+                    report: `# Grok 4 출시 분석 리포트
+
+## 📊 주요 요약
+
+### 핵심 이슈
+- **AI 모델 경쟁 심화**: OpenAI, Google과의 직접적인 경쟁 구도 형성
+- **기술적 성능 향상**: 이전 모델 대비 추론 능력과 속도 개선
+- **시장 반응**: 투자자들의 xAI 밸류에이션 상향 조정
+
+### 시장 영향
+- AI 섹터 전체 관심도 증가
+- 경쟁사들의 대응 전략 가속화
+- 기술 인재 확보 경쟁 격화
+
+## 🎯 상세 분석
+
+### 1. 기술적 혁신
+
+**주요 개선사항**
+- 멀티모달 처리 능력 강화
+- 실시간 웹 검색 기능 통합
+- 한국어 포함 다국어 지원 확대
+
+**경쟁 우위**
+- X(Twitter) 플랫폼과의 시너지
+- 실시간 소셜 미디어 데이터 활용
+- 독특한 개성과 유머 감각
+
+### 2. 시장 포지셔닝
+
+**차별화 전략**
+- "truth-seeking" AI로 포지셔닝
+- 정치적 중립성 표방
+- 실시간 정보 처리 강조
+
+**타겟 시장**
+- 소셜 미디어 사용자
+- 리서치 및 분석 전문가
+- 실시간 정보 니즈가 높은 기업
+
+## 📈 투자 시사점
+
+### 단기 영향
+- xAI 기업가치 상승 요인
+- AI 관련주 전반적 상승 모멘텀
+- 테크 섹터 투자 관심 증가
+
+### 중장기 전망
+- AI 모델 경쟁 구도 재편
+- 플랫폼 종속성 리스크 고려 필요
+- 규제 리스크 모니터링 중요
+
+---
+
+*본 분석은 2024년 12월 19일 기준으로 작성되었습니다.*`
+                },
+                'crypto-trend': {
+                    title: '암호화폐 시장 동향',
+                    summary: '비트코인 ETF 승인 이후 암호화폐 시장의 변화와 주요 코인들의 가격 움직임 분석',
+                    status: '완료',
+                    date: '2024.12.18',
+                    sources: [],
+                    report: ''
+                },
+                'fed-policy': {
+                    title: 'Fed 통화정책 분석',
+                    summary: '연준의 금리 인상 정책이 글로벌 경제에 미치는 영향과 향후 전망에 대한 심층 분석',
+                    status: '진행중',
+                    date: '2024.12.17',
+                    sources: [],
+                    report: ''
+                },
+                'korean-startup': {
+                    title: '한국 스타트업 생태계',
+                    summary: '2024년 한국 스타트업 투자 동향과 주요 성장 분야에 대한 종합적인 시장 분석',
+                    status: '완료',
+                    date: '2024.12.16',
+                    sources: [],
+                    report: ''
+                }
+            };
+
+            const project = projectData[projectId];
+            if (project) {
+                // 헤더 정보 업데이트
+                document.getElementById('projectDetailTitle').textContent = project.title;
+                document.getElementById('projectDetailSummary').textContent = project.summary;
+
+                // 상태 업데이트
+                const statusElement = document.getElementById('projectDetailStatus');
+                statusElement.innerHTML = `
+                    <i class="ph ph-${project.status === '완료' ? 'check-circle' : 'clock'}"></i>
+                    <span>${project.status}</span>
+                `;
+                statusElement.className = `project-detail-status ${project.status === '완료' ? 'completed' : 'in-progress'}`;
+
+                // 출처 목록 업데이트
+                updateSourcesList(project.sources);
+
+                // 다이어그램 및 테이블 업데이트
+                updateDiagramView();
+
+                // 리포트 업데이트
+                updateReportView(project.report);
+            }
+        }
+
+        // 출처 목록 업데이트
+        function updateSourcesList(sources) {
+            const sourcesList = document.getElementById('sourcesList');
+            const sourcesCount = document.querySelector('.sources-count');
+
+            if (sourcesList && sourcesCount) {
+                sourcesCount.textContent = `총 ${sources.length}개`;
+
+                sourcesList.innerHTML = sources.map((source, index) => `
+                    <div class="source-item">
+                        <div class="source-number">${index + 1}.</div>
+                        <div class="source-type">${source.type} ${source.source}</div>
+                        <div class="source-content">
+                            <h4>${source.title}</h4>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // 다이어그램 뷰 업데이트
+        function updateDiagramView() {
+            const tableContainer = document.getElementById('detailTableContainer');
+
+            if (tableContainer) {
+                // 홈 탭의 분석 테이블을 복사해서 표시
+                const originalTable = document.getElementById('analysisTable');
+                if (originalTable) {
+                    tableContainer.innerHTML = originalTable.outerHTML;
+                }
+            }
+        }
+
+        // 리포트 뷰 업데이트
+        function updateReportView(reportContent) {
+            const reportViewer = document.getElementById('reportViewer');
+
+            if (reportViewer && reportContent) {
+                // 마크다운을 간단한 HTML로 변환 (실제로는 마크다운 파서 사용)
+                const htmlContent = reportContent
+                    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                    .replace(/^\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+                    .replace(/^\- (.*$)/gim, '<li>$1</li>')
+                    .replace(/\n/g, '<br>');
+
+                reportViewer.innerHTML = htmlContent;
+            }
+        }
+
+        // 새 프로젝트 버튼 초기화
+        function initializeNewProjectButton() {
+            const newBtn = document.getElementById('newProjectBtn');
 
             if (newBtn) {
                 newBtn.addEventListener('click', function () {
-                    const newName = prompt('새 프로젝트 이름을 입력하세요:');
-                    if (newName && newName.trim()) {
-                        const option = document.createElement('option');
-                        option.value = newName.toLowerCase().replace(/\s+/g, '-');
-                        option.text = newName.trim();
-                        option.selected = true;
-                        projectSelect.appendChild(option);
-                    }
-                });
-            }
-
-            if (projectSelect) {
-                projectSelect.addEventListener('change', function () {
-                    // 프로젝트 전환 처리
+                    alert('새 프로젝트는 홈 탭에서 3단계 과정을 통해 생성할 수 있습니다.');
                 });
             }
         }
 
-        // 드래그 앤 드롭 기능
-        function initializeDragAndDrop() {
-            const highlightCards = document.querySelectorAll('#projectsTab .highlight-card');
-            const highlightColumns = document.querySelectorAll('#projectsTab .highlight-cards');
+        // 상세 뷰 탭 전환 초기화
+        function initializeDetailTabs() {
+            const tabBtns = document.querySelectorAll('.detail-tab-btn');
+            const tabPanels = document.querySelectorAll('.detail-tab-panel');
 
-            highlightCards.forEach(card => {
-                card.addEventListener('dragstart', function (e) {
-                    e.dataTransfer.setData('text/plain', '');
-                    this.classList.add('dragging');
-                });
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const tabId = this.dataset.detailTab;
 
-                card.addEventListener('dragend', function () {
-                    this.classList.remove('dragging');
-                });
-            });
+                    // 탭 버튼 활성화 상태 변경
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
 
-            highlightColumns.forEach(column => {
-                column.addEventListener('dragover', function (e) {
-                    e.preventDefault();
-                    this.classList.add('drag-over');
-                });
+                    // 탭 패널 표시/숨김
+                    tabPanels.forEach(panel => {
+                        panel.classList.remove('active');
+                    });
 
-                column.addEventListener('dragleave', function () {
-                    this.classList.remove('drag-over');
-                });
-
-                column.addEventListener('drop', function (e) {
-                    e.preventDefault();
-                    this.classList.remove('drag-over');
-
-                    const draggingCard = document.querySelector('#projectsTab .highlight-card.dragging');
-                    if (draggingCard) {
-                        this.appendChild(draggingCard);
-                        updateCategoryCount();
+                    const targetPanel = document.getElementById(tabId + 'Panel');
+                    if (targetPanel) {
+                        targetPanel.classList.add('active');
                     }
                 });
             });
         }
 
-        // 카테고리 카운트 업데이트
-        function updateCategoryCount() {
-            const columns = document.querySelectorAll('#projectsTab .highlight-column');
-            columns.forEach(column => {
-                const cards = column.querySelectorAll('.highlight-card');
-                const badge = column.querySelector('.category-count');
-                if (badge) {
-                    badge.textContent = cards.length;
-                }
-            });
+        // 뒤로가기 버튼 초기화
+        function initializeBackButton() {
+            const backBtn = document.getElementById('backToListBtn');
+
+            if (backBtn) {
+                backBtn.addEventListener('click', function () {
+                    showProjectList();
+                });
+            }
         }
 
-        // AI 내보내기 기능
-        function initializeAIExport() {
-            const aiExportBtn = document.getElementById('aiExportBtn');
-            const includeSourcesCheck = document.getElementById('includeSourcesCheck');
+        // 프로젝트 리스트로 돌아가기
+        function showProjectList() {
+            const listView = document.getElementById('projectListView');
+            const detailView = document.getElementById('projectDetailView');
 
-            if (aiExportBtn) {
-                aiExportBtn.addEventListener('click', function () {
-                    const includesSources = includeSourcesCheck.checked;
-                    const highlightCards = document.querySelectorAll('#projectsTab .highlight-card');
+            if (listView && detailView) {
+                detailView.style.display = 'none';
+                listView.style.display = 'flex';
+            }
+        }
 
-                    if (highlightCards.length === 0) {
-                        return;
-                    }
+        // 프로젝트 상세 뷰 네비게이션 초기화
+        function initializeProjectDetailNavigation() {
+            // 리포트 액션 버튼들
+            const copyReportBtn = document.getElementById('copyReportBtn');
+            const downloadReportBtn = document.getElementById('downloadReportBtn');
+            const editReportBtn = document.getElementById('editReportBtn');
 
-                    // AI 내보내기 시뮬레이션
-                    this.innerHTML = '<i class="ph ph-spinner"></i><span>AI 생성 중...</span>';
-                    this.disabled = true;
-
-                    setTimeout(() => {
-                        this.innerHTML = '<i class="ph ph-magic-wand"></i><span>AI 초안 내보내기</span>';
-                        this.disabled = false;
-
-                        // 실제로는 생성된 초안을 새 창이나 모달로 표시
-                        console.log('AI 초안 생성 완료:', {
-                            카드수: highlightCards.length,
-                            출처포함: includesSources
+            if (copyReportBtn) {
+                copyReportBtn.addEventListener('click', function () {
+                    const reportViewer = document.getElementById('reportViewer');
+                    if (reportViewer) {
+                        const text = reportViewer.textContent;
+                        navigator.clipboard.writeText(text).then(() => {
+                            alert('리포트가 클립보드에 복사되었습니다.');
                         });
-                    }, 3000);
-                });
-            }
-        }
-
-        // 하이라이트 카드 메뉴 기능
-        function initializeHighlightMenus() {
-            const menuBtns = document.querySelectorAll('#projectsTab .highlight-menu-btn');
-            const actionBtns = document.querySelectorAll('#projectsTab .highlight-action-btn');
-
-            menuBtns.forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    const card = this.closest('.highlight-card');
-                    // 간단한 컨텍스트 메뉴 시뮬레이션
-                    const actions = ['편집', '복사', '삭제'];
-                    const action = prompt('작업을 선택하세요:\n1. 편집\n2. 복사\n3. 삭제', '1');
-
-                    switch (action) {
-                        case '1':
-                            // 편집 기능
-                            break;
-                        case '2':
-                            // 카드 복사
-                            break;
-                        case '3':
-                            if (confirm('이 하이라이트를 삭제하시겠습니까?')) {
-                                card.remove();
-                                updateCategoryCount();
-                            }
-                            break;
                     }
                 });
-            });
+            }
 
-            actionBtns.forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    // 배경지식 기능
+            if (downloadReportBtn) {
+                downloadReportBtn.addEventListener('click', function () {
+                    const reportViewer = document.getElementById('reportViewer');
+                    if (reportViewer) {
+                        const content = reportViewer.textContent;
+                        const blob = new Blob([content], { type: 'text/plain' });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = '프로젝트_리포트.txt';
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                    }
                 });
-            });
+            }
+
+            if (editReportBtn) {
+                editReportBtn.addEventListener('click', function () {
+                    alert('리포트 편집 기능은 준비 중입니다.');
+                });
+            }
+
+            // 다이어그램 컨트롤 버튼들
+            const detailZoomInBtn = document.getElementById('detailZoomInBtn');
+            const detailZoomOutBtn = document.getElementById('detailZoomOutBtn');
+            const detailFitToScreenBtn = document.getElementById('detailFitToScreenBtn');
+
+            if (detailZoomInBtn) {
+                detailZoomInBtn.addEventListener('click', function () {
+                    console.log('다이어그램 확대');
+                });
+            }
+
+            if (detailZoomOutBtn) {
+                detailZoomOutBtn.addEventListener('click', function () {
+                    console.log('다이어그램 축소');
+                });
+            }
+
+            if (detailFitToScreenBtn) {
+                detailFitToScreenBtn.addEventListener('click', function () {
+                    console.log('화면에 맞춤');
+                });
+            }
         }
 
         // 프로젝트 알림 표시 (비활성화됨)
@@ -3520,9 +3607,6 @@ ${sources.map(source => `• ${source}`).join('\n')}
         // 도움말 탭 기능 초기화
         function initializeHelp() {
             console.log('❓ 도움말 탭 기능 초기화');
-
-            // 네비게이션 초기화
-            initializeHelpNavigation();
 
             // FAQ 아코디언 초기화
             initializeFAQAccordion();
@@ -4026,31 +4110,7 @@ ${sources.map(source => `• ${source}`).join('\n')}
             console.log('✅ 원인 분석 사이드바 초기화 완료 (빈 상태)');
         }
 
-        // 도움말 네비게이션 초기화
-        function initializeHelpNavigation() {
-            const helpNavCards = document.querySelectorAll('.help-nav-card');
-            const helpSections = document.querySelectorAll('.help-section');
 
-            helpNavCards.forEach(card => {
-                card.addEventListener('click', function () {
-                    const sectionId = this.dataset.section;
-
-                    // 네비게이션 활성화 상태 변경
-                    helpNavCards.forEach(nav => nav.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // 섹션 표시/숨김
-                    helpSections.forEach(section => {
-                        section.classList.remove('active');
-                    });
-
-                    const targetSection = document.getElementById(sectionId + 'Section');
-                    if (targetSection) {
-                        targetSection.classList.add('active');
-                    }
-                });
-            });
-        }
 
         // FAQ 아코디언 초기화
         function initializeFAQAccordion() {
