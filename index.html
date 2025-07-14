@@ -516,18 +516,9 @@
                                 <!-- 분석 상태 (클러스터 선택된 상태) -->
                                 <div class="analysis-content-state" id="analysisContentState" style="display: none;">
                                     <div class="analysis-header">
-                                        <div class="analysis-actions">
-                                            <button class="analysis-action-btn secondary" id="viewSourcesBtn">
-                                                <i class="ph ph-link-simple"></i>
-                                                <span>출처 보기</span>
-                                            </button>
-                                            <button class="analysis-action-btn primary" id="addCommentBtn">
-                                                <i class="ph ph-chat-circle"></i>
-                                                <span>코멘트 추가</span>
-                                            </button>
-                                        </div>
+                                        
                                         <div class="analysis-title-section">
-                                            <h4 id="analysisTitle">원인 분석: 클러스터 선택</h4>
+                                            <h4 id="analysisTitle">🔍 원인 분석: 클러스터 선택</h4>
                                             <div class="analysis-meta">
                                                 <span class="analysis-type">MONETARY</span>
                                                 <span class="analysis-method">FISCAL</span>
@@ -538,7 +529,7 @@
 
                                     <!-- 주요 원인 카테고리 태그들 -->
                                     <div class="main-causes-section">
-                                        <h5>주요 원인 카테고리</h5>
+                                        <h5>💡 원인 카테고리</h5>
                                         <div class="main-cause-tags" id="mainCauseTags">
                                             <span class="cause-tag primary">양적긴축 정책</span>
                                             <span class="cause-tag primary">테이퍼링 가속화</span>
@@ -548,29 +539,69 @@
 
                                     <!-- 근본 원인들 -->
                                     <div class="root-causes-section">
-                                        <h5>근본 원인</h5>
+                                        <h5>🎯 직접 원인</h5>
                                         <div class="root-causes-list" id="rootCausesList">
                                             <div class="cause-item">
-                                                <span class="cause-text">Fed의 공격적 통화정책 스탠스 지속</span>
+                                                <div class="cause-content">
+                                                    <div class="cause-indicator">
+                                                        <i class="ph ph-arrow-right"></i>
+                                                    </div>
+                                                    <span class="cause-text">Fed의 공격적 통화정책 스탠스 지속</span>
+                                                </div>
+                                                <button class="cause-source-btn" title="출처 보기">
+                                                    <i class="ph ph-link-simple"></i>
+                                                </button>
                                             </div>
                                             <div class="cause-item">
-                                                <span class="cause-text">인플레이션 억제를 위한 터미널 금리 상향 조정</span>
+                                                <div class="cause-content">
+                                                    <div class="cause-indicator">
+                                                        <i class="ph ph-arrow-right"></i>
+                                                    </div>
+                                                    <span class="cause-text">인플레이션 억제를 위한 터미널 금리 상향 조정</span>
+                                                </div>
+                                                <button class="cause-source-btn" title="출처 보기">
+                                                    <i class="ph ph-link-simple"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- 잠재 원인들 -->
                                     <div class="potential-causes-section">
-                                        <h5>잠재 원인</h5>
+                                        <h5>🔮 간접 원인</h5>
                                         <div class="potential-causes-list" id="potentialCausesList">
                                             <div class="cause-item">
-                                                <span class="cause-text">장기 채권 수익률 곡선 역전 해소 시점 관찰</span>
+                                                <div class="cause-content">
+                                                    <div class="cause-indicator">
+                                                        <i class="ph ph-arrow-right"></i>
+                                                    </div>
+                                                    <span class="cause-text">장기 채권 수익률 곡선 역전 해소 시점 관찰</span>
+                                                </div>
+                                                <button class="cause-source-btn" title="출처 보기">
+                                                    <i class="ph ph-link-simple"></i>
+                                                </button>
                                             </div>
                                             <div class="cause-item">
-                                                <span class="cause-text">연준 점도표와 경제 데이터 모니터링</span>
+                                                <div class="cause-content">
+                                                    <div class="cause-indicator">
+                                                        <i class="ph ph-arrow-right"></i>
+                                                    </div>
+                                                    <span class="cause-text">연준 점도표와 경제 데이터 모니터링</span>
+                                                </div>
+                                                <button class="cause-source-btn" title="출처 보기">
+                                                    <i class="ph ph-link-simple"></i>
+                                                </button>
                                             </div>
                                             <div class="cause-item">
-                                                <span class="cause-text">소프트랜딩 vs 하드랜딩 시나리오 대비</span>
+                                                <div class="cause-content">
+                                                    <div class="cause-indicator">
+                                                        <i class="ph ph-arrow-right"></i>
+                                                    </div>
+                                                    <span class="cause-text">소프트랜딩 vs 하드랜딩 시나리오 대비</span>
+                                                </div>
+                                                <button class="cause-source-btn" title="출처 보기">
+                                                    <i class="ph ph-link-simple"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -2406,7 +2437,7 @@
                 // 제목 업데이트
                 const analysisTitle = document.getElementById('analysisTitle');
                 if (analysisTitle) {
-                    analysisTitle.textContent = `원인 분석: ${clusterTitles[clusterId]}`;
+                    analysisTitle.textContent = `상세 분석: ${clusterTitles[clusterId]}`;
                 }
 
                 // 주요 원인 태그들 업데이트
@@ -2475,17 +2506,126 @@
                 '10': ['글로벌 석유 전략비축유 방출과 공급 확대', '재생에너지 확산과 에너지 전환 가속', 'ESG 투자와 그린 에너지 섹터 성장']
             };
 
+            // 직접 원인 리스트 업데이트
             if (rootCausesList) {
-                rootCausesList.innerHTML = rootCauses[clusterId]?.map(cause =>
-                    `<div class="cause-item"><span class="cause-text">${cause}</span></div>`
+                rootCausesList.innerHTML = rootCauses[clusterId]?.map((cause, index) =>
+                    `<div class="cause-item">
+                        <div class="cause-content">
+                            <div class="cause-indicator">
+                                <i class="ph ph-arrow-right"></i>
+                            </div>
+                            <span class="cause-text">${cause}</span>
+                        </div>
+                        <button class="cause-source-btn" title="출처 보기" data-cause-type="root" data-cause-index="${index}" data-cluster-id="${clusterId}">
+                            <i class="ph ph-link-simple"></i>
+                        </button>
+                    </div>`
                 ).join('') || '';
             }
 
+            // 간접 원인 리스트 업데이트
             if (potentialCausesList) {
-                potentialCausesList.innerHTML = potentialCauses[clusterId]?.map(cause =>
-                    `<div class="cause-item"><span class="cause-text">${cause}</span></div>`
+                potentialCausesList.innerHTML = potentialCauses[clusterId]?.map((cause, index) =>
+                    `<div class="cause-item">
+                        <div class="cause-content">
+                            <div class="cause-indicator">
+                                <i class="ph ph-arrow-right"></i>
+                            </div>
+                            <span class="cause-text">${cause}</span>
+                        </div>
+                        <button class="cause-source-btn" title="출처 보기" data-cause-type="potential" data-cause-index="${index}" data-cluster-id="${clusterId}">
+                            <i class="ph ph-link-simple"></i>
+                        </button>
+                    </div>`
                 ).join('') || '';
             }
+
+            // 출처 버튼 이벤트 리스너 추가
+            initializeCauseSourceButtons();
+        }
+
+        // 출처 버튼 이벤트 리스너 초기화
+        function initializeCauseSourceButtons() {
+            const sourceButtons = document.querySelectorAll('.cause-source-btn');
+            sourceButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const causeType = this.dataset.causeType;
+                    const causeIndex = this.dataset.causeIndex;
+                    const clusterId = this.dataset.clusterId;
+
+                    showCauseSourceModal(causeType, causeIndex, clusterId);
+                });
+            });
+        }
+
+        // 개별 원인 출처 모달 표시
+        function showCauseSourceModal(causeType, causeIndex, clusterId) {
+            const clusterTitles = {
+                '1': '기준금리 인상 우려',
+                '2': '테크주 밸류에이션 부담',
+                '3': '중국 경제 둔화 심화',
+                '4': '지정학적 리스크 고조',
+                '5': '인플레이션 재가속 위험',
+                '6': '달러 강세 지속',
+                '7': '반도체 업계 하향 조정',
+                '8': '부동산 시장 침체',
+                '9': '공급망 차질 재발',
+                '10': '에너지 가격 변동성'
+            };
+
+            const sourceMappings = {
+                'root': {
+                    '1': [
+                        ['Fed 공식 발표문', 'FOMC 의사록', 'Bloomberg Terminal', 'Reuters'],
+                        ['CPI 데이터', 'PCE 데이터', '연준 경제 전망', 'Fed 의장 발언']
+                    ],
+                    '2': [
+                        ['TechCrunch', 'Wired', 'VentureBeat', 'MIT Technology Review'],
+                        ['Yahoo Finance', 'MarketWatch', 'Seeking Alpha', 'Morningstar']
+                    ],
+                    '3': [
+                        ['중국 국가통계국', 'SCMP', 'Financial Times', 'WSJ'],
+                        ['McKinsey Global Institute', 'World Bank', 'IMF', 'Oxford Economics']
+                    ]
+                },
+                'potential': {
+                    '1': [
+                        ['Treasury.gov', 'St. Louis Fed', 'Chicago Fed', 'NY Fed'],
+                        ['BLS.gov', 'FRED Database', 'Economic Calendar', 'Fed Survey'],
+                        ['Congressional Budget Office', 'Bank of England', 'ECB', 'BOJ']
+                    ],
+                    '2': [
+                        ['SEC Filings', 'Earnings Reports', 'Investment Research', 'Analyst Notes'],
+                        ['Portfolio Strategy', 'Risk Management', 'Asset Allocation', 'Factor Analysis'],
+                        ['MIT OpenCourseWare', 'Harvard Business Review', 'Stanford AI Lab', 'Nature']
+                    ],
+                    '3': [
+                        ['Central Bank of China', 'Ministry of Finance', 'NDRC', 'MOFCOM'],
+                        ['Manufacturing PMI', 'Export Statistics', 'Trade Balance', 'Industrial Production'],
+                        ['Retail Sales', 'Consumer Spending', 'GDP Components', 'Employment Data']
+                    ]
+                }
+            };
+
+            const clusterTitle = clusterTitles[clusterId] || '알 수 없는 클러스터';
+            const causeTypeText = causeType === 'root' ? '직접 원인' : '간접 원인';
+            const sources = sourceMappings[causeType]?.[clusterId]?.[causeIndex] || ['일반 출처 1', '일반 출처 2', '일반 출처 3'];
+
+            const sourcesInfo = `
+📊 ${clusterTitle} - ${causeTypeText} 출처 정보
+
+📑 주요 출처:
+${sources.map(source => `• ${source}`).join('\n')}
+
+📈 신뢰도 점수: 94%
+⏰ 업데이트: 2024.12.19 14:23
+🔍 검증 상태: 완료
+            `.trim();
+
+            alert(sourcesInfo);
         }
 
         // 테이블 행 추가
@@ -4024,6 +4164,9 @@
             if (contentState) {
                 contentState.style.display = 'none';
             }
+
+            // 출처 버튼 이벤트 리스너 초기화
+            initializeCauseSourceButtons();
 
             console.log('✅ 원인 분석 사이드바 초기화 완료 (빈 상태)');
         }
