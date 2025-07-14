@@ -582,10 +582,228 @@
 
                 <!-- 리포트 탭 -->
                 <div class="briefing-tab-panel" id="reportPanel">
-                    <div class="tab-panel-placeholder">
-                        <div class="placeholder-icon report-icon"></div>
-                        <h3>리포트 생성</h3>
-                        <p>분석된 내용을 바탕으로 전문적인 리포트를 자동으로 생성합니다.</p>
+                    <div class="report-container">
+                        <!-- 좌측: 분석 결과 확인 영역 -->
+                        <div class="report-sidebar">
+                            <div class="report-summary-card">
+                                <h3>분석자료 확인</h3>
+                                <div class="summary-stats">
+                                    <div class="summary-stat">
+                                        <span class="stat-value">3</span>
+                                        <span class="stat-label">개 이슈</span>
+                                    </div>
+                                    <div class="summary-stat">
+                                        <span class="stat-value">22</span>
+                                        <span class="stat-label">개 출처</span>
+                                    </div>
+                                </div>
+
+                                <div class="summary-actions">
+                                    <button class="summary-action-btn secondary" id="checkAnalysisBtn">
+                                        <i class="ph ph-file-text"></i>
+                                        <span>출처 확인하기</span>
+                                    </button>
+                                    <button class="summary-action-btn primary" id="generateReportBtn">
+                                        <i class="ph ph-file-text"></i>
+                                        <span>만들기</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 생성 옵션 -->
+                            <div class="report-options-card">
+                                <h4>리포트 옵션</h4>
+                                <div class="report-options">
+                                    <label class="option-item">
+                                        <input type="checkbox" id="includeCharts" checked>
+                                        <span class="option-checkmark"></span>
+                                        <span class="option-label">차트 및 그래프 포함</span>
+                                    </label>
+                                    <label class="option-item">
+                                        <input type="checkbox" id="includeSourcesList" checked>
+                                        <span class="option-checkmark"></span>
+                                        <span class="option-label">출처 목록 포함</span>
+                                    </label>
+                                    <label class="option-item">
+                                        <input type="checkbox" id="includeExecutiveSummary" checked>
+                                        <span class="option-checkmark"></span>
+                                        <span class="option-label">요약 포함</span>
+                                    </label>
+                                    <label class="option-item">
+                                        <input type="checkbox" id="includeRecommendations">
+                                        <span class="option-checkmark"></span>
+                                        <span class="option-label">개선 제안 포함</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 템플릿 선택 -->
+                            <div class="report-template-card">
+                                <h4>리포트 템플릿</h4>
+                                <div class="template-options">
+                                    <label class="template-option">
+                                        <input type="radio" name="template" value="standard" checked>
+                                        <span class="template-radio"></span>
+                                        <div class="template-info">
+                                            <span class="template-name">표준 리포트</span>
+                                            <span class="template-desc">일반적인 분석 리포트 형식</span>
+                                        </div>
+                                    </label>
+                                    <label class="template-option">
+                                        <input type="radio" name="template" value="executive">
+                                        <span class="template-radio"></span>
+                                        <div class="template-info">
+                                            <span class="template-name">요약 리포트</span>
+                                            <span class="template-desc">핵심 내용 중심의 간결한 형식</span>
+                                        </div>
+                                    </label>
+                                    <label class="template-option">
+                                        <input type="radio" name="template" value="detailed">
+                                        <span class="template-radio"></span>
+                                        <div class="template-info">
+                                            <span class="template-name">상세 리서치</span>
+                                            <span class="template-desc">심층 분석 결과 포함</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 우측: 미리보기 영역 -->
+                        <div class="report-preview">
+                            <div class="preview-header">
+                                <h3>미리보기</h3>
+                                <div class="preview-actions">
+                                    <button class="preview-action-btn secondary" id="copyTextBtn">
+                                        <i class="ph ph-copy"></i>
+                                        <span>텍스트 복사</span>
+                                    </button>
+                                    <button class="preview-action-btn secondary" id="copyMarkdownBtn">
+                                        <i class="ph ph-code"></i>
+                                        <span>마크다운 복사</span>
+                                    </button>
+                                    <button class="preview-action-btn primary" id="exportReportBtn">
+                                        <i class="ph ph-download-simple"></i>
+                                        <span>내보내기</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="preview-content">
+                                <div class="markdown-editor-wrapper">
+                                    <div class="markdown-content" id="markdownContent">
+                                        <div class="loading-state" id="reportLoadingState">
+                                            <div class="loading-icon">
+                                                <i class="ph ph-file-text"></i>
+                                            </div>
+                                            <h4>리포트를 생성하려면 '만들기' 버튼을 클릭하세요</h4>
+                                            <p>분석된 데이터를 바탕으로 전문적인 리포트를 자동으로 생성합니다.</p>
+                                        </div>
+
+                                        <div class="report-content" id="reportContent" style="display: none;">
+                                            <pre class="markdown-preview"># 시장 분석 리포트
+*생성일: 2024년 12월 19일*
+
+## 📊 주요 요약
+
+### 핵심 이슈
+- **기준금리 인상 우려**: Fed의 공격적 통화정책 스탠스 지속
+- **테크주 밸류에이션 부담**: AI 버블 우려와 실적 하향 조정
+- **중국 경제 둔화 심화**: 부동산 위기와 수출 둔화 가속
+
+### 시장 영향
+- 글로벌 유동성 경색 심화
+- 리스크 자산 선호도 하락
+- 안전자산 선호 현상 지속
+
+## 🎯 상세 분석
+
+### 1. 통화정책 리스크
+
+**현황**
+- Fed의 터미널 금리 전망 상향 조정
+- 양적긴축 정책 지속으로 시장 유동성 제약
+- 장기 채권 수익률 상승 압력 증가
+
+**영향**
+- 금융시장 변동성 확대
+- 신용 스프레드 확대
+- 달러 강세 지속 가능성
+
+### 2. 기술주 조정 리스크
+
+**현황**
+- 나스닥 PER 35배 돌파로 과대평가 우려
+- AI 관련 투자 ROI 불확실성 증가
+- 실적 성장률 둔화 전망
+
+**영향**
+- 성장주 포트폴리오 재조정 필요
+- 밸류에이션 리스크 관리 중요
+- 섹터 로테이션 가속화 예상
+
+### 3. 중국 경제 둔화
+
+**현황**
+- GDP 성장률 4.5%로 하향 조정
+- 부동산 시장 위기 지속
+- 수출 경쟁력 약화
+
+**영향**
+- 글로벌 공급망 재편 가속
+- 원자재 수요 둔화
+- 아시아 경제 전반 영향
+
+## 📈 투자 시사점
+
+### 단기 전략
+1. **방어적 포지션 강화**
+   - 현금 비중 확대
+   - 안전자산 편입 증가
+   - 변동성 헤지 전략 적용
+
+2. **섹터 선별**
+   - 필수소비재 및 유틸리티 선호
+   - 고성장 기술주 비중 축소
+   - 배당주 및 가치주 관심 증가
+
+### 중장기 전략
+1. **포트폴리오 다변화**
+   - 지역별 분산투자 강화
+   - 대안투자 비중 확대
+   - ESG 요소 고려 증가
+
+2. **리스크 관리**
+   - 환헤지 전략 강화
+   - 금리 리스크 관리
+   - 유동성 관리 중요성 증대
+
+## 🔍 모니터링 포인트
+
+### 주요 지표
+- Fed 통화정책 회의 결과
+- 중국 경제 지표 발표
+- 기업 실적 발표 시즌
+
+### 핵심 리스크
+- 지정학적 리스크 확대
+- 인플레이션 재가속
+- 금융시스템 안정성
+
+## 📝 결론
+
+현재 시장은 **통화정책 불확실성**과 **경제 성장 둔화** 우려가 복합적으로 작용하고 있습니다. 
+
+**단기적**으로는 방어적 포지션 강화와 변동성 관리가 중요하며, **중장기적**으로는 포트폴리오 다변화와 리스크 관리 체계 구축이 필요합니다.
+
+---
+
+*본 리포트는 AI 분석 시스템을 통해 생성되었으며, 투자 결정 시 추가적인 전문가 검토를 권장합니다.*</pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3317,6 +3535,480 @@
             console.log('✅ 도움말 탭 기능 초기화 완료');
         }
 
+        // 리포트 탭 기능 초기화
+        function initializeReportTab() {
+            console.log('📄 리포트 탭 기능 초기화');
+
+            // 리포트 생성 버튼 이벤트
+            initializeReportGeneration();
+
+            // 템플릿 변경 이벤트
+            initializeTemplateOptions();
+
+            // 옵션 변경 이벤트
+            initializeReportOptions();
+
+            // 프리뷰 액션 버튼 이벤트
+            initializePreviewActions();
+
+            console.log('✅ 리포트 탭 기능 초기화 완료');
+        }
+
+        // 리포트 생성 기능
+        function initializeReportGeneration() {
+            const generateBtn = document.getElementById('generateReportBtn');
+            const checkAnalysisBtn = document.getElementById('checkAnalysisBtn');
+            const reportLoadingState = document.getElementById('reportLoadingState');
+            const reportContent = document.getElementById('reportContent');
+
+            if (generateBtn) {
+                generateBtn.addEventListener('click', function () {
+                    // 로딩 상태 표시
+                    if (reportLoadingState) {
+                        reportLoadingState.innerHTML = `
+                            <div class="loading-icon">
+                                <i class="ph ph-spinner"></i>
+                            </div>
+                            <h4>리포트 생성 중...</h4>
+                            <p>분석 데이터를 바탕으로 리포트를 생성하고 있습니다.</p>
+                        `;
+                    }
+
+                    // 버튼 비활성화
+                    this.disabled = true;
+                    this.innerHTML = '<i class="ph ph-spinner"></i><span>생성 중...</span>';
+
+                    // 3초 후 리포트 생성 완료 시뮬레이션
+                    setTimeout(() => {
+                        if (reportLoadingState) {
+                            reportLoadingState.style.display = 'none';
+                        }
+                        if (reportContent) {
+                            reportContent.style.display = 'block';
+                        }
+
+                        // 버튼 원래 상태로 복원
+                        this.disabled = false;
+                        this.innerHTML = '<i class="ph ph-file-text"></i><span>만들기</span>';
+
+                        console.log('✅ 리포트 생성 완료');
+                    }, 3000);
+                });
+            }
+
+            if (checkAnalysisBtn) {
+                checkAnalysisBtn.addEventListener('click', function () {
+                    // 출처 확인 모달 표시
+                    const sourcesInfo = `
+📊 분석 출처 정보
+
+🌐 웹 소스 (15개)
+• TechCrunch - Elon Musk's xAI launches Grok 4
+• THE-DECODER.com - Musk unveils Grok 4
+• CBS News - Grok 4 update announcement
+• Bloomberg - AI market analysis
+• Reuters - Technology sector trends
+• (기타 10개 소스...)
+
+📰 뉴스 소스 (7개)
+• 조선일보 - 국내 기술 동향
+• 한국경제신문 - 글로벌 시장 분석
+• 매일경제 - 투자 시장 현황
+• (기타 4개 소스...)
+
+📊 데이터 업데이트: 실시간
+✅ 신뢰도 점수: 94%
+🔄 마지막 동기화: 2024.12.19 14:23
+                    `;
+                    alert(sourcesInfo);
+                });
+            }
+        }
+
+        // 템플릿 옵션 기능
+        function initializeTemplateOptions() {
+            const templateOptions = document.querySelectorAll('input[name="template"]');
+
+            templateOptions.forEach(option => {
+                option.addEventListener('change', function () {
+                    if (this.checked) {
+                        console.log(`템플릿 변경: ${this.value}`);
+                        updateReportTemplate(this.value);
+                    }
+                });
+            });
+        }
+
+        // 리포트 옵션 기능
+        function initializeReportOptions() {
+            const includeCharts = document.getElementById('includeCharts');
+            const includeSourcesList = document.getElementById('includeSourcesList');
+            const includeExecutiveSummary = document.getElementById('includeExecutiveSummary');
+            const includeRecommendations = document.getElementById('includeRecommendations');
+
+            const options = [includeCharts, includeSourcesList, includeExecutiveSummary, includeRecommendations];
+
+            options.forEach(option => {
+                if (option) {
+                    option.addEventListener('change', function () {
+                        console.log(`옵션 변경: ${this.id} = ${this.checked}`);
+                        updateReportOptions();
+                    });
+                }
+            });
+        }
+
+        // 프리뷰 액션 버튼 기능
+        function initializePreviewActions() {
+            const copyTextBtn = document.getElementById('copyTextBtn');
+            const copyMarkdownBtn = document.getElementById('copyMarkdownBtn');
+            const exportReportBtn = document.getElementById('exportReportBtn');
+
+            if (copyTextBtn) {
+                copyTextBtn.addEventListener('click', function () {
+                    const markdownContent = document.querySelector('.markdown-preview');
+                    if (markdownContent) {
+                        const text = markdownContent.textContent;
+                        navigator.clipboard.writeText(text).then(() => {
+                            showReportNotification('텍스트가 클립보드에 복사되었습니다.');
+                        }).catch(err => {
+                            console.error('복사 실패:', err);
+                            showReportNotification('복사에 실패했습니다.', 'error');
+                        });
+                    }
+                });
+            }
+
+            if (copyMarkdownBtn) {
+                copyMarkdownBtn.addEventListener('click', function () {
+                    const markdownContent = document.querySelector('.markdown-preview');
+                    if (markdownContent) {
+                        const markdown = markdownContent.textContent;
+                        navigator.clipboard.writeText(markdown).then(() => {
+                            showReportNotification('마크다운이 클립보드에 복사되었습니다.');
+                        }).catch(err => {
+                            console.error('복사 실패:', err);
+                            showReportNotification('복사에 실패했습니다.', 'error');
+                        });
+                    }
+                });
+            }
+
+            if (exportReportBtn) {
+                exportReportBtn.addEventListener('click', function () {
+                    const markdownContent = document.querySelector('.markdown-preview');
+                    if (markdownContent) {
+                        const content = markdownContent.textContent;
+                        const blob = new Blob([content], { type: 'text/markdown' });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `시장분석리포트_${new Date().toISOString().split('T')[0]}.md`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+
+                        showReportNotification('리포트가 다운로드되었습니다.');
+                    }
+                });
+            }
+        }
+
+        // 템플릿 업데이트 함수
+        function updateReportTemplate(templateType) {
+            const markdownContent = document.querySelector('.markdown-preview');
+            if (!markdownContent) return;
+
+            const templates = {
+                standard: `# 시장 분석 리포트
+*생성일: 2024년 12월 19일*
+
+## 📊 주요 요약
+
+### 핵심 이슈
+- **기준금리 인상 우려**: Fed의 공격적 통화정책 스탠스 지속
+- **테크주 밸류에이션 부담**: AI 버블 우려와 실적 하향 조정
+- **중국 경제 둔화 심화**: 부동산 위기와 수출 둔화 가속
+
+### 시장 영향
+- 글로벌 유동성 경색 심화
+- 리스크 자산 선호도 하락
+- 안전자산 선호 현상 지속
+
+## 🎯 상세 분석
+
+### 1. 통화정책 리스크
+
+**현황**
+- Fed의 터미널 금리 전망 상향 조정
+- 양적긴축 정책 지속으로 시장 유동성 제약
+- 장기 채권 수익률 상승 압력 증가
+
+**영향**
+- 금융시장 변동성 확대
+- 신용 스프레드 확대
+- 달러 강세 지속 가능성
+
+### 2. 기술주 조정 리스크
+
+**현황**
+- 나스닥 PER 35배 돌파로 과대평가 우려
+- AI 관련 투자 ROI 불확실성 증가
+- 실적 성장률 둔화 전망
+
+**영향**
+- 성장주 포트폴리오 재조정 필요
+- 밸류에이션 리스크 관리 중요
+- 섹터 로테이션 가속화 예상
+
+### 3. 중국 경제 둔화
+
+**현황**
+- GDP 성장률 4.5%로 하향 조정
+- 부동산 시장 위기 지속
+- 수출 경쟁력 약화
+
+**영향**
+- 글로벌 공급망 재편 가속
+- 원자재 수요 둔화
+- 아시아 경제 전반 영향
+
+## 📈 투자 시사점
+
+### 단기 전략
+1. **방어적 포지션 강화**
+   - 현금 비중 확대
+   - 안전자산 편입 증가
+   - 변동성 헤지 전략 적용
+
+2. **섹터 선별**
+   - 필수소비재 및 유틸리티 선호
+   - 고성장 기술주 비중 축소
+   - 배당주 및 가치주 관심 증가
+
+### 중장기 전략
+1. **포트폴리오 다변화**
+   - 지역별 분산투자 강화
+   - 대안투자 비중 확대
+   - ESG 요소 고려 증가
+
+2. **리스크 관리**
+   - 환헤지 전략 강화
+   - 금리 리스크 관리
+   - 유동성 관리 중요성 증대
+
+## 🔍 모니터링 포인트
+
+### 주요 지표
+- Fed 통화정책 회의 결과
+- 중국 경제 지표 발표
+- 기업 실적 발표 시즌
+
+### 핵심 리스크
+- 지정학적 리스크 확대
+- 인플레이션 재가속
+- 금융시스템 안정성
+
+## 📝 결론
+
+현재 시장은 **통화정책 불확실성**과 **경제 성장 둔화** 우려가 복합적으로 작용하고 있습니다. 
+
+**단기적**으로는 방어적 포지션 강화와 변동성 관리가 중요하며, **중장기적**으로는 포트폴리오 다변화와 리스크 관리 체계 구축이 필요합니다.
+
+---
+
+*본 리포트는 AI 분석 시스템을 통해 생성되었으며, 투자 결정 시 추가적인 전문가 검토를 권장합니다.*`,
+                executive: `# 요약 리포트
+*생성일: 2024년 12월 19일*
+
+## 🎯 핵심 결론
+
+### 시장 현황
+- **통화정책 불확실성**: Fed의 공격적 금리 정책 지속
+- **기술주 조정**: AI 버블 우려와 밸류에이션 부담
+- **중국 경제 둔화**: 부동산 위기와 수출 감소
+
+### 즉시 대응 필요사항
+1. **포트폴리오 방어 강화** (우선순위: 높음)
+2. **현금 비중 확대** (우선순위: 높음)
+3. **리스크 헤지 전략 적용** (우선순위: 중간)
+
+## 📊 주요 지표
+
+| 지표 | 현재 | 전망 | 영향 |
+|------|------|------|------|
+| Fed 금리 | 5.25% | 5.5%+ | 높음 |
+| 나스닥 PER | 35배 | 하향 조정 | 중간 |
+| 중국 GDP | 4.5% | 둔화 지속 | 높음 |
+
+## 🚨 리스크 요인
+- **지정학적 리스크**: 우크라이나 전쟁 장기화
+- **인플레이션 재가속**: 에너지·식료품 가격 상승
+- **금융시스템 불안**: 신용 스프레드 확대
+
+## 💡 권장 액션
+1. **즉시 실행** (1주 이내)
+   - 현금 비중 20% 이상 확보
+   - 변동성 헤지 포지션 구축
+
+2. **단기 실행** (1개월 이내)
+   - 방어적 섹터 비중 확대
+   - 배당주 포트폴리오 재조정
+
+3. **중장기 실행** (3개월 이내)
+   - 대안투자 비중 확대
+   - ESG 투자 전략 수립
+
+---
+
+*본 요약은 상세 분석 리포트를 바탕으로 작성되었습니다.*`,
+                detailed: `# 상세 리서치 리포트
+*생성일: 2024년 12월 19일*
+
+## 📊 분석 방법론
+
+### 데이터 수집
+- **1차 데이터**: Fed 공식 발표, 기업 실적 자료
+- **2차 데이터**: 언론 보도, 애널리스트 리포트  
+- **3차 데이터**: 소셜 미디어 센티먼트
+
+### 분석 프레임워크
+- **정량 분석**: 통계적 모델링, 상관관계 분석
+- **정성 분석**: 전문가 의견, 시장 센티먼트
+- **시나리오 분석**: 베이스/업사이드/다운사이드 케이스
+
+## 🎯 심층 분석
+
+### 1. 통화정책 영향 분석
+
+**Fed 정책 변화 추적**
+- 2022년 3월 첫 금리 인상 이후 누적 500bp 인상
+- 양적긴축(QT) 월 950억 달러 규모로 지속
+- 터미널 금리 전망 5.5%에서 5.75%로 상향 조정
+
+**시장 반응 분석**
+- 10년물 국채 수익률 4.8% 수준 상승
+- 실질금리 상승으로 성장주 압박 심화
+- 달러 인덱스(DXY) 106선 돌파
+
+**파급효과 모델링**
+- 금리 1% 상승 시 주식 밸류에이션 8-12% 하락
+- 신용 스프레드 확대로 하이일드 채권 위험 증가
+- 신흥국 자본 유출 압력 지속
+
+### 2. 기술주 밸류에이션 분석
+
+**현재 밸류에이션 수준**
+- 나스닥 100 PER: 35.2배 (과거 10년 평균 24.5배)
+- AI 관련주 평균 PER: 45.8배
+- 매출 성장률 대비 밸류에이션 프리미엄 확대
+
+**AI 투자 ROI 불확실성**
+- 생성형 AI 시장 규모 예측 편차 확대
+- 실제 수익화 모델 불투명
+- 과대 투자 우려 증가
+
+**섹터별 리스크 분석**
+- 반도체: 중국 수요 둔화로 메모리 가격 하락
+- 소프트웨어: 구독 모델 성장률 둔화
+- 하드웨어: 공급망 비용 상승 압력
+
+### 3. 중국 경제 둔화 분석
+
+**구조적 문제점**
+- 부동산 시장 위기: 신규 주택 판매 30% 감소
+- 지방정부 부채 위기: 총 부채 GDP 대비 76%
+- 인구 고령화: 생산가능인구 감소 시작
+
+**대외 경제 영향**
+- 글로벌 수출 둔화: 중국 수입 10% 감소
+- 원자재 수요 축소: 철광석, 구리 가격 하락
+- 공급망 재편: 베트남, 인도로 생산 이전 가속
+
+**정책 대응 한계**
+- 통화 정책 여력 제한: 위안화 약세 압력
+- 재정 정책 부담: 부채 비율 상승
+- 구조 개혁 필요성: 생산성 향상 과제
+
+## 📈 시나리오 분석
+
+### 베이스 케이스 (확률 50%)
+- Fed 금리 5.5%에서 정점
+- 경제 성장률 점진적 둔화
+- 주식 시장 10-15% 조정
+
+### 업사이드 케이스 (확률 25%)
+- 인플레이션 빠른 둔화
+- Fed 조기 금리 인하
+- 주식 시장 5-10% 상승
+
+### 다운사이드 케이스 (확률 25%)
+- 경기 침체 본격화
+- 금융시스템 불안 확산
+- 주식 시장 20-30% 하락
+
+## 🔍 정량 분석 결과
+
+### 상관관계 분석
+- 금리와 주가 상관계수: -0.78
+- 달러 강세와 신흥국 주가: -0.65
+- VIX와 기술주 수익률: -0.82
+
+### 리스크 지표
+- 시장 변동성 (VIX): 현재 22.5 (평균 18.5)
+- 신용 스프레드: 현재 245bp (평균 180bp)
+- 달러 강세 지수: 현재 106.2 (평균 98.5)
+
+## 💡 투자 전략
+
+### 포트폴리오 구성 권장안
+- **현금 및 현금성 자산**: 25% (기존 10%)
+- **방어적 주식**: 35% (기존 20%)
+- **채권**: 25% (기존 15%)
+- **대안투자**: 15% (기존 5%)
+
+### 헤지 전략
+- Put 옵션을 활용한 다운사이드 보호
+- 변동성 ETF 활용 포지션 구축
+- 통화 헤지 강화 (달러 강세 대응)
+
+### 모니터링 체크리스트
+- [ ] Fed 정책 회의 결과 (격월)
+- [ ] 인플레이션 지표 발표 (월간)
+- [ ] 기업 실적 발표 (분기)
+- [ ] 중국 경제 지표 (월간)
+- [ ] 지정학적 리스크 변화 (수시)
+
+---
+
+*본 분석은 다양한 데이터 소스와 모델을 활용하여 작성되었으며, 시장 상황에 따라 지속적으로 업데이트됩니다.*`
+            };
+
+            if (templates[templateType]) {
+                markdownContent.textContent = templates[templateType];
+            }
+        }
+
+        // 리포트 옵션 업데이트 함수
+        function updateReportOptions() {
+            console.log('리포트 옵션 업데이트됨');
+            // 실제로는 옵션에 따라 리포트 내용을 동적으로 변경
+        }
+
+        // 리포트 알림 표시 함수
+        function showReportNotification(message, type = 'info') {
+            // 간단한 알림 대신 console.log 사용
+            console.log(`리포트 알림: ${message}`);
+
+            // 실제로는 토스트 알림을 표시할 수 있음
+            if (type === 'error') {
+                alert(`오류: ${message}`);
+            } else {
+                // 성공 메시지는 console.log로만 처리
+            }
+        }
+
         // 원인 분석 사이드바 초기 상태 설정
         function initializeAnalysisSidebar() {
             console.log('🔍 원인 분석 사이드바 초기화');
@@ -3408,6 +4100,9 @@
 
             // 원인 분석 사이드바 초기 상태 설정 (빈 상태로 시작)
             initializeAnalysisSidebar();
+
+            // 리포트 탭 기능 초기화
+            initializeReportTab();
 
             // 만약 데이터가 없다면 강제로 다시 시도
             if (!window.issueClusters || window.issueClusters.length === 0) {
