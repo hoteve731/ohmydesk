@@ -5941,7 +5941,7 @@
 }
 
 /* Home Tab Styles */
-#homeTab {
+#homeTab.active {
     display: flex;
     height: 100vh;
     overflow: hidden;
