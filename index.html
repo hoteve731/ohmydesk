@@ -32,33 +32,38 @@
         <nav class="menu-bar">
             <div class="menu-top">
                 <div class="logo">
-                    <span class="logo-text">OMYDESK</span>
+                    <span class="logo-text">🎙️ OMYDESK</span>
                 </div>
                 <div class="menu-items">
-                    <button class="menu-item active" data-tab="briefing">
+                    <button class="menu-item new-project-btn" data-tab="briefing">
+                        <i class="ph-fill ph-plus-circle menu-icon-active"></i>
+                        <i class="ph ph-plus-circle menu-icon-inactive"></i>
+                        <span class="menu-label">새 프로젝트</span>
+                    </button>
+                    <button class="menu-item active" data-tab="home">
                         <i class="ph-fill ph-house menu-icon-active"></i>
                         <i class="ph ph-house menu-icon-inactive"></i>
-                        <span class="menu-label">New</span>
+                        <span class="menu-label">홈</span>
+                    </button>
+                    <button class="menu-item" data-tab="subscription">
+                        <i class="ph-fill ph-play-circle menu-icon-active"></i>
+                        <i class="ph ph-play-circle menu-icon-inactive"></i>
+                        <span class="menu-label">구독</span>
                     </button>
                     <button class="menu-item" data-tab="projects">
-                        <i class="ph-fill ph-folder menu-icon-active"></i>
-                        <i class="ph ph-folder menu-icon-inactive"></i>
-                        <span class="menu-label">Projects</span>
+                        <i class="ph-fill ph-browsers menu-icon-active"></i>
+                        <i class="ph ph-browsers menu-icon-inactive"></i>
+                        <span class="menu-label">내 프로젝트</span>
                     </button>
                     <button class="menu-item" data-tab="analysis">
-                        <i class="ph-fill ph-chart-line menu-icon-active"></i>
-                        <i class="ph ph-chart-line menu-icon-inactive"></i>
-                        <span class="menu-label">Report</span>
+                        <i class="ph-fill ph-chart-line-up menu-icon-active"></i>
+                        <i class="ph ph-chart-line-up menu-icon-inactive"></i>
+                        <span class="menu-label">분석</span>
                     </button>
-                    <button class="menu-item" data-tab="settings">
-                        <i class="ph-fill ph-gear menu-icon-active"></i>
-                        <i class="ph ph-gear menu-icon-inactive"></i>
-                        <span class="menu-label">Settings</span>
-                    </button>
-                    <button class="menu-item" data-tab="help">
-                        <i class="ph-fill ph-question menu-icon-active"></i>
-                        <i class="ph ph-question menu-icon-inactive"></i>
-                        <span class="menu-label">Help</span>
+                    <button class="menu-item" data-tab="bookmarks">
+                        <i class="ph-fill ph-star menu-icon-active"></i>
+                        <i class="ph ph-star menu-icon-inactive"></i>
+                        <span class="menu-label">스크랩</span>
                     </button>
                 </div>
             </div>
@@ -68,9 +73,11 @@
                 <button class="profile-button" id="profileButton">
                     <img src="images/profile.png" alt="프로필" class="profile-image">
                     <div class="profile-info">
-                        <span class="profile-name">류호산</span>
-                        <i class="ph ph-caret-up profile-arrow"></i>
+                        <span class="profile-name">Hosan Ryu</span>
                     </div>
+                </button>
+                <button class="settings-button" data-tab="settings">
+                    <i class="ph ph-gear"></i>
                 </button>
 
                 <!-- 드롭다운 메뉴 -->
@@ -89,8 +96,13 @@
             </div>
         </nav>
 
+        <!-- 홈 탭 콘텐츠 (기본) -->
+        <div class="tab-content active" id="homeTab">
+            <!-- 홈은 비워둡니다 -->
+        </div>
+
         <!-- 브리핑 탭 콘텐츠 -->
-        <div class="tab-content active" id="briefingTab">
+        <div class="tab-content" id="briefingTab">
             <!-- 상단 탭 네비게이션 -->
             <div class="briefing-tab-nav">
                 <button class="briefing-tab-btn active" data-briefing-tab="upload">
@@ -521,7 +533,7 @@
                                     </div>
 
 
-                                  
+
 
                                     <!-- 원인 분석 -->
                                     <div class="causes-section">
@@ -536,7 +548,7 @@
                                             <!-- 다양한 관점으로 다루어진 원인 -->
                                             <div class="cause-item multi-perspective" data-type="multi">
                                                 <div class="cause-content">
-                                                   
+
                                                     <span class="cause-text">Fed의 공격적 통화정책 스탠스 지속</span>
                                                 </div>
                                                 <div class="cause-sources">
@@ -562,7 +574,7 @@
                                             <!-- 추가 자료가 있는 원인 -->
                                             <div class="cause-item additional-sources" data-type="additional">
                                                 <div class="cause-content">
-                                                    
+
                                                     <span class="cause-text">인플레이션 억제를 위한 터미널 금리 상향 조정</span>
                                                 </div>
                                                 <div class="cause-sources">
@@ -587,7 +599,7 @@
                                             <!-- 다양한 관점으로 다루어진 원인 -->
                                             <div class="cause-item multi-perspective" data-type="multi">
                                                 <div class="cause-content">
-                                                    
+
                                                     <span class="cause-text">장기 채권 수익률 곡선 역전 해소 시점 관찰</span>
                                                 </div>
                                                 <div class="cause-sources">
@@ -610,7 +622,7 @@
                                             <!-- 추가 자료가 있는 원인 -->
                                             <div class="cause-item additional-sources" data-type="additional">
                                                 <div class="cause-content">
-                                                    
+
                                                     <span class="cause-text">연준 점도표와 경제 데이터 모니터링</span>
                                                 </div>
                                                 <div class="cause-sources">
@@ -1596,272 +1608,14 @@
             </div>
         </div>
 
-        <!-- 도움말 탭 콘텐츠 -->
-        <div class="tab-content" id="helpTab">
-            <div class="help-container">
-                <!-- 헤더 -->
-                <header class="help-header">
-                    <div class="help-title-section">
-                        <h1 class="help-main-title">도움말</h1>
-                        <p class="help-description">복잡한 데이터를 누구나 이해할 수 있는 콘텐츠로 변환하는 AI 도구</p>
-                    </div>
-                </header>
+        <!-- 구독 탭 콘텐츠 -->
+        <div class="tab-content" id="subscriptionTab">
+            <!-- 구독은 비워둡니다 -->
+        </div>
 
-                <!-- 도움말 콘텐츠 -->
-                <div class="help-content">
-                    <!-- 서비스 소개 -->
-                    <section class="help-section">
-                        <div class="section-header">
-                            <h2>서비스 소개</h2>
-                        </div>
-
-                        <div class="intro-hero">
-                            <div class="intro-text">
-                                <h3>복잡한 정보를 3단계로 누구나 이해할 수 있는 콘텐츠로</h3>
-                                <p>정부 리포트, 학술 논문, 경제 데이터 등 어렵고 방대한 정보성 콘텐츠를 AI가 분석하여 맥락적 시각화와 초안 작성을 통해 일반 대중이 쉽게 이해할 수
-                                    있는 게시글로 변환합니다.</p>
-                            </div>
-                        </div>
-
-                        <div class="problem-section">
-                            <h4>해결하는 문제</h4>
-                            <div class="problem-grid">
-                                <div class="problem-card">
-                                    <div class="problem-icon">📊</div>
-                                    <h5>복잡한 데이터 해석의 어려움</h5>
-                                    <p>정부 통계, 연구 보고서, 경제 지표 등 전문적인 데이터를 일반인이 이해하기 어려운 문제를 해결합니다.</p>
-                                </div>
-                                <div class="problem-card">
-                                    <div class="problem-icon">🔍</div>
-                                    <h5>맥락 부재와 정보 분산</h5>
-                                    <p>흩어진 정보들 간의 관계와 전체적인 맥락을 파악하기 어려운 문제를 의미론적 시각화로 해결합니다.</p>
-                                </div>
-                                <div class="problem-card">
-                                    <div class="problem-icon">✍️</div>
-                                    <h5>대중 친화적 콘텐츠 제작의 어려움</h5>
-                                    <p>전문 지식을 일반 대중이 이해할 수 있는 언어와 형식으로 변환하는 과정의 복잡성을 해결합니다.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- 3단계 프로세스 -->
-                    <section class="help-section">
-                        <div class="section-header">
-                            <h2>3단계 간단 프로세스</h2>
-                        </div>
-
-                        <div class="process-steps">
-                            <div class="process-step">
-                                <div class="step-number">1</div>
-                                <div class="step-content">
-                                    <h4>자료 업로드</h4>
-                                    <p>정부 데이터, 연구 논문, 경제 리포트, 통계 자료 등을 파일이나 URL로 간편하게 업로드하세요.</p>
-                                    <div class="step-features">
-                                        <span class="feature-tag">PDF/DOCX/HWP 지원</span>
-                                        <span class="feature-tag">웹 URL 크롤링</span>
-                                        <span class="feature-tag">대용량 파일 처리</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="process-step">
-                                <div class="step-number">2</div>
-                                <div class="step-content">
-                                    <h4>AI 분석 및 시각화</h4>
-                                    <p>AI가 데이터를 분석하여 핵심 인사이트를 도출하고, 어피니티 다이어그램으로 맥락적 관계를 시각화합니다.</p>
-                                    <div class="step-features">
-                                        <span class="feature-tag">의미론적 클러스터링</span>
-                                        <span class="feature-tag">인사이트 도출</span>
-                                        <span class="feature-tag">관계 시각화</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="process-step">
-                                <div class="step-number">3</div>
-                                <div class="step-content">
-                                    <h4>대중용 콘텐츠 생성</h4>
-                                    <p>분석 결과를 바탕으로 일반 대중이 쉽게 이해할 수 있는 게시글, 기사, 리포트를 자동 생성합니다.</p>
-                                    <div class="step-features">
-                                        <span class="feature-tag">초안 자동 생성</span>
-                                        <span class="feature-tag">출처 자동 포함</span>
-                                        <span class="feature-tag">다양한 형식 지원</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- 주요 기능 -->
-                    <section class="help-section">
-                        <div class="section-header">
-                            <h2>주요 기능</h2>
-                        </div>
-
-                        <div class="feature-grid">
-                            <div class="feature-card">
-                                <div class="feature-icon">📤</div>
-                                <h4>다양한 형식 지원</h4>
-                                <p>PDF, DOCX, HWP, TXT 파일부터 웹 URL까지 다양한 형식의 데이터를 업로드할 수 있습니다.</p>
-                            </div>
-
-                            <div class="feature-card">
-                                <div class="feature-icon">🧠</div>
-                                <h4>AI 의미 분석</h4>
-                                <p>단순한 키워드 매칭이 아닌 의미론적 분석을 통해 데이터 간의 숨겨진 관계를 발견합니다.</p>
-                            </div>
-
-                            <div class="feature-card">
-                                <div class="feature-icon">🗺️</div>
-                                <h4>어피니티 다이어그램</h4>
-                                <p>복잡한 정보들을 시각적으로 정리하여 전체적인 맥락과 패턴을 한눈에 파악할 수 있습니다.</p>
-                            </div>
-
-                            <div class="feature-card">
-                                <div class="feature-icon">✨</div>
-                                <h4>인사이트 도출</h4>
-                                <p>데이터에서 핵심적인 통찰과 의미를 자동으로 추출하여 가치 있는 정보를 제공합니다.</p>
-                            </div>
-
-                            <div class="feature-card">
-                                <div class="feature-icon">📝</div>
-                                <h4>자동 초안 생성</h4>
-                                <p>분석된 내용을 바탕으로 읽기 쉬운 블로그 포스트, 기사, 리포트 초안을 자동으로 생성합니다.</p>
-                            </div>
-
-                            <div class="feature-card">
-                                <div class="feature-icon">📚</div>
-                                <h4>출처 관리</h4>
-                                <p>모든 정보의 출처를 정확히 추적하고 관리하여 신뢰할 수 있는 콘텐츠를 제작할 수 있습니다.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- 사용 사례 -->
-                    <section class="help-section">
-                        <div class="section-header">
-                            <h2>활용 사례</h2>
-                        </div>
-
-                        <div class="use-case-grid">
-                            <div class="use-case-card">
-                                <h4>📊 정부 정책 분석</h4>
-                                <p>복잡한 정부 백서나 정책 보고서를 분석하여 시민들이 이해하기 쉬운 정책 설명 콘텐츠 제작</p>
-                            </div>
-
-                            <div class="use-case-card">
-                                <h4>📈 경제 리포트 해석</h4>
-                                <p>어려운 경제 지표와 시장 분석 자료를 일반인을 위한 투자 가이드나 경제 동향 분석글로 변환</p>
-                            </div>
-
-                            <div class="use-case-card">
-                                <h4>🔬 연구 논문 요약</h4>
-                                <p>학술 논문의 핵심 내용을 추출하여 대중을 위한 과학 기사나 연구 동향 리포트 작성</p>
-                            </div>
-
-                            <div class="use-case-card">
-                                <h4>📋 기업 IR 자료 분석</h4>
-                                <p>복잡한 기업 공시 자료를 분석하여 투자자나 고객을 위한 쉬운 기업 분석 콘텐츠 제작</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- FAQ -->
-                    <section class="help-section">
-                        <div class="section-header">
-                            <h2>자주 묻는 질문</h2>
-                        </div>
-
-                        <div class="faq-list">
-                            <div class="faq-item">
-                                <button class="faq-question">
-                                    <span>어떤 종류의 파일을 업로드할 수 있나요?</span>
-                                    <i class="ph ph-plus faq-icon"></i>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>PDF, DOCX, HWP, TXT 형식의 문서 파일과 웹 URL을 지원합니다. 정부 보고서, 연구 논문, 경제 리포트, 통계 자료 등 다양한
-                                        정보성 콘텐츠를 분석할 수 있습니다.</p>
-                                </div>
-                            </div>
-
-                            <div class="faq-item">
-                                <button class="faq-question">
-                                    <span>AI 분석은 얼마나 정확한가요?</span>
-                                    <i class="ph ph-plus faq-icon"></i>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>최신 자연어 처리 기술을 사용하여 높은 정확도로 분석합니다. 다만 AI가 생성한 내용은 참고용이며, 중요한 결정에는 전문가의 검토를 권장합니다.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="faq-item">
-                                <button class="faq-question">
-                                    <span>생성된 콘텐츠의 저작권은 누구에게 있나요?</span>
-                                    <i class="ph ph-plus faq-icon"></i>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>오마이데스크를 통해 생성된 콘텐츠의 저작권은 해당 콘텐츠를 생성한 사용자에게 귀속됩니다. 다만 원본 자료의 저작권은 별도로 확인해야 합니다.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="faq-item">
-                                <button class="faq-question">
-                                    <span>어피니티 다이어그램이란 무엇인가요?</span>
-                                    <i class="ph ph-plus faq-icon"></i>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>관련성이 높은 정보들을 그룹으로 묶어 시각적으로 표현하는 분석 도구입니다. 복잡한 데이터에서 패턴과 관계를 쉽게 파악할 수 있게 도와줍니다.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="faq-item">
-                                <button class="faq-question">
-                                    <span>개인정보는 어떻게 보호되나요?</span>
-                                    <i class="ph ph-plus faq-icon"></i>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>업로드된 모든 데이터는 암호화되어 안전하게 처리되며, 분석 완료 후 자동으로 삭제됩니다. 개인정보처리방침에 따라 엄격하게 관리됩니다.</p>
-                                </div>
-                            </div>
-
-                            <div class="faq-item">
-                                <button class="faq-question">
-                                    <span>분석 시간은 얼마나 걸리나요?</span>
-                                    <i class="ph ph-plus faq-icon"></i>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>문서의 크기와 복잡도에 따라 다르지만, 일반적으로 5-15분 정도 소요됩니다. 대용량 파일의 경우 더 오래 걸릴 수 있습니다.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- 연락처 -->
-                    <section class="help-section">
-                        <div class="section-header">
-                            <h2>문의하기</h2>
-                        </div>
-
-                        <div class="contact-info">
-                            <div class="contact-card">
-                                <h4>기술 지원</h4>
-                                <p>서비스 이용 중 문제가 발생하면 언제든 연락주세요.</p>
-                                <p><strong>이메일:</strong> support@omydesk.com</p>
-                            </div>
-
-                            <div class="contact-card">
-                                <h4>제품 문의</h4>
-                                <p>새로운 기능 제안이나 개선 사항이 있으시면 알려주세요.</p>
-                                <p><strong>이메일:</strong> product@omydesk.com</p>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
+        <!-- 스크랩 탭 콘텐츠 -->
+        <div class="tab-content" id="bookmarksTab">
+            <!-- 스크랩은 비워둡니다 -->
         </div>
     </div>
 
@@ -1921,7 +1675,7 @@
     <script>
         // 탭 전환 기능
         function initializeTabs() {
-            const menuItems = document.querySelectorAll('.menu-item');
+            const menuItems = document.querySelectorAll('.menu-item, .settings-button');
             const tabContents = document.querySelectorAll('.tab-content');
 
             menuItems.forEach(item => {
@@ -1929,9 +1683,12 @@
                     const tabName = item.dataset.tab;
 
                     // 메뉴 항목 활성화 상태 변경
-                    menuItems.forEach(menu => menu.classList.remove('active'));
-                    item.classList.add('active');
-
+                    document.querySelectorAll('.menu-item').forEach(menu => menu.classList.remove('active'));
+                    
+                    if (item.classList.contains('menu-item')) {
+                        item.classList.add('active');
+                    }
+                    
                     // 탭 콘텐츠 표시/숨김
                     tabContents.forEach(content => {
                         content.classList.remove('active');
@@ -3263,7 +3020,15 @@ AI가 다음 요소들을 종합 분석합니다:
             initializeProjectDetailNavigation();
 
             // 새 프로젝트 버튼
-            initializeNewProjectButton();
+            const newProjectButtons = document.querySelectorAll('#newProjectBtn, .new-btn');
+            newProjectButtons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const briefingTabButton = document.querySelector('.menu-item[data-tab="briefing"]');
+                    if (briefingTabButton) {
+                        briefingTabButton.click();
+                    }
+                });
+            });
 
             // 상세 뷰 탭 전환
             initializeDetailTabs();
@@ -4338,7 +4103,5 @@ AI가 다음 요소들을 종합 분석합니다:
         });
     </script>
 </body>
-
-</html>
 
 </html>
