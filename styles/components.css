@@ -5797,7 +5797,7 @@
 .menu-top {
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .logo {
@@ -5938,4 +5938,302 @@
 
 .settings-button i {
     font-size: 20px;
+}
+
+/* Home Tab Styles */
+#homeTab {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.home-main-content {
+    flex: 1;
+    /* 변경: 남은 공간 모두 차지 */
+    overflow-y: auto;
+    padding: 24px;
+}
+
+.home-right-sidebar {
+    width: 380px;
+    /* 변경: 고정 너비 */
+    flex-shrink: 0;
+    /* 변경: 줄어들지 않도록 */
+    overflow-y: auto;
+    padding: 24px;
+}
+
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.home-header .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 8px 12px;
+    width: 400px;
+}
+
+.home-header .search-bar i {
+    color: #adb5bd;
+}
+
+.home-header .search-bar input {
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+.home-header .header-actions button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    margin-left: 16px;
+    cursor: pointer;
+    color: #495057;
+}
+
+.feed-section .feed-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.feed-section .feed-nav::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, and Opera */
+}
+
+.feed-section .feed-nav button {
+    background: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.feed-section .feed-nav button.active {
+    background-color: #343a40;
+    color: #fff;
+    border-color: #343a40;
+    font-weight: 500;
+}
+
+.feed-list .feed-item {
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.feed-item .content {
+    flex: 1;
+}
+
+.feed-item .meta {
+    font-size: 12px;
+    color: #868e96;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.feed-item .meta .date {
+    margin-left: 8px;
+}
+
+.feed-item h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.feed-item p {
+    color: #495057;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.feed-item .source {
+    font-size: 12px;
+    color: #868e96;
+    margin-top: 15px;
+}
+
+.feed-item .actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    color: #868e96;
+}
+
+.feed-item .item-image {
+    width: 150px;
+    /* 변경: 이미지 크기 조정 */
+    height: 100px;
+    /* 변경: 이미지 크기 조정 */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-left: 24px;
+}
+
+.home-right-sidebar section {
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.home-right-sidebar .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.home-right-sidebar .section-header h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.home-right-sidebar .section-header a {
+    font-size: 13px;
+    color: #868e96;
+    text-decoration: none;
+}
+
+.highlight-card {
+    background-color: #f1f3f5;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.highlight-card:last-child {
+    margin-bottom: 0;
+}
+
+.highlight-card p {
+    font-size: 12px;
+    color: #495057;
+    margin: 0 0 5px;
+}
+
+.highlight-card h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.highlight-card .view-more {
+    font-size: 14px;
+    color: #4c6ef5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.sources-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.sources-list li {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.sources-list img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+.sources-list strong {
+    margin-left: auto;
+    color: #868e96;
+    font-weight: 500;
+}
+
+.recommended-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recommended-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.recommended-list li:last-child {
+    margin-bottom: 0;
+}
+
+.recommended-list .rank {
+    font-size: 14px;
+    color: #868e96;
+    width: 20px;
+}
+
+.recommended-list .profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.recommended-list .user-info {
+    flex-grow: 1;
+}
+
+.recommended-list .user-info .name {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.recommended-list .user-info .handle {
+    font-size: 12px;
+    color: #868e96;
+}
+
+.recommended-list .follow-btn {
+    background-color: #f1f3f5;
+    border: 1px solid #ced4da;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #495057;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -58,6 +58,11 @@ function initializeApp() {
         // 7. 개발 도구 설정
         setupDevelopmentUtils();
 
+        // 홈 탭이 기본으로 활성화되어 있으므로 바로 실행
+        if (document.getElementById('homeTab')?.classList.contains('active')) {
+            initializeHomeTab();
+        }
+
         console.log('✅ 오마이데스크 초기화 완료');
 
         // 초기화 완료 이벤트 발생
@@ -481,7 +486,7 @@ function setupEventListeners() {
         profileButton.addEventListener('click', (e) => {
             e.stopPropagation();
             const isOpen = profileDropdown.classList.contains('open');
-            
+
             if (isOpen) {
                 profileDropdown.classList.remove('open');
                 profileButton.classList.remove('active');
@@ -541,6 +546,147 @@ function setupEventListeners() {
 
     console.log('🎯 이벤트 리스너 설정 완료');
 }
+
+// 홈 탭 기능 초기화
+function initializeHomeTab() {
+    console.log('🏠 홈 탭 기능 초기화');
+    const feedList = document.querySelector('#homeTab .feed-list');
+    const sourcesList = document.querySelector('#homeTab .sources-list');
+    const recommendedList = document.querySelector('#homeTab .recommended-list');
+
+    // Check if elements exist
+    if (!feedList || !sourcesList || !recommendedList) {
+        console.warn('⚠️ 홈 탭의 일부 요소를 찾을 수 없습니다. 콘텐츠 생성을 건너뜁니다.');
+        return;
+    }
+
+    // Clear existing content to prevent duplication
+    feedList.innerHTML = '';
+    sourcesList.innerHTML = '';
+    recommendedList.innerHTML = '';
+
+
+    // Dummy data for feed
+    const feedData = [
+        {
+            author: 'MARC ANDREESSEN SUBSTACK',
+            date: 'MARCH 5, 2023',
+            title: 'Why AI Won\'t Cause Unemployment',
+            excerpt: '"In retrospect, I wish I had known more about the hazards and difficulties of [running] a business." -- George McGovern',
+            source: 'BASED ON YOUR READING',
+            image: 'images/img1.jpg'
+        },
+        {
+            author: 'WILD BARE THOUGHTS',
+            date: '',
+            title: 'Taste is the New Intelligence',
+            excerpt: 'Why curation, discernment, and restraint matter more than ever',
+            source: 'BASED ON YOUR READING',
+            image: 'images/img2.jpg'
+        },
+        {
+            author: 'NAVAL\'S ARCHIVE',
+            date: 'JUL 12',
+            title: 'The Ideal School Exists',
+            excerpt: 'It\'s the Life You\'re Living',
+            source: 'BASED ON YOUR READING',
+            image: 'images/img3.jpg'
+        },
+        {
+            author: 'Another Author',
+            date: 'JUL 11',
+            title: 'Another Interesting Article',
+            excerpt: 'This is another great article you might want to read.',
+            source: 'BASED ON YOUR READING',
+            image: 'images/img4.jpg'
+        },
+        {
+            author: 'Tech News',
+            date: 'JUL 10',
+            title: 'The Future of Web Development',
+            excerpt: 'Web development is constantly evolving with new frameworks and technologies.',
+            source: 'STAFF PICK',
+            image: 'images/img5.jpg'
+        },
+        {
+            author: 'Random Thoughts',
+            date: 'JUL 9',
+            title: 'A Perspective on Modern Life',
+            excerpt: 'Exploring the nuances of living in the 21st century.',
+            source: 'BASED ON YOUR READING',
+            image: 'images/img6.jpg'
+        }
+    ];
+
+    feedData.forEach((item, index) => {
+        const feedItem = document.createElement('div');
+        feedItem.classList.add('feed-item');
+
+        const image = `images/img${(index % 6) + 1}.jpg`;
+
+        feedItem.innerHTML = `
+            <div class="content">
+                <div class="meta">${item.author} <span class="date">${item.date}</span></div>
+                <h3>${item.title}</h3>
+                <p>${item.excerpt}</p>
+                <div class="source">${item.source}</div>
+            </div>
+            <div class="actions">
+                <i class="ph ph-bookmark-simple"></i>
+                <i class="ph ph-dots-three-outline"></i>
+            </div>
+            <img src="${image}" alt="${item.title}" class="item-image">
+        `;
+        feedList.appendChild(feedItem);
+    });
+
+    // Data for sources
+    const sourcesData = [
+        { name: 'Grok 4 출시', count: '8개 글', image: 'sources/google.png' },
+        { name: 'Grok 4 출시', count: '8개 글', image: 'sources/naver.png' },
+        { name: 'Grok 4 출시', count: '8개 글', image: 'sources/facebook.png' },
+        { name: 'Grok 4 출시', count: '8개 글', image: 'sources/x.png' },
+
+    ];
+
+    sourcesData.forEach(source => {
+        const sourceItem = document.createElement('li');
+        sourceItem.innerHTML = `
+            <img src="${source.image}" alt="${source.name}">
+            <span>${source.name}</span>
+            <strong>${source.count}</strong>
+        `;
+        sourcesList.appendChild(sourceItem);
+    });
+
+    // Data for recommended
+    const recommendedData = [
+        { rank: 1, name: 'Paul Graham', handle: 'Paul Graham', image: 'images/profile.png' },
+        { rank: 2, name: 'Inference by Sequoia Capital', handle: 'Inference by Sequoia Capital', image: 'images/profile.png' },
+        { rank: 3, name: 'Marc Andreessen', handle: 'Marc Andreessen', image: 'images/profile.png' },
+        { rank: 4, name: 'Last Week in AI', handle: 'Last Week in AI', image: 'images/profile.png' },
+        { rank: 5, name: 'OpenAI Global Affairs', handle: 'The Latest Insights from OpenAI Global Affairs', image: 'images/profile.png' },
+        { rank: 6, name: 'Rick Rubin', handle: 'The Creative Act: Thoughtforms & Frameworks', image: 'images/profile.png' },
+        { rank: 7, 'name': 'OpenAI for Education', handle: 'ChatGPT for Education', image: 'images/profile.png' },
+        { rank: 8, name: 'Garry Tan', handle: 'Garry Tan', image: 'images/profile.png' }
+    ];
+
+    recommendedData.forEach(item => {
+        const recommendedItem = document.createElement('li');
+        recommendedItem.innerHTML = `
+            <span class="rank">${item.rank}</span>
+            <img src="${item.image}" alt="${item.name}" class="profile-img">
+            <div class="user-info">
+                <div class="name">${item.name}</div>
+                <div class="handle">${item.handle}</div>
+            </div>
+            <button class="follow-btn">+</button>
+        `;
+        recommendedList.appendChild(recommendedItem);
+    });
+    console.log('✅ 홈 탭 콘텐츠 생성 완료');
+}
+
 
 // 전역 함수 등록
 window.initializeApp = initializeApp;

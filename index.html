@@ -98,7 +98,70 @@
 
         <!-- 홈 탭 콘텐츠 (기본) -->
         <div class="tab-content active" id="homeTab">
-            <!-- 홈은 비워둡니다 -->
+            <div class="home-main-content">
+                <header class="home-header">
+                    <div class="search-bar">
+                        <i class="ph ph-magnifying-glass"></i>
+                        <input type="text" placeholder="검색">
+                    </div>
+                    <div class="header-actions">
+                        <button class="email-btn"><i class="ph ph-envelope"></i></button>
+                        <button class="notification-btn"><i class="ph ph-bell"></i></button>
+                    </div>
+                </header>
+                <div class="feed-section">
+                    <div class="feed-nav">
+                        <button class="active">For You</button>
+                        <button>Staff Picks</button>
+                        <button>Culture</button>
+                        <button>Technology</button>
+                        <button>Business</button>
+                        <button>U.S. Politics</button>
+                        <button>Finance</button>
+                        <button>Food & Drink</button>
+                        <button>Sports</button>
+                        <button>Art & Illustration</button>
+                        <button>World Politics</button>
+                        <button>Health Politics</button>
+                        <button>News</button>
+                        <button>Fashion & Beauty</button>
+                    </div>
+                    <div class="feed-list">
+                    </div>
+                </div>
+            </div>
+            <aside class="home-right-sidebar">
+                <section class="highlights-section">
+                    <div class="section-header">
+                        <h2>하이라이트</h2>
+                        <a href="#">모두 보기</a>
+                    </div>
+                    <div class="highlight-card">
+                        <p>추천 공유 기반 군집 요약</p>
+                        <h3>이슈 요약된 텍스트</h3>
+                        <a href="#" class="view-more">글 모아보기 &gt;</a>
+                    </div>
+                    <div class="highlight-card">
+                        <p>추천 공유 기반 군집 요약</p>
+                        <h3>이슈 요약된 텍스트</h3>
+                        <a href="#" class="view-more">글 모아보기 &gt;</a>
+                    </div>
+                </section>
+                <section class="sources-section">
+                    <div class="section-header">
+                        <h2>자주 인용된 출처 (7월 14일)</h2>
+                    </div>
+                    <ul class="sources-list">
+                    </ul>
+                </section>
+                <section class="recommended-section">
+                    <div class="section-header">
+                        <h2>Recommended</h2>
+                    </div>
+                    <ul class="recommended-list">
+                    </ul>
+                </section>
+            </aside>
         </div>
 
         <!-- 브리핑 탭 콘텐츠 -->
@@ -1684,11 +1747,11 @@
 
                     // 메뉴 항목 활성화 상태 변경
                     document.querySelectorAll('.menu-item').forEach(menu => menu.classList.remove('active'));
-                    
+
                     if (item.classList.contains('menu-item')) {
                         item.classList.add('active');
                     }
-                    
+
                     // 탭 콘텐츠 표시/숨김
                     tabContents.forEach(content => {
                         content.classList.remove('active');
@@ -1697,6 +1760,11 @@
                     const targetTab = document.getElementById(tabName + 'Tab');
                     if (targetTab) {
                         targetTab.classList.add('active');
+
+                        // 홈 탭 활성화 시 홈 탭 기능 초기화
+                        if (tabName === 'home') {
+                            initializeHomeTab();
+                        }
 
                         // 브리핑 탭 활성화 시 브리핑 탭 기능 초기화
                         if (tabName === 'briefing') {
