@@ -38,22 +38,18 @@
                     <button class="menu-item new-project-btn" data-tab="briefing">
                         <i class="ph-fill ph-plus-circle menu-icon-active"></i>
                         <i class="ph ph-plus-circle menu-icon-inactive"></i>
-                        <span class="menu-label">새 프로젝트</span>
+                        <span class="menu-label">새 레터</span>
                     </button>
                     <button class="menu-item active" data-tab="home">
                         <i class="ph-fill ph-house menu-icon-active"></i>
                         <i class="ph ph-house menu-icon-inactive"></i>
                         <span class="menu-label">홈</span>
                     </button>
-                    <button class="menu-item" data-tab="subscription">
-                        <i class="ph-fill ph-play-circle menu-icon-active"></i>
-                        <i class="ph ph-play-circle menu-icon-inactive"></i>
-                        <span class="menu-label">구독</span>
-                    </button>
+                    
                     <button class="menu-item" data-tab="projects">
                         <i class="ph-fill ph-browsers menu-icon-active"></i>
                         <i class="ph ph-browsers menu-icon-inactive"></i>
-                        <span class="menu-label">내 프로젝트</span>
+                        <span class="menu-label">내 레터</span>
                     </button>
                     <button class="menu-item" data-tab="analysis">
                         <i class="ph-fill ph-chart-line-up menu-icon-active"></i>
@@ -105,26 +101,25 @@
                         <input type="text" placeholder="검색">
                     </div>
                     <div class="header-actions">
-                        <button class="email-btn"><i class="ph ph-envelope"></i></button>
                         <button class="notification-btn"><i class="ph ph-bell"></i></button>
                     </div>
                 </header>
                 <div class="feed-section">
                     <div class="feed-nav">
-                        <button class="active">For You</button>
-                        <button>Staff Picks</button>
-                        <button>Culture</button>
-                        <button>Technology</button>
-                        <button>Business</button>
-                        <button>U.S. Politics</button>
-                        <button>Finance</button>
-                        <button>Food & Drink</button>
-                        <button>Sports</button>
-                        <button>Art & Illustration</button>
-                        <button>World Politics</button>
-                        <button>Health Politics</button>
-                        <button>News</button>
-                        <button>Fashion & Beauty</button>
+                        <button class="active">추천</button>
+                        <button>구독</button>
+                        <button>문화</button>
+                        <button>기술</button>
+                        <button>경제</button>
+                        <button>정치</button>
+                        <button>금융</button>
+                        <button>음식</button>
+                        <button>스포츠</button>
+                        <button>미술</button>
+                        <button>정치</button>
+                        <button>건강</button>
+                        <button>뉴스</button>
+                        <button>패션</button>
                     </div>
                     <div class="feed-list">
                     </div>
@@ -134,29 +129,52 @@
                 <section class="highlights-section">
                     <div class="section-header">
                         <h2>하이라이트</h2>
-                        <a href="#">모두 보기</a>
                     </div>
-                    <div class="highlight-card">
-                        <p>추천 공유 기반 군집 요약</p>
-                        <h3>이슈 요약된 텍스트</h3>
-                        <a href="#" class="view-more">글 모아보기 &gt;</a>
-                    </div>
-                    <div class="highlight-card">
-                        <p>추천 공유 기반 군집 요약</p>
-                        <h3>이슈 요약된 텍스트</h3>
-                        <a href="#" class="view-more">글 모아보기 &gt;</a>
-                    </div>
+                    <div class="highlight-summary">
+                        <p>💡 Naval이 또다른 훌륭한 행복에 관한 뉴스레터를 발행했습니다.<br><br> 🤖 3개의 뉴스에서 AI 안전성 논쟁과 글로벌 기업들의 신제품 출시 지연을 다룹니다. <br><br> 🚫 EU의 AI 규제안 합의로 인해 기술 기업들의 대응이 주목됩니다.</p>
+                    
                 </section>
                 <section class="sources-section">
                     <div class="section-header">
-                        <h2>자주 인용된 출처 (7월 14일)</h2>
+                        <h2>원본으로 읽기</h2>
+                        <span class="date-tag">7월 14일</span>
                     </div>
                     <ul class="sources-list">
+                        <li class="source-item">
+                            <img src="sources/x.png" alt="X (Twitter)" class="source-icon">
+                            <div class="source-content">
+                                <div class="source-header">
+                                    <span class="source-name">Tim Cook @ X</span>
+                                    <span class="source-time">08:15</span>
+                                </div>
+                                <p class="source-text">"Vision Pro는 혁신적인 사용자 경험을 제공할 것입니다. 완벽한 제품을 위해 출시 일정을 조정했습니다."</p>
+                            </div>
+                        </li>
+                        <li class="source-item">
+                            <img src="sources/naver.png" alt="네이버 뉴스" class="source-icon">
+                            <div class="source-content">
+                                <div class="source-header">
+                                    <span class="source-name">IT동아</span>
+                                    <span class="source-time">10:30</span>
+                                </div>
+                                <p class="source-text">EU AI 규제안 주요 내용: 위험도에 따른 4단계 규제체계 도입... AI 블랙리스트 지정도</p>
+                            </div>
+                        </li>
+                        <li class="source-item">
+                            <img src="sources/google.png" alt="Google News" class="source-icon">
+                            <div class="source-content">
+                                <div class="source-header">
+                                    <span class="source-name">Science Daily</span>
+                                    <span class="source-time">11:45</span>
+                                </div>
+                                <p class="source-text">NASA's Perseverance rover finds new evidence suggesting ancient microbial life on Mars</p>
+                            </div>
+                        </li>
                     </ul>
                 </section>
                 <section class="recommended-section">
                     <div class="section-header">
-                        <h2>Recommended</h2>
+                        <h2>추천 구독</h2>
                     </div>
                     <ul class="recommended-list">
                     </ul>
@@ -947,13 +965,13 @@
                     <!-- 헤더 -->
                     <header class="project-header">
                         <div class="project-title-section">
-                            <h1 class="project-main-title">프로젝트</h1>
-                            <p class="project-description">홈에서 생성한 분석 프로젝트들을 확인하고 관리하세요</p>
+                            <h1 class="project-main-title">내 레터</h1>
+                            <p class="project-description">그동안 작성한 모든 레터를 관리하세요</p>
                         </div>
                         <div class="project-actions">
                             <button class="project-action-btn new-btn" id="newProjectBtn">
                                 <i class="ph ph-plus"></i>
-                                <span>새 프로젝트</span>
+                                <span>새 레터</span>
                             </button>
                         </div>
                     </header>

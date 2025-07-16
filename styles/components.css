@@ -6237,3 +6237,135 @@
     align-items: center;
     justify-content: center;
 }
+
+.highlights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.highlight-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(200, 200, 220, 0.15);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.highlight-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.highlight-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    background: #f3f4f6;
+    color: #4b5563;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.highlight-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.highlight-time {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.sources-section {
+    margin-top: 24px;
+}
+
+.date-tag {
+    font-size: 13px;
+    color: #6b7280;
+    background: #f3f4f6;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.sources-list {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.source-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    border: 1px solid rgba(200, 200, 220, 0.15);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.source-item:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.source-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+}
+
+.source-content {
+    flex: 1;
+}
+
+.source-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.source-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.source-time {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.source-text {
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.4;
+}
+
+.highlight-summary {
+    background: linear-gradient(to right, #f9fafb, #f3f4f6);
+    
+    padding: 12px;
+    border-radius: 8px;
+    margin: 8px;
+}
+
+.highlight-summary p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4b5563;
+    margin: 0;
+}

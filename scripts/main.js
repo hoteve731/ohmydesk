@@ -340,6 +340,8 @@ function setupDevelopmentUtils() {
                 location.reload();
             },
 
+
+
             // 샘플 데이터 추가
             addSampleData: () => {
                 // 샘플 하이라이트 추가
@@ -571,33 +573,30 @@ function initializeHomeTab() {
         {
             author: 'MARC ANDREESSEN SUBSTACK',
             date: 'MARCH 5, 2023',
-            title: 'Why AI Won\'t Cause Unemployment',
+            title: '🥇 Why AI Won\'t Cause Unemployment',
             excerpt: '"In retrospect, I wish I had known more about the hazards and difficulties of [running] a business." -- George McGovern',
-            source: 'BASED ON YOUR READING',
+
             image: 'images/img1.jpg'
         },
         {
             author: 'WILD BARE THOUGHTS',
             date: '',
-            title: 'Taste is the New Intelligence',
+            title: '🥈 Taste is the New Intelligence',
             excerpt: 'Why curation, discernment, and restraint matter more than ever',
-            source: 'BASED ON YOUR READING',
             image: 'images/img2.jpg'
         },
         {
             author: 'NAVAL\'S ARCHIVE',
             date: 'JUL 12',
-            title: 'The Ideal School Exists',
+            title: '🥉 The Ideal School Exists',
             excerpt: 'It\'s the Life You\'re Living',
-            source: 'BASED ON YOUR READING',
             image: 'images/img3.jpg'
         },
         {
-            author: 'Another Author',
+            author: 'Naval Ravikant',
             date: 'JUL 11',
-            title: 'Another Interesting Article',
-            excerpt: 'This is another great article you might want to read.',
-            source: 'BASED ON YOUR READING',
+            title: 'How to Get Rich',
+            excerpt: 'The best way to get rich is to be yourself.',
             image: 'images/img4.jpg'
         },
         {
@@ -605,7 +604,6 @@ function initializeHomeTab() {
             date: 'JUL 10',
             title: 'The Future of Web Development',
             excerpt: 'Web development is constantly evolving with new frameworks and technologies.',
-            source: 'STAFF PICK',
             image: 'images/img5.jpg'
         },
         {
@@ -613,7 +611,6 @@ function initializeHomeTab() {
             date: 'JUL 9',
             title: 'A Perspective on Modern Life',
             excerpt: 'Exploring the nuances of living in the 21st century.',
-            source: 'BASED ON YOUR READING',
             image: 'images/img6.jpg'
         }
     ];
@@ -629,12 +626,9 @@ function initializeHomeTab() {
                 <div class="meta">${item.author} <span class="date">${item.date}</span></div>
                 <h3>${item.title}</h3>
                 <p>${item.excerpt}</p>
-                <div class="source">${item.source}</div>
+                
             </div>
-            <div class="actions">
-                <i class="ph ph-bookmark-simple"></i>
-                <i class="ph ph-dots-three-outline"></i>
-            </div>
+           
             <img src="${image}" alt="${item.title}" class="item-image">
         `;
         feedList.appendChild(feedItem);
@@ -642,11 +636,26 @@ function initializeHomeTab() {
 
     // Data for sources
     const sourcesData = [
-        { name: 'Grok 4 출시', count: '8개 글', image: 'sources/google.png' },
-        { name: 'Grok 4 출시', count: '8개 글', image: 'sources/naver.png' },
-        { name: 'Grok 4 출시', count: '8개 글', image: 'sources/facebook.png' },
-        { name: 'Grok 4 출시', count: '8개 글', image: 'sources/x.png' },
-
+        {
+            name: '[뉴욕타임즈] NASA 화성 탐사 발견',
+            count: '12',
+            image: 'sources/google.png'
+        },
+        {
+            name: '[IT동아] EU AI 규제안 합의',
+            count: '15',
+            image: 'sources/naver.png'
+        },
+        {
+            name: '[김민석] Vision Pro 출시 연기',
+            count: '9',
+            image: 'sources/facebook.png'
+        },
+        {
+            name: '[Sam Altman] 생성형 AI 안전성 논쟁',
+            count: '18',
+            image: 'sources/x.png'
+        }
     ];
 
     sourcesData.forEach(source => {
