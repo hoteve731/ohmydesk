@@ -581,4 +581,65 @@ window.utils.throttle = function (func, limit) {
             setTimeout(() => inThrottle = false, limit);
         }
     };
-}; 
+};
+
+// 프로필 채널 모달 관련 기능
+function initializeProfileChannelModal() {
+    const recommendedSection = document.querySelector('.recommended-section');
+    const profileChannelModal = document.getElementById('profileChannelModal');
+    const modalCloseBtn = profileChannelModal.querySelector('.modal-close-btn');
+    const modalOverlay = profileChannelModal.querySelector('.modal-overlay');
+
+    // 추천 구독 섹션 클릭 시 모달 열기
+    if (recommendedSection) {
+        recommendedSection.addEventListener('click', function (e) {
+            e.preventDefault();
+            openProfileChannelModal();
+        });
+    }
+
+    // 닫기 버튼 클릭 시 모달 닫기
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeProfileChannelModal);
+    }
+
+    // 오버레이 클릭 시 모달 닫기
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeProfileChannelModal);
+    }
+
+    // ESC 키 누를 때 모달 닫기
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            closeProfileChannelModal();
+        }
+    });
+
+    // 모달 내부 탭 전환
+    const tabButtons = profileChannelModal.querySelectorAll('.tab-btn');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            // 현재 활성화된 탭 비활성화
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            // 클릭된 탭 활성화
+            this.classList.add('active');
+        });
+    });
+
+    // 모달 열기 함수
+    function openProfileChannelModal() {
+        profileChannelModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+    }
+
+    // 모달 닫기 함수
+    function closeProfileChannelModal() {
+        profileChannelModal.classList.remove('active');
+        document.body.style.overflow = ''; // 배경 스크롤 복원
+    }
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function () {
+    initializeProfileChannelModal();
+}); 
